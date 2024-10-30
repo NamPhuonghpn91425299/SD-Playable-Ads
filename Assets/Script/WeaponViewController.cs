@@ -47,7 +47,7 @@ public class WeaponViewController : MonoBehaviour
         // {
         //     _initialWeaponPosition = WeaponTrans.localPosition;
         // }
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
