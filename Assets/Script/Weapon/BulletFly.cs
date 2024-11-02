@@ -4,13 +4,14 @@ using System.Net;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BulletFly : MonoBehaviour
+public class BulletFly : MonoBehaviour,IDamageDealt
 {
     float simulationSpeed;
 
     Vector3 startPoint;
     Vector3 endPoint;
-
+    public IDamageHit damageHit;
+    public float damage;
     float remainingDistance, distance;
 
     public void Init(Vector3 startPoint, Vector3 endPoint, float simulationSpeed)
@@ -22,6 +23,19 @@ public class BulletFly : MonoBehaviour
         distance = Vector3.Distance(endPoint, startPoint);
         remainingDistance = 0;
     }
+
+    public void Init(int damage, IDamageHit target)
+    {
+       damageHit = target;
+       this.damage = damage;
+    }
+
+    public void TryHit()
+    {
+        Debug.Log($"dang ban ne  {damageHit == null}");
+        damageHit?.OnHit((int)damage);
+    }
+
     private void Update()
     {
       
@@ -30,7 +44,9 @@ public class BulletFly : MonoBehaviour
 
         if (remainingDistance >= distance)
         {
+            TryHit();
             this.gameObject.SetActive(false);
+
         }
     }
 }

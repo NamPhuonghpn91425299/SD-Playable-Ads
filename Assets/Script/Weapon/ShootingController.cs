@@ -1,20 +1,11 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
 public class ShootingController : MonoBehaviour
 {
-    [Header("Shooting Settings")]
-    [Tooltip("Thời gian chờ trước khi bắt đầu bắn (giây)")]
-    public float initialDelay = 1f;
-    [Tooltip("Thời gian giữa các phát bắn lúc bắt đầu (giây)")]
-    public float startFireRate = 0.2f;
-    [Tooltip("Thời gian giữa các phát bắn lúc tối đa (giây)")]
-    public float maxFireRate = 0.1f;
-    [Tooltip("Thời gian để đạt tốc độ bắn tối đa (giây)")]
-    public float timeToMaxFireRate = 1f;
-
-    [Header("Bullet Settings")]
-
+    [Header("Weapon Configuration")]
+    [SerializeField] private WeaponDataSO currentWeaponStats;
     public Transform firePoint;
 
     private bool isShooting = false;
@@ -23,64 +14,85 @@ public class ShootingController : MonoBehaviour
     private Coroutine shootingCoroutine;
     private Coroutine delayCoroutine;
     public Weapon weapon;
+
     private void Start()
     {
         weapon = GetComponentInChildren<Weapon>();
+
         if (firePoint == null)
             firePoint = transform;
+
+        // Kiểm tra weapon stats khi khởi động
+        if (currentWeaponStats == null)
+        {
+            Debug.LogWarning("No weapon stats assigned! Please assign a WeaponStats SO in the inspector.");
+        }
     }
 
     private void Update()
     {
-        // Bắt đầu bắn
         if (Input.GetButtonDown("Fire1"))
         {
             StartShooting();
+            
         }
 
-        // Đang bắn và đã qua delay
         if (isShooting && canShoot)
         {
-            // Tăng thời gian giữ
             holdTime += Time.deltaTime;
-            holdTime = Mathf.Min(holdTime, timeToMaxFireRate);
+            holdTime = Mathf.Min(holdTime, currentWeaponStats.timeToMaxFireRate);
+            // Giới hạn holdTime không vượt quá currentWeaponStats.timeToMaxFireRate
         }
 
-        // Dừng bắn
         if (Input.GetButtonUp("Fire1"))
         {
             StopShooting();
         }
     }
 
+    public void ChangeWeapon(WeaponDataSO newWeaponStats)
+    {
+        if (newWeaponStats == null)
+        {
+            Debug.LogError("Attempting to change to null weapon stats!");
+            return;
+        }
+
+        StopShooting();
+        currentWeaponStats = newWeaponStats;
+        Debug.Log($"Changed weapon to: {currentWeaponStats.Name}");
+    }
+
     private void StartShooting()
     {
+        if (currentWeaponStats == null)
+        {
+            Debug.LogError("No weapon stats assigned!");
+            return;
+        }
+
         isShooting = true;
         canShoot = false;
         holdTime = 0f;
 
-        // Hủy các coroutine đang chạy (nếu có)
         if (delayCoroutine != null)
             StopCoroutine(delayCoroutine);
         if (shootingCoroutine != null)
             StopCoroutine(shootingCoroutine);
 
-        // Bắt đầu đếm thời gian delay
         delayCoroutine = StartCoroutine(InitialDelayCoroutine());
     }
 
     private IEnumerator InitialDelayCoroutine()
     {
         weapon.WaitPlayShoot();
-        // Hiệu ứng charging hoặc animation có thể thêm ở đây
-        Debug.Log("Đang charging...");
+        Debug.Log($"Charging {currentWeaponStats.Name} with {currentWeaponStats.initialDelay}s delay...");
 
-        yield return new WaitForSeconds(initialDelay);
+        yield return new WaitForSeconds(currentWeaponStats.initialDelay);
 
         canShoot = true;
-        Debug.Log("Bắt đầu bắn!");
+        Debug.Log($"Started shooting with {currentWeaponStats.Name}!");
 
-        // Bắt đầu bắn sau khi delay
         shootingCoroutine = StartCoroutine(ShootingCoroutine());
         weapon.PlayShoot();
     }
@@ -91,7 +103,7 @@ public class ShootingController : MonoBehaviour
         canShoot = false;
         holdTime = 0f;
         weapon.StopPlayShoot();
-        // Hủy tất cả coroutine
+
         if (delayCoroutine != null)
         {
             StopCoroutine(delayCoroutine);
@@ -108,39 +120,46 @@ public class ShootingController : MonoBehaviour
     {
         while (isShooting && canShoot)
         {
-            // Tính toán thời gian chờ giữa các phát bắn
-            float progress = holdTime / timeToMaxFireRate;
-            float currentDelay = Mathf.Lerp(startFireRate, maxFireRate, progress);
-
+            float progress = holdTime / currentWeaponStats.timeToMaxFireRate;
+            float currentDelay = Mathf.Lerp(
+                currentWeaponStats.startFireRate,
+                currentWeaponStats.maxFireRate,
+                progress
+            );
             FireBullet();
-
-            // Chờ đến phát bắn tiếp theo
             yield return new WaitForSeconds(currentDelay);
         }
     }
 
-    // Hiển thị debug
     private void OnGUI()
     {
-        if (isShooting)
+        if (isShooting && currentWeaponStats != null)
         {
             if (!canShoot)
             {
-                GUI.Label(new Rect(10, 10, 200, 20), "Đang charging...");
+                GUI.Label(new Rect(10, 10, 300, 20),
+                    $"Charging {currentWeaponStats.Name}...");
             }
             else
             {
-                float progress = holdTime / timeToMaxFireRate;
-                float currentFireRate = 1f / Mathf.Lerp(startFireRate, maxFireRate, progress);
+                float progress = holdTime / currentWeaponStats.timeToMaxFireRate;
+                float currentFireRate = 1f / Mathf.Lerp(
+                    currentWeaponStats.startFireRate,
+                    currentWeaponStats.maxFireRate,
+                    progress
+                );
 
-                GUI.Label(new Rect(10, 10, 200, 20), $"Thời gian giữ: {holdTime:F2}s");
-                GUI.Label(new Rect(10, 30, 200, 20), $"Tốc độ bắn: {currentFireRate:F1} viên/giây");
+                GUI.Label(new Rect(10, 10, 300, 20),
+                    $"{currentWeaponStats.Name} - Thời gian giữ: {holdTime:F2}s");
+                GUI.Label(new Rect(10, 30, 300, 20),
+                    $"Tốc độ bắn: {currentFireRate:F1} viên/giây");
             }
         }
     }
+
     private void FireBullet()
     {
+        
         WeaponController.instance.SpawnBullet();
     }
-
 }

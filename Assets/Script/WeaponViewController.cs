@@ -6,7 +6,7 @@ public class WeaponViewController : MonoBehaviour
     [SerializeField] private Transform _mainRoot;
     [SerializeField] private Transform _head;
     [SerializeField] private Transform WeaponTrans;
-    [SerializeField] private Transform CrosshairTransform;
+    [SerializeField] private RectTransform CrosshairTransform;
 
     [Header("View Settings")]
     [SerializeField] private float _sensitivity = 2f;
@@ -43,10 +43,7 @@ public class WeaponViewController : MonoBehaviour
 
     private void Start()
     {
-        // if (WeaponTrans != null)
-        // {
-        //     _initialWeaponPosition = WeaponTrans.localPosition;
-        // }
+        CrosshairTransform.anchoredPosition = Vector2.zero;
         //Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -160,25 +157,29 @@ public class WeaponViewController : MonoBehaviour
 
     private void UpdateCrossHair(Vector2 totalRotate, float slerpParam)
     {
-        if (CrosshairTransform != null)
-        {
-            // Di chuyển crosshair mượt mà theo hướng súng
-            Vector2 targetPosition = new Vector2(totalRotate.x, -totalRotate.y) * 0.1f;
-            CrosshairTransform.localPosition = Vector3.Lerp(
-                CrosshairTransform.localPosition,
-                new Vector3(targetPosition.x, targetPosition.y, CrosshairTransform.localPosition.z),
-                slerpParam
-            );
+        if (CrosshairTransform == null) return;
 
-            // Mở rộng crosshair khi di chuyển (tuỳ chọn)
-            float spread = (new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")).magnitude + _currentRecoil) * 10f;
-            CrosshairTransform.localScale = Vector3.Lerp(
-                CrosshairTransform.localScale,
-                Vector3.one * (1f + spread),
-                slerpParam * 0.5f
-            );
-        }
+        // Cập nhật vị trí crosshair để theo dõi hướng súng một cách mượt mà
+        Vector2 targetPosition = new Vector2(totalRotate.x, totalRotate.y) * 1f;
+
+        // Lerp vị trí của crosshair để theo hướng của súng
+        CrosshairTransform.localPosition = Vector3.Lerp(
+            CrosshairTransform.localPosition,
+            new Vector3(targetPosition.x, targetPosition.y, CrosshairTransform.localPosition.z),
+            Mathf.Clamp01(slerpParam*2f)  // Đảm bảo slerpParam không vượt quá 1
+        );
+
+        // Kiểm tra chuyển động của chuột và hiện tượng recoil
+        float spread = (new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")).magnitude + _currentRecoil) * 0.1f;
+
+        // Lerp kích thước của crosshair để tạo hiệu ứng mở rộng khi di chuyển
+        CrosshairTransform.localScale = Vector3.Lerp(
+            CrosshairTransform.localScale,
+            Vector3.one * Mathf.Clamp(1f + spread, 1f, 2f), // Giới hạn scale để tránh crosshair quá lớn
+            slerpParam * 0.7f
+        );
     }
+
 
     // Phương thức public để kích hoạt recoil từ bên ngoài
     public void AddRecoil()

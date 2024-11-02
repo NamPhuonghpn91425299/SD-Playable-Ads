@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8200ae90ba3c65141a38b5aa297663ea, type: 3}
-  m_Name: WeaponSO
+  m_Name: Weapon50SO
   m_EditorClassIdentifier: 
   Name: Weapon50
   ModePrefab: {fileID: 1739398182915676031, guid: f91f5ee8fe75afb4ab6f5b33e25f472b, type: 3}
@@ -20,13 +20,13 @@ MonoBehaviour:
   spread: {x: 0.001, y: 0.001, z: 0.001}
   animationDatas:
   - keyName: Idle
-    clip: {fileID: 7400000, guid: 16523c1504f87144683cdf5d3afb4cd3, type: 2}
+    clip: {fileID: 7826041820120388387, guid: 7b8a8dca4c20a484486a969b1d8ea184, type: 3}
     audio: {fileID: 0}
   - keyName: FireIn
     clip: {fileID: 0}
     audio: {fileID: 8300000, guid: 06e4ee0bf6c5209438079f6ba4846d4c, type: 3}
   - keyName: Fire
-    clip: {fileID: 7400000, guid: 114457aa467f6a4499432a69203cf723, type: 2}
+    clip: {fileID: 7400000, guid: da7193bf4ba11a24fb2ff9dbf34c8c67, type: 2}
     audio: {fileID: 8300000, guid: 669afacf3194dcf428f278ceab30c874, type: 3}
   - keyName: FireOut
     clip: {fileID: 0}
@@ -42,3 +42,8 @@ MonoBehaviour:
     audio: {fileID: 0}
   Damage: 10
   FiringRate: 100
+  weaponIcon: {fileID: 0}
+  initialDelay: 1
+  startFireRate: 0.2
+  maxFireRate: 0.1
+  timeToMaxFireRate: 1

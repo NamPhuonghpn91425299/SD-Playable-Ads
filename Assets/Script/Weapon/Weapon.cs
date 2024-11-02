@@ -33,6 +33,7 @@ public class Weapon : MonoBehaviour
     public void PlayAnimation(string clipname, bool isLoopAudio = false)
     {
         animation.Play(clipname);
+        animation[clipname].speed = 2;
         if(animationDatas.TryGetValue(clipname, out var data))
         {
             audioSource.clip = data.audio;
@@ -43,14 +44,19 @@ public class Weapon : MonoBehaviour
 
     public void CrossFadeAnimation(string clipname, float fadeLength)
     {
-        animation.CrossFade(clipname, fadeLength);
+        //animation.CrossFade(clipname, fadeLength);
         if(animationDatas.TryGetValue(clipname, out var data))
+        {
             audioSource.PlayOneShot(data.audio);
+            animation.clip = data.clip;
+            animation.Play();
+        }
     }
     
     public void PlayShoot()
-    { 
-        animation.Play("Fire");
+    {
+        //animation.CrossFade("Fire", 1f);
+        animation["Fire"].speed = 2;
         if (animationDatas.TryGetValue("Fire", out var data))
         {
             audioSource.clip = data.audio;
@@ -59,7 +65,9 @@ public class Weapon : MonoBehaviour
         }
     }   
     public void WaitPlayShoot()
-    { 
+    {
+        animation.CrossFade("Fire", 1f);
+        animation["Fire"].speed = 1.5f;
 
         if (animationDatas.TryGetValue("FireIn", out var data))
         {
@@ -69,7 +77,8 @@ public class Weapon : MonoBehaviour
         }
     }
     public void StopPlayShoot()
-    {        
+    {
+        animation.CrossFade("Idle",0.8f);
         if (animationDatas.TryGetValue("FireOut", out var data))
         {
             audioSource.clip = data.audio;

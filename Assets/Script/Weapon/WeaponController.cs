@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -13,7 +14,9 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private List<WeaponDataSO> weapons;
     [SerializeField] Weapon weapon;
     [SerializeField] WeaponDataSO weaponSO;
+    [SerializeField]
     private LayerMask hitMask;
+    [SerializeField]
     private float missDistance = 50;
     private ObjectPool<GameObject> TrailPool;
 
@@ -50,17 +53,31 @@ public class WeaponController : MonoBehaviour
         Vector3 shootDirection = weapon.spawmBulletPoint.forward;
         shootDirection.Normalize();
         weapon.PlayEffect();
-        //weapon.PlayAnimation("Fire");
         var bullet = TrailPool.Get().GetComponent<BulletFly>();
         bullet.transform.position = weapon.spawmBulletPoint.position;
         bullet.transform.rotation = weapon.spawmBulletPoint.rotation;
         var startponit = weapon.spawmBulletPoint.position;
-        var endponit = Physics.Raycast(weapon.spawmBulletPoint.position, shootDirection, out RaycastHit hit, float.MaxValue, hitMask)
-            ? hit.point
-            : weapon.spawmBulletPoint.position + (shootDirection * missDistance);
+        var damagedealt = bullet.GetComponent<IDamageDealt>();
+
+        Vector3 endpoint;
+        if (Physics.Raycast(weapon.spawmBulletPoint.position, shootDirection, out RaycastHit hit, float.MaxValue, hitMask))
+        {
+            endpoint = hit.point;
 
 
-        bullet.Init(startponit, endponit, weaponSO.FiringRate);
+
+            bullet.Init(startponit, endpoint, weaponSO.FiringRate);
+            damagedealt.Init(weaponSO.Damage, hit.collider.GetComponent<IDamageHit>());
+        }
+        else
+        {
+            endpoint = weapon.spawmBulletPoint.position + (shootDirection * missDistance);
+
+            damagedealt.Init(weaponSO.Damage, null);
+        }
+
+
+        bullet.Init(startponit, endpoint, weaponSO.FiringRate);
     }
     private GameObject CreateTrail()
     {
