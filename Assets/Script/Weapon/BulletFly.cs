@@ -13,6 +13,8 @@ public class BulletFly : MonoBehaviour,IDamageDealt
     public IDamageHit damageHit;
     public float damage;
     float remainingDistance, distance;
+    [SerializeField]
+    private PoolType bulletPool;
 
     public void Init(Vector3 startPoint, Vector3 endPoint, float simulationSpeed)
     {
@@ -34,8 +36,12 @@ public class BulletFly : MonoBehaviour,IDamageDealt
     {
         Debug.Log($"dang ban ne  {damageHit == null}");
         damageHit?.OnHit((int)damage);
+        DespawnBullet(this);
     }
-
+    public void DespawnBullet(BulletFly bullet)
+    {
+        ObjectPool.Instance.ReturnToPool(this.bulletPool, bullet.gameObject);
+    }
     private void Update()
     {
       
@@ -45,7 +51,6 @@ public class BulletFly : MonoBehaviour,IDamageDealt
         if (remainingDistance >= distance)
         {
             TryHit();
-            this.gameObject.SetActive(false);
 
         }
     }

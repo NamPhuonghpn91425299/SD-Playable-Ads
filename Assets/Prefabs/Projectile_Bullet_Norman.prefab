@@ -212,3 +212,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b832c35d829da46a2e727d55f22b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  bulletPool: 1

@@ -15314,7 +15314,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1456743356}
-  - component: {fileID: 1456743357}
   m_Layer: 0
   m_Name: SpawnChangeMachineGun
   m_TagString: Untagged
@@ -15337,18 +15336,6 @@ Transform:
   m_Father: {fileID: 979650704}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1456743357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456743355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bff32233c0280d64caa253adfe14fca7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1459118419
 GameObject:
   m_ObjectHideFlags: 0
@@ -19386,6 +19373,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1772592034}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1774790557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1774790559}
+  - component: {fileID: 1774790558}
+  m_Layer: 0
+  m_Name: BotManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1774790558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774790557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc3c6ba3b4e208b408182f50acf54950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  botPrefab: {fileID: 1312138446727467944, guid: 9d229833d6b648a43aebc874bc95e966, type: 3}
+  bot: 0
+  botConfig: {fileID: 11400000, guid: d641c47ee47cda946932c45f742763cd, type: 2}
+  _bot: {fileID: 9160971767789110865, guid: 9d229833d6b648a43aebc874bc95e966, type: 3}
+--- !u!4 &1774790559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774790557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1783604839
 GameObject:
   m_ObjectHideFlags: 0
@@ -20390,7 +20425,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1868494351}
-  - component: {fileID: 1868494352}
   m_Layer: 0
   m_Name: SpawnRapidFire
   m_TagString: Untagged
@@ -20413,18 +20447,6 @@ Transform:
   m_Father: {fileID: 979650704}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1868494352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868494350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bff32233c0280d64caa253adfe14fca7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1873705366
 GameObject:
   m_ObjectHideFlags: 0
@@ -25188,7 +25210,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0641242813b361b4ea3df12a33bb84c8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -38575,7 +38597,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3134504018184557113}
   - component: {fileID: 3134504018184557114}
-  - component: {fileID: 3134504018184557120}
   - component: {fileID: 3134504018184557119}
   - component: {fileID: 3134504018184557117}
   - component: {fileID: 3047337883864628981}
@@ -38956,6 +38977,8 @@ MonoBehaviour:
   hitMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  missDistance: 50
+  bulletPool: 1
 --- !u!95 &3134504018184557118
 Animator:
   serializedVersion: 5
@@ -38992,23 +39015,6 @@ MonoBehaviour:
   currentWeaponStats: {fileID: 11400000, guid: 87a208efde8e48c4eba19e1d21f49474, type: 2}
   firePoint: {fileID: 0}
   weapon: {fileID: 0}
---- !u!114 &3134504018184557120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3128053198552757561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b9eb6865be5f19498e425d41ef1e14d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamageSender: {fileID: 0}
-  maxRange: 100
-  hitLayers:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!114 &3163189224629739113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57734,6 +57740,7 @@ MonoBehaviour:
   hp: 100
   hpMax: 200
   isDead: 0
+  _weaponDataSo: {fileID: 0}
 --- !u!23 &5640053455974464680
 MeshRenderer:
   m_ObjectHideFlags: 0

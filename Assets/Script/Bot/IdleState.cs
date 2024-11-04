@@ -31,6 +31,6 @@ public class IdleState : IState
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Exiting Idle State");
     }
 }

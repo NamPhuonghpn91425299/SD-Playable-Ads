@@ -18,14 +18,17 @@ public class WeaponController : MonoBehaviour
     private LayerMask hitMask;
     [SerializeField]
     private float missDistance = 50;
+    [SerializeField]
     private ObjectPool<GameObject> TrailPool;
+    [SerializeField]
+    private PoolType bulletPool;
 
     public static WeaponController instance;
     private void Awake()
     {
         instance = this;
         this.SpawnWeapon(weaponParent, weapons[0]);
-        TrailPool = new ObjectPool<GameObject>(CreateTrail);
+        //TrailPool = new ObjectPool<GameObject>(CreateTrail);
     }
     //void Update()
     //{
@@ -50,12 +53,13 @@ public class WeaponController : MonoBehaviour
     public void SpawnBullet()
     {
         
+        var bullet = ObjectPool.Instance.GetPooledObject(bulletPool, weaponSO.bulletPrefab);
         Vector3 shootDirection = weapon.spawmBulletPoint.forward;
         shootDirection.Normalize();
         weapon.PlayEffect();
-        var bullet = TrailPool.Get().GetComponent<BulletFly>();
-        bullet.transform.position = weapon.spawmBulletPoint.position;
-        bullet.transform.rotation = weapon.spawmBulletPoint.rotation;
+        BulletFly bulletFly = bullet.GetComponent<BulletFly>();
+        bulletFly.transform.position = weapon.spawmBulletPoint.position;
+        bulletFly.transform.rotation = weapon.spawmBulletPoint.rotation;
         var startponit = weapon.spawmBulletPoint.position;
         var damagedealt = bullet.GetComponent<IDamageDealt>();
 
@@ -66,8 +70,8 @@ public class WeaponController : MonoBehaviour
 
 
 
-            bullet.Init(startponit, endpoint, weaponSO.FiringRate);
-            damagedealt.Init(weaponSO.Damage, hit.collider.GetComponent<IDamageHit>());
+            bulletFly.Init(startponit, endpoint, weaponSO.FiringRate);
+            damagedealt.Init(weaponSO.Damage, hit.collider.GetComponentInParent<IDamageHit>());
         }
         else
         {
@@ -77,12 +81,13 @@ public class WeaponController : MonoBehaviour
         }
 
 
-        bullet.Init(startponit, endpoint, weaponSO.FiringRate);
+        bulletFly.Init(startponit, endpoint, weaponSO.FiringRate);
     }
     private GameObject CreateTrail()
     {
-        var bulet = Instantiate(weaponSO.bulletPrefab);
+        var bulet = ObjectPool.Instance.GetPooledObject(bulletPool,weaponSO.bulletPrefab);
         return bulet;
 
     }
+
 }

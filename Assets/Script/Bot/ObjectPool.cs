@@ -12,7 +12,7 @@ public class ObjectPool : MonoBehaviour
         {
             if (instance == null)
             {
-                GameObject gameObject = new GameObject("ObjectPool");
+                GameObject gameObject = new GameObject("ObjectPoolManager");
                 instance = gameObject.AddComponent<ObjectPool>();
             }
             return instance;
@@ -20,17 +20,17 @@ public class ObjectPool : MonoBehaviour
 
     }
     
-    private Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
-    public GameObject GetPooledObject(string tag, GameObject prefab, Transform parent = null)
+    private Dictionary<PoolType, Queue<GameObject>> poolDictionary = new();
+    public GameObject GetPooledObject(PoolType type, GameObject prefab, Transform parent = null)
     {
         // Tạo pool mới nếu chưa tồn tại
-        if (!poolDictionary.ContainsKey(tag))
+        if (!poolDictionary.ContainsKey(type))
         {
-            poolDictionary[tag] = new Queue<GameObject>();
+            poolDictionary[type] = new Queue<GameObject>();
         }
 
         // Kiểm tra trong pool có object không
-        Queue<GameObject> pool = poolDictionary[tag];
+        Queue<GameObject> pool = poolDictionary[type];
         GameObject obj = null;
 
         // Tìm object inactive trong pool
@@ -44,7 +44,7 @@ public class ObjectPool : MonoBehaviour
         if (obj == null)
         {
             obj = Instantiate(prefab);
-            obj.name = $"{tag}_pooled";
+            obj.name = $"{type}_{prefab.name}";
         }
 
         // Setup object
@@ -56,15 +56,21 @@ public class ObjectPool : MonoBehaviour
         return obj;
     }
 
-    public void ReturnToPool(string tag, GameObject prefab)
+    public void ReturnToPool(PoolType type, GameObject prefab)
     {
-        if (!poolDictionary.ContainsKey(tag))
+        if (!poolDictionary.ContainsKey(type))
         {
-            poolDictionary[tag] = new Queue<GameObject>();
+            poolDictionary[type] = new Queue<GameObject>();
         }
         prefab.SetActive(false);
-        poolDictionary[tag].Enqueue(prefab);
+        poolDictionary[type].Enqueue(prefab);
     }
     
     
+}
+
+public enum PoolType
+{
+    Bot,
+    Bullet
 }

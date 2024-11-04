@@ -7,16 +7,27 @@ public class BotManager : MonoBehaviour
 {
     public static BotManager Instance { get; private set; }
     [SerializeField] private GameObject botPrefab;
-    [SerializeField] private const string BOT_POOL_TAG = "Bot";
+    [SerializeField] private PoolType bot;
     [SerializeField] private BotConfigSO botConfig;
+    [SerializeField]private Bot _bot;
+
     private void Awake()
     {
+
         Instance = this;
+    }
+    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SpawnBot( new Vector3(1,0,62));
+        }
     }
 
     public Bot SpawnBot(Vector3 position)
     {
-        GameObject botObj  = ObjectPool.Instance.GetPooledObject(BOT_POOL_TAG, botPrefab);
+        GameObject botObj  = ObjectPool.Instance.GetPooledObject(this.bot, botPrefab);
         botObj.transform.position = position;
         Bot bot = botObj .GetComponent<Bot>();
         bot.Initialize(botConfig);
@@ -25,7 +36,7 @@ public class BotManager : MonoBehaviour
 
     public void DespawnBot(Bot bot)
     {
-        ObjectPool.Instance.ReturnToPool(BOT_POOL_TAG, bot.gameObject);
+        ObjectPool.Instance.ReturnToPool(this.bot, bot.gameObject);
     }
     
     
