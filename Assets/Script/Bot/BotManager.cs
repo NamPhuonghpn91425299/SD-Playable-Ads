@@ -9,11 +9,10 @@ public class BotManager : MonoBehaviour
     [SerializeField] private GameObject botPrefab;
     [SerializeField] private PoolType bot;
     [SerializeField] private BotConfigSO botConfig;
-    [SerializeField]private Bot _bot;
+    
 
     private void Awake()
     {
-
         Instance = this;
     }
     
@@ -21,16 +20,20 @@ public class BotManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SpawnBot( new Vector3(1,0,62));
+            SpawnBot( BotType.Infantry);
         }
     }
 
-    public Bot SpawnBot(Vector3 position)
+    public Bot SpawnBot( BotType botType)
     {
+        HousePoint housePoint = HouseManager.instance.GetHousePoint(botType);
         GameObject botObj  = ObjectPool.Instance.GetPooledObject(this.bot, botPrefab);
-        botObj.transform.position = position;
+        //zbotObj.transform.position = _housePoint.SpawnPoint;
         Bot bot = botObj .GetComponent<Bot>();
-        bot.Initialize(botConfig);
+        bot.transform.position = housePoint.SpawnPoint.position;
+        bot.Initialize(botConfig, housePoint);
+        bot.OnSpawn();
+        gameObject.SetActive(true);        
         return bot;
     }
 
@@ -40,4 +43,9 @@ public class BotManager : MonoBehaviour
     }
     
     
+}
+
+public enum BotType
+{
+    Infantry
 }

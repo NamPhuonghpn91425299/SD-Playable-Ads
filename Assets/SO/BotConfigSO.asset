@@ -16,6 +16,8 @@ MonoBehaviour:
   prefab: {fileID: 1312138446727467944, guid: 9d229833d6b648a43aebc874bc95e966, type: 3}
   maxHealth: 100
   moveSpeed: 5
+  rotationSpeed: 6
   attackRange: 30
   attackDamage: 10
   attackSpeed: 1
+  botType: 0

@@ -8,7 +8,9 @@ public class BotConfigSO : ScriptableObject
     public GameObject prefab;
     public float maxHealth = 100f;
     public float moveSpeed = 5f;
+    public float rotationSpeed = 5f;
     public float attackRange = 2f;
     public float attackDamage = 10f;
     public float attackSpeed = 1f;
+    public BotType botType;
 }

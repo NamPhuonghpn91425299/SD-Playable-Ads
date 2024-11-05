@@ -5629,6 +5629,15 @@ MonoBehaviour:
   isAttacking: 0
   acttackTimer: 0
   maxActtackTime: 3
+  housePoint:
+    housePoints: []
+    spawnPoint: {fileID: 0}
+    destinationsPoint: {fileID: 0}
+    attackPoint: {fileID: 0}
+    botType: 0
+  currentPointIndex: 0
+  healthBar: {fileID: 1068469562970306294}
+  healthBarMaterial: {fileID: 2100000, guid: 92f8e855929a71a45a8c65a789901bd9, type: 2}
 --- !u!1 &1312138446820675931
 GameObject:
   m_ObjectHideFlags: 0
@@ -11774,5 +11783,10 @@ PrefabInstance:
 --- !u!4 &611841949299302816 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9101906662757142954, guid: 7a4f200bfad8b644488571221e3ade91, type: 3}
+  m_PrefabInstance: {fileID: 8515678937228800010}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1068469562970306294 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8718462587993655036, guid: 7a4f200bfad8b644488571221e3ade91, type: 3}
   m_PrefabInstance: {fileID: 8515678937228800010}
   m_PrefabAsset: {fileID: 0}

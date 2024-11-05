@@ -17,6 +17,7 @@ public class AttackState : IState
     // Update is called once per frame
     public void Enter()
     {
+
         Debug.Log("Entering Attack State");
         bot.animator.SetBool("isMoveDone",true);
         acttackTimer = 0;
@@ -24,6 +25,7 @@ public class AttackState : IState
 
     void IState.Update()
     {
+        bot.LockAtTager();
         acttackTimer += Time.deltaTime;
   
         if (acttackTimer >= acttackCooldown)

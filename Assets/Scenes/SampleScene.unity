@@ -3645,6 +3645,72 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295637481}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &297865773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 297865775}
+  - component: {fileID: 297865774}
+  - component: {fileID: 297865776}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &297865774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297865773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbfeb103cc3076349a8005b8610e9824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &297865775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297865773}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &297865776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297865773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 433820482e75087469f01daa74f54887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housePoints:
+  - housePoints:
+    - {fileID: 78617730}
+    - {fileID: 1716238332}
+    - {fileID: 1535695872}
+    spawnPoint: {fileID: 78617730}
+    destinationsPoint: {fileID: 1716238332}
+    attackPoint: {fileID: 1535695872}
+    botType: 0
 --- !u!1 &299194035
 GameObject:
   m_ObjectHideFlags: 0
@@ -19405,7 +19471,6 @@ MonoBehaviour:
   botPrefab: {fileID: 1312138446727467944, guid: 9d229833d6b648a43aebc874bc95e966, type: 3}
   bot: 0
   botConfig: {fileID: 11400000, guid: d641c47ee47cda946932c45f742763cd, type: 2}
-  _bot: {fileID: 9160971767789110865, guid: 9d229833d6b648a43aebc874bc95e966, type: 3}
 --- !u!4 &1774790559
 Transform:
   m_ObjectHideFlags: 0

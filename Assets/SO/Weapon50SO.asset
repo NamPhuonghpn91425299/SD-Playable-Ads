@@ -40,7 +40,7 @@ MonoBehaviour:
   - keyName: ReloadOut
     clip: {fileID: 7400000, guid: 5ec19daf75eed4340923da4912c53a51, type: 2}
     audio: {fileID: 0}
-  Damage: 10
+  Damage: 100
   FiringRate: 100
   weaponIcon: {fileID: 0}
   initialDelay: 1
