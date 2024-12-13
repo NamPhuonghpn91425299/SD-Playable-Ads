@@ -84,21 +84,21 @@ public class Bot : MonoBehaviour,IDamageHit
         Debug.DrawLine(transform.position, target.position, Color.magenta, 5) ;
         return housePoint.HousePoints[currentPointIndex].position;
     }
-    
-    public void MoveToNextPoint()
-    {
-        // Lấy điểm tiếp theo trong danh sách housePoints
-        if (currentPointIndex < housePoint.HousePoints.Count)
-        {
-            Transform targetPoint = housePoint.HousePoints[currentPointIndex];
-            MoveToTarget(targetPoint.position);
-            currentPointIndex++;
-        }
-        else
-        {
-
-        }
-    }
+    //
+    // public void MoveToNextPoint()
+    // {
+    //     // Lấy điểm tiếp theo trong danh sách housePoints
+    //     if (currentPointIndex < housePoint.HousePoints.Count)
+    //     {
+    //         Transform targetPoint = housePoint.HousePoints[currentPointIndex];
+    //         MoveToTarget(targetPoint.position);
+    //         currentPointIndex++;
+    //     }
+    //     else
+    //     {
+    //
+    //     }
+    // }
     public void MoveToTarget(Vector3 targetPosition)
     {
         if (target != null)

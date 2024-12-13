@@ -3704,12 +3704,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   housePoints:
   - housePoints:
-    - {fileID: 78617730}
     - {fileID: 1716238332}
     - {fileID: 1535695872}
     spawnPoint: {fileID: 78617730}
-    destinationsPoint: {fileID: 1716238332}
-    attackPoint: {fileID: 1535695872}
+    destinationsPoint: {fileID: 0}
+    attackPoint: {fileID: 0}
     botType: 0
 --- !u!1 &299194035
 GameObject:
