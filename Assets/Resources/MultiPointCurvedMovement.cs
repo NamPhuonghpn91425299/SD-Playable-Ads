@@ -9,7 +9,6 @@ public class MultiPointCurvedMovement : MonoBehaviour
     [Header("Movement Settings")]
     public float movementSpeed = 1f; // Tốc độ di chuyển
     public float rotationSpeed = 90f; // Tốc độ xoay (độ/giây)
-    public float rotation = 90f; // Tốc độ xoay (độ/giây)
     public float maxRollAngle = 30f; // Góc nghiêng tối đa trên trục Z
     public float rollSpeed = 5f; // Tốc độ làm mượt nghiêng góc Z
     public int debugSegmentsPerCurve = 20; // Số đoạn debug mỗi đường cong
@@ -168,7 +167,7 @@ public class MultiPointCurvedMovement : MonoBehaviour
         if (rotationTargetDirection != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(rotationTargetDirection, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotation * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
             // Dừng xoay khi đạt góc mục tiêu
             if (Quaternion.Angle(transform.rotation, targetRotation) < 0.1f)
