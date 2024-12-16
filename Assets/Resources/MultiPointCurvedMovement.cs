@@ -128,18 +128,28 @@ public class MultiPointCurvedMovement : MonoBehaviour
 
         if (directionToNext != Vector3.zero)
         {
+            // Xác định rotation hướng đến điểm tiếp theo
             Quaternion targetRotation = Quaternion.LookRotation(directionToNext, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
 
-            // Tính góc nghiêng Z (chao đảo)
-            float targetRollAngle = Vector3.Dot(Vector3.right, directionToNext) * maxRollAngle;
+            // Tính toán góc Z (roll)
+            float rollDirection = Vector3.Dot(transform.right, directionToNext) > 0 ? -1f : 1f; // Chọn dấu dựa trên hướng
+            float targetRollAngle = rollDirection * Vector3.Dot(Vector3.right, directionToNext) * maxRollAngle;
+
+            // Làm mượt chao đảo
             currentRollAngle = Mathf.Lerp(currentRollAngle, targetRollAngle, Time.deltaTime * rollSpeed);
 
-            // Áp dụng góc Z (roll) vào rotation
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -currentRollAngle);
+            // Áp dụng góc chao đảo lên rotation
+            transform.rotation = Quaternion.Euler(
+                transform.rotation.eulerAngles.x,
+                transform.rotation.eulerAngles.y,
+                -currentRollAngle // Dấu âm/dương dựa trên chiều chao đảo
+            );
         }
 
+        // Cập nhật vị trí
         transform.position = newPosition;
+
     }
 
     void StartRotation(bool reverse)
