@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "BotConfigSO", menuName = "Game/Bot Config")]
-public class BotConfigSO : ScriptableObject
+public class BotConfigSO1 : ScriptableObject
 {
     public string botId;
     public GameObject prefab;

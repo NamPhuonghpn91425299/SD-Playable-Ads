@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool1 : MonoBehaviour
 {
-    private static ObjectPool instance;
+    private static ObjectPool1 instance;
 
-    public static ObjectPool Instance
+    public static ObjectPool1 Instance
     {
         get
         {
             if (instance == null)
             {
                 GameObject gameObject = new GameObject("ObjectPoolManager");
-                instance = gameObject.AddComponent<ObjectPool>();
+                instance = gameObject.AddComponent<ObjectPool1>();
             }
             return instance;
         }

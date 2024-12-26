@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1966503288674759837}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3.5, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6458371479552296780}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6458371479552296780}
-  - component: {fileID: -6465060965850257771}
+  - component: {fileID: 6458371479552296781}
   m_Layer: 0
   m_Name: Projectile_Bullet_Norman
   m_TagString: Untagged
@@ -200,7 +200,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6465060965850257771
+--- !u!114 &6458371479552296781
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,8 +209,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6458371479552465772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1b832c35d829da46a2e727d55f22b7c, type: 3}
+  m_Script: {fileID: 11500000, guid: f4a23ae32ccdef648a70e3f64be91932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 87a208efde8e48c4eba19e1d21f49474, type: 2}
-  bulletPool: 1
+  _trail: {fileID: 8749404933008485098}
+  meshRenderers:
+  - {fileID: 7523290500714147795}
+  - {fileID: 2813445343894379129}
+  materials:
+  - {fileID: 2100000, guid: 7e7dbfc8afd981b4da94ef84ccc60bdb, type: 2}
+  - {fileID: 2100000, guid: 54677444ffcf1824ab7192deb6a9f5f6, type: 2}
+  _trailStartScale: {x: 0, y: 2, z: 2}
+  _trailMaxScale: {x: 3.5, y: 2, z: 2}
+  _trailLengthAtMaxScale: 5
+  Speed: 300
+  LifeTime: 2.5

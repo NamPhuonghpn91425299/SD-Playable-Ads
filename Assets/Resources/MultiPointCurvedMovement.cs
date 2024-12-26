@@ -7,23 +7,36 @@ public class MultiPointCurvedMovement : MonoBehaviour
     public List<Transform> controlPoints = new List<Transform>();
 
     [Header("Movement Settings")]
-    public float movementSpeed = 1f; // Tốc độ di chuyển
-    public float rotationSpeed = 90f; // Tốc độ xoay (độ/giây)
-    public float maxRollAngle = 30f; // Góc nghiêng tối đa trên trục Z
-    public float rollSpeed = 5f; // Tốc độ làm mượt nghiêng góc Z
-    public int debugSegmentsPerCurve = 20; // Số đoạn debug mỗi đường cong
-    public bool loop = false; // Lặp lại
-    public bool reverseAtEnd = false; // Đi ngược lại khi đến điểm cuối
+    public float movementSpeed = 400f;
+    public bool loop = false;
 
-    private float distanceTravelled = 0f; // Quãng đường đã đi
-    private List<float> curveLengths = new List<float>(); // Chiều dài các đường cong
-    private float totalLength = 0f; // Tổng chiều dài quỹ đạo
-    private int currentCurveIndex = 0; // Chỉ số đoạn cong hiện tại
-    private bool isReversing = false; // Đang đảo chiều không
-    private bool isRotating = false; // Có đang xoay không
-    private Vector3 rotationTargetDirection; // Hướng mục tiêu khi xoay
+    [Header("Aircraft Rotation")]
+    public float rotationSpeed = 10f;
+    public float bankingStrength = 15f;        // Độ mạnh của góc nghiêng khi bay vòng
+    public float pitchStrength = 1f;        // Độ mạnh của góc pitch (ngẩng lên/cúi xuống)
+    public float smoothRotationSpeed = 6f;    // Tốc độ làm mượt rotation
+    public float maxBankAngle = 90f;          // Góc nghiêng tối đa
+    public float maxPitchAngle = 30f;         // Góc pitch tối đa
 
-    private float currentRollAngle = 0f; // Góc nghiêng hiện tại
+    [Header("Look Ahead Settings")]
+    public float lookAheadDistance = 10f;      // Khoảng cách nhìn trước để dự đoán đường bay
+    public int predictionSteps = 50;          // Số bước dự đoán để làm mượt hướng bay
+
+    [Header("Targeting")]
+    public float rotationTarget = 5f;
+    public Transform lookAtTarget;
+    public Vector3 lookAtPosition;
+
+    [Header("Debug")]
+    public int debugSegmentsPerCurve = 20;
+    public bool showDebugLines = false;
+
+    private float distanceTravelled = 0f;
+    private List<float> curveLengths = new List<float>();
+    private float totalLength = 0f;
+    private int currentCurveIndex = 0;
+    private Quaternion targetRotation;
+    private Vector3 smoothedDirection;
 
     void Start()
     {
@@ -32,8 +45,9 @@ public class MultiPointCurvedMovement : MonoBehaviour
             Debug.LogError("Số lượng điểm điều khiển phải là 3n+1 (ví dụ: 4, 7, 10).");
             return;
         }
-
-        CalculateCurveLengths(); // Tính chiều dài các đường cong
+        
+        CalculateCurveLengths();
+        smoothedDirection = transform.forward;
     }
 
     void Update()
@@ -41,150 +55,120 @@ public class MultiPointCurvedMovement : MonoBehaviour
         if (controlPoints.Count < 4 || controlPoints.Count % 3 != 1)
             return;
 
-        if (isRotating)
-        {
-            HandleRotation(); // Xử lý xoay
-            return; // Không di chuyển khi đang xoay
-        }
-
-        HandleMovement(); // Xử lý di chuyển
+        HandleMovement();
     }
 
     void HandleMovement()
     {
-        // Di chuyển
         float movementStep = movementSpeed * Time.deltaTime;
-        distanceTravelled += isReversing ? -movementStep : movementStep;
+        distanceTravelled += movementStep;
 
-        // Kiểm tra vượt qua điểm cuối hoặc đầu
         if (distanceTravelled >= totalLength)
         {
-            if (reverseAtEnd)
+            if (loop)
             {
-                isReversing = true; // Đảo chiều
-                distanceTravelled = totalLength; // Giữ vị trí ở cuối
-                StartRotation(true); // Xoay ngược lại
-            }
-            else if (loop)
-            {
-                distanceTravelled = 0f; // Quay lại đầu
+                distanceTravelled = 0f;
             }
             else
             {
-                distanceTravelled = totalLength; // Dừng ở cuối
-                return;
-            }
-        }
-        else if (distanceTravelled <= 0f)
-        {
-            if (reverseAtEnd)
-            {
-                isReversing = false; // Đảo chiều
-                distanceTravelled = 0f; // Giữ vị trí ở đầu
-                StartRotation(false); // Xoay về phía trước
-            }
-            else if (loop)
-            {
-                distanceTravelled = totalLength; // Quay lại cuối
-            }
-            else
-            {
-                distanceTravelled = 0f; // Dừng ở đầu
+                distanceTravelled = totalLength;
+                LookAtTarget();
                 return;
             }
         }
 
-        // Xác định `t` dựa trên chiều dài cung
-        float targetLength = distanceTravelled;
-        for (int i = 0; i < curveLengths.Count; i++)
+        // Tính vị trí hiện tại
+        Vector3 currentPosition = GetPositionAlongCurve(distanceTravelled);
+        
+        // Dự đoán hướng bay trong tương lai
+        Vector3 futureDirection = Vector3.zero;
+        for (int i = 1; i <= predictionSteps; i++)
         {
-            if (targetLength <= curveLengths[i])
-            {
-                currentCurveIndex = i;
-                break;
-            }
-            targetLength -= curveLengths[i];
+            float futureDistance = distanceTravelled + (lookAheadDistance * i / predictionSteps);
+            if (futureDistance > totalLength && !loop) continue;
+            
+            Vector3 futurePos = GetPositionAlongCurve(futureDistance % totalLength);
+            futureDirection += (futurePos - currentPosition).normalized;
         }
+        futureDirection /= predictionSteps;
 
-        float t = targetLength / curveLengths[currentCurveIndex];
-        Vector3 newPosition = CalculateBezierPoint(
-            t,
-            controlPoints[currentCurveIndex * 3].position,
-            controlPoints[currentCurveIndex * 3 + 1].position,
-            controlPoints[currentCurveIndex * 3 + 2].position,
-            controlPoints[currentCurveIndex * 3 + 3].position
-        );
+        // Làm mượt hướng bay
+        smoothedDirection = Vector3.Slerp(smoothedDirection, futureDirection, Time.deltaTime * smoothRotationSpeed);
 
-        // Xoay về hướng di chuyển
-        Vector3 nextPosition = CalculateBezierPoint(
-            Mathf.Clamp01(isReversing ? t - 0.01f : t + 0.01f),
-            controlPoints[currentCurveIndex * 3].position,
-            controlPoints[currentCurveIndex * 3 + 1].position,
-            controlPoints[currentCurveIndex * 3 + 2].position,
-            controlPoints[currentCurveIndex * 3 + 3].position
-        );
-
-        Vector3 directionToNext = (nextPosition - newPosition).normalized;
-
-        if (directionToNext != Vector3.zero)
+        // Tính toán rotation cho máy bay
+        if (smoothedDirection != Vector3.zero)
         {
-            // Xác định rotation hướng đến điểm tiếp theo
-            Quaternion targetRotation = Quaternion.LookRotation(directionToNext, Vector3.up);
+            // Tính góc nghiêng dựa trên độ cong của đường bay
+            Vector3 right = Vector3.Cross(Vector3.up, smoothedDirection).normalized;
+            float turnRate = Vector3.Dot(right, futureDirection);
+            float bankAngle = -turnRate * bankingStrength * maxBankAngle;
+            bankAngle = Mathf.Clamp(bankAngle, -maxBankAngle, maxBankAngle);
+
+            // Tính góc pitch dựa trên hướng lên/xuống
+            float pitchAngle = Mathf.Asin(smoothedDirection.y) * Mathf.Rad2Deg;
+            pitchAngle = Mathf.Clamp(pitchAngle * pitchStrength, -maxPitchAngle, maxPitchAngle);
+
+            // Tạo rotation mục tiêu
+            Quaternion directionRotation = Quaternion.LookRotation(smoothedDirection);
+            Quaternion bankRotation = Quaternion.Euler(pitchAngle, 0, bankAngle);
+            targetRotation = directionRotation * bankRotation;
+
+            // Áp dụng rotation một cách mượt mà
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-
-            // Tính toán góc Z (roll)
-            float rollDirection = Vector3.Dot(transform.right, directionToNext) > 0 ? -1f : 1f; // Chọn dấu dựa trên hướng
-            float targetRollAngle = rollDirection * Vector3.Dot(Vector3.right, directionToNext) * maxRollAngle;
-
-            // Làm mượt chao đảo
-            currentRollAngle = Mathf.Lerp(currentRollAngle, targetRollAngle, Time.deltaTime * rollSpeed);
-
-            // Áp dụng góc chao đảo lên rotation
-            transform.rotation = Quaternion.Euler(
-                transform.rotation.eulerAngles.x,
-                transform.rotation.eulerAngles.y,
-                -currentRollAngle // Dấu âm/dương dựa trên chiều chao đảo
-            );
         }
 
         // Cập nhật vị trí
-        transform.position = newPosition;
+        transform.position = currentPosition;
 
-    }
-
-    void StartRotation(bool reverse)
-    {
-        isRotating = true;
-
-        if (reverse)
+        if (showDebugLines)
         {
-            // Quay lại từ cuối về đầu
-            Vector3 lastCurveStart = controlPoints[controlPoints.Count - 4].position;
-            Vector3 lastCurveEnd = controlPoints[controlPoints.Count - 1].position;
-            rotationTargetDirection = (lastCurveStart - lastCurveEnd).normalized;
-        }
-        else
-        {
-            // Quay từ đầu về phía trước
-            Vector3 firstCurveStart = controlPoints[0].position;
-            Vector3 firstCurveEnd = controlPoints[3].position;
-            rotationTargetDirection = (firstCurveEnd - firstCurveStart).normalized;
+            Debug.DrawLine(currentPosition, currentPosition + smoothedDirection * 5f, Color.blue);
+            Debug.DrawLine(currentPosition, currentPosition + futureDirection * 5f, Color.red);
         }
     }
 
-    void HandleRotation()
+    Vector3 GetPositionAlongCurve(float distance)
     {
-        if (rotationTargetDirection != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(rotationTargetDirection, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        float remainingDistance = distance;
+        int curveIndex = 0;
 
-            // Dừng xoay khi đạt góc mục tiêu
-            if (Quaternion.Angle(transform.rotation, targetRotation) < 0.1f)
+        // Tìm đoạn cong hiện tại
+        for (int i = 0; i < curveLengths.Count; i++)
+        {
+            if (remainingDistance <= curveLengths[i])
             {
-                isRotating = false; // Hoàn tất xoay
+                curveIndex = i;
+                break;
             }
+            remainingDistance -= curveLengths[i];
         }
+
+        float t = remainingDistance / curveLengths[curveIndex];
+        return CalculateBezierPoint(
+            t,
+            controlPoints[curveIndex * 3].position,
+            controlPoints[curveIndex * 3 + 1].position,
+            controlPoints[curveIndex * 3 + 2].position,
+            controlPoints[curveIndex * 3 + 3].position
+        );
+    }
+
+    void LookAtTarget()
+    {
+        Vector3 targetPos = lookAtTarget != null ? lookAtTarget.position : lookAtPosition;
+        Vector3 directionToTarget = (targetPos - transform.position).normalized;
+        
+        // Tính góc nghiêng khi nhìn vào mục tiêu
+        float bankAngle = Vector3.Dot(transform.right, directionToTarget) * maxBankAngle * 0.5f;
+        
+        Quaternion targetLookRotation = Quaternion.LookRotation(directionToTarget) * 
+                                      Quaternion.Euler(0, 0, bankAngle);
+        
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            targetLookRotation,
+            Time.deltaTime * rotationTarget
+        );
     }
 
     Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
@@ -237,6 +221,7 @@ public class MultiPointCurvedMovement : MonoBehaviour
 
         return length;
     }
+
     private void OnDrawGizmos()
     {
         if (controlPoints == null || controlPoints.Count < 4)
@@ -245,15 +230,13 @@ public class MultiPointCurvedMovement : MonoBehaviour
             return;
         }
 
-        // Xác định startpoint, endpoint và các điểm điều khiển
-        Vector3 startPoint = controlPoints[0].position; // Điểm bắt đầu
-        Vector3 controlPoint1 = controlPoints[1].position; // Điểm điều khiển 1
-        Vector3 controlPoint2 = controlPoints[controlPoints.Count - 2].position; // Điểm điều khiển 2
-        Vector3 endPoint = controlPoints[controlPoints.Count - 1].position; // Điểm kết thúc
+        Vector3 startPoint = controlPoints[0].position;
+        Vector3 controlPoint1 = controlPoints[1].position;
+        Vector3 controlPoint2 = controlPoints[controlPoints.Count - 2].position;
+        Vector3 endPoint = controlPoints[controlPoints.Count - 1].position;
 
         Gizmos.color = Color.green;
 
-        // Vẽ đường cong Bezier từ startpoint đến endpoint
         Vector3 previousPoint = startPoint;
         for (int j = 1; j <= debugSegmentsPerCurve; j++)
         {
@@ -263,14 +246,12 @@ public class MultiPointCurvedMovement : MonoBehaviour
             previousPoint = currentPoint;
         }
 
-        // Vẽ các điểm điều khiển để dễ quan sát
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(startPoint, 0.1f); // Startpoint
-        Gizmos.DrawSphere(endPoint, 0.1f);   // Endpoint
+        Gizmos.DrawSphere(startPoint, 0.1f);
+        Gizmos.DrawSphere(endPoint, 0.1f);
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(controlPoint1, 0.1f); // Control Point 1
-        Gizmos.DrawSphere(controlPoint2, 0.1f); // Control Point 2
+        Gizmos.DrawSphere(controlPoint1, 0.1f);
+        Gizmos.DrawSphere(controlPoint2, 0.1f);
     }
-
 }

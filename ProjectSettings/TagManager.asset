@@ -9,6 +9,7 @@ TagManager:
   - Wood
   - Body
   - Bot
+  - WeakPoint
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Water
   - UI
   - Bot
-  - 
-  - 
+  - Vechile
+  - Reward
   - 
   - 
   - 

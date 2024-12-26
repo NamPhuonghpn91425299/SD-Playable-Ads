@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0986b76ad7a4ab7469be419d4500568f, type: 3}
+  m_Name: BotConfigGameAirCraftShooting
+  m_EditorClassIdentifier: 
+  fightRound:
+  - botConfigs:
+    - botPrefab: {fileID: 2250729235527057076, guid: e91f31dec74575240b645d96c4753879, type: 3}
+      botType: 4
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 1
+      botDelaySpawn: 0
+      WaitToSpawn: 0
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 3593287816044124444, guid: cf91889a0840a1546ac93f10d271939c, type: 3}
+      botType: 5
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 4
+      botDelaySpawn: 0
+      WaitToSpawn: 0
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    rewardConfig: []

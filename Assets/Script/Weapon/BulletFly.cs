@@ -40,7 +40,7 @@ public class BulletFly : MonoBehaviour,IDamageDealt
     }
     public void DespawnBullet(BulletFly bullet)
     {
-        ObjectPool.Instance.ReturnToPool(this.bulletPool, bullet.gameObject);
+        ObjectPool1.Instance.ReturnToPool(this.bulletPool, bullet.gameObject);
     }
     private void Update()
     {

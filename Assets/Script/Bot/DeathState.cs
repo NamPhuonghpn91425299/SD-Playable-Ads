@@ -24,7 +24,7 @@ public class DeathState : IState
     IEnumerator HideBotOnDeath()
     {
         yield return new WaitForSeconds(despawnTime);
-        BotManager.Instance.DespawnBot(bot);
+        BotManager1.Instance.DespawnBot(bot);
     }
     public void Update()
     {

@@ -9,7 +9,7 @@ public class Bot : MonoBehaviour,IDamageHit
     [SerializeField] private IState currentState;
     [SerializeField] private Transform target;
     [SerializeField] private float currentHealth;
-    [SerializeField] private BotConfigSO config;
+    [SerializeField] private BotConfigSO1 config;
     [SerializeField] public Animator animator;
     [SerializeField] private GameObject acttackEffect;
     [SerializeField] public bool isAttacking;
@@ -29,7 +29,7 @@ public class Bot : MonoBehaviour,IDamageHit
     [SerializeField] private MeshRenderer healthBar;    // Reference đến mesh renderer của thanh máu
     [SerializeField] private Material healthBarMaterial; // Material cho thanh máu
  
-    public void Initialize(BotConfigSO botConfigSo, HousePoint housePoint)
+    public void Initialize(BotConfigSO1 botConfigSo, HousePoint housePoint)
     {
         config = botConfigSo;
         this.housePoint = housePoint;

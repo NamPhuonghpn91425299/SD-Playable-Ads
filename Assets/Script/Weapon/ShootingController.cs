@@ -160,6 +160,6 @@ public class ShootingController : MonoBehaviour
     private void FireBullet()
     {
         
-        WeaponController.instance.SpawnBullet();
+        WeaponController1.instance.SpawnBullet();
     }
 }

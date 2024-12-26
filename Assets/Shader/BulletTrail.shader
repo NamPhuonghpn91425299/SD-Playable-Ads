@@ -55,6 +55,10 @@ Shader "Horus/BulletTrail"
                 o.texcoord = v.texcoord;
                 return o;
             }
+float remap(float value, float oldMin, float oldMax, float newMin, float newMax)
+{
+    return newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin);
+}
 
             fixed4 frag(v2f i) : SV_Target
             {

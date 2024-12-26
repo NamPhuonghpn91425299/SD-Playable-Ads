@@ -1,0 +1,185 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
+
+public class BotNetwork : MonoBehaviour,ITakeDamage
+{
+    [SerializeField] BotConfigSO botConfigSO;
+    [SerializeField] Image healthBarUI;
+    [SerializeField] Transform healthBarTransform;
+    [SerializeField] List<Transform> _fireAssistCheckPos = new List<Transform>();
+    [SerializeField] WayPoint _path;
+    [SerializeField] private int _currentHealth;
+    [SerializeField] private bool isImmortal;
+    [SerializeField] private bool isDead;
+    public BotConfigSO BotConfigSO => botConfigSO;
+    public bool IsDead => isDead;
+    public int currentHealth => _currentHealth;
+    public bool IsImmortal => isImmortal;
+    public Action<int> OnTakeDamage { get; set; }
+    public Action<string,int> OnWeaknessTakeDamage { get; set; }
+
+    public Action<float> OnHealthChanged { get; set; }
+    public Action OnBotDead { get; set; }
+    public WayPoint Path => _path;
+    public List<Transform> FireAssistCheckPos=> _fireAssistCheckPos;
+
+    private Coroutine hideHealthBarCoroutine; // Tham chiếu tới Coroutine
+    [SerializeField] private Transform mainCameraTranform;
+    private void Awake()
+    {
+        if (mainCameraTranform == null)
+        {
+            mainCameraTranform = Camera.main.transform;
+        }
+        OnBotDead+= Die;
+        _currentHealth = botConfigSO.health;
+
+        if (healthBarTransform != null)
+        {
+             healthBarTransform.gameObject.SetActive(false); 
+        }    
+        //healthBar.enabled = false; // Ẩn thanh máu khi khởi tạo
+        isImmortal = false;
+
+    }
+
+    public void TakeDamage(DamageInfo damageInfo)
+    {   
+        if(isDead) return;
+
+        CacularHealth(damageInfo);
+        if(healthBarTransform != null)
+        {
+            healthBarTransform.gameObject.SetActive(true);
+            // Nếu đã có một Coroutine đang chờ ẩn thanh máu, hủy nó và tạo lại
+            if (hideHealthBarCoroutine != null)
+            {
+                StopCoroutine(hideHealthBarCoroutine);
+            }
+
+            // Bắt đầu Coroutine để ẩn thanh máu sau 1 giây nếu không nhận thêm sát thương
+            hideHealthBarCoroutine = StartCoroutine(HideHealthBarAfterDelay());
+        }    
+    }
+    private void CheckImmortalStatus()
+    {
+        if (_currentHealth <= botConfigSO.health * (botConfigSO.HealthThreshold / 100f))
+        {
+            isImmortal = true;
+            
+        }
+        else
+        {
+            isImmortal = false;
+        }
+    }
+
+    public void CacularHealth(DamageInfo damageInfo)
+    {
+        int damage = damageInfo.damage;
+        if (isImmortal)
+        {
+            var damageScale = botConfigSO.GetDamageScale(damageInfo.damageType);
+
+            if (damageScale > 0)
+            {
+                // Giảm damage theo phần trăm khi bất tử
+                float reducedDamage = damageInfo.damage * damageScale;
+                damage = Mathf.CeilToInt(reducedDamage); // Làm tròn lên 
+            }
+
+
+        }
+        if (isImmortal && botConfigSO.isCanImmortal) return;
+        _currentHealth -= damage;
+        if(damageInfo.damageType == DamageType.Weekness)
+        {
+            OnWeaknessTakeDamage?.Invoke(damageInfo.name, damageInfo.damage);
+        }
+        //Debug.Log(gameObject.name + " -" + damage.ToString());
+        SetHealthBar(_currentHealth);
+
+        CheckImmortalStatus(); // Kiểm tra điều kiện bất tử
+        if (_currentHealth <= 0)
+        {
+            isDead = true;
+            OnBotDead.Invoke();
+        }
+        //StartCoroutine(HideHealthBarAfterDelay());
+    }
+    public void Die()
+    {
+        isDead = true;
+        _currentHealth = 0;
+        if (healthBarTransform == null) return;
+        healthBarTransform.gameObject.SetActive(false);
+    }
+    public void SetPath(WayPoint path)
+    {
+        _path = path;
+    }
+
+    private void SetHealthBar(float currentHealth)
+    {
+        float healthBarValue = (currentHealth / botConfigSO.health);
+        OnHealthChanged?.Invoke(healthBarValue);
+        //healthBar.material.SetFloat("_Fill", healthBarValue);
+        if (healthBarUI != null)
+        {
+            healthBarUI.fillAmount = healthBarValue;
+
+        }    
+        
+    }
+
+    private IEnumerator HideHealthBarAfterDelay()
+    {
+        if (isDead)
+        {
+            healthBarTransform.gameObject.SetActive(false);
+        }
+        // Chờ 1 giây
+        yield return new WaitForSeconds(2f);
+
+        // Ẩn thanh máu nếu bot chưa chết
+        if (!isDead)
+        {
+            healthBarTransform.gameObject.SetActive(false);
+        }
+        hideHealthBarCoroutine = null;
+    }
+
+    private void AlignCamera()
+    {
+
+        if (Time.frameCount % UpdateSetting.interval == 0
+            && mainCameraTranform != null 
+             && healthBarTransform != null)
+        {
+            var forward = healthBarTransform.transform.position - mainCameraTranform.position; // huong tu thanh mau den camera
+            forward.Normalize();
+            var up = Vector3.Cross(forward, mainCameraTranform.right); 
+            // phép tích có hướng (cross product) để tính toán vector "up" vuông góc với hướng forward và hướng "bên phải" (right) của camera.
+            healthBarTransform.transform.rotation = Quaternion.LookRotation(forward, up);
+            // xoay thanh mau theo 2 vector
+        }
+    }
+    public class UpdateSetting
+    {
+        public const int interval = 3;
+
+        public const int fps = 30;
+    }
+    private void Update()
+    {
+        this.AlignCamera();
+    }
+}
+
+

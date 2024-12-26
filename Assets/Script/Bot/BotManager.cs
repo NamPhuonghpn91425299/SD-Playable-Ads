@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotManager : MonoBehaviour
+public class BotManager1 : MonoBehaviour
 {
-    public static BotManager Instance { get; private set; }
+    public static BotManager1 Instance { get; private set; }
     [SerializeField] private GameObject botPrefab;
     [SerializeField] private PoolType bot;
-    [SerializeField] private BotConfigSO botConfig;
+    [SerializeField] private BotConfigSO1 botConfig;
     
 
     private void Awake()
@@ -27,7 +27,7 @@ public class BotManager : MonoBehaviour
     public Bot SpawnBot( BotType botType)
     {
         HousePoint housePoint = HouseManager.instance.GetHousePoint(botType);
-        GameObject botObj  = ObjectPool.Instance.GetPooledObject(this.bot, botPrefab);
+        GameObject botObj  = ObjectPool1.Instance.GetPooledObject(this.bot, botPrefab);
         //zbotObj.transform.position = _housePoint.SpawnPoint;
         Bot bot = botObj .GetComponent<Bot>();
         bot.transform.position = housePoint.SpawnPoint.position;
@@ -39,7 +39,7 @@ public class BotManager : MonoBehaviour
 
     public void DespawnBot(Bot bot)
     {
-        ObjectPool.Instance.ReturnToPool(this.bot, bot.gameObject);
+        ObjectPool1.Instance.ReturnToPool(this.bot, bot.gameObject);
     }
     
     

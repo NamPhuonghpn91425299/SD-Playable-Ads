@@ -9,7 +9,7 @@ public class HealthBarChangeValue : MonoBehaviour
     [SerializeField] private MeshRenderer healthBar;    // Reference đến mesh renderer của thanh máu
     [SerializeField] private Material healthBarMaterial; // Material cho thanh máu
     [SerializeField]private float currentHealth;
-    [SerializeField]private BotConfigSO botConfig;
+    [SerializeField]private BotConfigSO1 botConfig;
 
     void Start()
     {

@@ -5,7 +5,7 @@ using System.Net;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class WeaponController : MonoBehaviour
+public class WeaponController1 : MonoBehaviour
 {
     [SerializeField]Transform weaponParent;
     public float shootCooldown = 0.5f; // Thời gian giữa các lần bắn (đơn vị giây)
@@ -23,7 +23,7 @@ public class WeaponController : MonoBehaviour
     [SerializeField]
     private PoolType bulletPool;
 
-    public static WeaponController instance;
+    public static WeaponController1 instance;
     private void Awake()
     {
         instance = this;
@@ -53,7 +53,7 @@ public class WeaponController : MonoBehaviour
     public void SpawnBullet()
     {
         
-        var bullet = ObjectPool.Instance.GetPooledObject(bulletPool, weaponSO.bulletPrefab);
+        var bullet = ObjectPool1.Instance.GetPooledObject(bulletPool, weaponSO.bulletPrefab);
         Vector3 shootDirection = weapon.spawmBulletPoint.forward;
         shootDirection.Normalize();
         weapon.PlayEffect();
@@ -85,7 +85,7 @@ public class WeaponController : MonoBehaviour
     }
     private GameObject CreateTrail()
     {
-        var bulet = ObjectPool.Instance.GetPooledObject(bulletPool,weaponSO.bulletPrefab);
+        var bulet = ObjectPool1.Instance.GetPooledObject(bulletPool,weaponSO.bulletPrefab);
         return bulet;
 
     }

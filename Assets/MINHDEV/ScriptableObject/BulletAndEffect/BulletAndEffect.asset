@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f42d9f7ac1a9547b49c2d8853f7333, type: 3}
+  m_Name: BulletAndEffect
+  m_EditorClassIdentifier: 
+  _bulletPrefab:
+  - {fileID: 6458371479552465772, guid: bcf0258b66a8e05498ace10193710acc, type: 3}
+  - {fileID: 6458371479552465772, guid: 02550e081ed956e49a748e22d881b56f, type: 3}
+  EffectBullet:
+  - {fileID: 1214385991556846, guid: 5101b0b18563cd64fba69182fb988727, type: 3}
+  - {fileID: 1554942521179580, guid: 52aa1f2e1567b6e47b50df0d054982a7, type: 3}

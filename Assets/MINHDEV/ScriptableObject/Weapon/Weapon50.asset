@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33aab59dc73a414f8d0d27757a522f7, type: 3}
+  m_Name: Weapon50
+  m_EditorClassIdentifier: 
+  damage: 20
+  FireRate: 0.15
+  audioClip: {fileID: 8300000, guid: 669afacf3194dcf428f278ceab30c874, type: 3}
+  AudioStartBarrel: {fileID: 8300000, guid: 06e4ee0bf6c5209438079f6ba4846d4c, type: 3}
+  AudioEndBarrel: {fileID: 8300000, guid: 140e686bf7edcd54a81f40b874aa7734, type: 3}
+  AudioReloadIn: {fileID: 8300000, guid: 93c690f4aa7dab94c8cd9d33ed11534f, type: 3}
+  AudioReloadOut: {fileID: 8300000, guid: c6d6b9fb4ec883f4d9bfaa939030c573, type: 3}
+  inaccuracy: 0.01
+  recoilAmount: 0.008
+  bulletCount: 80
+  reloadTime: 2
+  infiniteBullet: 0
+  Fire: {fileID: 7400000, guid: 114457aa467f6a4499432a69203cf723, type: 2}
+  Idle: {fileID: 7400000, guid: 9e1fa24e91d246f458648cbc593a3be4, type: 2}
+  _reloadAnimIn: {fileID: 7400000, guid: 00d78a9a3a74d9b46b5deb4a90b6f0e1, type: 2}
+  _reloadAnimOn: {fileID: 7400000, guid: f8cd385ae08759e4792755507f6ee86e, type: 2}
+  _reloadAnimOut: {fileID: 7400000, guid: 5ec19daf75eed4340923da4912c53a51, type: 2}
+  WaitToShoot: 1
+  MaxSpeedRotaBarrel: 850
+  TimeMinSpeed: 1
+  MinSpeedRotaBarrel: 0
+  isGatlingGun: 1

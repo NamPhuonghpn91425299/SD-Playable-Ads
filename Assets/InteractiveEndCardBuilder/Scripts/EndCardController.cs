@@ -243,7 +243,7 @@ public class EndCardController : MonoBehaviour
     [SerializeField] private Animator _CTAButtonAnimator;
     [SerializeField] private Animator _endCardAnimator;
     [SerializeField] private RawImage _iconImage;
-    [SerializeField] private RawImage _CTAButtonImage;
+    [SerializeField] private Image _CTAButtonImage;
 
     private int _CTAButtonAnimationScale;
     private int _CTAButtonAnimationWobble;
@@ -333,7 +333,6 @@ public class EndCardController : MonoBehaviour
     {
         SetClickableOptions();
         EndCardOpenedEvent.Invoke();
-
         SetButtonAnimation();
         SetEndCardAnimationType();
         Luna.Unity.Analytics.LogEvent("Triggered open endcard", 1);
@@ -356,9 +355,9 @@ public class EndCardController : MonoBehaviour
             buttonPositionY = !IsPortrait() && !_centerButtonYLandscape ? _buttonPositionYLandscape : 0.5f;
         }
 
-        _buttonRect.anchorMin = new Vector2(buttonPositionX, buttonPositionY);
-        _buttonRect.anchorMax = new Vector2(buttonPositionX, buttonPositionY);
-        _buttonRect.pivot = new Vector2(buttonPositionX, buttonPositionY);
+        //_buttonRect.anchorMin = new Vector2(buttonPositionX, buttonPositionY);
+        //_buttonRect.anchorMax = new Vector2(buttonPositionX, buttonPositionY);
+        //_buttonRect.pivot = new Vector2(buttonPositionX, buttonPositionY);
     }
 
     public void ClickCTA()
@@ -461,7 +460,7 @@ public class EndCardController : MonoBehaviour
 
     void SetCTAButtonImage()
     {
-        _CTAButtonImage.texture = _buttonTexture;
+        //_CTAButtonImage.texture = _buttonTexture;
     }
 
     void SetCTAButtonColor()
@@ -491,40 +490,41 @@ public class EndCardController : MonoBehaviour
     {
         if (!alwaysShowEndcardTESTING)
         {
-            if (IsPortrait())
+            switch (_endCardPortraitAnimationType)
             {
-                switch (_endCardPortraitAnimationType)
-                {
-                    case EndCardPortraitAnimationType.None:
-                        break;
-                    case EndCardPortraitAnimationType.Scale:
-                        _endCardAnimator.SetBool(_endCardAnimationScale, true);
-                        break;
-                    case EndCardPortraitAnimationType.SlideBottomToTop:
-                        _endCardAnimator.SetBool(_endCardAnimationBottomToTop, true);
-                        break;
-                    case EndCardPortraitAnimationType.SlideTopToBottom:
-                        _endCardAnimator.SetBool(_endCardAnimationTopToBottom, true);
-                        break;
-                }
+                case EndCardPortraitAnimationType.None:
+                    break;
+                case EndCardPortraitAnimationType.Scale:
+                    _endCardAnimator.SetBool(_endCardAnimationScale, true);
+                    break;
+                case EndCardPortraitAnimationType.SlideBottomToTop:
+                    _endCardAnimator.SetBool(_endCardAnimationBottomToTop, true);
+                    break;
+                case EndCardPortraitAnimationType.SlideTopToBottom:
+                    _endCardAnimator.SetBool(_endCardAnimationTopToBottom, true);
+                    break;
             }
-            else
-            {
-                switch (_endCardLandscapeAnimationType)
-                {
-                    case EndCardLandscapeAnimationType.None:
-                        break;
-                    case EndCardLandscapeAnimationType.Scale:
-                        _endCardAnimator.SetBool(_endCardAnimationScale, true);
-                        break;
-                    case EndCardLandscapeAnimationType.SlideLeftToRight:
-                        _endCardAnimator.SetBool(_endCardAnimationLeftToRight, true);
-                        break;
-                    case EndCardLandscapeAnimationType.SlideRightToLeft:
-                        _endCardAnimator.SetBool(_endCardAnimationRightToLeft, true);
-                        break;
-                }
-            }
+            // if (IsPortrait())
+            // {
+            //     
+            // }
+            // else
+            // {
+            //     switch (_endCardLandscapeAnimationType)
+            //     {
+            //         case EndCardLandscapeAnimationType.None:
+            //             break;
+            //         case EndCardLandscapeAnimationType.Scale:
+            //             _endCardAnimator.SetBool(_endCardAnimationScale, true);
+            //             break;
+            //         case EndCardLandscapeAnimationType.SlideLeftToRight:
+            //             _endCardAnimator.SetBool(_endCardAnimationLeftToRight, true);
+            //             break;
+            //         case EndCardLandscapeAnimationType.SlideRightToLeft:
+            //             _endCardAnimator.SetBool(_endCardAnimationRightToLeft, true);
+            //             break;
+            //     }
+            // }
         }
     }
 
@@ -567,9 +567,9 @@ public class EndCardController : MonoBehaviour
             descriptionX = Mathf.Abs(descriptionX + -1); //Fix to go left to right
         }
 
-        _descriptionRect.anchorMin = new Vector2(descriptionX, descriptionY);
-        _descriptionRect.anchorMax = new Vector2(descriptionX, descriptionY);
-        _descriptionRect.pivot = new Vector2(descriptionX, descriptionY);
+        //_descriptionRect.anchorMin = new Vector2(descriptionX, descriptionY);
+        //_descriptionRect.anchorMax = new Vector2(descriptionX, descriptionY);
+        //_descriptionRect.pivot = new Vector2(descriptionX, descriptionY);
     }
 
     void SetIconSize()
