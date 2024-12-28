@@ -6,7 +6,7 @@ using UnityEngine;
 
 public static class HelperCoroutine
 {
-    private static Dictionary<float, WaitForSeconds> _waitForSeconds = new();
+    private static Dictionary<float, WaitForSeconds> _waitForSeconds = new Dictionary<float, WaitForSeconds>();
 
     public static WaitForSeconds WaitSeconds(float seconds)
     {

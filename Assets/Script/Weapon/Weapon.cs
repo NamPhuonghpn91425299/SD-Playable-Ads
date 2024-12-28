@@ -10,7 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] public Transform spawmBulletPoint;
     [SerializeField] public ParticleSystem[] shootEffects;
 
-    public Dictionary<string, AnimationData> animationDatas = new();
+    public Dictionary<string, AnimationData> animationDatas = new Dictionary<string, AnimationData>();
     
      public void PlayEffect()
     {

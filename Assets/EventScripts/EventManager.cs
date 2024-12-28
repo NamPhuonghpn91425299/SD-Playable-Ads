@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class EventManager : MonoBehaviour
 {
-    private static readonly Dictionary<EventName, List<Delegate>> Channels = new();
+    private static readonly Dictionary<EventName, List<Delegate>> Channels = new Dictionary<EventName, List<Delegate>>();
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void ManualReloadDomain()

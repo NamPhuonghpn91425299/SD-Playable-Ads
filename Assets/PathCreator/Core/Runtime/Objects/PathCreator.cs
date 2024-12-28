@@ -71,38 +71,61 @@ namespace PathCreation {
 
 #if UNITY_EDITOR
 
-        // Draw the path when path objected is not selected (if enabled in settings)
-        void OnDrawGizmos () {
+        // // Draw the path when path objected is not selected (if enabled in settings)
+        // void OnDrawGizmos () {
+        //
+        //     // Only draw path gizmo if the path object is not selected
+        //     // (editor script is resposible for drawing when selected)
+        //     GameObject selectedObj = UnityEditor.Selection.activeGameObject;
+        //     if (selectedObj != gameObject) {
+        //
+        //         if (path != null) {
+        //             path.UpdateTransform (transform);
+        //
+        //             if (globalEditorDisplaySettings == null) {
+        //                 globalEditorDisplaySettings = GlobalDisplaySettings.Load ();
+        //             }
+        //
+        //             if (globalEditorDisplaySettings.visibleWhenNotSelected) {
+        //
+        //                 Gizmos.color = globalEditorDisplaySettings.bezierPath;
+        //
+        //                 for (int i = 0; i < path.NumPoints; i++) {
+        //                     int nextI = i + 1;
+        //                     if (nextI >= path.NumPoints) {
+        //                         if (path.isClosedLoop) {
+        //                             nextI %= path.NumPoints;
+        //                         } else {
+        //                             break;
+        //                         }
+        //                     }
+        //                     Gizmos.DrawLine (path.GetPoint (i), path.GetPoint (nextI));
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+        void OnDrawGizmos()
+        {
+            // Thoát sớm nếu object đang được chọn hoặc nếu path bằng null
+            if (UnityEditor.Selection.activeGameObject == gameObject || path == null) return;
 
-            // Only draw path gizmo if the path object is not selected
-            // (editor script is resposible for drawing when selected)
-            GameObject selectedObj = UnityEditor.Selection.activeGameObject;
-            if (selectedObj != gameObject) {
+            path.UpdateTransform(transform);
 
-                if (path != null) {
-                    path.UpdateTransform (transform);
+            // Lấy cài đặt hiển thị toàn cục (nạp nếu chưa có)
+            globalEditorDisplaySettings ??= GlobalDisplaySettings.Load();
 
-                    if (globalEditorDisplaySettings == null) {
-                        globalEditorDisplaySettings = GlobalDisplaySettings.Load ();
-                    }
+            // Thoát sớm nếu tùy chọn không cho phép hiển thị khi object không được chọn
+            if (!globalEditorDisplaySettings.visibleWhenNotSelected) return;
 
-                    if (globalEditorDisplaySettings.visibleWhenNotSelected) {
+            Gizmos.color = globalEditorDisplaySettings.bezierPath;
 
-                        Gizmos.color = globalEditorDisplaySettings.bezierPath;
-
-                        for (int i = 0; i < path.NumPoints; i++) {
-                            int nextI = i + 1;
-                            if (nextI >= path.NumPoints) {
-                                if (path.isClosedLoop) {
-                                    nextI %= path.NumPoints;
-                                } else {
-                                    break;
-                                }
-                            }
-                            Gizmos.DrawLine (path.GetPoint (i), path.GetPoint (nextI));
-                        }
-                    }
-                }
+            // Vẽ đường nối các điểm bằng vòng lặp
+            for (int i = 0; i < path.NumPoints; i++)
+            {
+                int nextI = (i + 1) % path.NumPoints; // Tính điểm tiếp theo (vòng nếu là đường khép kín)
+                if (!path.isClosedLoop && nextI == 0) break; // Thoát nếu kết thúc đường không khép kín
+                Gizmos.DrawLine(path.GetPoint(i), path.GetPoint(nextI)); // Vẽ đường nối
             }
         }
 #endif

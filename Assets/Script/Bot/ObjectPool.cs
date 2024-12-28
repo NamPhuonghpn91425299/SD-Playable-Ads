@@ -20,7 +20,7 @@ public class ObjectPool1 : MonoBehaviour
 
     }
     
-    private Dictionary<PoolType, Queue<GameObject>> poolDictionary = new();
+    private Dictionary<PoolType, Queue<GameObject>> poolDictionary = new Dictionary<PoolType, Queue<GameObject>>();
     public GameObject GetPooledObject(PoolType type, GameObject prefab, Transform parent = null)
     {
         // Tạo pool mới nếu chưa tồn tại
