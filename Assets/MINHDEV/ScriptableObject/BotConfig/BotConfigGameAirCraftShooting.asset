@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fightRound:
   - botConfigs:
-    - botPrefab: {fileID: 2250729235527057076, guid: e91f31dec74575240b645d96c4753879, type: 3}
-      botType: 4
+    - botPrefab: {fileID: 1312138446727467944, guid: 9d229833d6b648a43aebc874bc95e966, type: 3}
+      botType: 1
       isNotUse: 0
       isNotCount: 0
       botQuantity: 1
@@ -23,8 +23,8 @@ MonoBehaviour:
       WaitToSpawn: 0
       IsSpawmOnBotKill: 0
       BotkillSpawn: 0
-    - botPrefab: {fileID: 3593287816044124444, guid: cf91889a0840a1546ac93f10d271939c, type: 3}
-      botType: 5
+    - botPrefab: {fileID: 1312138446727467944, guid: 9d229833d6b648a43aebc874bc95e966, type: 3}
+      botType: 1
       isNotUse: 0
       isNotCount: 0
       botQuantity: 4

@@ -116,6 +116,9 @@ public enum EventName
     OnPlayerDead,
     OnTimeOut,
     OnTakeDameWeakPoint,
+    OnChangeWeapon,
+    OnGameWon,
+    OnGameLost,
 
     // Thêm các sự kiện khác ở đây
 }

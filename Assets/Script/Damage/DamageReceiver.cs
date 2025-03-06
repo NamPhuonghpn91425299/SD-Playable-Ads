@@ -8,7 +8,7 @@ public class DamageReceiver : MonoBehaviour, IDamageHit
     [SerializeField] protected float hp = 1f;
     [SerializeField] protected float hpMax = 2f;
     [SerializeField] protected bool isDead = false;
-    [SerializeField] private WeaponDataSO _weaponDataSo;
+    //[SerializeField] private WeaponDataSO _weaponDataSo;
     protected virtual void OnEnable()
     {
         this.Reborn();

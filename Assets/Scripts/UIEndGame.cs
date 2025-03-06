@@ -10,7 +10,7 @@ public class UIEndGame : MonoBehaviour
     public GameObject EndGameWon;
     public GameObject EndGameLose;
     public CanvasGroup EndGameCanvasGroup;
-    public UIAnimSimulator uIAnimSimulator;
+    //public UIAnimSimulator uIAnimSimulator;
     public bool IsShowEndGame;
     public bool IsCheckEndGame;
 
@@ -27,7 +27,7 @@ public class UIEndGame : MonoBehaviour
     {
         if (IsCheckEndGame)
         {
-            StartCoroutine(uIAnimSimulator.ShowUIEndGame());
+            //StartCoroutine(uIAnimSimulator.ShowUIEndGame());
             IsCheckEndGame = false; 
         } 
 

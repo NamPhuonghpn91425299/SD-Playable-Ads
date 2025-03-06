@@ -18,7 +18,7 @@ public class PlayerHP : MonoBehaviour
     private void OnEnable()
     {
         HPPoint = HPMax;
-        HPTxt.text = HPMax.ToString();
+        //HPTxt.text = HPMax.ToString();
         EventManager.AddListener<float>(EventName.OnTakeDamagePlayer, OnTakeDamagePlayer);
     }
 
@@ -55,7 +55,7 @@ public class PlayerHP : MonoBehaviour
             EventManager.Invoke(EventName.OnPlayerDead, HPPoint <= 0);
             
             // Cập nhật giao diện
-            HPTxt.text = HPPoint.ToString();
+            //HPTxt.text = HPPoint.ToString();
             HPimage.fillAmount = HPPoint / HPMax;
             HPimage.color = HPState.Evaluate(HPimage.fillAmount);
             // Tạo một khoảng nghỉ nhỏ để tránh trừ sát thương quá nhanh, điều này có thể điều chỉnh tùy ý

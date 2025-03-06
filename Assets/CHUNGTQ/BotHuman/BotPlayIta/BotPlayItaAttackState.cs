@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using static BotPlayItaStateMachine;
+using Random = UnityEngine.Random;
+using static HelperCoroutine;
 
 public class BotPlayItaAttackState : BaseState<PlayItaState>
 {
@@ -15,12 +18,12 @@ public class BotPlayItaAttackState : BaseState<PlayItaState>
     [SerializeField] private AudioSource _source;
     [SerializeField] private AudioClip[] listSoundAttack;
     [SerializeField] private AudioClip[] BotVoice;
-    private bool canAttack;
+    [SerializeField] private bool canAttack;
     private bool isTakeDame;
     public override void EnterState()
     {
         int randomSay = Random.Range(0, 100);
-        if(randomSay % 2 == 0)
+        if (randomSay % 2 == 0)
         {
             int indexSound = Random.Range(0, listSoundAttack.Length);
             AudioClip clipPlay = listSoundAttack[indexSound];
@@ -36,12 +39,12 @@ public class BotPlayItaAttackState : BaseState<PlayItaState>
         canAttack = true;
         StartCoroutine(AttackRoutine());
         botNetwork.OnTakeDamage += OnTakeDame;
-       
+
     }
 
     private IEnumerator OnPlaySoundAttack()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return WaitSeconds(0.5f);
     }
 
     private void OnTakeDame(int damage)
@@ -71,15 +74,14 @@ public class BotPlayItaAttackState : BaseState<PlayItaState>
                     totalDamage += BotConfigSO.damage;  // Cộng sát thương gây ra vào tổng
                     EventManager.Invoke(EventName.OnTakeDamagePlayer, BotConfigSO.damage);
                     //Debug.Log($"sát thương gây ra: {totalDamage}");
-                    yield return new WaitForSeconds(1f / BotConfigSO.fireRate);  // Chờ theo tốc độ bắn
+                    yield return WaitSeconds(1f / BotConfigSO.fireRate);  // Chờ theo tốc độ bắn
                 }
 
                 //Debug.Log($"Tổng lượng damage bot gây ra: {totalDamage}");
 
                 muzzle.SetActive(false);
                 ator.SetBool("isReload", true);
-
-                yield return new WaitForSeconds(BotConfigSO.timeReload);  // Chờ thời gian nạp đạn
+                yield return WaitSeconds(BotConfigSO.timeReload);  // Chờ thời gian nạp đạn
                 ator.SetBool("isReload", false);
                 canAttack = true;  // Sẵn sàng cho lượt tấn công tiếp theo
             }
@@ -89,7 +91,7 @@ public class BotPlayItaAttackState : BaseState<PlayItaState>
 
     private void RotaToTarget()
     {
-        Vector3 direction =LocalPlayer.Instance.GetLocalPlayer() - weaponRoot.transform.position;
+        Vector3 direction = LocalPlayer.Instance.GetLocalPlayer() - weaponRoot.transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
         Mytrans.transform.rotation = rotation;
         weaponRoot.transform.rotation = rotation;
@@ -101,6 +103,8 @@ public class BotPlayItaAttackState : BaseState<PlayItaState>
     }
     public override void ExitState()
     {
+
+        canAttack = false;
         _source.Stop();
     }
     public override PlayItaState GetNextState()
@@ -113,7 +117,13 @@ public class BotPlayItaAttackState : BaseState<PlayItaState>
         {
             return StateKey;
         }
-        
 
+    }
+
+    private void OnEnable()
+    {
+        ator.Rebind();
+
+        canAttack = false;
     }
 }

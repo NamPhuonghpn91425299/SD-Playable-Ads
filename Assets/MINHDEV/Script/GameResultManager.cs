@@ -27,10 +27,10 @@ public class GameResultManager : MonoBehaviour
     private void OnShowEndCard()
     {
         _isShowCard = true;
-         EventManager.Invoke(EventName.OnShowLunaEndGame, _isShowCard);
-         UIManager.Instance.EndGame();
+        EventManager.Invoke(EventName.OnShowLunaEndGame, _isShowCard);
+        UIManager.Instance.EndGame();
 
-    }    
+    }
     // private void OnCheckHP(float arg0)
     // {
     //     if (arg0 <= 0)
@@ -43,6 +43,7 @@ public class GameResultManager : MonoBehaviour
     {
         if (TurnToShowEndCard == gameResultData.TurnEnd && !_isShowCard && gameResultData.IsCountTurn && BotManager.Instance.TotalBotOnTurn == gameResultData.BotKillCount)
         {
+            EventManager.Invoke(EventName.OnGameWon, _isShowCard);
             OnShowEndCard();
         }
     }
@@ -52,6 +53,7 @@ public class GameResultManager : MonoBehaviour
         gameResultData.BotLandingCount = BotCount;
         if (gameResultData.BotLandingCount == gameResultData.BotLandingCountConfig && !_isShowCard && gameResultData.IsCountLandingBot)
         {
+            EventManager.Invoke(EventName.OnGameWon, _isShowCard);
             OnShowEndCard();
         }
     }

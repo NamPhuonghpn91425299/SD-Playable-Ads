@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using static BotPlayItaStateMachine;
 
-public class Parachute : MonoBehaviour
+public class Parachute : MonoBehaviour, IPoolObject
 {
     [SerializeField] private BotConfigSO _botDuConfig;
     [SerializeField] private BotNetwork botNetwork;
@@ -16,6 +17,8 @@ public class Parachute : MonoBehaviour
     [Header("Tốc độ rơi khi chưa bung dù,hoặc dù hỏng")]
     [SerializeField]
     protected float dropSpeed = 7;
+    [SerializeField]
+    protected float dropBot;
     [SerializeField]
     protected float dropDistanceDeath = 7;
     [Header("Tốc độ rơi sau khi bung dù")]
@@ -30,15 +33,18 @@ public class Parachute : MonoBehaviour
     [SerializeField]
     AnimationCurve parachuteRotaZ;
 
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private GameObject botDead;
     private Coroutine C_MoveFirstDistance;
     private Transform myTrans;
     private GameObject botCarry;
-    private RuntimeAnimatorController atorBotCarry;
+    [SerializeField] private RuntimeAnimatorController atorBotCarry;
     private GameObject botCarryInit;
     private Vector3 landPos;
     private bool isOpenParachute;
     private float _countSwingTime;
     public float DistanceStopSwing = 1;
+    [SerializeField] private bool isFallingAfterDeath = false;
 
     private void Awake()
     {
@@ -47,6 +53,7 @@ public class Parachute : MonoBehaviour
 
     private void OnEnable()
     {
+        ResetState();
         RaycastHit dropPosHit;
         if (Physics.Raycast(myTrans.position + Vector3.forward * 3, Vector3.down, out dropPosHit, 300, ground))
         {
@@ -55,26 +62,39 @@ public class Parachute : MonoBehaviour
         }
 
         InitParachute();
-        InitCarry();
+        //InitCarry();
+        //ResetAnimation(); 
         botNetwork.OnBotDead += OnDead;
         C_MoveFirstDistance = StartCoroutine(MoveFirstDistance());
     }
 
+    private void OnDisable()
+    {
+        botNetwork.OnBotDead -= OnDead;
+    }
+
     protected void InitParachute()
     {
+        _spriteRenderer.enabled = true;
+        botDead.SetActive(false);
         isOpenParachute = false;
         body.SetActive(false);
         botCarry = _botDuConfig.carryAttributes[0].botConfig.Model;
     }
 
+
     protected void InitCarry()
     {
-        botCarryInit = Instantiate(botCarry, spwanPos);
+        botCarryInit = ObjectPool.Instance.PopFromPool(botCarry, instantiateIfNone: true);
+        botCarryInit.transform.SetPositionAndRotation(spwanPos.position, spwanPos.rotation);
+        botCarryInit.transform.SetParent(spwanPos);
+        botCarryInit.GetComponent<BotNetwork>().Reset();
+        //botCarryInit = Instantiate(botCarry, spwanPos);
+        _spriteRenderer.enabled = false;
         atorBotCarry = botCarryInit.GetComponentInChildren<Animator>().runtimeAnimatorController;
         botCarryInit.GetComponentInChildren<Animator>().runtimeAnimatorController = atorOverride;
         botCarryInit.GetComponent<BotNetwork>().SetPath(PathManager.Instance.GetWayPoint(_botDuConfig.carryAttributes[0].botConfig.botType));
     }
-
     private void Update()
     {
         if (isOpenParachute)
@@ -82,23 +102,59 @@ public class Parachute : MonoBehaviour
             _countSwingTime += Time.deltaTime;
             if (myTrans.position.y - landPos.y > DistanceStopSwing)
             {
-                // Lắc dù
-                transform.localRotation = Quaternion.Euler(parachuteRotaX.Evaluate(_countSwingTime),
-                  transform.localEulerAngles.y, parachuteRotaZ.Evaluate(_countSwingTime));
+                transform.localRotation = Quaternion.Euler(
+                    parachuteRotaX.Evaluate(_countSwingTime),
+                    transform.localEulerAngles.y,
+                    parachuteRotaZ.Evaluate(_countSwingTime)
+                );
+            }
+        }
+
+        if (isFallingAfterDeath)
+        {
+            // Rơi xuống theo dropBot
+            myTrans.Translate(dropBot * Time.deltaTime * Vector3.down);
+
+            // Khi chạm đất
+            if (myTrans.position.y - landPos.y <= DistanceStopSwing)
+            {
+                isFallingAfterDeath = false;
+                _spriteRenderer.enabled = false;
+                //Debug.Log("Bot đã chạm đất sau khi chết.");
+                StartCoroutine(ResetAfterDeath());
             }
         }
     }
+
+    void ResetState()
+    {
+        _countSwingTime = 0;
+        isOpenParachute = false;
+    }
+
+    void ResetAnimation()
+    {
+        botCarryInit.GetComponentInChildren<Animator>().runtimeAnimatorController = atorOverride;
+    }
+
 
     public Vector2 FirstDistanceFallMinMax = new Vector2(10, 10);
     public Vector2 HitchForceMinMax = new Vector2(1.25f, 1.7f);
 
     IEnumerator MoveFirstDistance()
     {
+        yield return new WaitForEndOfFrame(); // Đảm bảo đã thiết lập xong
+        var startY = myTrans.position.y;
         float firstDistance = Random.Range(FirstDistanceFallMinMax.x, FirstDistanceFallMinMax.y);
-        Vector3 firstDes = myTrans.position + Vector3.down * firstDistance;
-        while (myTrans.position.y > firstDes.y)
+
+        Vector3 firstDes = new Vector3(myTrans.position.x, startY - firstDistance, myTrans.position.z);
+
+        //Debug.Log($"Bắt đầu rơi từ: {startY}, cần rơi {firstDistance}, mục tiêu: {firstDes.y}");
+
+        while (Mathf.Abs(myTrans.position.y - firstDes.y) > 0.1f) // So sánh chính xác hơn
         {
-            myTrans.Translate(dropSpeed * Time.deltaTime * Vector3.down);
+            myTrans.position = Vector3.MoveTowards(myTrans.position, firstDes, dropSpeed * Time.deltaTime);
+            //Debug.Log($"Hiện tại: {myTrans.position.y}, mục tiêu: {firstDes.y}, đã rơi: {startY - myTrans.position.y}");
             yield return null;
         }
         body.SetActive(true);
@@ -110,64 +166,99 @@ public class Parachute : MonoBehaviour
             yield return null;
         }
         isOpenParachute = true;
-        dropSpeed = openParachuteDropSpeed;
+        //dropSpeed = openParachuteDropSpeed;
         while (myTrans.position.y - landPos.y > DistanceStopSwing)
         {
-            myTrans.Translate(dropSpeed * Time.deltaTime * Vector3.down);
+            myTrans.Translate(openParachuteDropSpeed * Time.deltaTime * Vector3.down);
             yield return null;
         }
         ator.Play("DongDu");
 
+        InitCarry();
         botCarryInit.GetComponentInChildren<Animator>().runtimeAnimatorController = atorBotCarry;
         botCarryInit.transform.SetParent(null);
         BotLandingManager.Instance.IncrementLandCount();
+        //ObjectPool.Instance.PushToPool(this,gameObject);
     }
 
+    private Vector3 botDeadPos;
     void OnDead()
     {
-
+        botDeadPos = this.transform.position;
+        BotDeathHandler.Instance.OnBotDeath(botDeadPos);
         StopCoroutine(C_MoveFirstDistance);
-        StartCoroutine(HandleBotDie());
+        isFallingAfterDeath = true;
+        //StartCoroutine(HandleBotDie());
         float distanceToLand = myTrans.position.y - landPos.y;
-        dropSpeed = 14;
         ator.Play("DongDu");
         if (distanceToLand > dropDistanceDeath)
         {
             var damageInfo = new DamageInfo()
             {
                 damageType = DamageType.Normal,
-                damage = 99,
+                damage = 69,
                 //name = hit.collider.name,
             };
-            botCarryInit.GetComponent<ITakeDamage>()?.TakeDamage(damageInfo);
+            _spriteRenderer.enabled = false;
+            botDead.SetActive(true);
+            _spriteRenderer.GetComponentInChildren<ITakeDamage>()?.TakeDamage(damageInfo);
+            //BotDeath.Instance.GetBotDeath();
             // Bot Die
         }
-        else
+        else if (distanceToLand <= dropDistanceDeath)
         {
-            // Bot Sống
+            _spriteRenderer.enabled = false;
+            InitCarry();
+            //botCarryInit.GetComponentInChildren<Animator>().runtimeAnimatorController = atorBotCarry;
+            //botCarryInit.transform.SetParent(null);
         }
+        //botCarryInit.GetComponentInChildren<Animator>().runtimeAnimatorController = atorBotCarry;
+
     }
 
     IEnumerator HandleBotDie()
     {
+        Debug.Log($"Bắt đầu HandleBotDie(), dropBot = {dropBot}");
         while (myTrans.position.y - landPos.y > DistanceStopSwing)
         {
-            myTrans.Translate(dropSpeed * Time.deltaTime * Vector3.down);
+            myTrans.Translate(dropBot * Time.deltaTime * Vector3.down);
+            Debug.Log($"Đang rơi sau khi chết, vị trí: {myTrans.position.y}, tốc độ: {dropBot}");
             yield return null;
         }
-        if (!botCarryInit.GetComponent<BotNetwork>().IsDead)
+        Debug.Log("Bot đã chạm đất sau khi chết.");
+        if (botCarryInit && !botCarryInit.GetComponent<BotNetwork>().IsDead)
         {
             botCarryInit.GetComponentInChildren<Animator>().runtimeAnimatorController = atorBotCarry;
             botCarryInit.transform.SetParent(null);
         }
+
+        yield return new WaitForSeconds(2f); // Đợi animation hoàn thành
+        ResetAnimation();
+        ObjectPool.Instance.PushToPool(this, gameObject);
     }
 
-    public void SetOpenParachuteDropSpeed(float newSpeed)
+    private IEnumerator ResetAfterDeath()
     {
-        openParachuteDropSpeed = newSpeed;
-        if (isOpenParachute)
+        if (botCarryInit && !botCarryInit.GetComponent<BotNetwork>().IsDead)
         {
-            dropSpeed = openParachuteDropSpeed;
+            botCarryInit.GetComponentInChildren<Animator>().runtimeAnimatorController = atorBotCarry;
+            botCarryInit.transform.SetParent(null);
         }
+
+        yield return new WaitForSeconds(2f); // Chờ animation hoàn thành
+        ObjectPool.Instance.PushToPool(this, gameObject);
     }
+
+
+    public GameObject Prefab { get; set; }
+    public void Init()
+    {
+
+    }
+
+    public void OnPushToPool()
+    {
+
+    }
+
 }

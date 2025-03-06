@@ -26,23 +26,26 @@ public class UIManager : MonoBehaviour
     public Button tapToPlay;
     public Text bulletCountText; // Text UI để hiển thị số lượng đạn
     public Text RoundTxt; // Text UI để hiển thị số lượng đạn
+    public Text RoundTxtShadow; // Text UI để hiển thị số lượng đạn
     public CanvasGroup hudCanvasGroup;
     public Text timeToEndGameTxt;
     public float timeEndConfig = 30f;
     public Action<float> OnTimeout;
     private bool timeOut;
-
+    [SerializeField] private float _timeDelayShowHUD = 3f;
+    private float timer;
+    private bool _isRocketFollow = false;
     private void Awake()
     {
         Instance = this;
         InGame.SetActive(true);
         gameProcess.SetActive(true);
         playerHealth.SetActive(true);
-        reloadButton.SetActive(true);
-        uIAnimSimulator.StartAnimateTextAppear();
+        tapToPlay.gameObject.SetActive(true);
+        if (reloadButton) reloadButton.SetActive(true);
+        if (uIAnimSimulator) uIAnimSimulator.StartAnimateTextAppear();
 
     }
-
     private void Start()
     {
         Time.timeScale = 0f;
@@ -50,7 +53,7 @@ public class UIManager : MonoBehaviour
     }
     public void SetTimeToEndGame()
     {
-        if (timeToEndGameTxt!= null)
+        if (timeToEndGameTxt != null)
         {
             timeEndConfig = Mathf.Max(0, timeEndConfig - Time.deltaTime);
             timeToEndGameTxt.text = $"TIME TO DEFENSE: {timeEndConfig:F0}s";
@@ -58,13 +61,13 @@ public class UIManager : MonoBehaviour
             {
                 timeOut = true;
                 EventManager.Invoke<float>(EventName.OnTimeOut, timeEndConfig);
-            }    
+            }
             //yield return null;
         }
     }
     private void OnEnable()
     {
-        
+
         EventManager.AddListener<int>(EventName.UpdateBulletCount, UpdateBulletCount);
         EventManager.AddListener<int>(EventName.OnCheckTurnPlay, OnCheckTurnPlay);
         EventManager.AddListener<bool>(EventName.OnShowLunaEndGame, OnShowLunaEndGame);
@@ -89,6 +92,7 @@ public class UIManager : MonoBehaviour
         {
             int Round = Turn + 1;
             RoundTxt.text = "ROUND " + Round;
+            //if (RoundTxtShadow) RoundTxtShadow.text = "ROUND " + Round;
             uIAnimSimulator.StartAnimateTextAppear();
             if (Round >= 2)
             {
@@ -99,8 +103,8 @@ public class UIManager : MonoBehaviour
                 dowloadButton.gameObject.SetActive(false);
             }
         }
-    }    
-    
+    }
+
     public void OnPointerExit()
     {
         IsIngameGUI = false; // Thoát khỏi UI
@@ -113,15 +117,16 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         tapToPlay.gameObject.SetActive(false);
+        StartCoroutine(FadeIn());
         OnPointerExit();
         Luna.Unity.LifeCycle.GameStarted();
-        Luna.Unity.Analytics.LogEvent( Luna.Unity.Analytics.EventType.TutorialComplete);
+        Luna.Unity.Analytics.LogEvent(Luna.Unity.Analytics.EventType.TutorialComplete);
         Debug.Log($"{nameof(OnTapToPlay)}");
     }
 
     IEnumerator ShowEndCard()
     {
-        
+
         yield return WaitSeconds(1);
         Time.timeScale = 0;
         InGame.SetActive(false);
@@ -138,16 +143,16 @@ public class UIManager : MonoBehaviour
         if (IsShow)
         {
             //StartCoroutine(DelayHideHUD());
-        }    
-    }    
+        }
+    }
     private void OnPlayerDead(bool isPlayerDead)
     {
         if (isPlayerDead)
         {
             playerHealth.SetActive(false);
-            reloadButton.SetActive(false);
+            if (reloadButton) reloadButton.SetActive(false);
             StartCoroutine(PlayerDeadUI());
-            
+            EventManager.Invoke(EventName.OnGameLost, isPlayerDead);
             //this.RunOnSeconds(1f, () => hudCanvasGroup.alpha -= Time.deltaTime);
         }
 
@@ -160,36 +165,39 @@ public class UIManager : MonoBehaviour
     {
         UIEndGame.Instance.IsShowEndGame = true;
         RoundTxt.text = "YOU WIN!";
+        //if (RoundTxtShadow) RoundTxtShadow.text = "YOU WIN!";
         uIAnimSimulator.StartAnimateTextAppear();
-        yield return WaitSeconds(3f);
+        yield return WaitSeconds(_timeDelayShowHUD);
         HUD.SetActive(false);
         uIAnimSimulator.StartAnimateTextAppear();
         yield return null;
         UIEndGame.Instance.ShowUIEndGame();
-     
+
+
     }
     private IEnumerator PlayerDeadUI()
     {
         UIEndGame.Instance.IsShowEndGame = true;
         RoundTxt.text = "YOU LOSE!";
+        //if (RoundTxtShadow) RoundTxtShadow.text = "YOU LOSE!";
         uIAnimSimulator.StartAnimateTextAppear();
-        
-        yield return WaitSeconds(3f);
+
+        yield return WaitSeconds(_timeDelayShowHUD);
         HUD.SetActive(false);
         uIAnimSimulator.StartAnimateTextAppear();
         yield return null;
         UIEndGame.Instance.ShowEndGameLose();
-    }    
+    }
     private void OnTimeOut(float timer)
     {
         if (timer <= 0 && !UIEndGame.Instance.IsShowEndGame)
         {
             StartCoroutine(PlayerDeadUI());
         }
-    }    
+    }
     void Update()
     {
-        SetTimeToEndGame();
+        //SetTimeToEndGame();
         TotalBotText.text = $"{GameResultInstance.Instance.GetGameResultData().BotKillCount} / {TotalBotinConfig}";
         process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / TotalBotinConfig);
     }
@@ -206,5 +214,21 @@ public class UIManager : MonoBehaviour
         bulletCountText.text = "Bullet Count: " + bulletCount;
     }
 
+    private IEnumerator FadeIn()
+    {
+        CanvasGroup canvasGroup = HUD.GetComponent<CanvasGroup>();
+        float timeElapsed = 0;
+        float duration = 1f;
+        while (timeElapsed < duration)
+        {
+            timeElapsed += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(0, 1, timeElapsed / duration);
+            yield return null;
+        }
+    }
 
 }
+
+
+
+

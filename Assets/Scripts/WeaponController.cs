@@ -22,14 +22,15 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private ParticleSystem[] _fireEffect;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private GameObject _effect;
-    [SerializeField] private bool _isShowCard;
+    //[SerializeField] private bool _isShowCard;
     [SerializeField] private bool shootBasedOnGunDirection = false; // Chế độ bắn: true = bắn theo hướng súng, false = bắn theo hướng camera
     [SerializeField] private bool isDoubleMuzzle = false;
+    [SerializeField] private bool IsBBQGun;
     [SerializeField] private Transform shakeCam; // Biến để tham chiếu đến MainCamera
     [SerializeField] private float shakeCamMin;
     [SerializeField] private float shakeCamMax;
     [SerializeField] private bool IsShowLunaEndGame;
-
+    private bool isLeftMuzzleNext = true;
     private Transform _cameraTransform;
     private Camera _camera;
     private float _timeSinceLastShoot = 0f; // Thời gian từ lần bắn cuối cùng
@@ -50,7 +51,7 @@ public class WeaponController : MonoBehaviour
         _cameraTransform = _camera.transform;
         _currentBulletCount = weaponInfo.bulletCount; // Khởi tạo số lượng đạn
         //Debug.Log("Initial bullet count: " + _currentBulletCount);
-        EventManager.Invoke(EventName.UpdateBulletCount, _currentBulletCount); // Gửi thông báo về số lượng đạn ban đầu
+        //EventManager.Invoke(EventName.UpdateBulletCount, _currentBulletCount); // Gửi thông báo về số lượng đạn ban đầu
         AssignAnimationClips();
     }
 
@@ -79,16 +80,16 @@ public class WeaponController : MonoBehaviour
     private void Update()
     {
 
-            HandleGatlingGunRotation();
-            if (!UIEndGame.Instance.IsShowEndGame)
-            {
-                OnShooting();
-            }
-            if (UIEndGame.Instance.IsShowEndGame )
-            {
-                isShooting = false;
-                StopGunEffect();
-            }
+        HandleGatlingGunRotation();
+        if (!UIEndGame.Instance.IsShowEndGame)
+        {
+            OnShooting();
+        }
+        if (UIEndGame.Instance.IsShowEndGame)
+        {
+            isShooting = false;
+            StopGunEffect();
+        }
 
 
 
@@ -106,6 +107,7 @@ public class WeaponController : MonoBehaviour
         if (_animation != null && weaponInfo != null)
         {
             _animation.AddClip(weaponInfo.Fire, "Fire");
+            _animation.AddClip(weaponInfo.FireR, "FireR");
             _animation.AddClip(weaponInfo.Idle, "Idle");
             _animation.AddClip(weaponInfo._reloadAnimIn, "ReloadIn");
             _animation.AddClip(weaponInfo._reloadAnimOn, "ReloadOn");
@@ -233,8 +235,8 @@ public class WeaponController : MonoBehaviour
             // Debug.Log(newRotationZ);
             // Debug.Log(currentRotationSpeed);
             var newRotation = Quaternion.Euler(currentRotation.x, currentRotation.y, newRotationZ);
-                
-            
+
+
             barrel.localRotation = newRotation;
         }
     }
@@ -266,16 +268,34 @@ public class WeaponController : MonoBehaviour
             Random.Range(-weaponInfo.recoilAmount, weaponInfo.recoilAmount)
         );
 
-        // Bắn từ nòng đầu tiên
-        FireFromMuzzle(_muzzleTrans, forward);
-
-        // Nếu isDoubleMuzzle là true, bắn thêm từ nòng thứ hai
-        if (isDoubleMuzzle)
+        if (IsBBQGun)
         {
-            FireFromMuzzle(_muzzleTrans2, forward);
+            if (isLeftMuzzleNext)
+            {
+                FireFromMuzzle(_muzzleTrans, forward);
+                _animation.Play("Fire");
+                //Debug.Log("Fire from left muzzle");
+            }
+            else
+            {
+                _animation.Play("FireR");
+                FireFromMuzzle(_muzzleTrans2, forward);
+                //Debug.Log("Fire from right muzzle");
+            }
+            isLeftMuzzleNext = !isLeftMuzzleNext;
         }
+        else
+        {
+            // Bắn từ nòng đầu tiên
+            FireFromMuzzle(_muzzleTrans, forward);
 
-        _animation.Play("Fire");
+            // Nếu isDoubleMuzzle là true, bắn thêm từ nòng thứ hai
+            if (isDoubleMuzzle)
+            {
+                FireFromMuzzle(_muzzleTrans2, forward);
+            }
+            _animation.Play("Fire");
+        }
         _animation["Fire"].speed = 2.0f;
         _audioSource.clip = weaponInfo.audioClip;
         _audioSource.Play();
@@ -289,17 +309,21 @@ public class WeaponController : MonoBehaviour
     {
         return ((1 << obj.layer) & botLayerMask) != 0;
     }
+    public static class LayerConstants
+    {
+        public static readonly int WeakPointLayer = 10; // Giả sử layer 10 là WeakPoint
+        public static readonly LayerMask WeakPointMask = 1 << WeakPointLayer;
+    }
 
     private bool IsInBotTankLayer(GameObject obj)
     {
-        return ((1 << obj.layer) & botTankLayerMask) != 0;
+        return ((1 << obj.layer) & (botTankLayerMask | LayerConstants.WeakPointMask)) != 0;
     }
 
     private bool IsInRewardLayer(GameObject obj)
     {
         return ((1 << obj.layer) & rewardLayerMask) != 0;
     }
-
     private void FireFromMuzzle(Transform muzzle, Vector3 forward)
     {
         var shotRotation = Quaternion.Euler(Random.insideUnitCircle * weaponInfo.inaccuracy) * forward;
@@ -311,11 +335,16 @@ public class WeaponController : MonoBehaviour
         bullet.transform.SetPositionAndRotation(muzzle.position, muzzle.rotation);
         bullet.GetComponent<BulletTrail>().Init(ray.direction);
 
-        bool CheckRayCast = Physics.Raycast(ray, out var hit, Mathf.Infinity, botLayerMask| rewardLayerMask| botTankLayerMask);
+        bool CheckRayCast = Physics.Raycast(ray, out var hit, Mathf.Infinity, botLayerMask | rewardLayerMask | botTankLayerMask | LayerConstants.WeakPointMask);
         if (CheckRayCast)
         {
-            var damageType = hit.collider.CompareTag("WeakPoint")? DamageType.Weekness:DamageType.Normal;
-            var damageInfo = new DamageInfo() 
+            //var damageType = hit.collider.CompareTag("WeakPoint")? DamageType.Weekness:DamageType.Normal;
+            var damageType = hit.collider.gameObject.layer == LayerConstants.WeakPointLayer
+                ? DamageType.Weekness
+                : DamageType.Normal;
+            //Debug.Log($"Raycast hit object: {hit.collider.gameObject.name}, Layer: {hit.collider.gameObject.layer}");
+
+            var damageInfo = new DamageInfo()
             {
                 damageType = damageType,
                 damage = weaponInfo.damage,
@@ -342,8 +371,8 @@ public class WeaponController : MonoBehaviour
                 if (rewardController != null) rewardController.TakeCollect(weaponInfo.damage);
                 PlayRandomAttackSound();
                 _effect = bulletAndEffect.EffectBullet[1];
-            } 
-            else if(IsInBotTankLayer(hit.collider.gameObject))
+            }
+            else if (IsInBotTankLayer(hit.collider.gameObject))
             {
                 var takeDamageController1 = hit.transform.gameObject.GetComponent<ITakeDamage>();
                 if (takeDamageController1 == null)
@@ -363,7 +392,7 @@ public class WeaponController : MonoBehaviour
         EventManager.Invoke(EventName.OnCheckBotTakeDamage, CheckRayCast);
     }
 
-    
+
     void PlayRandomAttackSound()
     {
         AudioClip clip = AudioManager.Instance.GetAudioAttackClip();
@@ -492,7 +521,7 @@ public class WeaponController : MonoBehaviour
     }
 
     // Thêm phương thức dừng âm thanh bắn
-  
+
     private void StopShootingSound()
     {
         if (_audioSource.isPlaying && _audioSource.clip == weaponInfo.audioClip)
@@ -535,10 +564,24 @@ public class WeaponController : MonoBehaviour
     {
         foreach (ParticleSystem fireEffect in _fireEffect)
         {
-            if (fireEffect != null && !fireEffect.isPlaying)
+            if (fireEffect != null && !fireEffect.isPlaying && !IsBBQGun)
             {
                 fireEffect.Play();
-            }    
+            }
+
+            if (IsBBQGun)
+            {
+                if (isLeftMuzzleNext)
+                {
+                    _fireEffect[0].Play();
+                    //Debug.Log("left muzzle");
+                }
+                else
+                {
+                    _fireEffect[1].Play();
+                    //Debug.Log("right muzzle");
+                }
+            }
         }
     }
 

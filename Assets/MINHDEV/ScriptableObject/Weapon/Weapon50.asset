@@ -25,6 +25,7 @@ MonoBehaviour:
   reloadTime: 2
   infiniteBullet: 0
   Fire: {fileID: 7400000, guid: 114457aa467f6a4499432a69203cf723, type: 2}
+  FireR: {fileID: 7400000, guid: 114457aa467f6a4499432a69203cf723, type: 2}
   Idle: {fileID: 7400000, guid: 9e1fa24e91d246f458648cbc593a3be4, type: 2}
   _reloadAnimIn: {fileID: 7400000, guid: 00d78a9a3a74d9b46b5deb4a90b6f0e1, type: 2}
   _reloadAnimOn: {fileID: 7400000, guid: f8cd385ae08759e4792755507f6ee86e, type: 2}
