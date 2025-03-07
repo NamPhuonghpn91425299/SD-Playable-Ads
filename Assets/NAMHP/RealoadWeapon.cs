@@ -57,7 +57,10 @@ public class RealoadWeapon : MonoBehaviour
     {
         if (isChangeWeapon)
         {
-            StopCoroutine(reloadCoroutine);
+            if (reloadCoroutine != null)
+            {
+                StopCoroutine(reloadCoroutine);
+            }
             iconWeapon.enabled = true;
             iconreload.enabled = false;
             circleReload.alpha = 0f;

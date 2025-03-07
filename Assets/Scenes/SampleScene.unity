@@ -83887,8 +83887,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff35225a0102f44a98fb1838d33bb9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackSounds: []
-  HitSounds: []
+  AttackSounds:
+  - {fileID: 8300000, guid: 6ee388033b5fd184790411d5e6297ee5, type: 3}
+  - {fileID: 8300000, guid: 3a87f2f475530814d8e079da01e7a9ef, type: 3}
+  - {fileID: 8300000, guid: 7a261042e3e61ab468594aa23ad9a355, type: 3}
+  - {fileID: 8300000, guid: 7e2172f2cc993b84f92b50310afe4f69, type: 3}
+  HitSounds:
+  - {fileID: 8300000, guid: e1a19eebd4c5ab140b1cbb160ad331bf, type: 3}
+  - {fileID: 8300000, guid: 1ef7fda26c77b094da52cf7f38c06f9c, type: 3}
+  - {fileID: 8300000, guid: eafbb1328e5ae5542b73b3c849aafbc5, type: 3}
+  - {fileID: 8300000, guid: c2f55e5fd32d00b4ca163929e56a47aa, type: 3}
+  - {fileID: 8300000, guid: 54dfcc063fd5b1d409de79959269061e, type: 3}
+  - {fileID: 8300000, guid: 3589671634661054f8df4bf2ea8b1d3a, type: 3}
 --- !u!4 &6180442535960916345
 Transform:
   m_ObjectHideFlags: 0
@@ -85038,7 +85048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 3129969040453972549}
-  headShotIconPrefab: {fileID: 5818606623136896815, guid: b04dd2c6fcc12354a85ea59c40ef289a, type: 3}
+  headShotIconPrefab: {fileID: 5818606623136896815, guid: 178ee66cc61b3ee4980cc217e7647f8b, type: 3}
   uiCanvas: {fileID: 406704401}
   headOffset: 3
   TimeDisAppear: 1
@@ -85835,6 +85845,10 @@ PrefabInstance:
       propertyPath: shakeCam
       value: 
       objectReference: {fileID: 5232663073889989872}
+    - target: {fileID: 2910769737827553180, guid: 56fc15722e179664dbfb81b4f71ddd14, type: 3}
+      propertyPath: bulletAndEffect
+      value: 
+      objectReference: {fileID: 11400000, guid: dbe587ebe02d2fb418a45e4c82a1594a, type: 2}
     - target: {fileID: 2910769737827553180, guid: 56fc15722e179664dbfb81b4f71ddd14, type: 3}
       propertyPath: botTankLayerMask.m_Bits
       value: 256
