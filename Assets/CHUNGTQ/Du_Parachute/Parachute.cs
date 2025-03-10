@@ -8,6 +8,7 @@ using static BotPlayItaStateMachine;
 public class Parachute : MonoBehaviour, IPoolObject
 {
     [SerializeField] private BotConfigSO _botDuConfig;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private BotNetwork botNetwork;
     [SerializeField] private LayerMask ground;
     [SerializeField] private Transform spwanPos;
@@ -45,10 +46,11 @@ public class Parachute : MonoBehaviour, IPoolObject
     private float _countSwingTime;
     public float DistanceStopSwing = 1;
     [SerializeField] private bool isFallingAfterDeath = false;
-
+    private AnimationCurve originalParachuteRotaX;
     private void Awake()
     {
         myTrans = transform;
+        originalParachuteRotaX = parachuteRotaX;
     }
 
     private void OnEnable()
@@ -184,9 +186,12 @@ public class Parachute : MonoBehaviour, IPoolObject
     private Vector3 botDeadPos;
     void OnDead()
     {
+        isOpenParachute = false;
         botDeadPos = this.transform.position;
-        BotDeathHandler.Instance.OnBotDeath(botDeadPos);
+        //BotDeathHandler.Instance.OnBotDeath(botDeadPos);
         StopCoroutine(C_MoveFirstDistance);
+        //Debug.Log($"Bắt đầu HandleBotDie(), dropBot = {dropBot}");
+        myTrans.rotation = Quaternion.Euler(0, -180f, 0);
         isFallingAfterDeath = true;
         //StartCoroutine(HandleBotDie());
         float distanceToLand = myTrans.position.y - landPos.y;
@@ -201,8 +206,11 @@ public class Parachute : MonoBehaviour, IPoolObject
             };
             _spriteRenderer.enabled = false;
             botDead.SetActive(true);
+
+            //Debug.Log(transform.rotation);
+            audioSource.PlayOneShot(AudioManager.Instance.GetAudioHitClip());
             _spriteRenderer.GetComponentInChildren<ITakeDamage>()?.TakeDamage(damageInfo);
-            //BotDeath.Instance.GetBotDeath();
+            BotDeath.Instance.GetBotDeath();
             // Bot Die
         }
         else if (distanceToLand <= dropDistanceDeath)
@@ -258,7 +266,7 @@ public class Parachute : MonoBehaviour, IPoolObject
 
     public void OnPushToPool()
     {
-
+        parachuteRotaX = originalParachuteRotaX;
     }
 
 }

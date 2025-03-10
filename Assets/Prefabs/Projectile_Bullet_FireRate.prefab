@@ -223,4 +223,4 @@ MonoBehaviour:
   _trailMaxScale: {x: 3.5, y: 2, z: 2}
   _trailLengthAtMaxScale: 5
   Speed: 300
-  LifeTime: 2.5
+  LifeTime: 1.5

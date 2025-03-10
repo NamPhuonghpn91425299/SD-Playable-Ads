@@ -1,0 +1,214 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0986b76ad7a4ab7469be419d4500568f, type: 3}
+  m_Name: ConfigShootingParachute
+  m_EditorClassIdentifier: 
+  fightRound:
+  - botConfigs:
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 30
+      botDelaySpawn: 0.2
+      WaitToSpawn: 0
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 20
+      botDelaySpawn: 0.3
+      WaitToSpawn: 5
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 30
+      botDelaySpawn: 0.3
+      WaitToSpawn: 10
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 30
+      botDelaySpawn: 0.4
+      WaitToSpawn: 5
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 20
+      botDelaySpawn: 0.4
+      WaitToSpawn: 20
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 30
+      botDelaySpawn: 0.4
+      WaitToSpawn: 25
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 20
+      botDelaySpawn: 0.4
+      WaitToSpawn: 30
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 30
+      botDelaySpawn: 0.6
+      WaitToSpawn: 35
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 20
+      botDelaySpawn: 0.5
+      WaitToSpawn: 40
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 20
+      botDelaySpawn: 0.4
+      WaitToSpawn: 45
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 20
+      botDelaySpawn: 0.8
+      WaitToSpawn: 50
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 15
+      botDelaySpawn: 0.8
+      WaitToSpawn: 55
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 15
+      botDelaySpawn: 0.8
+      WaitToSpawn: 60
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 15
+      botDelaySpawn: 0.8
+      WaitToSpawn: 65
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 15
+      botDelaySpawn: 0.8
+      WaitToSpawn: 70
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 20
+      botDelaySpawn: 0.8
+      WaitToSpawn: 75
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 20
+      botDelaySpawn: 0.8
+      WaitToSpawn: 80
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 20
+      botDelaySpawn: 0.8
+      WaitToSpawn: 85
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 20
+      botDelaySpawn: 0.8
+      WaitToSpawn: 90
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 30
+      botDelaySpawn: 0.8
+      WaitToSpawn: 95
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 30
+      botDelaySpawn: 0.8
+      WaitToSpawn: 100
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
+    rewardConfig:
+    - rewardPrefab: {fileID: 2759798458802482863, guid: 4dd06d8c554c75843940b4dfdcbe9082, type: 3}
+      rewardType: 2
+      isNotUse: 0
+      rewardQuantity: 1
+      RewardDelaySpawn: 0
+      WaitToSpawn: 10
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0

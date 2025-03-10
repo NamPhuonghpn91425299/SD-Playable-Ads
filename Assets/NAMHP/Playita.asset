@@ -25,7 +25,7 @@ MonoBehaviour:
   timeReload: 3
   botType: 1
   Model: {fileID: 1312138446727467944, guid: 9d229833d6b648a43aebc874bc95e966, type: 3}
-  moveSpeed: 8
+  moveSpeed: 9
   rocketSpeed: 0
   targetRotation: 0
   turretRotation: 0

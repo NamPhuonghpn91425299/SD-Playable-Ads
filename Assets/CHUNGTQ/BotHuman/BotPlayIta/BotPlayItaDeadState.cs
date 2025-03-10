@@ -51,17 +51,13 @@ public class BotPlayItaDeadState : BaseState<PlayItaState>, IPoolObject
     }
     public override void ExitState()
     {
+        ResetBot();
         iscanMove = false;
         _source.Stop();
         // _source.clip = null; // Reset clip về null để đảm bảo không tái sử dụng
     }
     public override PlayItaState GetNextState()
     {
-        // if (iscanMove)
-        // {
-        //     return PlayItaState.Move;
-        // }
-        //else
         {
             return StateKey;
         }
@@ -76,6 +72,11 @@ public class BotPlayItaDeadState : BaseState<PlayItaState>, IPoolObject
     public void OnPushToPool()
     {
         // Reset bot state when pushed to pool
+        ResetBot();
+    }
+    void ResetBot()
+    {
+        // Reset bot state when disabled
         BotPlayItaStateMachine stateMachine = GetComponent<BotPlayItaStateMachine>();
         stateMachine.ResetBotState();
     }

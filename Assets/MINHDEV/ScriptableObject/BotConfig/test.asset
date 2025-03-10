@@ -10,25 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0986b76ad7a4ab7469be419d4500568f, type: 3}
-  m_Name: BotConfigGameAirCraftShooting
+  m_Name: test
   m_EditorClassIdentifier: 
   fightRound:
   - botConfigs:
-    - botPrefab: {fileID: 1312138446727467944, guid: 9d229833d6b648a43aebc874bc95e966, type: 3}
-      botType: 1
-      isNotUse: 0
-      isNotCount: 0
-      botQuantity: 1
-      botDelaySpawn: 0
-      WaitToSpawn: 0
-      IsSpawmOnBotKill: 0
-      BotkillSpawn: 0
     - botPrefab: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
       botType: 2
       isNotUse: 0
       isNotCount: 0
-      botQuantity: 4
-      botDelaySpawn: 0
+      botQuantity: 40
+      botDelaySpawn: 0.2
       WaitToSpawn: 0
       IsSpawmOnBotKill: 0
       BotkillSpawn: 0
@@ -38,6 +29,6 @@ MonoBehaviour:
       isNotUse: 0
       rewardQuantity: 1
       RewardDelaySpawn: 0
-      WaitToSpawn: 5
+      WaitToSpawn: 10
       IsSpawmOnBotKill: 0
       BotkillSpawn: 0
