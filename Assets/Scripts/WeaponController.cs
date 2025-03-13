@@ -21,6 +21,7 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private GameObject _bullet;
     [SerializeField] private ParticleSystem[] _fireEffect;
     [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private float volume;
     [SerializeField] private GameObject _effect;
     //[SerializeField] private bool _isShowCard;
     [SerializeField] private bool shootBasedOnGunDirection = false; // Chế độ bắn: true = bắn theo hướng súng, false = bắn theo hướng camera
@@ -45,6 +46,7 @@ public class WeaponController : MonoBehaviour
 
     private void Awake()
     {
+        _audioSource.volume = volume;
         instance = this;
         _bullet = bulletAndEffect._bulletPrefab[0];
         _camera = Camera.main;
@@ -298,8 +300,9 @@ public class WeaponController : MonoBehaviour
         }
         _animation["Fire"].speed = 2.0f;
         _audioSource.clip = weaponInfo.audioClip;
+        _audioSource.volume = volume;
         _audioSource.Play();
-
+        
         UICrosshairItem.Instance.Expand_Crosshair(15);
 
         PlayGunEffect();
@@ -350,7 +353,7 @@ public class WeaponController : MonoBehaviour
                 damage = weaponInfo.damage,
                 name = hit.collider.name,
             };
-            if (IsInBotLayer(hit.collider.gameObject))
+            if (IsInBotLayer(hit.collider.gameObject) || hit.collider.gameObject.layer == LayerConstants.WeakPointLayer)
             {
                 var takeDamageController = hit.transform.gameObject.GetComponent<ITakeDamage>();
                 if (takeDamageController == null)
@@ -359,7 +362,7 @@ public class WeaponController : MonoBehaviour
                 }
                 if (takeDamageController != null) takeDamageController.TakeDamage(damageInfo);
                 _effect = bulletAndEffect.EffectBullet[0];
-
+                //Debug.Log(damageType.ToString() + " " + weaponInfo.damage + " " + hit.collider.name);
             }
             else if (IsInRewardLayer(hit.collider.gameObject))
             {

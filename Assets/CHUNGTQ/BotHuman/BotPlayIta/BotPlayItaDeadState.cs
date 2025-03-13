@@ -17,7 +17,7 @@ public class BotPlayItaDeadState : BaseState<PlayItaState>, IPoolObject
 
         muzzle.SetActive(false);
         BotDeadPos = this.transform.position;
-        BotDeathHandler.Instance.OnBotDeath(BotDeadPos);
+        //BotDeathHandler.Instance.OnBotDeath(BotDeadPos);
         int indexSound = Random.Range(0, listSounDead.Length);
         AudioClip clipPlay = listSounDead[indexSound];
         //_source.clip = clipPlay;

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Weapon81
   m_EditorClassIdentifier: 
   damage: 20
-  FireRate: 0.05
-  audioClip: {fileID: 8300000, guid: 85cea5e13d8682444a59ebf9897d6104, type: 3}
+  FireRate: 0.07
+  audioClip: {fileID: 8300000, guid: 1ef63a773db50734ca59c193a58243da, type: 3}
   AudioStartBarrel: {fileID: 0}
   AudioEndBarrel: {fileID: 0}
   AudioReloadIn: {fileID: 8300000, guid: 0983aca236075a844a68a585102344bd, type: 3}

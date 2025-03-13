@@ -16,7 +16,7 @@ MonoBehaviour:
   BotName: 
   health: 1
   HealthThreshold: 0
-  WeaknessHealth: 0
+  WeaknessHealth: 1
   isCanImmortal: 0
   attackDuration: 20
   damage: 0
@@ -30,7 +30,11 @@ MonoBehaviour:
   targetRotation: 0
   turretRotation: 0
   wheelSpeed: 0
-  damageScales: []
+  damageScales:
+  - DamageType: 0
+    ScaleValue: 1
+  - DamageType: 1
+    ScaleValue: 1
   carryAttributes:
   - botConfig: {fileID: 11400000, guid: 6640d8a3c605b21489a89cf54f42bae5, type: 2}
     Quantity: 1

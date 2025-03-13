@@ -123,7 +123,7 @@ public class BotPlayItaAttackState : BaseState<PlayItaState>
     private void OnEnable()
     {
         ator.Rebind();
-
         canAttack = false;
     }
+    
 }

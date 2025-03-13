@@ -7,6 +7,7 @@ using static BotNetwork;
 public class CaculatorDamageOnBot : MonoBehaviour
 {
     [SerializeField] private Text _Dmgtxt;
+    [SerializeField] private Text _DmgtxtShadow;
     [SerializeField] private int minDamage;
     [SerializeField] private int maxDamage;
     [SerializeField] private int damageRan;
@@ -28,6 +29,7 @@ public class CaculatorDamageOnBot : MonoBehaviour
     private void ReceiverDamage(int damage)
     {
         _Dmgtxt.text = (damageRan + damage).ToString();
+        _DmgtxtShadow.text = (damageRan + damage).ToString();
     }
 
 

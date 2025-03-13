@@ -9,6 +9,7 @@ public class Parachute : MonoBehaviour, IPoolObject
 {
     [SerializeField] private BotConfigSO _botDuConfig;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip clip;
     [SerializeField] private BotNetwork botNetwork;
     [SerializeField] private LayerMask ground;
     [SerializeField] private Transform spwanPos;
@@ -49,12 +50,14 @@ public class Parachute : MonoBehaviour, IPoolObject
     private AnimationCurve originalParachuteRotaX;
     private void Awake()
     {
+        //audioSource.volume = 0.01f;
         myTrans = transform;
         originalParachuteRotaX = parachuteRotaX;
     }
 
     private void OnEnable()
     {
+        botNetwork.OnWeaknessTakeDamage += OnDamageBotDead;
         ResetState();
         RaycastHit dropPosHit;
         if (Physics.Raycast(myTrans.position + Vector3.forward * 3, Vector3.down, out dropPosHit, 300, ground))
@@ -67,12 +70,19 @@ public class Parachute : MonoBehaviour, IPoolObject
         //InitCarry();
         //ResetAnimation(); 
         botNetwork.OnBotDead += OnDead;
+
         C_MoveFirstDistance = StartCoroutine(MoveFirstDistance());
+    }
+    string botBodyName;
+    private void OnDamageBotDead(string body, int arg2)
+    {
+        botBodyName = body;
     }
 
     private void OnDisable()
     {
         botNetwork.OnBotDead -= OnDead;
+        botNetwork.OnWeaknessTakeDamage -= OnDamageBotDead;
     }
 
     protected void InitParachute()
@@ -195,7 +205,7 @@ public class Parachute : MonoBehaviour, IPoolObject
         isFallingAfterDeath = true;
         //StartCoroutine(HandleBotDie());
         float distanceToLand = myTrans.position.y - landPos.y;
-        ator.Play("DongDu");
+        body.SetActive(false);
         if (distanceToLand > dropDistanceDeath)
         {
             var damageInfo = new DamageInfo()
@@ -208,7 +218,17 @@ public class Parachute : MonoBehaviour, IPoolObject
             botDead.SetActive(true);
 
             //Debug.Log(transform.rotation);
-            audioSource.PlayOneShot(AudioManager.Instance.GetAudioHitClip());
+            if (botBodyName == "Body")
+            {
+                Debug.Log(botBodyName);
+                audioSource.PlayOneShot(AudioManager.Instance.GetAudioHitClip());
+            }
+            else
+            {
+                //Debug.Log(botBodyName);
+                audioSource.PlayOneShot(clip);
+                
+            }
             _spriteRenderer.GetComponentInChildren<ITakeDamage>()?.TakeDamage(damageInfo);
             BotDeath.Instance.GetBotDeath();
             // Bot Die
@@ -223,7 +243,6 @@ public class Parachute : MonoBehaviour, IPoolObject
         //botCarryInit.GetComponentInChildren<Animator>().runtimeAnimatorController = atorBotCarry;
 
     }
-
     IEnumerator HandleBotDie()
     {
         Debug.Log($"Bắt đầu HandleBotDie(), dropBot = {dropBot}");

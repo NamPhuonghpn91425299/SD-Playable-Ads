@@ -18,7 +18,7 @@ MonoBehaviour:
       botType: 2
       isNotUse: 0
       isNotCount: 0
-      botQuantity: 40
+      botQuantity: 2
       botDelaySpawn: 0.2
       WaitToSpawn: 0
       IsSpawmOnBotKill: 0
@@ -29,6 +29,6 @@ MonoBehaviour:
       isNotUse: 0
       rewardQuantity: 1
       RewardDelaySpawn: 0
-      WaitToSpawn: 10
+      WaitToSpawn: 5
       IsSpawmOnBotKill: 0
       BotkillSpawn: 0

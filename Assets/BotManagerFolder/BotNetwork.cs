@@ -25,7 +25,6 @@ public class BotNetwork : MonoBehaviour, ITakeDamage
     public Action<int> OnTakeDamage { get; set; }
     public static Action<int> OnReceiverDamage { get; set; }
     public Action<string, int> OnWeaknessTakeDamage { get; set; }
-
     public Action<float> OnHealthChanged { get; set; }
     public Action OnBotDead { get; set; }
     public Action<BotNetwork> OnBotNetWorkDead { get; set; }

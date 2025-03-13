@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     [FormerlySerializedAs("initBot")] public int TotalBotinConfig;
     public UIAnimSimulator uIAnimSimulator;
     public Image process;
+    public Image processTimer;
     public GameObject gameProcess;
     public Button tapToPlay;
     public Text bulletCountText; // Text UI để hiển thị số lượng đạn
@@ -30,11 +31,13 @@ public class UIManager : MonoBehaviour
     public CanvasGroup hudCanvasGroup;
     public Text timeToEndGameTxt;
     public float timeEndConfig = 30f;
+    private float totalTime;
     public Action<float> OnTimeout;
     private bool timeOut;
     [SerializeField] private float _timeDelayShowHUD = 3f;
     private float timer;
     private bool _isRocketFollow = false;
+    private bool _isPlayerDead;
     private void Awake()
     {
         Instance = this;
@@ -48,15 +51,17 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
+        totalTime = timeEndConfig;
         Time.timeScale = 0f;
         tapToPlay.onClick.AddListener(OnButtonClick);
     }
     public void SetTimeToEndGame()
     {
-        if (timeToEndGameTxt != null)
+        if (timeToEndGameTxt != null && !UIEndGame.Instance.IsShowEndGame)
         {
             timeEndConfig = Mathf.Max(0, timeEndConfig - Time.deltaTime);
             timeToEndGameTxt.text = $"TIME TO DEFENSE: {timeEndConfig:F0}s";
+            processTimer.fillAmount = Mathf.Clamp01(timeEndConfig / totalTime);
             if (!timeOut && timeEndConfig <= 0)
             {
                 timeOut = true;
@@ -91,7 +96,7 @@ public class UIManager : MonoBehaviour
         if (!UIEndGame.Instance.IsShowEndGame)
         {
             int Round = Turn + 1;
-            RoundTxt.text = "ROUND " + Round;
+            RoundTxt.text = "START";// + Round;
             //if (RoundTxtShadow) RoundTxtShadow.text = "ROUND " + Round;
             uIAnimSimulator.StartAnimateTextAppear();
             if (Round >= 2)
@@ -147,12 +152,13 @@ public class UIManager : MonoBehaviour
     }
     private void OnPlayerDead(bool isPlayerDead)
     {
+        isPlayerDead = _isPlayerDead;
         if (isPlayerDead)
         {
             playerHealth.SetActive(false);
             if (reloadButton) reloadButton.SetActive(false);
             StartCoroutine(PlayerDeadUI());
-            EventManager.Invoke(EventName.OnGameLost, isPlayerDead);
+            EventManager.Invoke(EventName.OnGameLost, _isPlayerDead);
             //this.RunOnSeconds(1f, () => hudCanvasGroup.alpha -= Time.deltaTime);
         }
 
@@ -163,6 +169,7 @@ public class UIManager : MonoBehaviour
     }
     private IEnumerator DelayHideHUD()
     {
+        
         UIEndGame.Instance.IsShowEndGame = true;
         RoundTxt.text = "YOU WIN!";
         //if (RoundTxtShadow) RoundTxtShadow.text = "YOU WIN!";
@@ -177,11 +184,11 @@ public class UIManager : MonoBehaviour
     }
     private IEnumerator PlayerDeadUI()
     {
+        EventManager.Invoke(EventName.OnGameLost, _isPlayerDead);
         UIEndGame.Instance.IsShowEndGame = true;
         RoundTxt.text = "YOU LOSE!";
         //if (RoundTxtShadow) RoundTxtShadow.text = "YOU LOSE!";
         uIAnimSimulator.StartAnimateTextAppear();
-
         yield return WaitSeconds(_timeDelayShowHUD);
         HUD.SetActive(false);
         uIAnimSimulator.StartAnimateTextAppear();
@@ -197,9 +204,13 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
-        //SetTimeToEndGame();
-        TotalBotText.text = $"{GameResultInstance.Instance.GetGameResultData().BotKillCount} / {TotalBotinConfig}";
-        process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / TotalBotinConfig);
+        SetTimeToEndGame();
+        //TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {TotalBotinConfig}";
+        TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {GameResultInstance.Instance.GetGameResultData().requiredBotKill}";
+
+        //process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / TotalBotinConfig);
+        process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / GameResultInstance.Instance.GetGameResultData().requiredBotKill);
+
     }
 
 
