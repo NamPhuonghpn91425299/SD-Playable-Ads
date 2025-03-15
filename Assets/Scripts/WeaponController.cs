@@ -83,11 +83,11 @@ public class WeaponController : MonoBehaviour
     {
 
         HandleGatlingGunRotation();
-        if (!UIEndGame.Instance.IsShowEndGame)
+        if (!UIManager.Instance.isCanTouch)
         {
             OnShooting();
         }
-        if (UIEndGame.Instance.IsShowEndGame)
+        if (UIManager.Instance.isCanTouch)
         {
             isShooting = false;
             StopGunEffect();
@@ -355,12 +355,24 @@ public class WeaponController : MonoBehaviour
             };
             if (IsInBotLayer(hit.collider.gameObject) || hit.collider.gameObject.layer == LayerConstants.WeakPointLayer)
             {
-                var takeDamageController = hit.transform.gameObject.GetComponent<ITakeDamage>();
-                if (takeDamageController == null)
+                var takeDamageControllers = hit.transform.GetComponentsInParent<ITakeDamage>().ToList();
+                takeDamageControllers.AddRange(hit.transform.GetComponentsInChildren<ITakeDamage>());
+
+                if (takeDamageControllers.Count > 0)
                 {
-                    takeDamageController = hit.transform.root.gameObject.GetComponent<ITakeDamage>();
+                    foreach (var takeDamage in takeDamageControllers)
+                    {
+                        takeDamage.TakeDamage(damageInfo);
+                        //Debug.Log($"🔥 Gây damage cho: {damageInfo.name} - {damageInfo.damage}",gameObject);
+                    }
                 }
-                if (takeDamageController != null) takeDamageController.TakeDamage(damageInfo);
+
+                //var takeDamageController = hit.transform.gameObject.GetComponent<ITakeDamage>();
+                // if (takeDamageController == null)
+                // {
+                //     takeDamageController = hit.transform.root.gameObject.GetComponent<ITakeDamage>();
+                // }
+                // if (takeDamageController != null) takeDamageController.TakeDamage(damageInfo);
                 _effect = bulletAndEffect.EffectBullet[0];
                 //Debug.Log(damageType.ToString() + " " + weaponInfo.damage + " " + hit.collider.name);
             }
@@ -377,12 +389,17 @@ public class WeaponController : MonoBehaviour
             }
             else if (IsInBotTankLayer(hit.collider.gameObject))
             {
-                var takeDamageController1 = hit.transform.gameObject.GetComponent<ITakeDamage>();
-                if (takeDamageController1 == null)
+                var takeDamageControllers = hit.transform.GetComponentsInParent<ITakeDamage>().ToList();
+                takeDamageControllers.AddRange(hit.transform.GetComponentsInChildren<ITakeDamage>());
+
+                if (takeDamageControllers.Count > 0)
                 {
-                    takeDamageController1 = hit.transform.root.gameObject.GetComponent<ITakeDamage>();
+                    foreach (var takeDamage in takeDamageControllers)
+                    {
+                        takeDamage.TakeDamage(damageInfo);
+                        //Debug.Log($"🔥 Gây damage cho1: {damageInfo.name} - {damageInfo.damage}",gameObject);
+                    }
                 }
-                if (takeDamageController1 != null) takeDamageController1.TakeDamage(damageInfo);
                 //Debug.Log(damageType.ToString() + " " + weaponInfo.damage);
                 PlayRandomAttackSound();
                 _effect = bulletAndEffect.EffectBullet[1];

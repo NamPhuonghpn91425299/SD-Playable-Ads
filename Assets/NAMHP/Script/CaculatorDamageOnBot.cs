@@ -10,7 +10,16 @@ public class CaculatorDamageOnBot : MonoBehaviour
     [SerializeField] private Text _DmgtxtShadow;
     [SerializeField] private int minDamage;
     [SerializeField] private int maxDamage;
-    [SerializeField] private int damageRan;
+    public int damageRan;
+    public int damageTotal;
+    public int damageCritical;
+    [SerializeField] private Color[] color;
+
+    private void Awake()
+    {
+        damageRan = UnityEngine.Random.Range(minDamage, maxDamage);
+    }
+
     void Start()
     {
         //BotNetwork.OnReceiverDamage += ReceiverDamage;
@@ -28,8 +37,19 @@ public class CaculatorDamageOnBot : MonoBehaviour
     }
     private void ReceiverDamage(int damage)
     {
-        _Dmgtxt.text = (damageRan + damage).ToString();
-        _DmgtxtShadow.text = (damageRan + damage).ToString();
+        damageTotal = (damageRan + damage);
+        if (damageTotal > damageCritical)
+        {
+            _Dmgtxt.color = color[0];
+            _Dmgtxt.text = damageTotal.ToString();
+            _DmgtxtShadow.text = damageTotal.ToString();
+        }
+        else
+        {
+            _Dmgtxt.color = color[1];
+            _Dmgtxt.text = damageTotal.ToString();
+            _DmgtxtShadow.text = damageTotal.ToString();
+        }
     }
 
 

@@ -23,6 +23,7 @@ public class PlayerView : MonoBehaviour
     private Quaternion originalCameraRotation;
     private Vector3 vectorCam;
     private Vector2 _previousRotate;
+    private bool isInstallFullGame = false;
 
     private void Awake()
     {
@@ -85,7 +86,12 @@ public class PlayerView : MonoBehaviour
             totalRotate += rotate;
             totalRotate.x = Mathf.Clamp(totalRotate.x, _viewHorizontalThreshold.x, _viewHorizontalThreshold.y);
             totalRotate.y = Mathf.Clamp(totalRotate.y, _viewVerticalThreshold.x, _viewVerticalThreshold.y);
-            if (!UIEndGame.Instance.IsShowEndGame)
+            // if (UIManager.Instance.isCanTouch && !isInstallFullGame)
+            // {
+            //     Luna.Unity.Playable.InstallFullGame();
+            //     isInstallFullGame = true;
+            // }
+            if (!UIManager.Instance.isCanTouch)
             {
                 if (WeaponView && WeaponTrans != null)
                 {

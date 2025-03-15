@@ -5534,6 +5534,11 @@ MonoBehaviour:
   iconDeathPrefab: {fileID: 5818606623136896815, guid: 178ee66cc61b3ee4980cc217e7647f8b, type: 3}
   botNetwork: {fileID: 5825484534827621811}
   botTransform: {fileID: 6145287161192387506}
+  minDamage: 50
+  maxDamage: 70
+  damageRan: 0
+  damageCritical: 80
+  lastDamage: 0
 --- !u!114 &5825484534827621811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5734,6 +5739,7 @@ MonoBehaviour:
   IsUserIconDeadOnBot: 0
   BotDeadPos: {x: 0, y: 0, z: 0}
   iscanMove: 0
+  deathSoundChance: 0.5
 --- !u!114 &5449615609543095297
 MonoBehaviour:
   m_ObjectHideFlags: 0

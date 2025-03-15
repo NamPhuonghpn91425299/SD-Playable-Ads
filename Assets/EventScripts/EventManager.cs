@@ -116,6 +116,7 @@ public enum EventName
     OnPlayerDead,
     OnTimeOut,
     OnTakeDameWeakPoint,
+    OnStaticBotDead,
     OnChangeWeapon,
     OnGameWon,
     OnGameLost,

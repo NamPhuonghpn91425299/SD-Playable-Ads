@@ -38,20 +38,20 @@ public class BotDeathHandler : MonoBehaviour
     public void OnBotDeath(Vector3 botPosition)
     {
         // Gán giá trị ngẫu nhiên cho pushUpDistance
-        pushUpDistance = Random.Range(minPushUpDistance, maxPushUpDistance);
-        // Chuyển đổi vị trí bot từ thế giới sang màn hình và thêm offset để biểu tượng xuất hiện trên đầu bot
-        Vector3 botHeadPosition = botPosition + Vector3.up * headOffset;
-        Vector3 screenPosition = mainCamera.WorldToScreenPoint(botHeadPosition);
-
-        // Lấy icon HeadShot từ Object Pool
-        GameObject headShotIcon = ObjectPool.Instance.PopFromPool(headShotIconPrefab, false, true, uiCanvas.transform);
-        RectTransform headShotIconTrans = headShotIcon.GetComponent<RectTransform>();
-        CanvasGroup headShotIconCVG = headShotIcon.GetComponent<CanvasGroup>();
-        StartCoroutine(OnShowIconHeadShot(headShotIconTrans, headShotIconCVG, screenPosition));
-        headShotIconTrans.position = screenPosition;
-
-        // Tùy chọn: Thêm logic để icon tự động biến mất sau một khoảng thời gian
-        StartCoroutine(ReturnIconToPool(headShotIcon, TimeDisAppear));
+        // pushUpDistance = Random.Range(minPushUpDistance, maxPushUpDistance);
+        // // Chuyển đổi vị trí bot từ thế giới sang màn hình và thêm offset để biểu tượng xuất hiện trên đầu bot
+        // Vector3 botHeadPosition = botPosition + Vector3.up * headOffset;
+        // Vector3 screenPosition = mainCamera.WorldToScreenPoint(botHeadPosition);
+        //
+        // // Lấy icon HeadShot từ Object Pool
+        // GameObject headShotIcon = ObjectPool.Instance.PopFromPool(headShotIconPrefab, false, true, uiCanvas.transform);
+        // RectTransform headShotIconTrans = headShotIcon.GetComponent<RectTransform>();
+        // CanvasGroup headShotIconCVG = headShotIcon.GetComponent<CanvasGroup>();
+        // StartCoroutine(OnShowIconHeadShot(headShotIconTrans, headShotIconCVG, screenPosition));
+        // headShotIconTrans.position = screenPosition;
+        //
+        // // Tùy chọn: Thêm logic để icon tự động biến mất sau một khoảng thời gian
+        // StartCoroutine(ReturnIconToPool(headShotIcon, TimeDisAppear));
     }
 
     private IEnumerator ReturnIconToPool(GameObject icon, float delay)

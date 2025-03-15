@@ -23,6 +23,7 @@ public class BotNetwork : MonoBehaviour, ITakeDamage
     public int currentHealth => _currentHealth;
     public bool IsImmortal => isImmortal;
     public Action<int> OnTakeDamage { get; set; }
+    public Action<int> OnLastTakeDamage { get; set; }
     public static Action<int> OnReceiverDamage { get; set; }
     public Action<string, int> OnWeaknessTakeDamage { get; set; }
     public Action<float> OnHealthChanged { get; set; }
@@ -40,7 +41,7 @@ public class BotNetwork : MonoBehaviour, ITakeDamage
         {
             mainCameraTranform = Camera.main.transform;
         }
-        OnBotDead += Die;
+
         _currentHealth = botConfigSO.health;
 
         if (healthBarTransform != null)
@@ -52,6 +53,14 @@ public class BotNetwork : MonoBehaviour, ITakeDamage
 
     }
 
+    private void OnEnable()
+    {
+        OnBotDead += Die;
+    }
+    private void OnDisable()
+    {
+        OnBotDead -= Die;
+    }
     public void Reset()
     {
         isDead = false;
@@ -116,18 +125,23 @@ public class BotNetwork : MonoBehaviour, ITakeDamage
         {
             OnWeaknessTakeDamage?.Invoke(damageInfo.name, damageInfo.damage);
         }
+
         OnReceiverDamage?.Invoke(damage);
-        //Debug.Log(gameObject.name + " -" + damage.ToString());
+        OnLastTakeDamage?.Invoke(damage);
+        Debug.Log(gameObject.name + " -" + damage.ToString() +" -" + damageInfo.damageType);
         SetHealthBar(_currentHealth);
 
         CheckImmortalStatus(); // Kiểm tra điều kiện bất tử
         if (_currentHealth <= 0)
         {
+            
             isDead = true;
             OnBotDead.Invoke();
         }
         //StartCoroutine(HideHealthBarAfterDelay());
     }
+    
+    
     public void Die()
     {
         isDead = true;

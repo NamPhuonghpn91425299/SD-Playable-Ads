@@ -12,6 +12,8 @@ public class BotPlayItaDeadState : BaseState<PlayItaState>, IPoolObject
     public bool IsUserIconDeadOnBot;
     public Vector3 BotDeadPos;
     [SerializeField] bool iscanMove = false;
+    [SerializeField] private float deathSoundChance = 0.5f;
+
     public override void EnterState()
     {
 
@@ -21,7 +23,10 @@ public class BotPlayItaDeadState : BaseState<PlayItaState>, IPoolObject
         int indexSound = Random.Range(0, listSounDead.Length);
         AudioClip clipPlay = listSounDead[indexSound];
         //_source.clip = clipPlay;
-        _source.PlayOneShot(clipPlay);
+        if (Random.value <= deathSoundChance) // Random.value trả về số từ 0 -> 1
+        {
+            _source.PlayOneShot(clipPlay);
+        }
         botNetwork.Path.IsUse = false;
         BotDeath.Instance.GetBotDeath();
         ator.SetBool("isDead", true);

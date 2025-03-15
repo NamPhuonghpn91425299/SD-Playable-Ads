@@ -1,35 +1,103 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
 public class IconEffect : MonoBehaviour,IPoolObject
 {
+    // public BotNetwork botNetwork;
     public float defaultFlyUpDistance = 5f;
     public float duration = 1f;
     public float fadeOutTime = 0.2f;
     public Vector3 startScale;
-    public Vector3 endScale;
-
+    public Vector3 endScaleNormal;
+    public Vector3 endScaleCritical;
     private Vector3 startPos;
     private Vector3 targetPos;
     private float elapsedTime;
     private CanvasGroup canvasGroup;
-
+    [SerializeField] private CaculatorDamageOnBot calculatorDamageOnBot;
+    [SerializeField] private Text _Dmgtxt;
+    [SerializeField] private Text _DmgtxtShadow;
+    //[SerializeField] private int minDamage;
+    //[SerializeField] private int maxDamage;
+    public int _damageTotal;
+    [SerializeField] private Color[] color;
+    
+    private void OnDisable()
+    {
+        // botNetwork.OnLastTakeDamage -= OnLastDamage;
+    }
+    
+    void OnLastDamage(bool isCritical,int lastDamage)
+    {
+        if (isCritical)
+        {
+            _Dmgtxt.color = color[0];
+            _Dmgtxt.text = lastDamage.ToString();
+            _DmgtxtShadow.text = lastDamage.ToString();
+        }
+        else
+        {
+            _Dmgtxt.color = color[1];
+            _Dmgtxt.text = lastDamage.ToString();
+            _DmgtxtShadow.text = lastDamage.ToString();
+        }
+    }
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    public void StartEffect(float flyDistance = -1f)
+    private void Update()
     {
+        //_damageTotal = calculatorDamageOnBot.damageTotal;
+    }
+
+    private void OnEnable()
+    {
+        // damageRan = UnityEngine.Random.Range(minDamage, maxDamage);
+        // botNetwork.OnLastTakeDamage += OnLastDamage;
+        //_damageTotal = calculatorDamageOnBot.damageTotal;
+        transform.localScale = startScale;
+        //StartEffect();
+    }
+
+    public void StartEffect(int damage, int damageCritical, float flyDistance = -1f)
+    {
+        _damageTotal = damage;
+        //Debug.Log($"Damage {_damageTotal}---",gameObject);
+        OnLastDamage(damage > damageCritical,damage);
+        // _damageTotal = calculatorDamageOnBot.damageTotal;
         if (flyDistance < 0) flyDistance = defaultFlyUpDistance;
 
         startPos = transform.position;
         targetPos = startPos + Vector3.up * flyDistance;
-        StartCoroutine(AnimateIcon());
+        if(damage > damageCritical)
+        {
+            Debug.Log($"Damage1 {damage}---{endScaleCritical}",gameObject);
+            StartEffectCritical();
+        }
+        else if(damage <= damageCritical && damageCritical > 0)
+        {
+            Debug.Log($"Damage2 {damage}---{endScaleNormal}",gameObject);
+            StartEffectNormal();
+        }
+        else
+        {
+            Debug.Log($"Damage3 {damage}---{endScaleNormal}",gameObject);
+            StartEffectNormal();
+        }
     }
-
-    private IEnumerator AnimateIcon()
+    public void StartEffectCritical()
+    {
+        StartCoroutine(AnimateIcon(endScaleCritical));
+    }
+    public void StartEffectNormal()
+    {
+        StartCoroutine(AnimateIcon(endScaleNormal));
+    }
+    private IEnumerator AnimateIcon(Vector3 endScale)
     {
         elapsedTime = 0f;
         transform.localScale = startScale;

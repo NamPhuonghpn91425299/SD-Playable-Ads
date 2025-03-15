@@ -28,7 +28,7 @@ MonoBehaviour:
       isNotUse: 0
       isNotCount: 0
       botQuantity: 20
-      botDelaySpawn: 0.3
+      botDelaySpawn: 0.2
       WaitToSpawn: 5
       IsSpawmOnBotKill: 0
       BotkillSpawn: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
       isNotUse: 0
       isNotCount: 0
       botQuantity: 30
-      botDelaySpawn: 0.4
+      botDelaySpawn: 0.3
       WaitToSpawn: 5
       IsSpawmOnBotKill: 0
       BotkillSpawn: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
       isNotUse: 0
       isNotCount: 0
       botQuantity: 20
-      botDelaySpawn: 0.4
+      botDelaySpawn: 0.3
       WaitToSpawn: 15
       IsSpawmOnBotKill: 0
       BotkillSpawn: 0

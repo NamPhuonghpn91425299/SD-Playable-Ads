@@ -53,7 +53,7 @@ public class GameResultManager : MonoBehaviour
     }
     private void OnCheckBotKill(int botKillCount)
     {
-        if (!_isShowCard && botKillCount >= gameResultData.requiredBotKill )
+        if (!_isShowCard && botKillCount >= gameResultData.requiredBotKill && !UIManager.Instance.isLoseGame)
         {
             EventManager.Invoke(EventName.OnGameWon, _isShowCard);
             OnShowEndCard();

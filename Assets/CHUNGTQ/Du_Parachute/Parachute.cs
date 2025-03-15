@@ -47,6 +47,7 @@ public class Parachute : MonoBehaviour, IPoolObject
     private float _countSwingTime;
     public float DistanceStopSwing = 1;
     [SerializeField] private bool isFallingAfterDeath = false;
+    [SerializeField] private float deathSoundChance = 0.5f; // 50% cơ hội phát âm thanh
     private AnimationCurve originalParachuteRotaX;
     private void Awake()
     {
@@ -218,17 +219,18 @@ public class Parachute : MonoBehaviour, IPoolObject
             botDead.SetActive(true);
 
             //Debug.Log(transform.rotation);
-            if (botBodyName == "Body")
-            {
-                Debug.Log(botBodyName);
-                audioSource.PlayOneShot(AudioManager.Instance.GetAudioHitClip());
-            }
-            else
-            {
-                //Debug.Log(botBodyName);
-                audioSource.PlayOneShot(clip);
-                
-            }
+                if (botBodyName == "Body")
+                {
+                    if (Random.value <= deathSoundChance) // Random.value trả về số từ 0 -> 1
+                    {
+                        audioSource.PlayOneShot(AudioManager.Instance.GetAudioHitClip());
+                    }
+                }
+                else
+                {
+                    audioSource.PlayOneShot(clip);
+                }
+
             _spriteRenderer.GetComponentInChildren<ITakeDamage>()?.TakeDamage(damageInfo);
             BotDeath.Instance.GetBotDeath();
             // Bot Die

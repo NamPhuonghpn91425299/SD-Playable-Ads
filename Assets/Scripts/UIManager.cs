@@ -32,12 +32,18 @@ public class UIManager : MonoBehaviour
     public Text timeToEndGameTxt;
     public float timeEndConfig = 30f;
     private float totalTime;
+    public float _timeEnd;
     public Action<float> OnTimeout;
     private bool timeOut;
     [SerializeField] private float _timeDelayShowHUD = 3f;
     private float timer;
     private bool _isRocketFollow = false;
     private bool _isPlayerDead;
+    public bool isLoseGame;
+    public bool isWinGame;
+    public bool isCanTouch;
+    public bool isStopGame;
+
     private void Awake()
     {
         Instance = this;
@@ -96,8 +102,8 @@ public class UIManager : MonoBehaviour
         if (!UIEndGame.Instance.IsShowEndGame)
         {
             int Round = Turn + 1;
-            RoundTxt.text = "START";// + Round;
-            //if (RoundTxtShadow) RoundTxtShadow.text = "ROUND " + Round;
+            if (RoundTxtShadow) RoundTxtShadow.text = "START!";// + Round;
+            RoundTxt.text = "START!";// + Round;
             uIAnimSimulator.StartAnimateTextAppear();
             if (Round >= 2)
             {
@@ -165,35 +171,43 @@ public class UIManager : MonoBehaviour
     }
     public void EndGame()
     {
-        StartCoroutine(DelayHideHUD());
+        if (!isLoseGame)
+        {
+            StartCoroutine(DelayHideHUD());
+        }
     }
     private IEnumerator DelayHideHUD()
     {
-        
+        isWinGame = true;
         UIEndGame.Instance.IsShowEndGame = true;
-        RoundTxt.text = "YOU WIN!";
-        //if (RoundTxtShadow) RoundTxtShadow.text = "YOU WIN!";
+        if (RoundTxtShadow) RoundTxtShadow.text = "VICTORY!";
+        RoundTxt.text = "VICTORY!";
         uIAnimSimulator.StartAnimateTextAppear();
         yield return WaitSeconds(_timeDelayShowHUD);
         HUD.SetActive(false);
         uIAnimSimulator.StartAnimateTextAppear();
         yield return null;
         UIEndGame.Instance.ShowUIEndGame();
-
-
+        uIAnimSimulator.ShowUIEndGameWin();
+        isCanTouch = true;
     }
     private IEnumerator PlayerDeadUI()
     {
+        isLoseGame = true;
+        //Debug.Log("isLoseGame");
         EventManager.Invoke(EventName.OnGameLost, _isPlayerDead);
         UIEndGame.Instance.IsShowEndGame = true;
-        RoundTxt.text = "YOU LOSE!";
-        //if (RoundTxtShadow) RoundTxtShadow.text = "YOU LOSE!";
+        yield return WaitSeconds(1f);
+        if (RoundTxtShadow) RoundTxtShadow.text = "GAME OVER!";
+        RoundTxt.text = "GAME OVER!";
         uIAnimSimulator.StartAnimateTextAppear();
         yield return WaitSeconds(_timeDelayShowHUD);
         HUD.SetActive(false);
         uIAnimSimulator.StartAnimateTextAppear();
         yield return null;
         UIEndGame.Instance.ShowEndGameLose();
+        uIAnimSimulator.StartShowUIEndGame();
+        isCanTouch = true;
     }
     private void OnTimeOut(float timer)
     {
@@ -202,12 +216,24 @@ public class UIManager : MonoBehaviour
             StartCoroutine(PlayerDeadUI());
         }
     }
+    private void StopGame()
+    {
+        if (isCanTouch && !isStopGame)
+        {
+            _timeEnd = Mathf.Max(0, _timeEnd - Time.deltaTime);
+            if (_timeEnd <= 0)
+            {
+                Time.timeScale = 0;
+                isStopGame = true;
+            }
+        }
+    }
     void Update()
     {
         SetTimeToEndGame();
+        StopGame();
         //TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {TotalBotinConfig}";
         TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {GameResultInstance.Instance.GetGameResultData().requiredBotKill}";
-
         //process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / TotalBotinConfig);
         process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / GameResultInstance.Instance.GetGameResultData().requiredBotKill);
 
