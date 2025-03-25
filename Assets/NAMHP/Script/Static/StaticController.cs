@@ -18,6 +18,11 @@ public class StaticController : MonoBehaviour, IPoolObject
 
     private void Start()
     {
+
+    }
+
+    private void OnEnable()
+    {
         model.SetActive(true);
         deathStep.SetActive(false);
         botNetwork.OnBotDead += BotDead;
@@ -63,7 +68,7 @@ public class StaticController : MonoBehaviour, IPoolObject
                 };
 
                 botNetwork.TakeDamage(damageInfo);
-                Debug.Log($"💥 Gây {explosionDamage} damage lên bot: {botNetwork.gameObject.name}");
+                //Debug.Log($"💥 Gây {explosionDamage} damage lên bot: {botNetwork.gameObject.name}");
             }
         }
     }

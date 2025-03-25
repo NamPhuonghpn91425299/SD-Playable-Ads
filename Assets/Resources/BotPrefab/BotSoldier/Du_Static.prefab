@@ -108,7 +108,7 @@ MonoBehaviour:
   dropSpeed: 16
   dropBot: 12
   dropDistanceDeath: 5
-  openParachuteDropSpeed: 1.5
+  openParachuteDropSpeed: 3
   parachuteRotaX:
     serializedVersion: 2
     m_Curve:
@@ -213,7 +213,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   DistanceStopSwing: 1.5
   isFallingAfterDeath: 0
-  deathSoundChance: 0.5
+  deathSoundChance: 0.3
   FirstDistanceFallMinMax: {x: 20, y: 24}
   HitchForceMinMax: {x: 1.25, y: 1.7}
 --- !u!1 &5013853164320273404
@@ -515,7 +515,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 935eed28b8e8efb42aee396c25b54496, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 33d854f80a3e4cb4b94f0422e12f4400, type: 2}
+      objectReference: {fileID: 2100000, guid: 6ccfa3d5ac00b574d92d2226d1ee9860, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 935eed28b8e8efb42aee396c25b54496, type: 3}
 --- !u!4 &1953331186542777405 stripped

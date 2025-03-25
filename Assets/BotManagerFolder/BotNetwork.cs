@@ -128,7 +128,7 @@ public class BotNetwork : MonoBehaviour, ITakeDamage
 
         OnReceiverDamage?.Invoke(damage);
         OnLastTakeDamage?.Invoke(damage);
-        Debug.Log(gameObject.name + " -" + damage.ToString() +" -" + damageInfo.damageType);
+        //Debug.Log(gameObject.name + " -" + damage.ToString() +" -" + damageInfo.damageType);
         SetHealthBar(_currentHealth);
 
         CheckImmortalStatus(); // Kiểm tra điều kiện bất tử

@@ -1293,7 +1293,7 @@ MonoBehaviour:
   explosion: {fileID: 8734087929489661161, guid: e0fdc1d1612531c4782fb622812db8ae, type: 3}
   model: {fileID: 4591931526526115055}
   deathStep: {fileID: 7530901240594287906}
-  explosionRadius: 6
+  explosionRadius: 7
   explosionDamage: 50
   botLayer:
     serializedVersion: 2

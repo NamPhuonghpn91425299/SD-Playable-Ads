@@ -61,6 +61,7 @@ public class PowerUpDisplay : MonoBehaviour
 
     private IEnumerator ShowEffectCollected()
     {
+        CollectedEffect[2].Stop();
         CollectedEffect[0].Play();
         yield return new WaitForSeconds(0.2f);
         OnSetEventPerRewardType();

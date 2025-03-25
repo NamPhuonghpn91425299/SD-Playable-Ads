@@ -5739,7 +5739,7 @@ MonoBehaviour:
   IsUserIconDeadOnBot: 0
   BotDeadPos: {x: 0, y: 0, z: 0}
   iscanMove: 0
-  deathSoundChance: 0.5
+  deathSoundChance: 0.3
 --- !u!114 &5449615609543095297
 MonoBehaviour:
   m_ObjectHideFlags: 0

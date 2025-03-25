@@ -10,6 +10,7 @@ public static class GameConstants
         None,
         Infantry,
         Parachutist,
+        ParachutistStatic,
         AirForce,
         AirForceDetector,
         FighterF15,
@@ -23,8 +24,7 @@ public static class GameConstants
         RapidFire,
         ChangeMachineGun,
         ChangeRocket,
-
-
+        
     }
 
 }

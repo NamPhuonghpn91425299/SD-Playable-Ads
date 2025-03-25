@@ -75,17 +75,17 @@ public class IconEffect : MonoBehaviour,IPoolObject
         targetPos = startPos + Vector3.up * flyDistance;
         if(damage > damageCritical)
         {
-            Debug.Log($"Damage1 {damage}---{endScaleCritical}",gameObject);
+            //Debug.Log($"Damage1 {damage}---{endScaleCritical}",gameObject);
             StartEffectCritical();
         }
         else if(damage <= damageCritical && damageCritical > 0)
         {
-            Debug.Log($"Damage2 {damage}---{endScaleNormal}",gameObject);
+            //Debug.Log($"Damage2 {damage}---{endScaleNormal}",gameObject);
             StartEffectNormal();
         }
         else
         {
-            Debug.Log($"Damage3 {damage}---{endScaleNormal}",gameObject);
+            //Debug.Log($"Damage3 {damage}---{endScaleNormal}",gameObject);
             StartEffectNormal();
         }
     }
