@@ -72,5 +72,5 @@ Shader "Horus/Terrain/4 Details"
         ENDCG
     }
     FallBack "Mobile/VertexLit"
-    CustomEditor "_Game.THIN.Scripts.Editor.ShaderCustomEditors.Terrain4DetailsShaderGUI"
+//    CustomEditor "_Game.THIN.Scripts.Editor.ShaderCustomEditors.Terrain4DetailsShaderGUI"
 }
