@@ -230,12 +230,12 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
-        SetTimeToEndGame();
-        StopGame();
-        //TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {TotalBotinConfig}";
-        TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {GameResultInstance.Instance.GetGameResultData().requiredBotKill}";
-        //process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / TotalBotinConfig);
-        process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / GameResultInstance.Instance.GetGameResultData().requiredBotKill);
+        //SetTimeToEndGame();
+        //StopGame();
+        TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {TotalBotinConfig}";
+        //TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {GameResultInstance.Instance.GetGameResultData().requiredBotKill}";
+        process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / TotalBotinConfig);
+        //process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / GameResultInstance.Instance.GetGameResultData().requiredBotKill);
 
     }
 
