@@ -9,13 +9,15 @@ public static class GameConstants
     {
         None,
         Infantry,
+        InfantryBrc,
         Parachutist,
         ParachutistStatic,
         AirForce,
         AirForceDetector,
         FighterF15,
         Mech_Robot,
-        Tank
+        Tank,
+        Helicopter,
     }
 
     public enum RewardType

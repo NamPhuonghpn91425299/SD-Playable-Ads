@@ -1,15 +1,16 @@
+using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BotAI : MonoBehaviour
 {
+    [SerializeField] private BotNetwork botNetwork; 
     public Transform player;
-    public Transform upperBody;
-    public Transform[] patrolPoints;
+    
     public float detectionRange = 50f;
-    public float attackRange = 30f;
     public float speed = 3f;
-    [SerializeField] private float upperBodyRotationSpeed = 5f; // Xoay lên/xuống
+    //[SerializeField] private float upperBodyRotationSpeed = 5f; // Xoay lên/xuống
     public LayerMask obstacleMask;
     public LayerMask playerMask;
 
@@ -17,133 +18,95 @@ public class BotAI : MonoBehaviour
     private BotPatrolState patrolState;
     private BotAttackState attackState;
     private BotIdleState idleState;
-    
-    public BotAttackState AttackState => attackState;
-    public BotPatrolState PatrolState => patrolState;
-    public BotIdleState IdleState => idleState;
+
+    // Thêm thời gian cần duy trì trạng thái trước khi chuyển
+    [SerializeField] private float seenTimer = 0f;
+    [SerializeField] private float unseenTimer = 0f;
+    public float stateChangeDelay = 0.2f; // Ví dụ: 0.2 giây
+    public bool canSee;
+    public bool isChangeState;
+    private void Awake()
+    {
+        botNetwork = GetComponent<BotNetwork>();
+        if (player == null)
+        {
+            player = LocalPlayer.Instance.GetTranformPlayer();
+        }
+
+    }
+
+    private void OnEnable()
+    {
+        
+    }
 
     void Start()
     {
-        // Kiểm tra và lấy các state, báo lỗi nếu không tìm thấy
-        patrolState = GetComponent<BotPatrolState>();
-        attackState = GetComponent<BotAttackState>();
-        idleState = GetComponent<BotIdleState>();
-
-        if (patrolState == null || attackState == null || idleState == null)
-        {
-            Debug.LogError("Một hoặc nhiều state chưa được gắn vào GameObject!");
-            return;
-        }
-
-        currentState = patrolState; // Mặc định là patrol
-        //StartCoroutine(CheckPlayerVisibilityRoutine()); // Kiểm tra định kỳ
+        transform.rotation = Quaternion.identity;
     }
 
     void Update()
     {
-        if (currentState != null)
+        canSee = CanSeePlayer();
+
+        // Cập nhật bộ đếm thời gian
+        if (canSee)
         {
-            currentState.UpdateState();
+            seenTimer += Time.deltaTime;
+            unseenTimer = 0f;
+        }
+        else
+        {
+            unseenTimer += Time.deltaTime;
+            seenTimer = 0f;
         }
 
-        // Kiểm tra tầm nhìn mỗi frame thay vì coroutine
-        bool canSee = CanSeePlayer();
-        if (canSee && currentState != attackState)
+        // Chỉ chuyển state khi điều kiện ổn định trong stateChangeDelay
+        if (seenTimer >= stateChangeDelay && !isChangeState)
         {
-            SetState(attackState);
+            Debug.Log("Chuyển sang trạng thái tấn công");
+            isChangeState = true;
         }
-        else if (!canSee && currentState != patrolState)
+        else if (unseenTimer >= stateChangeDelay && isChangeState)
         {
-            ResetUpperBodyRotation();
-            SetState(patrolState);
+            Debug.Log("Chuyển sang trạng thái tuần tra");
+            isChangeState = false;
         }
-
-        if (currentState == patrolState)
-        {
-            ResetUpperBodyRotation();
-        }
-
+        
     }
-    /// <summary>
-    /// Đưa upperBody về trạng thái thẳng đứng (x = 0)
-    /// </summary>
-    void ResetUpperBodyRotation()
-    {
-        if (upperBody != null)
-        {
-            //Debug.Log("Reset upper body rotation");
-            Vector3 eulerAngles = upperBody.localEulerAngles;
-            eulerAngles.x = Mathf.LerpAngle(eulerAngles.x, 0, Time.deltaTime * upperBodyRotationSpeed);
-            upperBody.localRotation = Quaternion.Euler(eulerAngles);
-        }
-    }
-    public void SetState(IBotState newState)
-    {
-        if (newState == null || newState == currentState) return;
-        currentState = newState;
+    
 
-        // Gọi EnterState() cho tất cả các state nếu có
-        if (newState is BotIdleState idle)
-        {
-            idle.EnterState();
-        }
-        else if (newState is BotPatrolState patrol)
-        {
-            patrol.EnterState();
-        }
-        else if (newState is BotAttackState attack)
-        {
-            attack.EnterState();
-        }
-    }
+    // public void SetState(IBotState newState)
+    // {
+    //     if (newState == null || newState == currentState) return;
+    //
+    //     currentState = newState;
+    //     if (newState is BotIdleState idle)
+    //         idle.EnterState();
+    //     else if (newState is BotPatrolState patrol)
+    //         patrol.EnterState();
+    //     else if (newState is BotAttackState attack)
+    //         attack.EnterState();
+    // }
 
-    IEnumerator CheckPlayerVisibilityRoutine()
-    {
-        while (true)
-        {
-            bool canSee = CanSeePlayer();
-            
-            if (canSee && currentState != attackState)
-            {
-                SetState(attackState);
-            }
-            else if (!canSee && currentState != patrolState)
-            {
-                SetState(patrolState);
-            }
-
-            yield return new WaitForSeconds(0.1f); // Kiểm tra mỗi 200ms
-        }
-    }
-
-    bool CanSeePlayer()
+    private bool CanSeePlayer()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer > detectionRange) return false;
 
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
-        Vector3 rayOrigin = transform.position + Vector3.up * 1.5f; // Đặt raycast cao hơn để tránh va chạm mặt đất
+        Vector3 rayOrigin = transform.position + Vector3.up * 1.5f;
         RaycastHit hit;
 
-        // Bắn raycast kiểm tra xem có bị chắn bởi địa hình hay không
         if (Physics.Raycast(rayOrigin, directionToPlayer, out hit, distanceToPlayer, obstacleMask | playerMask))
         {
             Debug.DrawLine(rayOrigin, hit.point, Color.blue, 0.1f);
-
-            // Nếu hit phải Player -> thấy Player -> return true
             if (((1 << hit.transform.gameObject.layer) & playerMask) != 0)
-            {
                 return true;
-            }
-
-            // Nếu không phải Player mà là vật cản (địa hình) -> return false
             return false;
         }
-
-        return false; // Nếu không có va chạm nào xảy ra, coi như không thấy Player
+        return false;
     }
-
-
 
     void OnDrawGizmos()
     {

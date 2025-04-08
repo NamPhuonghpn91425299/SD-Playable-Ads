@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90feb38dc69fbf459ba5b1300feb5af, type: 3}
+  m_Name: Du_Static
+  m_EditorClassIdentifier: 
+  id: 0
+  BotName: 
+  health: 50
+  HealthThreshold: 0
+  WeaknessHealth: 1
+  isCanImmortal: 0
+  attackDuration: 20
+  damage: 0
+  fireRate: 0
+  timeAttack: 0
+  timeReload: 0
+  botType: 4
+  Model: {fileID: 1312138446727467944, guid: 9ef9dd2c208f7f74d93d0d0f5256af38, type: 3}
+  moveSpeed: 0
+  rocketSpeed: 0
+  targetRotation: 0
+  turretRotation: 0
+  wheelSpeed: 0
+  damageScales:
+  - DamageType: 0
+    ScaleValue: 1
+  - DamageType: 1
+    ScaleValue: 1
+  carryAttributes:
+  - botConfig: {fileID: 11400000, guid: 76fb3c11f851210428ace48051c2c8c4, type: 2}
+    Quantity: 1

@@ -158,8 +158,8 @@ public class UIManager : MonoBehaviour
     }
     private void OnPlayerDead(bool isPlayerDead)
     {
-        isPlayerDead = _isPlayerDead;
-        if (isPlayerDead)
+        _isPlayerDead = isPlayerDead;
+        if (_isPlayerDead)
         {
             playerHealth.SetActive(false);
             if (reloadButton) reloadButton.SetActive(false);
@@ -194,7 +194,7 @@ public class UIManager : MonoBehaviour
     private IEnumerator PlayerDeadUI()
     {
         isLoseGame = true;
-        //Debug.Log("isLoseGame");
+        Debug.Log("isLoseGame");
         EventManager.Invoke(EventName.OnGameLost, _isPlayerDead);
         UIEndGame.Instance.IsShowEndGame = true;
         yield return WaitSeconds(1f);
@@ -231,11 +231,11 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         //SetTimeToEndGame();
-        //StopGame();
-        TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {TotalBotinConfig}";
-        //TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {GameResultInstance.Instance.GetGameResultData().requiredBotKill}";
-        process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / TotalBotinConfig);
-        //process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / GameResultInstance.Instance.GetGameResultData().requiredBotKill);
+        StopGame();
+        //TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {TotalBotinConfig}";
+        TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {GameResultInstance.Instance.GetGameResultData().requiredBotKill}";
+        //process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / TotalBotinConfig);
+        process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / GameResultInstance.Instance.GetGameResultData().requiredBotKill);
 
     }
 

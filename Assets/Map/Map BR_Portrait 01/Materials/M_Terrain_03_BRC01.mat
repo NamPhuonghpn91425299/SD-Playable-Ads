@@ -9,8 +9,6 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Terrain_03_BRC01
   m_Shader: {fileID: 4800000, guid: 81044172d054b034da77ad506abebcca, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _TOGGLE1_ON
   - _TOGGLE2_ON
@@ -22,12 +20,11 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _Base:
-        m_Texture: {fileID: 2800000, guid: 0606a88fbf594dc4e867b54be53cf9e9, type: 3}
+        m_Texture: {fileID: 2800000, guid: f30a91b9ed8cfa84f9d27844fb3e5503, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -71,15 +68,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Tex1:
-        m_Texture: {fileID: 2800000, guid: 6aa2a5e8a6f9d0a4fbda1c7d6cb8dd71, type: 3}
+        m_Texture: {fileID: 2800000, guid: b51f50ceb7ef5e349a5413ab2d1a1c12, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Tex2:
-        m_Texture: {fileID: 2800000, guid: e6b9755ad8acb7248bc9c7a8c1ba815b, type: 3}
+        m_Texture: {fileID: 2800000, guid: d507f52a62803844fa7d1706e2accd21, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Tex3:
-        m_Texture: {fileID: 2800000, guid: 962d6b1de9e854e469075a1bf91c24a8, type: 3}
+        m_Texture: {fileID: 2800000, guid: d507f52a62803844fa7d1706e2accd21, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Tex4:
