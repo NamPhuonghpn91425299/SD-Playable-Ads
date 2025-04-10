@@ -20,7 +20,7 @@ public class BrcPlayitaMoveState : BaseState<BrcPlayitaState>
     private bool isIdle = false; // Trạng thái dừng lại tại điểm tuần tra
     [SerializeField] private bool isAttack = false; // Trạng thái dừng lại tại điểm tuần tra
     private float currentMoveValue = 0f;
-    private float velocity = 0f; 
+    private float velocity = 0f;
     [SerializeField] private float smoothTime = 0.2f;
     private void Awake()
     {
@@ -31,6 +31,7 @@ public class BrcPlayitaMoveState : BaseState<BrcPlayitaState>
     {
         RandomIdleTimer();
         animator.SetBool("isIdle", false);
+        animator.Play("Move 0");
         moveHash = Animator.StringToHash("Move");
         idleTimer = 0f;
         isIdle = false; // Reset trạng thái khi vào PatrolState
@@ -106,7 +107,7 @@ public class BrcPlayitaMoveState : BaseState<BrcPlayitaState>
     }
     public override void ExitState()
     {
-        
+
     }
 
     public override BrcPlayitaState GetNextState()

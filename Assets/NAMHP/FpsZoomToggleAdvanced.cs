@@ -6,6 +6,9 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
 {
     public Camera playerCamera;
     public Camera weaponCamera;
+    [SerializeField] private GameObject crosshair; // Kéo thả crosshair từ Hierarchy vào đây
+    [SerializeField] private Button zoomButton; // Kéo thả Button từ Hierarchy vào đây
+    public Image scopeIcon;         // Kéo thả Image hiển thị icon zoom
     public Image zoomIcon;         // Kéo thả Image hiển thị icon zoom
     public Sprite[] zoomSprites;   // Mảng chứa 2 sprite: [0] = zoom out icon, [1] = zoom in icon
     public Slider zoomLevelSlider; // Kéo thả Slider từ Hierarchy
@@ -13,11 +16,11 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
     public Text sliderValueText; // Kéo thả Text hiển thị giá trị slider từ Hierarchy vào đây
     [Header("FOV Settings")]
     public float defaultFOV = 50f;        // FOV khi không zoom
-    public float weaponFOV = 45f;        
+    public float weaponFOV = 45f;
     public float minZoomFOV = 20f;        // FOV nhỏ nhất (zoom tối đa, khi vừa nhấn nút hoặc slider ở mức max zoom)
     public float maxZoomedInFOV = 40f;    // FOV lớn nhất khi đang zoom (khi kéo slider xuống mức min zoom)
-    public float minZoom = 0f;        
-    public float maxZoom = 4f;    
+    public float minZoom = 0f;
+    public float maxZoom = 4f;
     public float zoomSpeed = 10f;         // Tốc độ chuyển đổi FOV
     public float displayIntegerTolerance = 0.01f; // Ngưỡng để coi là số nguyên
     private float targetFOV;
@@ -25,6 +28,7 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
     private bool isZoomedIn = false;
     void Start()
     {
+        zoomButton.onClick.AddListener(ToggleZoom); // Đăng ký sự kiện cho nút zoom
         if (playerCamera == null) playerCamera = Camera.main;
         // Validate FOV settings
         if (minZoomFOV >= maxZoomedInFOV)
@@ -34,8 +38,8 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
         }
         if (maxZoomedInFOV >= defaultFOV)
         {
-             Debug.LogWarning("maxZoomedInFOV should ideally be less than defaultFOV. Adjusting maxZoomedInFOV.");
-             maxZoomedInFOV = defaultFOV - 1f; // Đảm bảo zoom luôn hẹp hơn default
+            Debug.LogWarning("maxZoomedInFOV should ideally be less than defaultFOV. Adjusting maxZoomedInFOV.");
+            maxZoomedInFOV = defaultFOV - 1f; // Đảm bảo zoom luôn hẹp hơn default
         }
         minZoomFOV = Mathf.Max(1f, minZoomFOV); // Đảm bảo FOV không quá nhỏ
         maxZoomedInFOV = Mathf.Clamp(maxZoomedInFOV, minZoomFOV, defaultFOV); // Ràng buộc hợp lý
@@ -61,6 +65,8 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
             zoomIcon.sprite = zoomSprites[0]; // Icon zoom out mặc định
         }
         sliderActiveBorder.enabled = false;
+        scopeIcon.enabled = false; // Ẩn icon scope nếu không cần thiết
+        crosshair.SetActive(true); // Hiện crosshair mặc định
     }
 
     // Hàm được gọi bởi sự kiện onValueChanged của Slider *CHỈ KHI* đang zoom
@@ -99,6 +105,8 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
 
         if (isZoomedIn) // --- Vừa BẬT zoom ---
         {
+            crosshair.SetActive(false); // Ẩn crosshair khi zoom
+            scopeIcon.enabled = true; // Hiện icon scope
             // 1. Đặt mục tiêu là FOV zoom tối đa ban đầu
             targetFOV = minZoomFOV;
             weapontFOV = weaponFOV;
@@ -112,10 +120,12 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
         }
         else // --- Vừa TẮT zoom ---
         {
+            crosshair.SetActive(true); // Hiện lại crosshair khi tắt zoom
+            scopeIcon.enabled = false; // Ẩn icon scope
             targetFOV = defaultFOV;
             weapontFOV = defaultFOV;
             Debug.Log("Zoom OUT activated. Target FOV: " + targetFOV);
-            
+
             if (zoomIcon != null && zoomSprites != null && zoomSprites.Length > 0)
             {
                 zoomIcon.sprite = zoomSprites[0]; // Icon zoom out
@@ -138,7 +148,7 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
         }
     }
 
-        // Hàm này sẽ được gọi khi người dùng thả chuột LÊN sau khi nhấn trên slider
+    // Hàm này sẽ được gọi khi người dùng thả chuột LÊN sau khi nhấn trên slider
     public void OnSliderPointerUp()
     {
         // Luôn ẩn viền khi thả chuột

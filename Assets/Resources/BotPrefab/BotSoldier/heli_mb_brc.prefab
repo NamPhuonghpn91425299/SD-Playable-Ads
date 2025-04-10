@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 279248648233599149}
   - component: {fileID: 42112528287387930}
   - component: {fileID: 42112528287387933}
-  m_Layer: 25
+  m_Layer: 7
   m_Name: Brake_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14912,7 +14912,7 @@ GameObject:
   - component: {fileID: 2335096400993148299}
   - component: {fileID: 984488917144602344}
   - component: {fileID: 984488917144602347}
-  m_Layer: 25
+  m_Layer: 7
   m_Name: Brake_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24904,7 +24904,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 12, y: 2, z: 2}
   m_Center: {x: -1.05, y: 1.9926952, z: 1.127062e-15}
 --- !u!65 &911288714605330793
 BoxCollider:
@@ -24917,7 +24917,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 2, y: 2, z: 6.68}
   m_Center: {x: -1.69, y: 2.0951173, z: 5.5005168e-15}
 --- !u!65 &1048376641547202204
 BoxCollider:
@@ -24943,8 +24943,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: -1.9, y: 1.87, z: 4.279961e-15}
+  m_Size: {x: 0.75, y: 1.85, z: 0.75}
+  m_Center: {x: -1.978854, y: 4.2951317, z: -6.2705883e-15}
 --- !u!1 &1221791005291890344
 GameObject:
   m_ObjectHideFlags: 0
@@ -29939,7 +29939,7 @@ GameObject:
   - component: {fileID: 872950261876809390}
   - component: {fileID: 1749594478214929920}
   - component: {fileID: 1749594478214929923}
-  m_Layer: 25
+  m_Layer: 7
   m_Name: Brake_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54821,7 +54821,7 @@ GameObject:
   - component: {fileID: 5924528755613554306}
   - component: {fileID: 2486391393471315594}
   - component: {fileID: 2486391393471315597}
-  m_Layer: 25
+  m_Layer: 7
   m_Name: Brake_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59838,7 +59838,7 @@ GameObject:
   - component: {fileID: 21484481946798242}
   - component: {fileID: 3347478777402673073}
   - component: {fileID: 3347478777402673072}
-  m_Layer: 25
+  m_Layer: 7
   m_Name: Brake_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59952,7 +59952,7 @@ GameObject:
   - component: {fileID: 2665272627868166623}
   - component: {fileID: 4762736932318970406}
   - component: {fileID: 4762736932318970425}
-  m_Layer: 25
+  m_Layer: 7
   m_Name: Brake_09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64930,7 +64930,7 @@ GameObject:
   - component: {fileID: 5778668162975754866}
   - component: {fileID: 5670345924713330570}
   - component: {fileID: 5670345924713330573}
-  m_Layer: 25
+  m_Layer: 7
   m_Name: Brake_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65106,7 +65106,7 @@ GameObject:
   - component: {fileID: 5677587268490424224}
   - component: {fileID: 6101479694007850587}
   - component: {fileID: 6101479694007850586}
-  m_Layer: 25
+  m_Layer: 7
   m_Name: Brake_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74942,7 +74942,7 @@ GameObject:
   - component: {fileID: 8376551487898876914}
   - component: {fileID: 7228474480876080454}
   - component: {fileID: 7228474480876080473}
-  m_Layer: 25
+  m_Layer: 7
   m_Name: Brake_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84950,7 +84950,7 @@ GameObject:
   - component: {fileID: 7077755879577752453}
   - component: {fileID: 7964220095413531059}
   - component: {fileID: 7964220095413531058}
-  m_Layer: 25
+  m_Layer: 7
   m_Name: Brake_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85095,7 +85095,7 @@ GameObject:
   - component: {fileID: 460895896616154875}
   - component: {fileID: 8860632902382054448}
   - component: {fileID: 8860632902382054451}
-  m_Layer: 25
+  m_Layer: 7
   m_Name: Brake_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85206,6 +85206,10 @@ PrefabInstance:
     - target: {fileID: 5229931414743416024, guid: 76fadd0db68b2aa46b8ed1fbe51af056, type: 3}
       propertyPath: m_Name
       value: Canvas_Indicator
+      objectReference: {fileID: 0}
+    - target: {fileID: 5229931414743416024, guid: 76fadd0db68b2aa46b8ed1fbe51af056, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5229931414743416025, guid: 76fadd0db68b2aa46b8ed1fbe51af056, type: 3}
       propertyPath: m_Pivot.x
@@ -85328,6 +85332,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5497331002681122818, guid: 76fadd0db68b2aa46b8ed1fbe51af056, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497331002681122818, guid: 76fadd0db68b2aa46b8ed1fbe51af056, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -85367,6 +85375,10 @@ PrefabInstance:
     - target: {fileID: 40291051453797122, guid: 9343b83da6ff8a54c87ad5d62263cce4, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 64896296179308156, guid: 9343b83da6ff8a54c87ad5d62263cce4, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 159422584033119955, guid: 9343b83da6ff8a54c87ad5d62263cce4, type: 3}
       propertyPath: m_RootOrder
@@ -85412,13 +85424,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2018074838598418108, guid: 9343b83da6ff8a54c87ad5d62263cce4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6345449333437001367, guid: 9343b83da6ff8a54c87ad5d62263cce4, type: 3}
       propertyPath: m_Name
       value: healthBarImage
       objectReference: {fileID: 0}
+    - target: {fileID: 6345449333437001367, guid: 9343b83da6ff8a54c87ad5d62263cce4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6837306667635309785, guid: 9343b83da6ff8a54c87ad5d62263cce4, type: 3}
       propertyPath: m_FillAmount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8187314462144705130, guid: 9343b83da6ff8a54c87ad5d62263cce4, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9343b83da6ff8a54c87ad5d62263cce4, type: 3}
