@@ -128,6 +128,6 @@ MonoBehaviour:
       isNotUse: 0
       rewardQuantity: 1
       RewardDelaySpawn: 0
-      WaitToSpawn: 5
+      WaitToSpawn: 7
       IsSpawmOnBotKill: 0
       BotkillSpawn: 0
