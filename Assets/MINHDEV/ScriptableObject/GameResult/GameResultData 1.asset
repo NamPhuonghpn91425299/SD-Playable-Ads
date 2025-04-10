@@ -20,4 +20,4 @@ MonoBehaviour:
   IsCountLandingBot: 0
   BotKillCount: 0
   IsCountBotKill: 1
-  requiredBotKill: 12
+  requiredBotKill: 13

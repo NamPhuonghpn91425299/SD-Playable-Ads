@@ -342,8 +342,8 @@ public class WeaponController : MonoBehaviour
 
     private bool IsInConcreteLayer(GameObject obj)
     {
-        Debug.Log("Object Layer: " + obj.layer);
-        Debug.Log("Concrete Layer Mask: " + concreteLayerMask.value);
+        //Debug.Log("Object Layer: " + obj.layer);
+        //Debug.Log("Concrete Layer Mask: " + concreteLayerMask.value);
         return ((1 << obj.layer) & concreteLayerMask) != 0;
     }
 

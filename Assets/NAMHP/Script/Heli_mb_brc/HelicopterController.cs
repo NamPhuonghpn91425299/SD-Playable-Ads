@@ -13,6 +13,7 @@ public class HelicopterController : MonoBehaviour,IPoolObject
     [SerializeField] private Transform mainBody;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private GameObject helicopterEffect;
+    [SerializeField] private GameObject explosionEffect;
     [SerializeField] private GameObject[] deadStep;
     [SerializeField] private HelicopterRocketAttack rocketAttack; 
     public bool isAttacking;
@@ -24,8 +25,8 @@ public class HelicopterController : MonoBehaviour,IPoolObject
     [SerializeField] private float minLiftSpeed = 1500f;
     
     [Header("Movement Settings")]
-    [SerializeField] public float maxHeight = 20f;
-    [SerializeField] private float liftSpeed = 5f;
+    [SerializeField] public float maxHeight = 25f;
+    [SerializeField] private float liftSpeed = 6f;
     [SerializeField] private float forwardSpeed = 10f;
     [SerializeField] private float takeoffPitchAngle = -15f;
     [SerializeField] private float forwardPitchAngle = 10f;
@@ -37,12 +38,12 @@ public class HelicopterController : MonoBehaviour,IPoolObject
     [SerializeField] private float deadPositionY = 3f; // Vị trí Y để xác định trạng thái chết
     // Các biến tùy chỉnh giá trị chuyển trạng thái
     [Header("TakeOff & Altitude Settings")]
-    [SerializeField] private float takeoffTransitionHeight = 10f; // Độ cao chuyển từ TakeOff sang ReachingAltitude
-    [SerializeField] private float takeoffTiltThreshold = 28f;    // Ngưỡng độ cao để chuyển đổi góc trong TakeOff
+    [SerializeField] private float takeoffTransitionHeight = 15f; // Độ cao chuyển từ TakeOff sang ReachingAltitude
+    [SerializeField] private float takeoffTiltThreshold = 24f;    // Ngưỡng độ cao để chuyển đổi góc trong TakeOff
     
     [Header("Banking Settings")]
     [SerializeField] private float maxBankAngle = 20f; // Góc nghiêng tối đa (trục Z)
-    [SerializeField] private float maxAngle = 100f; // Góc nghiêng tối đa (trục Z)
+    [SerializeField] private float maxAngle = 150f; // Góc nghiêng tối đa (trục Z)
     [SerializeField] private float setAngleY = 45f;
     
     // Waypoints và theo dõi trạng thái
@@ -67,10 +68,10 @@ public class HelicopterController : MonoBehaviour,IPoolObject
         Attacking,
         Dead
     }
-
-    private void Awake()
+        private void Awake()
     {
-        //botNetwork = GetComponent<BotNetwork>();
+        botNetwork = GetComponent<BotNetwork>();
+        waypoints = botNetwork.Path.AttackWayPoints;
     }
 
     private void OnEnable()
@@ -93,212 +94,96 @@ public class HelicopterController : MonoBehaviour,IPoolObject
 
     public void OnDeath()
     {
-        isDead = true;
-        isAttacking = false;
+
         rocketAttack.StopAttack();
         currentState = HelicopterState.Dead;
+        deadStep[1].transform.SetParent(null);
         BotDeath.Instance.GetBotDeath();
+        // gọi vụ nổ
+        GameObject explosion = ObjectPool.Instance.PopFromPool(explosionEffect, instantiateIfNone: true);
+        explosion.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+        
     }
-    // private void Update()
-    // {
-    //     // Nếu trực thăng đã chết, không xử lý gì thêm
-    //     if (isDead)
-    //     {
-    //         currentState = HelicopterState.Dead;
-    //     }
-    //     // Xử lý trạng thái hiện tại
-    //     switch (currentState)
-    //     {
-    //         case HelicopterState.Idle:
-    //             idleTimer += Time.deltaTime;
-    //             if (idleTimer >= idleDuration)
-    //             {
-    //                 currentState = HelicopterState.StartingRotors;
-    //                 idleTimer = 0f; // Reset lại timer
-    //             }
-    //             break;
-    //         
-    //         case HelicopterState.StartingRotors:
-    //             // Tăng tốc cánh quạt dần dần
-    //             SpinRotors();
-    //             helicopterEffect.SetActive(true);
-    //             // Kiểm tra nếu đạt vận tốc cất cánh
-    //             if (currentRotorSpeed >= minLiftSpeed)
-    //             {
-    //                 currentState = HelicopterState.TakeOff;
-    //             }
-    //             break;
-    //             
-    //         case HelicopterState.TakeOff:
-    //             // Duy trì tốc độ cánh quạt
-    //             SpinRotors();
-    //             helicopterEffect.SetActive(true);    
-    //             // Ngẩng đầu lên và bắt đầu cất cánh
-    //             TakeOff();
-    //             
-    //             // Kiểm tra nếu đã cất cánh thành công
-    //             if (transform.position.y > takeoffTransitionHeight)
-    //             {
-    //                 currentState = HelicopterState.ReachingAltitude;
-    //             }
-    //             break;
-    //             
-    //         case HelicopterState.ReachingAltitude:
-    //             // Duy trì tốc độ cánh quạt
-    //             SpinRotors();
-    //             helicopterEffect.SetActive(true);
-    //             // Bay lên đến độ cao mục tiêu
-    //             ReachAltitude();
-    //             
-    //             // Kiểm tra nếu đạt độ cao mục tiêu
-    //             if (transform.position.y >= maxHeight)
-    //             {
-    //                 currentState = HelicopterState.Flying;
-    //             }
-    //             break;
-    //             
-    //         case HelicopterState.Flying:
-    //             // Duy trì tốc độ cánh quạt
-    //             SpinRotors();
-    //             helicopterEffect.SetActive(false);
-    //             // Bay đến waypoint
-    //             FlyToWaypoint();
-    //             break;
-    //             
-    //         case HelicopterState.Hovering:
-    //             // Duy trì tốc độ cánh quạt và hover
-    //             SpinRotors();
-    //             Hover();
-    //             break;
-    //         case HelicopterState.Attacking:
-    //             // Duy trì tốc độ cánh quạt và tấn công
-    //             SpinRotors();
-    //             // Attack logic here
-    //             Attacking();
-    //             break;
-    //         case HelicopterState.Dead:
-    //             // Duy trì tốc độ cánh quạt và xử lý trạng thái chết
-    //             SpinRotors();
-    //             HandleDeadState();
-    //             break;
-    //     }
-    // }
-    
-    // Xử lý quay cánh quạt
+
     private void Update()
     {
-        // Nếu trực thăng đã chết, chuyển ngay về trạng thái Dead
-        // if (isDead)
-        // {
-        //     currentState = HelicopterState.Dead;
-        // }
-        ChangeState();
-
-    }
-    private void ChangeState()
-    {
-        // Xử lý theo từng trạng thái riêng biệt
+        // Xử lý trạng thái hiện tại
         switch (currentState)
         {
             case HelicopterState.Idle:
-                HandleIdle();
+                idleTimer += Time.deltaTime;
+                if (idleTimer >= idleDuration)
+                {
+                    currentState = HelicopterState.StartingRotors;
+                    idleTimer = 0f; // Reset lại timer
+                }
                 break;
-
+            
             case HelicopterState.StartingRotors:
-                HandleStartingRotors();
+                // Tăng tốc cánh quạt dần dần
+                SpinRotors();
+                helicopterEffect.SetActive(true);
+                // Kiểm tra nếu đạt vận tốc cất cánh
+                if (currentRotorSpeed >= minLiftSpeed)
+                {
+                    currentState = HelicopterState.TakeOff;
+                }
                 break;
-
+                
             case HelicopterState.TakeOff:
-                HandleTakeOff();
+                // Duy trì tốc độ cánh quạt
+                SpinRotors();
+                helicopterEffect.SetActive(true);    
+                // Ngẩng đầu lên và bắt đầu cất cánh
+                TakeOff();
+                
+                // Kiểm tra nếu đã cất cánh thành công
+                if (transform.position.y > takeoffTransitionHeight)
+                {
+                    currentState = HelicopterState.ReachingAltitude;
+                }
                 break;
-
+                
             case HelicopterState.ReachingAltitude:
-                HandleReachingAltitude();
+                // Duy trì tốc độ cánh quạt
+                SpinRotors();
+                helicopterEffect.SetActive(true);
+                // Bay lên đến độ cao mục tiêu
+                ReachAltitude();
+                
+                // Kiểm tra nếu đạt độ cao mục tiêu
+                if (transform.position.y >= maxHeight)
+                {
+                    currentState = HelicopterState.Flying;
+                }
                 break;
-
+                
             case HelicopterState.Flying:
-                HandleFlying();
+                // Duy trì tốc độ cánh quạt
+                SpinRotors();
+                helicopterEffect.SetActive(false);
+                // Bay đến waypoint
+                FlyToWaypoint();
                 break;
-
+                
             case HelicopterState.Hovering:
-                HandleHovering();
+                // Duy trì tốc độ cánh quạt và hover
+                SpinRotors();
+                Hover();
                 break;
-
             case HelicopterState.Attacking:
-                HandleAttacking();
+                // Duy trì tốc độ cánh quạt và tấn công
+                SpinRotors();
+                // Attack logic here
+                Attacking();
                 break;
-
             case HelicopterState.Dead:
                 HandleDeadState();
                 break;
         }
     }
-    private void HandleIdle()
-    {
-        idleTimer += Time.deltaTime;
-        if (idleTimer >= idleDuration)
-        {
-            currentState = HelicopterState.StartingRotors;
-            idleTimer = 0f; // Reset lại timer
-        }
-    }
-
-    private void HandleStartingRotors()
-    {
-        SpinRotors();
-        helicopterEffect.SetActive(true);
-        helicopterEffect.transform.SetParent(null);
-        if (currentRotorSpeed >= minLiftSpeed)
-        {
-            currentState = HelicopterState.TakeOff;
-        }
-    }
-
-    private void HandleTakeOff()
-    {
-        SpinRotors();
-        helicopterEffect.SetActive(true);
-        TakeOff();
-
-        if (transform.position.y > takeoffTransitionHeight)
-        {
-            currentState = HelicopterState.ReachingAltitude;
-        }
-    }
-
-    private void HandleReachingAltitude()
-    {
-        SpinRotors();
-        helicopterEffect.SetActive(true);
-        ReachAltitude();
-
-        if (transform.position.y >= maxHeight)
-        {
-            currentState = HelicopterState.Flying;
-        }
-    }
-
-    private void HandleFlying()
-    {
-        SpinRotors();
-        helicopterEffect.SetActive(false);
-        helicopterEffect.transform.SetParent(this.transform);
-        FlyToWaypoint();
-    }
-
-    private void HandleHovering()
-    {
-        SpinRotors();
-        Hover();
-    }
-
-    private void HandleAttacking()
-    {
-        SpinRotors();
-        // Thực hiện các logic tấn công
-        Attacking();
-    }
-
+    
+    // Xử lý quay cánh quạt
     private void SpinRotors()
     {
         // Tăng tốc độ cánh quạt dần dần
@@ -416,62 +301,19 @@ public class HelicopterController : MonoBehaviour,IPoolObject
             // Nếu đang tấn công, không cần hover
             return;
         }
-        // // Lấy vị trí của player (giả sử player có tag "Player")
-        //
-        // if (playerTransform == null) return;
-        //
-        // // Tính toán hướng di chuyển theo mặt phẳng ngang (x,z)
-        // Vector3 directionToPlayer = playerTransform.transform.position - transform.position;
-        // Vector3 horizontalDirection = new Vector3(directionToPlayer.x, 0, directionToPlayer.z);
-        //
-        // if (horizontalDirection != Vector3.zero)
-        // {
-        //     // Tính toán hướng xoay mục tiêu (yaw) theo mặt phẳng ngang
-        //     Quaternion targetYawRotation = Quaternion.LookRotation(horizontalDirection);
-        //     transform.rotation = Quaternion.Slerp(transform.rotation, targetYawRotation, turnSpeed * Time.deltaTime);
-        //
-        //     // Tính góc chênh lệch giữa hướng hiện tại và hướng mục tiêu
-        //     float angleDifference = Vector3.SignedAngle(transform.forward, horizontalDirection, Vector3.up);
-        //
-        //     // Tính góc banking mong muốn: nếu rẽ thì trực thăng sẽ nghiêng theo hướng rẽ
-        //     // Dấu âm để nghiêng về phía bên ngoài của vòng cung
-        //     float targetBankAngle = Mathf.Clamp(-angleDifference, -maxBankAngle, maxBankAngle);
-        //
-        //     // Lấy giá trị Euler hiện tại của mainBody để điều chỉnh trục Z (bank)
-        //     Vector3 mainBodyEuler = mainBody.transform.eulerAngles;
-        //     mainBodyEuler.z = Mathf.LerpAngle(mainBodyEuler.z, targetBankAngle, turnSpeed * Time.deltaTime);
-        //     mainBody.transform.eulerAngles = mainBodyEuler;
-        // }
-        //
-        // // Giữ độ cao bằng cách thêm dao động nhỏ để giống thật
-        // float heightOffset = Mathf.Sin(Time.time) * 0.1f;
-        // transform.Translate(Vector3.up * heightOffset * Time.deltaTime, Space.World);
     }
-    
 
-    private void Attacking()
-    {
-        if (isAttacking && !isAttacked)
-        {
-            isAttacked = true;
-            // Bắt đầu tấn công
-            rocketAttack.StartAttack();
-        }
-        else if (!isAttacking && isAttacked)
-        {
-            isAttacked = false;
-            // Dừng tấn công
-            rocketAttack.StopAttack();
-        }
-    }
     private void HandleDeadState()
     {
-
+        isDead = true;
+        isAttacking = false;
         helicopterEffect.SetActive(false);
         deadStep[1].SetActive(true);
-        deadStep[1].transform.SetParent(null);
         mainBody.gameObject.SetActive(false);
-        Invoke(nameof(DisableHelicopter), 2f);
+        if (isDead)
+        {
+            Invoke(nameof(DisableHelicopter), 4f);
+        }
         // // Thêm logic cho trạng thái chết, ví dụ: phát nổ, rơi xuống, v.v.
         // // Ví dụ: làm cho trực thăng rơi xuống
         // transform.Translate(Vector3.down * liftSpeed * Time.deltaTime, Space.World);
@@ -497,8 +339,9 @@ public class HelicopterController : MonoBehaviour,IPoolObject
     }
     private void DisableHelicopter()
     {
-        deadStep[1].transform.SetParent(this.transform);
+
         ObjectPool.Instance.PushToPool(this, gameObject);
+        deadStep[1].transform.SetParent(mainBody.transform);
         isDead = false;
         currentState = HelicopterState.Idle;
         currentWaypointIndex = 0;
@@ -510,7 +353,33 @@ public class HelicopterController : MonoBehaviour,IPoolObject
         deadStep[1].SetActive(false);
         deadStep[0].SetActive(false);
     }
-    
+    private void Attacking()
+    {
+        if (isAttacking && !isAttacked)
+        {
+            isAttacked = true;
+            // Bắt đầu tấn công
+            rocketAttack.StartAttack();
+        }
+        else if (!isAttacking && isAttacked)
+        {
+            isAttacked = false;
+            // Dừng tấn công
+            rocketAttack.StopAttack();
+        }
+    }
+
+    public GameObject Prefab { get; set; }
+    public void Init()
+    {
+        
+    }
+
+    public void OnPushToPool()
+    {
+
+    }
+}
 #if UNITY_EDITOR
     [CustomEditor(typeof(HelicopterController))]
     public class HelicopterControllerEditor : Editor
@@ -525,21 +394,6 @@ public class HelicopterController : MonoBehaviour,IPoolObject
             {
                 helicopterController.OnDeath();
             }
-            if (GUILayout.Button("Stop Attack"))
-            {
-                helicopterController.rocketAttack.StopAttack();
-            }
         }
     }
 #endif
-    public GameObject Prefab { get; set; }
-    public void Init()
-    {
-        
-    }
-
-    public void OnPushToPool()
-    {
-        
-    }
-}

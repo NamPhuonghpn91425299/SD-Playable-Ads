@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,8 +35,13 @@ public class HelicopterDebugVisualizer : MonoBehaviour
     [SerializeField] private Font customFont;
 
     // Reference to the helicopter's waypoints
-    private List<Transform> waypoints;
+    [SerializeField] private List<Transform> waypoints;
     private int currentWaypointIndex = 0;
+
+    private void Awake()
+    {
+        waypoints = helicopterController.waypoints;
+    }
 
     private void Start()
     {

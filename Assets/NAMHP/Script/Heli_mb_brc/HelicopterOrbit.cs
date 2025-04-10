@@ -140,7 +140,7 @@ public class HelicopterOrbit : MonoBehaviour
     {
         // Lấy chỉ số waypoint hiện tại từ HelicopterController
         int currentWaypointIndexFromController = helicopterController.currentWaypointIndex;
-
+        
         // Nếu chỉ số waypoint lấy từ controller >= tổng số waypoint, tức là đã đi hết
         if (currentWaypointIndexFromController >= waypointsCount)
         {
