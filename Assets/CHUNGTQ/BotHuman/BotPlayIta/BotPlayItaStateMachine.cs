@@ -31,6 +31,7 @@ public class BotPlayItaStateMachine : MonoBehaviour
         _botPlayItaAttackState = GetComponent<BotPlayItaAttackState>();
         _botPlayItaAttackState.Initialize(PlayItaState.Attack);
 
+        
         _botPlayItaDeadState = GetComponent<BotPlayItaDeadState>();
         _botPlayItaDeadState.Initialize(PlayItaState.Dead);
 

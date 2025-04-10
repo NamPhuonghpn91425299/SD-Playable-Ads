@@ -91600,7 +91600,7 @@ MonoBehaviour:
   ContentCanvasGroup: {fileID: 5556444928071340152}
   rewardValue: 0
   rotationSpeed: 200
-  initialYPosition: 3
+  initialYPosition: 5
   moveDuration: 1
   displayDuration: 1.5
   moveStartEndPositions: {x: 0.7, y: 1.7}

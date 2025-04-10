@@ -7,6 +7,7 @@ public class LocalPlayer : MonoBehaviour
     public static LocalPlayer Instance;
     public Transform  _localPlayer;
     public Transform _posExplosion;
+    public Transform centerTower;
 
     private void Awake()
     {
@@ -20,5 +21,13 @@ public class LocalPlayer : MonoBehaviour
     public Transform GetTranformPlayer()
     {
         return _localPlayer;
+    } 
+    public Transform GetTranExplosion()
+    {
+        return _posExplosion;
+    }    
+    public Transform GetTranCenter()
+    {
+        return centerTower;
     }
 }

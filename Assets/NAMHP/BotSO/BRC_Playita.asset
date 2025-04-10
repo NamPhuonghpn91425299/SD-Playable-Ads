@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d90feb38dc69fbf459ba5b1300feb5af, type: 3}
-  m_Name: Du_Playita
+  m_Name: BRC_Playita
   m_EditorClassIdentifier: 
-  id: 0
+  id: 100
   BotName: 
-  health: 1
+  health: 20
   HealthThreshold: 0
-  WeaknessHealth: 1
+  WeaknessHealth: 0
   isCanImmortal: 0
-  attackDuration: 20
-  damage: 0
-  fireRate: 0
-  timeAttack: 0
-  timeReload: 0
+  attackDuration: 2
+  damage: 1
+  fireRate: 2
+  timeAttack: 3
+  timeReload: 3
   botType: 2
-  Model: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
-  moveSpeed: 0
+  Model: {fileID: 1312138446727467944, guid: b8d52889a5afb6f479e12a2e5e686cd8, type: 3}
+  moveSpeed: 9
   rocketSpeed: 0
   targetRotation: 0
   turretRotation: 0
@@ -35,6 +35,4 @@ MonoBehaviour:
     ScaleValue: 1
   - DamageType: 1
     ScaleValue: 1
-  carryAttributes:
-  - botConfig: {fileID: 11400000, guid: 6640d8a3c605b21489a89cf54f42bae5, type: 2}
-    Quantity: 1
+  carryAttributes: []
