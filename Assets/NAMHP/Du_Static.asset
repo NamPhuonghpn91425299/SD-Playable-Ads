@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d90feb38dc69fbf459ba5b1300feb5af, type: 3}
-  m_Name: Du_Playita
+  m_Name: Du_Static
   m_EditorClassIdentifier: 
   id: 0
   BotName: 
-  health: 1
+  health: 50
   HealthThreshold: 0
   WeaknessHealth: 1
   isCanImmortal: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
   timeAttack: 0
   timeReload: 0
   botType: 3
-  Model: {fileID: 1312138446727467944, guid: cad8812fe159e4b46af5ad7bff3caf64, type: 3}
+  Model: {fileID: 1312138446727467944, guid: 9ef9dd2c208f7f74d93d0d0f5256af38, type: 3}
   moveSpeed: 0
   rocketSpeed: 0
   targetRotation: 0
@@ -36,5 +36,5 @@ MonoBehaviour:
   - DamageType: 1
     ScaleValue: 1
   carryAttributes:
-  - botConfig: {fileID: 11400000, guid: 6640d8a3c605b21489a89cf54f42bae5, type: 2}
+  - botConfig: {fileID: 11400000, guid: 76fb3c11f851210428ace48051c2c8c4, type: 2}
     Quantity: 1

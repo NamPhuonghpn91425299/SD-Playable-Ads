@@ -16,7 +16,7 @@ public class BotIdleState : MonoBehaviour, IBotState
         idleTimer += Time.deltaTime;
         if (idleTimer >= idleTime)
         {
-            //sbot.SetState(bot.PatrolState);
+            bot.SetState(bot.PatrolState);
         }
     }
 

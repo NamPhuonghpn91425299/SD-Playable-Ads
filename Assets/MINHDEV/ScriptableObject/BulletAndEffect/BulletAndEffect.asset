@@ -18,4 +18,3 @@ MonoBehaviour:
   EffectBullet:
   - {fileID: 1214385991556846, guid: 5101b0b18563cd64fba69182fb988727, type: 3}
   - {fileID: 1554942521179580, guid: 52aa1f2e1567b6e47b50df0d054982a7, type: 3}
-  - {fileID: 1405548943661478, guid: 7e2cc4bafcfd4f243987f47c273eafe3, type: 3}

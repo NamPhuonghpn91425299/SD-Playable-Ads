@@ -44,6 +44,7 @@ public class BotPlayItaDeadState : BaseState<PlayItaState>, IPoolObject
     IEnumerator HideBotOnDie()
     {
         yield return new WaitForSeconds(2f);
+        //iscanMove = true;
         ObjectPool.Instance.PushToPool(this, gameObject);
         //gameObject.SetActive(false);
 

@@ -11,13 +11,12 @@ public class PlayerHP : MonoBehaviour
     [SerializeField] private Text HPTxt;
     [SerializeField] private float HPMax;
     [SerializeField] private float HPPoint;
-    [SerializeField] private bool isPlayerDead;
+
     private Queue<float> damageQueue = new Queue<float>();  // Hàng đợi lưu trữ sát thương
     private bool isProcessingDamage = false;
 
     private void OnEnable()
     {
-        isPlayerDead = false;
         HPPoint = HPMax;
         //HPTxt.text = HPMax.ToString();
         EventManager.AddListener<float>(EventName.OnTakeDamagePlayer, OnTakeDamagePlayer);
@@ -53,8 +52,7 @@ public class PlayerHP : MonoBehaviour
             if (HPPoint <= 0) continue;
             HPPoint -= damage;
             HPPoint = Mathf.Max(HPPoint, 0);  // Đảm bảo HP không giảm dưới 0
-            isPlayerDead = HPPoint <= 0;
-            EventManager.Invoke<bool>(EventName.OnPlayerDead, isPlayerDead);
+            EventManager.Invoke(EventName.OnPlayerDead, HPPoint <= 0);
             
             // Cập nhật giao diện
             //HPTxt.text = HPPoint.ToString();

@@ -134,6 +134,7 @@ public class BotNetwork : MonoBehaviour, ITakeDamage
         CheckImmortalStatus(); // Kiểm tra điều kiện bất tử
         if (_currentHealth <= 0)
         {
+            
             isDead = true;
             OnBotDead.Invoke();
         }

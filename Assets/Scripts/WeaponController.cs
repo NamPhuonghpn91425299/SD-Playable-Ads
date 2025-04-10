@@ -13,7 +13,6 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private BulletAndEffect bulletAndEffect;
     [SerializeField] private LayerMask botLayerMask;
     [SerializeField] private LayerMask botTankLayerMask;
-    [SerializeField] private LayerMask concreteLayerMask;
     [SerializeField] private LayerMask rewardLayerMask;
     [SerializeField] private Transform _muzzleTrans;
     [SerializeField] private Transform _muzzleTrans2;
@@ -79,30 +78,15 @@ public class WeaponController : MonoBehaviour
     {
         return _currentBulletCount >= weaponInfo.bulletCount;
     }
-    // Bộ nhớ tạm cho kiểm tra UI
-    private static readonly PointerEventData PointerEventData = new PointerEventData(EventSystem.current);
-    private static readonly System.Collections.Generic.List<RaycastResult> RaycastResults = new System.Collections.Generic.List<RaycastResult>();
-    private bool IsPointerOverUI()
-    {
-        if (EventSystem.current == null) return false;
 
-        // Sử dụng bộ nhớ tạm để tránh tạo mới
-        PointerEventData.position = Input.mousePosition;
-        RaycastResults.Clear();
-
-        EventSystem.current.RaycastAll(PointerEventData, RaycastResults);
-        return RaycastResults.Count > 0;
-    }
     private void Update()
     {
-        if (IsPointerOverUI()) return;
-        //Debug.Log($"Pointer Over UI: {EventSystem.current.IsPointerOverGameObject()}, Selected: {(EventSystem.current.currentSelectedGameObject != null ? EventSystem.current.currentSelectedGameObject.name : "None")}");
+
         HandleGatlingGunRotation();
         if (!UIManager.Instance.isCanTouch)
         {
-            OnShooting(); 
+            OnShooting();
         }
-
         if (UIManager.Instance.isCanTouch)
         {
             isShooting = false;
@@ -141,7 +125,7 @@ public class WeaponController : MonoBehaviour
         _timeSinceLastShoot += Time.deltaTime;
         UICrosshairItem.Instance.Narrow_Crosshair();
 
-        if (Input.GetMouseButton(0) )
+        if (Input.GetMouseButton(0))
         {
             if (!isShooting)
             {
@@ -326,7 +310,6 @@ public class WeaponController : MonoBehaviour
 
     private bool IsInBotLayer(GameObject obj)
     {
-        //Debug.Log("Object Layer: " + obj.layer);
         return ((1 << obj.layer) & botLayerMask) != 0;
     }
     public static class LayerConstants
@@ -338,13 +321,6 @@ public class WeaponController : MonoBehaviour
     private bool IsInBotTankLayer(GameObject obj)
     {
         return ((1 << obj.layer) & (botTankLayerMask | LayerConstants.WeakPointMask)) != 0;
-    }
-
-    private bool IsInConcreteLayer(GameObject obj)
-    {
-        Debug.Log("Object Layer: " + obj.layer);
-        Debug.Log("Concrete Layer Mask: " + concreteLayerMask.value);
-        return ((1 << obj.layer) & concreteLayerMask) != 0;
     }
 
     private bool IsInRewardLayer(GameObject obj)
@@ -362,7 +338,7 @@ public class WeaponController : MonoBehaviour
         bullet.transform.SetPositionAndRotation(muzzle.position, muzzle.rotation);
         bullet.GetComponent<BulletTrail>().Init(ray.direction);
 
-        bool CheckRayCast = Physics.Raycast(ray, out var hit, Mathf.Infinity, botLayerMask | rewardLayerMask | botTankLayerMask | concreteLayerMask | LayerConstants.WeakPointMask);
+        bool CheckRayCast = Physics.Raycast(ray, out var hit, Mathf.Infinity, botLayerMask | rewardLayerMask | botTankLayerMask | LayerConstants.WeakPointMask);
         if (CheckRayCast)
         {
             //var damageType = hit.collider.CompareTag("WeakPoint")? DamageType.Weekness:DamageType.Normal;
@@ -408,7 +384,7 @@ public class WeaponController : MonoBehaviour
                     rewardController = hit.transform.root.gameObject.GetComponent<IReward>();
                 }
                 if (rewardController != null) rewardController.TakeCollect(weaponInfo.damage);
-                PlayRandomAttackSound(AudioManager.Instance.GetAudioAttackClip());
+                PlayRandomAttackSound();
                 _effect = bulletAndEffect.EffectBullet[1];
             }
             else if (IsInBotTankLayer(hit.collider.gameObject))
@@ -425,22 +401,8 @@ public class WeaponController : MonoBehaviour
                     }
                 }
                 //Debug.Log(damageType.ToString() + " " + weaponInfo.damage);
-                PlayRandomAttackSound(AudioManager.Instance.GetAudioAttackClip());
+                PlayRandomAttackSound();
                 _effect = bulletAndEffect.EffectBullet[1];
-            }            
-            else if (IsInConcreteLayer(hit.collider.gameObject))
-            {
-                var takeDamageController = hit.transform.gameObject.GetComponent<ITakeDamage>();
-                 if (takeDamageController == null)
-                 {
-                     takeDamageController = hit.transform.root.gameObject.GetComponent<ITakeDamage>();
-                 }
-
-                 if (takeDamageController != null) takeDamageController.TakeDamage(damageInfo);
-                //Debug.Log($"🔥 Gây damage cho1: {damageInfo.name} - {damageInfo.damage} - {hit.collider.name}",gameObject);
-                //Debug.Log(damageType.ToString() + " " + weaponInfo.damage);
-                PlayRandomAttackSound(AudioManager.Instance.GetAudioConcreteClip());
-                _effect = bulletAndEffect.EffectBullet[2];
             }
 
             // Tạo hiệu ứng va chạm
@@ -451,9 +413,9 @@ public class WeaponController : MonoBehaviour
     }
 
 
-    void PlayRandomAttackSound(AudioClip clip)
+    void PlayRandomAttackSound()
     {
-        //AudioClip clip = AudioManager.Instance.GetAudioAttackClip();
+        AudioClip clip = AudioManager.Instance.GetAudioAttackClip();
         if (clip != null)
         {
             //_audioSource.clip = clip;
@@ -575,7 +537,7 @@ public class WeaponController : MonoBehaviour
     {
         var distance = Vector3.Distance(origin, target);
         var ray = new Ray(origin, target - origin);
-        return !Physics.Raycast(ray, out _, distance, botLayerMask | rewardLayerMask | botTankLayerMask | concreteLayerMask | LayerConstants.WeakPointMask);
+        return !Physics.Raycast(ray, out _, distance, botLayerMask | rewardLayerMask | botTankLayerMask);
     }
 
     // Thêm phương thức dừng âm thanh bắn

@@ -8,8 +8,6 @@ public class AudioManager : MonoBehaviour
    [SerializeField]
    private AudioClip[] AttackSounds;
    [SerializeField]
-   private AudioClip concreteSounds;
-   [SerializeField]
    private AudioClip[] HitSounds;
    public static AudioManager Instance;
     private static bool isPaused = false; // Biến tạm dừng âm thanh
@@ -17,7 +15,30 @@ public class AudioManager : MonoBehaviour
    {
       Instance = this;
    }
-
+    //public static void PauseAudio(bool pause)
+    //{
+    //    isPaused = pause;
+    //    if (pause)
+    //    {
+    //        AudioListener.pause = true; // Tạm dừng tất cả âm thanh
+    //    }
+    //    else
+    //    {
+    //        AudioListener.pause = false; // Phát lại tất cả âm thanh
+    //    }
+    //}
+    //void Update()
+    //{
+    //    // Kiểm tra trạng thái Time.timeScale
+    //    if (Time.timeScale == 0)
+    //    {
+    //        PauseAudio(true);
+    //    }
+    //    else
+    //    {
+    //        PauseAudio(false);
+    //    }
+    //}
     public AudioClip GetAudioAttackClip()
    {
       return AttackSounds[Random.Range(0, AttackSounds.Length)];
@@ -25,9 +46,5 @@ public class AudioManager : MonoBehaviour
    public AudioClip GetAudioHitClip()
    {
       return HitSounds[Random.Range(0, HitSounds.Length)];
-   }   
-   public AudioClip GetAudioConcreteClip()
-   {
-      return concreteSounds;
    }
 }
