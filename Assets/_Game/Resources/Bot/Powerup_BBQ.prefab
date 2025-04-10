@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 87784969}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: HarverstVfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 318869605130337523}
   - component: {fileID: 318869605130337526}
   - component: {fileID: 318869605130337525}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4598685854785046883}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 3733239496091720577}
   - component: {fileID: 6960041748566872655}
   - component: {fileID: 315400074018415789}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Flare Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4993,7 +4993,7 @@ GameObject:
   - component: {fileID: 520416041474769196}
   - component: {fileID: 520416041474769197}
   - component: {fileID: 520416041474769198}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: muzzle efffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9882,7 +9882,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3326328536954212960}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletR4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9916,7 +9916,7 @@ GameObject:
   - component: {fileID: 7025295512105351899}
   - component: {fileID: 5150895847299957888}
   - component: {fileID: 8180476483332431117}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FlareEff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14748,7 +14748,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2976454104473519272}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletL3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14781,7 +14781,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3695577936725155416}
   - component: {fileID: 5733529138201035135}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: UIPowerUp_Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14839,7 +14839,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 78710660061720213}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: GunBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14872,7 +14872,7 @@ GameObject:
   - component: {fileID: 7487608322396338936}
   - component: {fileID: 3375789656737385432}
   - component: {fileID: 5952664126148528259}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FX_Electricgun (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19698,7 +19698,7 @@ GameObject:
   - component: {fileID: 8838925288220262573}
   - component: {fileID: 3719742269941961913}
   - component: {fileID: 4285898849909766862}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: polySurface1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19779,7 +19779,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2875484780794061833}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletL7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19811,7 +19811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1545451086154194029}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FireGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19846,7 +19846,7 @@ GameObject:
   - component: {fileID: 7528545375853474481}
   - component: {fileID: 2398913327504016273}
   - component: {fileID: 6705732591462219978}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FX_Electricgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24670,7 +24670,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8997797879881440435}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Electric
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24705,7 +24705,7 @@ GameObject:
   - component: {fileID: 1950905130354185501}
   - component: {fileID: 1856350887336932674}
   - component: {fileID: 1857323939432393208}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27320,7 +27320,7 @@ GameObject:
   - component: {fileID: 1950670695308594074}
   - component: {fileID: 1854754410046723052}
   - component: {fileID: 1857540567065166405}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: fire_direction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29879,7 +29879,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1951079362476884623}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FireMuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29916,7 +29916,7 @@ GameObject:
   - component: {fileID: 1950799426938199905}
   - component: {fileID: 1855510060592141689}
   - component: {fileID: 1857583572253083593}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32493,7 +32493,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4930927210072099372}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletR3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32527,7 +32527,7 @@ GameObject:
   - component: {fileID: 2625953711504295248}
   - component: {fileID: 2625953711504295249}
   - component: {fileID: 2625953711504295250}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: muzzle efffect BBQ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37419,7 +37419,7 @@ GameObject:
   - component: {fileID: 2660072176780420673}
   - component: {fileID: 2660072176780420672}
   - component: {fileID: 2660072176780420675}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: muzzle efffect BBQ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42308,7 +42308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8517704708611720048}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Muzzle Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42340,7 +42340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6665609703937732759}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletL6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42372,7 +42372,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 886464758606458353}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42407,7 +42407,7 @@ GameObject:
   - component: {fileID: 8183072819622201556}
   - component: {fileID: 4810660850296091956}
   - component: {fileID: 5324200152614293579}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: W73_FP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42595,7 +42595,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4273059240057505829}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletR7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42631,7 +42631,7 @@ GameObject:
   - component: {fileID: 6379102592892153210}
   - component: {fileID: 6527506518238289229}
   - component: {fileID: 1724085362517079669}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42741,7 +42741,7 @@ GameObject:
   - component: {fileID: 3644514567004368341}
   - component: {fileID: 6340396200109582586}
   - component: {fileID: 7471205119501660893}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: IconUp (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42817,7 +42817,7 @@ GameObject:
   - component: {fileID: 8861438773134811932}
   - component: {fileID: 6464409231064506321}
   - component: {fileID: 5330528931222810325}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: muzzleL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47706,7 +47706,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8254986714268919976}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47740,7 +47740,7 @@ GameObject:
   - component: {fileID: 301586436262765319}
   - component: {fileID: 3451701384452070279}
   - component: {fileID: 8545647099395216338}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: polySurface2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47821,7 +47821,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4594739243797835420}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Acc_Specia2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47852,7 +47852,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400917554341887234}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: MuzzleR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47889,7 +47889,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8888121038992996488}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: EffectOnGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47922,7 +47922,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3865188280234450467}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Acc_Muzzles2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47955,7 +47955,7 @@ GameObject:
   - component: {fileID: 7388799303070565403}
   - component: {fileID: 2438461627573959718}
   - component: {fileID: 8144603282333855663}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: IconUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48032,7 +48032,7 @@ GameObject:
   - component: {fileID: 3993983664653026817}
   - component: {fileID: 3872360815821836233}
   - component: {fileID: 3871832897098970525}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: VFX_Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52912,7 +52912,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3218175087218001178}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: WL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52947,7 +52947,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4205837770116340684}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BreakMuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52985,7 +52985,7 @@ GameObject:
   - component: {fileID: 4197917527684004020}
   - component: {fileID: 4075966474291421743}
   - component: {fileID: 4076933422674018808}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55546,7 +55546,7 @@ GameObject:
   - component: {fileID: 4206207986704658395}
   - component: {fileID: 4102498605491049083}
   - component: {fileID: 4077141392950993823}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58107,7 +58107,7 @@ GameObject:
   - component: {fileID: 4205892447451108815}
   - component: {fileID: 4076406994664663415}
   - component: {fileID: 4077380051713931869}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60668,7 +60668,7 @@ GameObject:
   - component: {fileID: 4206257990207842305}
   - component: {fileID: 4076183432297231503}
   - component: {fileID: 4077133187670471727}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63227,7 +63227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6137074931491317742}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletR6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63261,7 +63261,7 @@ GameObject:
   - component: {fileID: 2728432786561971983}
   - component: {fileID: 5093043602659933573}
   - component: {fileID: 3794944829083075160}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FX_Firegun (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68084,7 +68084,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 186300606306406100}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Acc_Special
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68115,7 +68115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7101850374240342445}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletR2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68149,7 +68149,7 @@ GameObject:
   - component: {fileID: 4669601605024673302}
   - component: {fileID: 4764659717454373902}
   - component: {fileID: 4762581068937574078}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70726,7 +70726,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4669318031480910840}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FireMuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70763,7 +70763,7 @@ GameObject:
   - component: {fileID: 4669473037947189997}
   - component: {fileID: 4783395763186410139}
   - component: {fileID: 4762608389013713714}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: fire_direction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73324,7 +73324,7 @@ GameObject:
   - component: {fileID: 4669214340699038826}
   - component: {fileID: 4763811279885026357}
   - component: {fileID: 4763095492035565711}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75937,7 +75937,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3523913831402303544}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: WR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75974,7 +75974,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 583156216965224847}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletR5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76008,7 +76008,7 @@ GameObject:
   - component: {fileID: 4284408164789906371}
   - component: {fileID: 291483821772634575}
   - component: {fileID: 5140811623822025781}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: IconUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76083,7 +76083,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8905828835132274970}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Acc_Muzzles1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76114,7 +76114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2413407021487896924}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletL2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76146,7 +76146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1630265121342989893}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Acc_Charm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76179,7 +76179,7 @@ GameObject:
   - component: {fileID: 5591664998132094359}
   - component: {fileID: 5591664998132094358}
   - component: {fileID: 5591664998132094357}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: muzzle efffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81068,7 +81068,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8088199764565454348}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Acc_Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81099,7 +81099,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6890040057106408768}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81131,7 +81131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1195117108145225051}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: bangDan 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81164,7 +81164,7 @@ GameObject:
   - component: {fileID: 4010977456767991063}
   - component: {fileID: 3048644133186886892}
   - component: {fileID: 6167189529332377338}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Lens Flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86047,7 +86047,7 @@ GameObject:
   - component: {fileID: 4051632756077606238}
   - component: {fileID: 2728448649808319653}
   - component: {fileID: 6486821783600869043}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Lens Flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90928,7 +90928,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3902909204333127151}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: bangDan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90962,7 +90962,7 @@ GameObject:
   - component: {fileID: 2246127081266656321}
   - component: {fileID: 595088311534024305}
   - component: {fileID: 2992121792798264066}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91046,7 +91046,7 @@ GameObject:
   - component: {fileID: 6695960308210957550}
   - component: {fileID: 5556444928071340152}
   - component: {fileID: 4539737531663711543}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: NameGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91137,7 +91137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2608342416709735936}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: PointNotiAppear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91168,7 +91168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3404728921438784623}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletL8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91199,7 +91199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8877400085863368254}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletR1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91231,7 +91231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7691048680509873355}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Weapon81
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91269,7 +91269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4416331591620890877}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: HeatPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91300,7 +91300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9219700408499952773}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: MuzzleL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91340,7 +91340,7 @@ GameObject:
   - component: {fileID: 5995472551097205401}
   - component: {fileID: 1002768523873621179}
   - component: {fileID: 3115564093431721789}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Name (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91447,7 +91447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5053733774157180597}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Muzzle Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91480,7 +91480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7410738340179373075}
   - component: {fileID: 338850328728174916}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Icon3D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91528,7 +91528,7 @@ GameObject:
   - component: {fileID: 2759798458802482863}
   - component: {fileID: 795133563335744325}
   - component: {fileID: 5431238504230756628}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Powerup_BBQ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91600,7 +91600,7 @@ MonoBehaviour:
   ContentCanvasGroup: {fileID: 5556444928071340152}
   rewardValue: 0
   rotationSpeed: 200
-  initialYPosition: 3
+  initialYPosition: 5
   moveDuration: 1
   displayDuration: 1.5
   moveStartEndPositions: {x: 0.7, y: 1.7}
@@ -91713,7 +91713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5999442820157032652}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: lapDanR 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91745,7 +91745,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4580946324465495211}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletL5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91779,7 +91779,7 @@ GameObject:
   - component: {fileID: 2084762782512314094}
   - component: {fileID: 2529997818610647209}
   - component: {fileID: 7227796589722201685}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: IconUp (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91854,7 +91854,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8207231676171431572}
   - component: {fileID: 4886361242682190361}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: W73_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91962,7 +91962,7 @@ GameObject:
   - component: {fileID: 8441367471555279885}
   - component: {fileID: 1609673994897077895}
   - component: {fileID: 7229068927017093466}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FX_Firegun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96787,7 +96787,7 @@ GameObject:
   - component: {fileID: 2388394102903001707}
   - component: {fileID: 173759840024407718}
   - component: {fileID: 1307934534037364642}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: muzzleR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101676,7 +101676,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8115672742815225084}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: ElectricMuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101712,7 +101712,7 @@ GameObject:
   - component: {fileID: 8123984173503405910}
   - component: {fileID: 8246158674830917555}
   - component: {fileID: 8247478594727201069}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104273,7 +104273,7 @@ GameObject:
   - component: {fileID: 8124272483717415404}
   - component: {fileID: 8246565022662565702}
   - component: {fileID: 8247879925623023492}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106834,7 +106834,7 @@ GameObject:
   - component: {fileID: 8141951711558499168}
   - component: {fileID: 8236651265131972288}
   - component: {fileID: 8229655897643710244}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109395,7 +109395,7 @@ GameObject:
   - component: {fileID: 8133652309644110863}
   - component: {fileID: 8228582263477532308}
   - component: {fileID: 8229584265667794243}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111954,7 +111954,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8142320360609959799}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BreakMuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111992,7 +111992,7 @@ GameObject:
   - component: {fileID: 8142181890248309946}
   - component: {fileID: 8228346094074617908}
   - component: {fileID: 8229647829269684372}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114553,7 +114553,7 @@ GameObject:
   - component: {fileID: 8142265086282596724}
   - component: {fileID: 8228983071505219020}
   - component: {fileID: 8229402103543426790}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117112,7 +117112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2002269342011157097}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletL1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117144,7 +117144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 713044532985502149}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletL4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117178,7 +117178,7 @@ GameObject:
   - component: {fileID: 1817978229076807628}
   - component: {fileID: 6427723470245409164}
   - component: {fileID: 6966934996159798568}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Electricity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122027,7 +122027,7 @@ GameObject:
   - component: {fileID: 8484377387631857338}
   - component: {fileID: 8484377387631857339}
   - component: {fileID: 8484377387631857336}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: muzzle efffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126916,7 +126916,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4901394565360142817}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: lapDanR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126947,7 +126947,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8734323443488036338}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: GunMuzzleR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126979,7 +126979,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8734323443734191564}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: GunMuzzleL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127014,7 +127014,7 @@ GameObject:
   - component: {fileID: 8741770255463555181}
   - component: {fileID: 8741770255463555180}
   - component: {fileID: 8741770255463555183}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: muzzle efffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131905,7 +131905,7 @@ GameObject:
   - component: {fileID: 1632926129328392069}
   - component: {fileID: 6242072956948576709}
   - component: {fileID: 8015305969426847073}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Electricity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136754,7 +136754,7 @@ GameObject:
   - component: {fileID: 7495604767803107243}
   - component: {fileID: 7810538219865095548}
   - component: {fileID: 2689723578137578408}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141578,7 +141578,7 @@ GameObject:
   - component: {fileID: 8957843504657690427}
   - component: {fileID: 9123798894858924433}
   - component: {fileID: 9122545603871082835}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144139,7 +144139,7 @@ GameObject:
   - component: {fileID: 8958118581670556033}
   - component: {fileID: 9124200952148070756}
   - component: {fileID: 9123026099503507450}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146698,7 +146698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8957440508369451563}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: ElectricMuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146732,7 +146732,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6757414868997881861}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: BulletR8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146765,17 +146765,9 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 920642259393526065, guid: 0cb0ad44ae309de419b6548b5551ede4, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3798288199884125283, guid: 0cb0ad44ae309de419b6548b5551ede4, type: 3}
       propertyPath: m_Name
       value: Glow 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3798288199884125283, guid: 0cb0ad44ae309de419b6548b5551ede4, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4002583326819833626, guid: 0cb0ad44ae309de419b6548b5551ede4, type: 3}
       propertyPath: playOnAwake
@@ -146860,14 +146852,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7410738340583446926}
     m_Modifications:
-    - target: {fileID: 4809643410934576573, guid: 53e2a22a8d2476f42af295d970b293fd, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4809643411220785552, guid: 53e2a22a8d2476f42af295d970b293fd, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 4809643411759549706, guid: 53e2a22a8d2476f42af295d970b293fd, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -146915,10 +146899,6 @@ PrefabInstance:
     - target: {fileID: 4809643411759549709, guid: 53e2a22a8d2476f42af295d970b293fd, type: 3}
       propertyPath: m_Name
       value: VFX_Harvest_Old
-      objectReference: {fileID: 0}
-    - target: {fileID: 4809643411759549709, guid: 53e2a22a8d2476f42af295d970b293fd, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4809643411759549709, guid: 53e2a22a8d2476f42af295d970b293fd, type: 3}
       propertyPath: m_IsActive

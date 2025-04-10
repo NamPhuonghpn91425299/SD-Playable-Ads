@@ -10,7 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2946067964902425439}
   - component: {fileID: 305429673050860391}
+  - component: {fileID: 1680604657340791693}
   - component: {fileID: 100422530754368977}
+  - component: {fileID: 5236657930544655529}
+  - component: {fileID: 7932272005834912539}
   m_Layer: 9
   m_Name: RedRectangleDetector
   m_TagString: Untagged
@@ -28,7 +31,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 361298851003585570}
   m_Father: {fileID: 0}
@@ -60,6 +62,29 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1680604657340791693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3286245043708858649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
 --- !u!114 &100422530754368977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,6 +102,57 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5236657930544655529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3286245043708858649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8112c50d9ef39744afc5da5581bfdb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootAtType: 1
+  detectorImg: {fileID: 5242042954193279067}
+  _colorChanger: {fileID: 7932272005834912539}
+  isScaleOverTime: 0
+  minScale: 0.5
+  maxScale: 1
+  scaleSpeed: 7
+  scaleGap: 0.1
+  distanceToStartDisappear: 25
+  distanceDisappear: 3
+  minScaleWhenDisappear: 0
+  disappearLength: 0.75
+  checkEveryNumberOfFrames: 30
+--- !u!114 &7932272005834912539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3286245043708858649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8f3c5fec7647e4fb47424a4cef3699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.47343743, b: 0, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  _distanceThresholds:
+  - 100
+  - 150
+  - 200
+  _target: {fileID: 0}
+  _img: {fileID: 6546272933334786746}
+  TimeBlend: 1
+  CurrentIdx: 0
+  Test: 0
+  CurrentDistance: 0
 --- !u!1 &5242042954193279067
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +181,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2946067964902425439}
   m_RootOrder: 0
@@ -143,7 +218,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5893193540389337090, guid: 4691d1dadd7a76a4b8de0c536352a3e5, type: 3}
+  m_Sprite: {fileID: 5893193540389337090, guid: 4691d1dadd7a76a4b8de0c536352a3e5,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
