@@ -28,7 +28,7 @@ public class BrcPlayitaAttackState : BaseState<BrcPlayitaState>
     public override void EnterState()
     {
         Debug.Log("Bot bắt đầu tấn công!");
-        animator.SetBool("isIdle", true);
+
         canAttack = true;
         attackCoroutine = StartCoroutine(AttackRoutine());
     }
@@ -38,6 +38,7 @@ public class BrcPlayitaAttackState : BaseState<BrcPlayitaState>
         {
             if (canAttack && !botNetwork.IsDead)
             {
+                animator.SetBool("isIdle", true);
                 yield return WaitSeconds(0.2f);  // Chờ một chút trước khi tấn công
                 float totalDamage = 0f;  // Biến để lưu tổng sát thương gây ra
                 int numAttacks = Mathf.FloorToInt(BotConfigSO.timeAttack * BotConfigSO.fireRate);  // Số lần bắn trong timeAttack

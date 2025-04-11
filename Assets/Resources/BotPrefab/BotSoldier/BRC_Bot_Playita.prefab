@@ -5588,13 +5588,13 @@ MonoBehaviour:
   speed: 2
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 2049
+    m_Bits: 2048
   playerMask:
     serializedVersion: 2
     m_Bits: 512
   seenTimer: 0
   unseenTimer: 0
-  stateChangeDelay: 2
+  stateChangeDelay: 3
   canSee: 0
   isChangeState: 0
 --- !u!114 &4108769829931169731
@@ -5732,7 +5732,7 @@ MonoBehaviour:
   upperBody: {fileID: 6145287161192387506}
   animator: {fileID: 1312138448328766699}
   muzzle: {fileID: 1312138446311196461}
-  angleBot: 20
+  angleBot: 10
   attackSoundChance: 0.5
   canAttack: 0
 --- !u!114 &4287592171548205889
@@ -11449,7 +11449,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: b6169b4d41edbdb4bad51bd2de773541, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 

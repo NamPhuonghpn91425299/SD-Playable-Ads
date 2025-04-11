@@ -31,7 +31,7 @@ public class BrcPlayitaMoveState : BaseState<BrcPlayitaState>
     {
         RandomIdleTimer();
         animator.SetBool("isIdle", false);
-        animator.Play("Move 0");
+        //animator.Play("Move 0");
         moveHash = Animator.StringToHash("Move");
         idleTimer = 0f;
         isIdle = false; // Reset trạng thái khi vào PatrolState
@@ -45,25 +45,6 @@ public class BrcPlayitaMoveState : BaseState<BrcPlayitaState>
             bot.transform.rotation = Quaternion.Slerp(bot.transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
     }
-    public void SetMoveAngle(float _shootAngle)
-    {
-        animator.SetFloat(moveHash, _shootAngle);
-        animator.Play("Move 0");
-    }
-    // public void SetMoveAngle(float _shootAngle)
-    // {
-    //     // Kiểm tra nếu góc thay đổi quá nhỏ, tránh cập nhật không cần thiết
-    //     if (Mathf.Abs(_shootAngle - currentMoveValue) > 0.01f)
-    //     {
-    //         currentMoveValue = Mathf.SmoothDamp(currentMoveValue, _shootAngle, ref velocity, smoothTime);
-    //     }
-    //
-    //     // Cập nhật giá trị đã làm mượt vào Animator
-    //     animator.SetFloat(moveHash, currentMoveValue);
-    //
-    //     // Phát animation nếu cần
-    //     animator.Play("Move 0");
-    // }
 
     public override void UpdateState()
     {
@@ -107,7 +88,7 @@ public class BrcPlayitaMoveState : BaseState<BrcPlayitaState>
     }
     public override void ExitState()
     {
-
+        animator.SetBool("isIdle", true);
     }
 
     public override BrcPlayitaState GetNextState()
