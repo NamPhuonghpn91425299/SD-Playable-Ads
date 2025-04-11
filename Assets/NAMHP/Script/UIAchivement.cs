@@ -7,10 +7,11 @@ public class UIAchivement : MonoBehaviour
 {
     public Animator animator;
     public AudioSource audioSource;
+    public bool isPlay;
     // Start is called before the first frame update
     void Start()
     {
-        EventManager.AddListener<bool>(EventName.OnStaticBotDead,OnBotDeath);
+        EventManager.AddListener<bool>(EventName.OnStaticBotDead, OnBotDeath);
     }
 
     private void OnDisable()
@@ -20,7 +21,7 @@ public class UIAchivement : MonoBehaviour
 
     private void OnBotDeath(bool isShow)
     {
-        if (isShow)
+        if (isShow && isPlay)
         {
             Debug.Log("Bot Death");
             animator.Rebind(); // Reset toàn bộ trạng thái Animator
@@ -39,6 +40,6 @@ public class UIAchivement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

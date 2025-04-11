@@ -65,7 +65,7 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
             zoomIcon.sprite = zoomSprites[0]; // Icon zoom out mặc định
         }
         sliderActiveBorder.enabled = false;
-        scopeIcon.enabled = false; // Ẩn icon scope nếu không cần thiết
+        scopeIcon.gameObject.SetActive(false); // Ẩn icon scope khi không zoom
         crosshair.SetActive(true); // Hiện crosshair mặc định
     }
 
@@ -106,7 +106,7 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
         if (isZoomedIn) // --- Vừa BẬT zoom ---
         {
             crosshair.SetActive(false); // Ẩn crosshair khi zoom
-            scopeIcon.enabled = true; // Hiện icon scope
+            scopeIcon.gameObject.SetActive(true); // Hiện icon scope
             // 1. Đặt mục tiêu là FOV zoom tối đa ban đầu
             targetFOV = minZoomFOV;
             weapontFOV = weaponFOV;
@@ -121,7 +121,7 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
         else // --- Vừa TẮT zoom ---
         {
             crosshair.SetActive(true); // Hiện lại crosshair khi tắt zoom
-            scopeIcon.enabled = false; // Ẩn icon scope
+            scopeIcon.gameObject.SetActive(false); // Ẩn icon scope
             targetFOV = defaultFOV;
             weapontFOV = defaultFOV;
             Debug.Log("Zoom OUT activated. Target FOV: " + targetFOV);
