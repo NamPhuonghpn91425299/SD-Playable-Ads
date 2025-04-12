@@ -74,20 +74,6 @@ public class BotAI : MonoBehaviour
         }
         
     }
-    
-
-    // public void SetState(IBotState newState)
-    // {
-    //     if (newState == null || newState == currentState) return;
-    //
-    //     currentState = newState;
-    //     if (newState is BotIdleState idle)
-    //         idle.EnterState();
-    //     else if (newState is BotPatrolState patrol)
-    //         patrol.EnterState();
-    //     else if (newState is BotAttackState attack)
-    //         attack.EnterState();
-    // }
 
     private bool CanSeePlayer()
     {

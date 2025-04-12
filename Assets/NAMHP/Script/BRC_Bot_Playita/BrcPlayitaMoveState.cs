@@ -29,10 +29,9 @@ public class BrcPlayitaMoveState : BaseState<BrcPlayitaState>
 
     public override void EnterState()
     {
+        animator.Rebind();
         RandomIdleTimer();
         animator.SetBool("isIdle", false);
-        //animator.Play("Move 0");
-        moveHash = Animator.StringToHash("Move");
         idleTimer = 0f;
         isIdle = false; // Reset trạng thái khi vào PatrolState
     }
@@ -88,7 +87,7 @@ public class BrcPlayitaMoveState : BaseState<BrcPlayitaState>
     }
     public override void ExitState()
     {
-        animator.SetBool("isIdle", true);
+
     }
 
     public override BrcPlayitaState GetNextState()
