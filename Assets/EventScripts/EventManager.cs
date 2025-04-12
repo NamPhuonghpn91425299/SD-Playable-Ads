@@ -120,6 +120,7 @@ public enum EventName
     OnChangeWeapon,
     OnGameWon,
     OnGameLost,
+    OnShooting,
 
     // Thêm các sự kiện khác ở đây
 }

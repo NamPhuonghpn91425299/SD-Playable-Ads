@@ -1,6 +1,8 @@
+using System;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class FpsZoomToggleAdvanced : MonoBehaviour
 {
@@ -23,11 +25,16 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
     public float maxZoom = 4f;
     public float zoomSpeed = 10f;         // Tốc độ chuyển đổi FOV
     public float displayIntegerTolerance = 0.01f; // Ngưỡng để coi là số nguyên
+    public float shakeAmount = 10f; // Độ lắc nhẹ
     private float targetFOV;
     private float weapontFOV;
     private bool isZoomedIn = false;
+    private bool _isShooting = false;
+    private Vector2 originalPosition;
     void Start()
     {
+        EventManager.AddListener<bool>(EventName.OnChangeMachineGun, OnChangeWeapon);
+        originalPosition = scopeIcon.rectTransform.anchoredPosition;
         zoomButton.onClick.AddListener(ToggleZoom); // Đăng ký sự kiện cho nút zoom
         if (playerCamera == null) playerCamera = Camera.main;
         // Validate FOV settings
@@ -68,6 +75,18 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
         scopeIcon.gameObject.SetActive(false); // Ẩn icon scope khi không zoom
         crosshair.SetActive(true); // Hiện crosshair mặc định
     }
+
+    private void OnDisable()
+    {
+        EventManager.RemoveListener<bool>(EventName.OnChangeMachineGun, OnChangeWeapon);
+    }
+    private void OnChangeWeapon(bool isChangeWeapon)
+    {
+            _isShooting = isChangeWeapon;
+            Debug.Log("OnChangeWeapon: " + isChangeWeapon);
+    }
+
+    
 
     // Hàm được gọi bởi sự kiện onValueChanged của Slider *CHỈ KHI* đang zoom
     void UpdateZoomLevelWhileActive(float sliderValue)
@@ -165,6 +184,14 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
         {
             playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, targetFOV, Time.deltaTime * zoomSpeed);
             weaponCamera.fieldOfView = Mathf.Lerp(weaponCamera.fieldOfView, weapontFOV, Time.deltaTime * zoomSpeed);
+        }
+        
+        if (isZoomedIn && Input.GetMouseButton(0) && _isShooting)
+        {
+                scopeIcon.rectTransform.anchoredPosition = originalPosition + new Vector2(
+                    Random.Range(-shakeAmount, shakeAmount),
+                    Random.Range(-shakeAmount, shakeAmount)
+                ); // Đặt lại vị trí icon scope
         }
     }
 }

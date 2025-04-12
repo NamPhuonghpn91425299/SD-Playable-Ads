@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_TP_Hunter_Solman
-  m_Shader: {fileID: 4800000, guid: 39a152feddb60c541b84a8a3a9695a59, type: 3}
+  m_Shader: {fileID: 4800000, guid: 71196ce8b6c741941be53b7c3484e118, type: 3}
   m_ValidKeywords:
   - _ENABLESHADOW_ON
   m_InvalidKeywords: []
