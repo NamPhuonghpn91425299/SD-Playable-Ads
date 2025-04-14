@@ -177,6 +177,7 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
             Debug.Log("Slider Pointer Up - Hiding Border");
         }
     }
+    private Vector2 _shakeOffset; // Khai báo biến tạm bên ngoài
     void Update()
     {
         // Luôn luôn làm mượt FOV camera tiến về targetFOV
@@ -188,10 +189,13 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
         
         if (isZoomedIn && Input.GetMouseButton(0) && _isShooting)
         {
-                scopeIcon.rectTransform.anchoredPosition = originalPosition + new Vector2(
-                    Random.Range(-shakeAmount, shakeAmount),
-                    Random.Range(-shakeAmount, shakeAmount)
-                ); // Đặt lại vị trí icon scope
+            // Dùng biến có sẵn, KHÔNG new mỗi frame
+            _shakeOffset.Set(
+                Random.Range(-shakeAmount, shakeAmount),
+                Random.Range(-shakeAmount, shakeAmount)
+            );
+        
+            scopeIcon.rectTransform.anchoredPosition = originalPosition + _shakeOffset;
         }
     }
 }

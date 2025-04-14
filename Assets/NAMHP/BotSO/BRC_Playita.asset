@@ -19,7 +19,7 @@ MonoBehaviour:
   WeaknessHealth: 0
   isCanImmortal: 0
   attackDuration: 2
-  damage: 1
+  damage: 2
   fireRate: 2
   timeAttack: 3
   timeReload: 3
