@@ -95,7 +95,7 @@ public class WeaponController : MonoBehaviour
     }
     private void Update()
     {
-        //if (IsPointerOverUI()) return;
+        if (IsPointerOverUI()) return;
         //Debug.Log($"Pointer Over UI: {EventSystem.current.IsPointerOverGameObject()}, Selected: {(EventSystem.current.currentSelectedGameObject != null ? EventSystem.current.currentSelectedGameObject.name : "None")}");
         HandleGatlingGunRotation();
         if (!UIManager.Instance.isCanTouch)

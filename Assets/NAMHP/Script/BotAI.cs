@@ -14,11 +14,6 @@ public class BotAI : MonoBehaviour
     public LayerMask obstacleMask;
     public LayerMask playerMask;
 
-    private IBotState currentState;
-    private BotPatrolState patrolState;
-    private BotAttackState attackState;
-    private BotIdleState idleState;
-
     // Thêm thời gian cần duy trì trạng thái trước khi chuyển
     [SerializeField] private float seenTimer = 0f;
     [SerializeField] private float unseenTimer = 0f;
@@ -97,8 +92,7 @@ public class BotAI : MonoBehaviour
     void OnDrawGizmos()
     {
         if (!player) return;
-
-        Gizmos.color = (currentState is BotAttackState) ? Color.red : Color.yellow;
+        
         Gizmos.DrawWireSphere(transform.position, detectionRange);
         Gizmos.DrawLine(transform.position, player.position);
     }

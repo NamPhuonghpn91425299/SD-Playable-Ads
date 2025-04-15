@@ -16,6 +16,7 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
     public Slider zoomLevelSlider; // Kéo thả Slider từ Hierarchy
     public Image sliderActiveBorder; // Kéo thả Image viền từ Hierarchy vào đây
     public Text sliderValueText; // Kéo thả Text hiển thị giá trị slider từ Hierarchy vào đây
+    [SerializeField] private bool _isShooting = false;
     [Header("FOV Settings")]
     public float defaultFOV = 50f;        // FOV khi không zoom
     public float weaponFOV = 45f;
@@ -29,11 +30,10 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
     private float targetFOV;
     private float weapontFOV;
     private bool isZoomedIn = false;
-    private bool _isShooting = false;
     private Vector2 originalPosition;
     void Start()
     {
-        EventManager.AddListener<bool>(EventName.OnChangeMachineGun, OnChangeWeapon);
+        //EventManager.AddListener<bool>(EventName.OnChangeMachineGun, OnChangeWeapon);
         originalPosition = scopeIcon.rectTransform.anchoredPosition;
         zoomButton.onClick.AddListener(ToggleZoom); // Đăng ký sự kiện cho nút zoom
         if (playerCamera == null) playerCamera = Camera.main;
@@ -78,7 +78,7 @@ public class FpsZoomToggleAdvanced : MonoBehaviour
 
     private void OnDisable()
     {
-        EventManager.RemoveListener<bool>(EventName.OnChangeMachineGun, OnChangeWeapon);
+        //EventManager.RemoveListener<bool>(EventName.OnChangeMachineGun, OnChangeWeapon);
     }
     private void OnChangeWeapon(bool isChangeWeapon)
     {

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33aab59dc73a414f8d0d27757a522f7, type: 3}
   m_Name: Weapon50
   m_EditorClassIdentifier: 
+  weaponId: 50
   damage: 20
   FireRate: 0.1
   audioClip: {fileID: 8300000, guid: 669afacf3194dcf428f278ceab30c874, type: 3}

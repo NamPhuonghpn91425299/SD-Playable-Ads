@@ -24707,7 +24707,6 @@ GameObject:
   - component: {fileID: 298822594555430149}
   - component: {fileID: 911288714605330793}
   - component: {fileID: 1048376641547202204}
-  - component: {fileID: 872552753684497505}
   m_Layer: 7
   m_Name: Bots_MB_BRC01 (1)
   m_TagString: Body
@@ -24930,20 +24929,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: -1.978854, y: 4.2951317, z: -6.2705883e-15}
---- !u!65 &872552753684497505
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221791005227455940}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.75, y: 1.85, z: 0.75}
+  m_Size: {x: 0.89, y: 2, z: 0.81}
   m_Center: {x: -1.978854, y: 4.2951317, z: -6.2705883e-15}
 --- !u!1 &1221791005291890344
 GameObject:
@@ -49784,7 +49770,7 @@ Transform:
   m_GameObject: {fileID: 2032748114572395365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.3, y: 10.75, z: 41.45}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3879978004576448766}
@@ -49850,18 +49836,18 @@ MonoBehaviour:
   rocketAttack: {fileID: 6156483190882724138}
   isAttacking: 0
   isDead: 0
-  maxRotorSpeed: 3000
+  maxRotorSpeed: 2000
   rotorAcceleration: 200
-  minLiftSpeed: 1500
+  minLiftSpeed: 1200
   maxHeight: 25
-  liftSpeed: 6
-  forwardSpeed: 10
+  liftSpeed: 10
+  forwardSpeed: 12
   takeoffPitchAngle: -15
   forwardPitchAngle: 10
   turnSpeed: 1
   horizontalThreshold: 6
   verticalThreshold: 4
-  idleDuration: 2
+  idleDuration: 1
   deadPositionY: 3
   takeoffTransitionHeight: 15
   takeoffTiltThreshold: 24
@@ -49926,7 +49912,7 @@ MonoBehaviour:
   timeBetweenVolleys: 8
   initialStraightDistance: 15
   trajectorySpreadRadius: 1
-  rocketSpeed: 35
+  rocketSpeed: 20
   rocketRotationSpeed: 180
   autoExplodeTime: 5
   explosionRadius: 5

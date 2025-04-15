@@ -69,7 +69,7 @@ public class HelicopterOrbit : MonoBehaviour
     {
         waypointsCount = helicopterController.waypoints.Count; // Lưu số lượng waypoint để dùng trong logic
         player = LocalPlayer.Instance.GetTranformPlayer(); // Lấy tham chiếu đến người chơi từ singleton
-        orbitCenter = LocalPlayer.Instance.GetTranCenter();
+        orbitCenter = LocalPlayer.Instance.GetTranCenterY();
     }
 
     private void OnEnable()
@@ -153,6 +153,34 @@ public class HelicopterOrbit : MonoBehaviour
     /// <summary>
     /// Khởi tạo các giá trị cần thiết khi bắt đầu chuyển sang chế độ bay quỹ đạo.
     /// </summary>
+    // private void InitializeOrbitMode()
+    // {
+    //     if (inFinalOrbit) return; // Chỉ khởi tạo một lần
+    //
+    //     inFinalOrbit = true;
+    //     lastWaypointPosition = transform.position; // Lưu vị trí hiện tại làm điểm bắt đầu chuyển tiếp
+    //     transitionStartTime = Time.time; // Ghi lại thời điểm bắt đầu chuyển tiếp
+    //     transitionProgress = 0f; // Reset tiến trình chuyển tiếp
+    //
+    //     // Tính toán bán kính quỹ đạo mục tiêu dựa trên khoảng cách từ tâm đến waypoint cuối cùng
+    //     // Nếu không có waypoint, dùng khoảng cách hiện tại hoặc một giá trị mặc định
+    //     if (waypointsCount > 0 && helicopterController.waypoints[waypointsCount - 1] != null)
+    //     {
+    //         targetOrbitRadius = Vector3.Distance(orbitCenter.position, helicopterController.waypoints[waypointsCount - 1].position);
+    //     }
+    //     else
+    //     {
+    //         // Nếu không có waypoint, dùng khoảng cách hiện tại từ tâm hoặc giá trị mặc định
+    //         targetOrbitRadius = Vector3.Distance(orbitCenter.position, transform.position);
+    //         // targetOrbitRadius = 15f; // Hoặc một giá trị mặc định an toàn
+    //     }
+    //
+    //     // Đặt bán kính hiện tại bằng bán kính của điểm bắt đầu chuyển tiếp
+    //     currentOrbitRadius = Vector3.Distance(orbitCenter.position, lastWaypointPosition);
+    //     radiusSmoothVelocity = 0f; // Reset biến nội bộ của SmoothDamp
+    //
+    //     //Debug.Log("Helicopter entering orbit mode. Target Radius: " + targetOrbitRadius);
+    // }
     private void InitializeOrbitMode()
     {
         if (inFinalOrbit) return; // Chỉ khởi tạo một lần
@@ -179,9 +207,8 @@ public class HelicopterOrbit : MonoBehaviour
         currentOrbitRadius = Vector3.Distance(orbitCenter.position, lastWaypointPosition);
         radiusSmoothVelocity = 0f; // Reset biến nội bộ của SmoothDamp
 
-        //Debug.Log("Helicopter entering orbit mode. Target Radius: " + targetOrbitRadius);
+        Debug.Log("Helicopter entering orbit mode. Target Radius: " + targetOrbitRadius);
     }
-
     /// <summary>
     /// Xử lý toàn bộ logic chuyển động và xoay khi đang trong chế độ bay quỹ đạo.
     /// </summary>

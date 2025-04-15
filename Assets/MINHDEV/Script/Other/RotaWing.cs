@@ -25,7 +25,7 @@ public class RotaWing : MonoBehaviour
             if (rotaRate < 0.5f) rotaRate += Time.deltaTime * 0.1f;
         }
         foreach (var wingInfo in wingValues)
-            wingInfo.wingTrans.Rotate(Time.unscaledTime / rotaRate * wingInfo.rotaAxi, Space.Self);
+            wingInfo.wingTrans.Rotate(Time.deltaTime / rotaRate * wingInfo.rotaAxi, Space.Self);
     }
 
     public void OnDisable()

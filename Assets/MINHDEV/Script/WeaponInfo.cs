@@ -3,6 +3,7 @@
 [CreateAssetMenu(fileName = "WeaponInfo", menuName = "ScriptableObjects/WeaponInfo", order = 1)]
 public class WeaponInfo : ScriptableObject
 {
+    public int weaponId;
     public int damage = 10;
     public float FireRate = 0.1f;
 

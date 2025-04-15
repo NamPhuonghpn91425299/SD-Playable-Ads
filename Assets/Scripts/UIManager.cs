@@ -230,7 +230,7 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
-        //SetTimeToEndGame();
+        SetTimeToEndGame();
         StopGame();
         TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {TotalBotinConfig}";
         //TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {GameResultInstance.Instance.GetGameResultData().requiredBotKill}";

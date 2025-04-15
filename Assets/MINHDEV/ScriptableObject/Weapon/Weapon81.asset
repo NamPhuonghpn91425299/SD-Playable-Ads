@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33aab59dc73a414f8d0d27757a522f7, type: 3}
   m_Name: Weapon81
   m_EditorClassIdentifier: 
+  weaponId: 81
   damage: 20
   FireRate: 0.05
   audioClip: {fileID: 8300000, guid: 1ef63a773db50734ca59c193a58243da, type: 3}
@@ -34,4 +35,4 @@ MonoBehaviour:
   MaxSpeedRotaBarrel: 850
   TimeMinSpeed: 1
   MinSpeedRotaBarrel: 0
-  isGatlingGun: 1
+  isGatlingGun: 0
