@@ -55,6 +55,8 @@ public class HelicopterController : MonoBehaviour,IPoolObject
     private float idleTimer = 0f;
     private bool isAttacked;
     public HelicopterState currentState = HelicopterState.Idle;
+    [SerializeField] private bool isEndGame;
+    [SerializeField] private AudioSource audioSource;
 
     // Enum để quản lý trạng thái
     public enum HelicopterState
@@ -76,7 +78,7 @@ public class HelicopterController : MonoBehaviour,IPoolObject
 
     private void OnEnable()
     {
-
+        audioSource.Play();
         botNetwork.OnBotDead += OnDeath;
     }
 
@@ -107,6 +109,11 @@ public class HelicopterController : MonoBehaviour,IPoolObject
 
     private void Update()
     {
+        if (UIEndGame.Instance.IsShowEndGame && !isEndGame)
+        {
+            audioSource.Stop();
+            isEndGame = true;
+        }
         // Xử lý trạng thái hiện tại
         switch (currentState)
         {

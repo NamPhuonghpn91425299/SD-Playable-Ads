@@ -49862,6 +49862,8 @@ MonoBehaviour:
   currentWaypointIndex: 0
   currentRotorSpeed: 0
   currentState: 0
+  isEndGame: 0
+  audioSource: {fileID: 6776575618800736093}
 --- !u!114 &792424281755782871
 MonoBehaviour:
   m_ObjectHideFlags: 0

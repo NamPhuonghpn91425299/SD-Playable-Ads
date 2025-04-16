@@ -13,7 +13,7 @@ public class BrcBotBzkAttackState : BaseState<BrcBotBzkState>
     [SerializeField] private GameObject bulletRPG7Prefab;
     [SerializeField] private GameObject bulletRPG7;
     [SerializeField] private float bodyRotationSpeed = 5f; // Xoay ngang
-    [SerializeField] private float upperBodyRotationSpeed = 5f; // Xoay lên/xuống
+    //[SerializeField] private float upperBodyRotationSpeed = 5f; // Xoay lên/xuống
     [SerializeField] private Animator animator;
     [SerializeField] protected GameObject muzzle;
     [SerializeField] private ParticleSystem muzzleParticle;

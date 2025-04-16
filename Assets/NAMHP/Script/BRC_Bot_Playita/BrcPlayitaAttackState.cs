@@ -12,7 +12,7 @@ public class BrcPlayitaAttackState : BaseState<BrcPlayitaState>
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] shootClip;
     [SerializeField] private float bodyRotationSpeed = 5f; // Xoay ngang
-    [SerializeField] private float upperBodyRotationSpeed = 5f; // Xoay lên/xuống
+    //[SerializeField] private float upperBodyRotationSpeed = 5f; // Xoay lên/xuống
     [SerializeField] private Transform upperBody;
     [SerializeField] private Animator animator;
     [SerializeField] protected GameObject muzzle;
@@ -40,12 +40,11 @@ public class BrcPlayitaAttackState : BaseState<BrcPlayitaState>
             {
 
                 SetShootAngle(angleBot);
-                yield return WaitSeconds(0.2f);  // Chờ một chút trước khi tấn công
+                yield return WaitSeconds(0.5f);  // Chờ một chút trước khi tấn công
                 float totalDamage = 0f;  // Biến để lưu tổng sát thương gây ra
                 int numAttacks = Mathf.FloorToInt(BotConfigSO.timeAttack * BotConfigSO.fireRate);  // Số lần bắn trong timeAttack
-                muzzle.SetActive(true);
                 muzzle.GetComponent<ParticleSystem>().Play();
-
+                muzzle.SetActive(true);
                 for (int i = 0; i < numAttacks; i++)
                 {
                     RandomClip();  // Phát âm thanh ngẫu nhiên

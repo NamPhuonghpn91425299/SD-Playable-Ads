@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AirPlaneFlying : MonoBehaviour
 {
+    public AudioSource audioSource;
     public Transform center; // Tâm mà đối tượng quay quanh
     public float radius = 35f; // Bán kính quỹ đạo
     public float height = 8f; // Độ cao của quỹ đạo so với tâm
@@ -11,6 +12,7 @@ public class AirPlaneFlying : MonoBehaviour
     public float initialAngle = 0f; // Góc ban đầu (độ)
     private float angle = 0f; // Góc hiện tại của đối tượng trên quỹ đạo
     [SerializeField] private float segments;
+    [SerializeField] private bool isEndGame = false;
 #if UNITY_EDITOR
     private void OnValidate()
     {
@@ -19,11 +21,17 @@ public class AirPlaneFlying : MonoBehaviour
 #endif
     private void OnEnable()
     {
+        audioSource.Play();
         SetStartLocation();
     }
 
     void Update()
     {
+        if (UIEndGame.Instance.IsShowEndGame && !isEndGame)
+        {
+            audioSource.Stop();
+            isEndGame = true;
+        }
         // Dừng hoặc tiếp tục quay khi nhấn phím Space
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

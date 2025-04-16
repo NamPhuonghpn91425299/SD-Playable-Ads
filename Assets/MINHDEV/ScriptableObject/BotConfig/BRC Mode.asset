@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0986b76ad7a4ab7469be419d4500568f, type: 3}
-  m_Name: test 1
+  m_Name: BRC Mode
   m_EditorClassIdentifier: 
   fightRound:
   - botConfigs:
@@ -59,7 +59,7 @@ MonoBehaviour:
       WaitToSpawn: 0
       IsSpawmOnBotKill: 0
       BotkillSpawn: 0
-    - botPrefab: {fileID: 1312138446727467944, guid: b8d52889a5afb6f479e12a2e5e686cd8, type: 3}
+    - botPrefab: {fileID: 1312138446727467944, guid: 471e3e7de2e0a944db8b1f9b73b71df3, type: 3}
       botType: 2
       isNotUse: 0
       isNotCount: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
       WaitToSpawn: 0
       IsSpawmOnBotKill: 0
       BotkillSpawn: 0
-    - botPrefab: {fileID: 1312138446727467944, guid: b8d52889a5afb6f479e12a2e5e686cd8, type: 3}
+    - botPrefab: {fileID: 1312138446727467944, guid: 471e3e7de2e0a944db8b1f9b73b71df3, type: 3}
       botType: 2
       isNotUse: 0
       isNotCount: 0
