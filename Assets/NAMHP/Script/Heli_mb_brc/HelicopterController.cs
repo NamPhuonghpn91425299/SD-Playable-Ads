@@ -169,7 +169,8 @@ public class HelicopterController : MonoBehaviour,IPoolObject
             case HelicopterState.Hovering:
                 // Duy trì tốc độ cánh quạt và hover
                 SpinRotors();
-                Hover();
+                Invoke(nameof(Hover), 1f);
+                //Hover();
                 break;
             case HelicopterState.Attacking:
                 // Duy trì tốc độ cánh quạt và tấn công

@@ -3,8 +3,9 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 
-public class VolleyRocketMovement : MonoBehaviour
+public class VolleyRocketMovement : MonoBehaviour,IPoolObject
 {
+    [SerializeField] private RocketType rocketType; // Kiểu tên lửa (nếu cần)
     [SerializeField] private GameObject model; // Mô hình tên lửa (nếu có)
     [SerializeField] private GameObject explosionPrefab; // Prefab hiệu ứng nổ (nếu có)
     [SerializeField] private float delayTime;
@@ -186,8 +187,7 @@ public class VolleyRocketMovement : MonoBehaviour
     {
         if (currentTargetTransform != null)
         {
-            // Nếu cần cập nhật finalDestination theo target, có thể sửa đoạn này
-            return (finalDestination - transform.position).normalized;
+            return (currentTargetTransform.position - transform.position).normalized;
         }
         else
         {
@@ -195,6 +195,7 @@ public class VolleyRocketMovement : MonoBehaviour
             return dir == Vector3.zero ? transform.forward : dir;
         }
     }
+
 
     IEnumerator AutoExplodeTimer()
     {
@@ -265,7 +266,19 @@ public class VolleyRocketMovement : MonoBehaviour
 
         // 3. Dọn dẹp
         if (explodeCoroutine != null) StopCoroutine(explodeCoroutine); // Dừng coroutine tự hủy nếu đang chạy
-        gameObject.SetActive(false); // Tắt tên lửa sau khi nổ
+        if (rocketType == RocketType.Missile)
+        {
+            gameObject.SetActive(false); // Tắt tên lửa sau khi nổ
+            // Nếu là tên lửa, có thể thêm hiệu ứng hoặc hành động khác
+            // Ví dụ: Tạo một vụ nổ lớn hơn, hoặc thêm hiệu ứng âm thanh
+        }
+        else if (rocketType == RocketType.RocketRpg)
+        {
+            ObjectPool.Instance.PushToPool(this, gameObject);
+            // Nếu là RPG, có thể thêm hiệu ứng khác
+            // Ví dụ: Tạo một vụ nổ nhỏ hơn, hoặc thêm hiệu ứng âm thanh khác
+        }
+
 
     }
     void OnDrawGizmos()
@@ -275,4 +288,20 @@ public class VolleyRocketMovement : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position, finalDestination);
     }
+
+    public GameObject Prefab { get; set; }
+    public void Init()
+    {
+        
+    }
+
+    public void OnPushToPool()
+    {
+        
+    }
+}
+public enum RocketType
+{
+    Missile,
+    RocketRpg,
 }

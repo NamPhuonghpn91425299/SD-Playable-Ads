@@ -49837,15 +49837,15 @@ MonoBehaviour:
   isAttacking: 0
   isDead: 0
   maxRotorSpeed: 2000
-  rotorAcceleration: 200
+  rotorAcceleration: 300
   minLiftSpeed: 1200
   maxHeight: 25
-  liftSpeed: 10
-  forwardSpeed: 12
+  liftSpeed: 12
+  forwardSpeed: 15
   takeoffPitchAngle: -15
   forwardPitchAngle: 10
   turnSpeed: 1
-  horizontalThreshold: 6
+  horizontalThreshold: 8
   verticalThreshold: 4
   idleDuration: 1
   deadPositionY: 3
@@ -49909,7 +49909,7 @@ MonoBehaviour:
   rightLauncher: {fileID: 3854948796189354964}
   rocketsPerVolley: 6
   timeBetweenRocketsInVolley: 0.2
-  timeBetweenVolleys: 8
+  timeBetweenVolleys: 6
   initialStraightDistance: 15
   trajectorySpreadRadius: 1
   rocketSpeed: 20

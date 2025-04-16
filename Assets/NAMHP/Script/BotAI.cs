@@ -9,7 +9,7 @@ public class BotAI : MonoBehaviour
     public Transform player;
     
     public float detectionRange = 50f;
-    public float speed = 3f;
+    public float speed = 2f;
     //[SerializeField] private float upperBodyRotationSpeed = 5f; // Xoay lên/xuống
     public LayerMask obstacleMask;
     public LayerMask playerMask;
@@ -17,7 +17,7 @@ public class BotAI : MonoBehaviour
     // Thêm thời gian cần duy trì trạng thái trước khi chuyển
     [SerializeField] private float seenTimer = 0f;
     [SerializeField] private float unseenTimer = 0f;
-    public float stateChangeDelay = 0.2f; // Ví dụ: 0.2 giây
+    public float stateChangeDelay = 2f; // Ví dụ: 0.2 giây
     public bool canSee;
     public bool isChangeState;
     private void Awake()

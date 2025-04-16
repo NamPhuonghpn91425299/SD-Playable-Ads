@@ -72,6 +72,6 @@ public class AnimatorEvent : MonoBehaviour
     public void ResetValue()
     {
         if (WarheadOnHand != null) WarheadOnHand.SetActive(false);
-        if (WarheadOnWeapon != null) WarheadOnWeapon.SetActive(false);
+        if (WarheadOnWeapon != null) WarheadOnWeapon.SetActive(true);
     }
 }
