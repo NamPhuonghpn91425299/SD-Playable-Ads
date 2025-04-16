@@ -23,6 +23,15 @@ MonoBehaviour:
       WaitToSpawn: 0
       IsSpawmOnBotKill: 0
       BotkillSpawn: 0
+    - botPrefab: {fileID: 1312138446727467944, guid: 471e3e7de2e0a944db8b1f9b73b71df3, type: 3}
+      botType: 2
+      isNotUse: 0
+      isNotCount: 0
+      botQuantity: 1
+      botDelaySpawn: 0.2
+      WaitToSpawn: 0
+      IsSpawmOnBotKill: 0
+      BotkillSpawn: 0
     rewardConfig:
     - rewardPrefab: {fileID: 2759798458802482863, guid: 4dd06d8c554c75843940b4dfdcbe9082, type: 3}
       rewardType: 2

@@ -141,7 +141,7 @@ public class VolleyRocketMovement : MonoBehaviour,IPoolObject
     {
         if (isExploding || !gameObject.activeSelf) return;
 
-        if (isFlyingStraight)
+        if (isFlyingStraight && rocketType == RocketType.Missile)
             HandleStraightFlight();
         else
             HandleHomingFlight();
