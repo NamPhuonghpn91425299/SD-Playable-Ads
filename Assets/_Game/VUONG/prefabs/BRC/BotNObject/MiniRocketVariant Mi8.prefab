@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6964188993993575480}
   - component: {fileID: 6669799374228307767}
   - component: {fileID: 1642858279025416651}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Smoke (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4835,7 +4835,7 @@ GameObject:
   - component: {fileID: 99837212665782348}
   - component: {fileID: 952594893306987220}
   - component: {fileID: 3645398444545082828}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fire Small (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9658,7 +9658,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6687771459162089547}
   - component: {fileID: 445801379763042295}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9786,10 +9786,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4082713200596720050}
+  - component: {fileID: 6700275340440732869}
   - component: {fileID: 5344126333385696209}
   - component: {fileID: 157497208448668688}
   - component: {fileID: 3050586917476754358}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MiniRocketVariant Mi8
   m_TagString: Body
   m_Icon: {fileID: 0}
@@ -9817,6 +9818,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6700275340440732869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4082713200596485522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d09d32badc0eedb42b2c770aca292d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  botConfigSO: {fileID: 11400000, guid: f2e3d942b0e07474a9a1fbc3215b6579, type: 2}
+  healthBarUI: {fileID: 0}
+  healthBarTransform: {fileID: 0}
+  _fireAssistCheckPos: []
+  _path:
+    IsUse: 0
+    WayPoints: []
+    AttackWayPoints: []
+  _currentHealth: 0
+  isImmortal: 0
+  isDead: 0
+  _posTakeDame: {fileID: 0}
+  mainCameraTranform: {fileID: 0}
 --- !u!114 &5344126333385696209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9829,6 +9855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f9a6a99a0f440290644bdcab32bbb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  botNetwork: {fileID: 6700275340440732869}
   rocketType: 0
   model: {fileID: 3322516077364251833}
   explosionPrefab: {fileID: 8701680740255679216}
@@ -9844,8 +9871,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.31, y: 0.4, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 0.5, z: 1.2}
+  m_Center: {x: 0, y: 0, z: -0.13}
 --- !u!54 &3050586917476754358
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9873,7 +9900,7 @@ GameObject:
   - component: {fileID: 8120541018562387921}
   - component: {fileID: 1002881835382433255}
   - component: {fileID: 6833784571794987294}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9956,7 +9983,7 @@ GameObject:
   - component: {fileID: 3268724691049980224}
   - component: {fileID: 7651579844527203573}
   - component: {fileID: 6934519580969987767}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Smoke (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14781,7 +14808,7 @@ GameObject:
   - component: {fileID: 3881185636064600652}
   - component: {fileID: 166531231886167812}
   - component: {fileID: 2382747593864924595}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19768,6 +19795,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8452864133545476883, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8349236100226376761, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -8349236100226376761, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -19812,6 +19847,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4035438803970163011, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -3992147673423006414, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -3833834655514282480, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -19820,6 +19863,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 923044c54f715e64cb1d74b065dd67d4, type: 2}
+    - target: {fileID: -3668436891022467251, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -3293652890884316349, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -606539159924504021, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -19849,6 +19900,10 @@ PrefabInstance:
       value: RocketPanzerwerfer_Brake
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -19864,6 +19919,18 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1468297307239480200, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509667875947951276, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920310615233014521, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1920310615233014521, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -19872,6 +19939,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 923044c54f715e64cb1d74b065dd67d4, type: 2}
+    - target: {fileID: 2864276631850394028, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2864276631850394028, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -19911,6 +19982,10 @@ PrefabInstance:
     - target: {fileID: 5515681694278075912, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946115111444796641, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5946115111444796641, guid: 027991ae7980ac2488c5380a80d65eac, type: 3}
       propertyPath: m_IsActive
@@ -20198,7 +20273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3286245043708858649, guid: e8d8a2d383132fd4ebf91de685e70fa8, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5236657930544655529, guid: e8d8a2d383132fd4ebf91de685e70fa8, type: 3}
       propertyPath: distanceDisappear
@@ -20214,7 +20289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5242042954193279067, guid: e8d8a2d383132fd4ebf91de685e70fa8, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6546272933334786746, guid: e8d8a2d383132fd4ebf91de685e70fa8, type: 3}
       propertyPath: m_Sprite

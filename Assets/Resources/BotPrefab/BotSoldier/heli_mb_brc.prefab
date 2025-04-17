@@ -49967,7 +49967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   botNetwork: {fileID: 7333042940818183757}
   botIndicator: {fileID: 7992073945649274124}
-  isShow: 1
+  isShow: 0
 --- !u!1 &2122855419988918542
 GameObject:
   m_ObjectHideFlags: 0
@@ -85229,11 +85229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5229931414743416025, guid: 76fadd0db68b2aa46b8ed1fbe51af056, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5229931414743416025, guid: 76fadd0db68b2aa46b8ed1fbe51af056, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5229931414743416025, guid: 76fadd0db68b2aa46b8ed1fbe51af056, type: 3}
       propertyPath: m_LocalScale.x

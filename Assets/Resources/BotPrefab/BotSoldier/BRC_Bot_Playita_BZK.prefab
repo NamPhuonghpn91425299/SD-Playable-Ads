@@ -626,7 +626,6 @@ MonoBehaviour:
   bulletRPG7Prefab: {fileID: 5506989356557083101, guid: 9cdd262034f0a4d43b78cf742d661ab8, type: 3}
   bulletRPG7: {fileID: 6179001617937383439}
   bodyRotationSpeed: 5
-  upperBodyRotationSpeed: 5
   animator: {fileID: 1312138448328766699}
   muzzle: {fileID: 647714661125058615}
   muzzleParticle: {fileID: 2254809275237083151}
@@ -709,7 +708,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

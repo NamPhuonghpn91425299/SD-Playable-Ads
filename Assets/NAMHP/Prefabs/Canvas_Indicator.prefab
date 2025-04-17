@@ -27,8 +27,8 @@ RectTransform:
   m_GameObject: {fileID: 5229931414743416024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5497331002681122817}
   m_Father: {fileID: 0}
@@ -48,7 +48,7 @@ Canvas:
   m_GameObject: {fileID: 5229931414743416024}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!1001 &5229931415102519045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 350721678388205317, guid: ab248775a2879e2439aa4b7a95a7613e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 350721678388205319, guid: ab248775a2879e2439aa4b7a95a7613e, type: 3}
       propertyPath: m_Name

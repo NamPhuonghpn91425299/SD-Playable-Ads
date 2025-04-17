@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class VolleyRocketMovement : MonoBehaviour,IPoolObject
 {
+    [SerializeField] private BotNetwork botNetwork; // BotNetwork để lấy thông tin về Player
     [SerializeField] private RocketType rocketType; // Kiểu tên lửa (nếu cần)
     [SerializeField] private GameObject model; // Mô hình tên lửa (nếu có)
     [SerializeField] private GameObject explosionPrefab; // Prefab hiệu ứng nổ (nếu có)
@@ -29,6 +30,7 @@ public class VolleyRocketMovement : MonoBehaviour,IPoolObject
 
     void Awake()
     {
+        botNetwork = GetComponent<BotNetwork>();
         rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
@@ -48,7 +50,23 @@ public class VolleyRocketMovement : MonoBehaviour,IPoolObject
 
     private void OnEnable()
     {
+        botNetwork.Reset();
         explosionPrefab.SetActive(false); // Tắt hiệu ứng nổ khi kích hoạt
+        botNetwork.OnBotDead += OnBotDead; // Đăng ký sự kiện khi bot chết
+    }
+
+    private void OnDisable()
+    {
+        botNetwork.OnBotDead -= OnBotDead; // Hủy đăng ký sự kiện
+    }
+
+    private void OnBotDead()
+    {
+        // Nếu bot chết, tên lửa sẽ tự động nổ
+        if (gameObject.activeSelf && !isExploding)
+        {
+            Explode();
+        }
     }
 
     // Hàm được gọi bởi HelicopterRocketAttack để cấu hình tên lửa

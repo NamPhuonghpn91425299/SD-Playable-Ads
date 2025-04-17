@@ -29,7 +29,7 @@ public class BrcBotBzkAttackState : BaseState<BrcBotBzkState>
     [Header("ROCKET ATTRIBUTES")]
     public float rocketSpeed = 50f;
     public float rocketRotationSpeed = 180f; // Tốc độ xoay khi bám đuổi/điều chỉnh hướng
-    public float autoExplodeTime = 8f;
+    public float autoExplodeTime = 10f;
     public float explosionRadius = 5f;
     public int damage = 10;
     public float initialStraightDistance = 15f; // Khoảng cách rocket bay thẳng ban đầu

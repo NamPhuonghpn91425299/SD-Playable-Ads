@@ -59,7 +59,7 @@ MonoBehaviour:
       WaitToSpawn: 0
       IsSpawmOnBotKill: 0
       BotkillSpawn: 0
-    - botPrefab: {fileID: 1312138446727467944, guid: 471e3e7de2e0a944db8b1f9b73b71df3, type: 3}
+    - botPrefab: {fileID: 7498473867791792793, guid: 91695adfc1b024542830db223c3fd9aa, type: 3}
       botType: 2
       isNotUse: 0
       isNotCount: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
       WaitToSpawn: 0
       IsSpawmOnBotKill: 0
       BotkillSpawn: 0
-    - botPrefab: {fileID: 1312138446727467944, guid: 471e3e7de2e0a944db8b1f9b73b71df3, type: 3}
+    - botPrefab: {fileID: 7498473867791792793, guid: 91695adfc1b024542830db223c3fd9aa, type: 3}
       botType: 2
       isNotUse: 0
       isNotCount: 0

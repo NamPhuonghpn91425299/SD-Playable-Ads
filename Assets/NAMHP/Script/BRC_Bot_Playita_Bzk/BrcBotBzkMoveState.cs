@@ -11,7 +11,7 @@ public class BrcBotBzkMoveState : BaseState<BrcBotBzkState>
     [SerializeField] private float rotationSpeed = 3f;
     [SerializeField] private float idleTime = 2f; // Thời gian chờ tại mỗi điểm tuần tra
     [SerializeField] private float idleTimeMax = 5f; // Thời gian Max chờ tại mỗi điểm tuần tra
-    [SerializeField] private float idleTimeMin = 2f; // Thời gian Min chờ tại mỗi điểm tuần traa
+    [SerializeField] private float idleTimeMin = 3f; // Thời gian Min chờ tại mỗi điểm tuần traa
     private float idleTimer = 0f;
     private int shootAngleHash = 0;
     private bool isIdle = false; // Trạng thái dừng lại tại điểm tuần tra
