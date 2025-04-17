@@ -252,7 +252,7 @@ public class PlayerView : MonoBehaviour
             totalRotate.x = Mathf.Clamp(totalRotate.x, _viewHorizontalThreshold.x, _viewHorizontalThreshold.y);
             totalRotate.y = Mathf.Clamp(totalRotate.y, _viewVerticalThreshold.x, _viewVerticalThreshold.y);
 
-            if (!UIEndGame.Instance.IsShowEndGame)
+            if (!UIManager.Instance.isCanTouch)
             {
                 if (WeaponView && WeaponTrans != null)
                 {
