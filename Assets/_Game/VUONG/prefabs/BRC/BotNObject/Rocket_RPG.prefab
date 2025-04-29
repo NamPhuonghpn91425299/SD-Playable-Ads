@@ -9829,8 +9829,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.6, z: 1.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.7, y: 0.7, z: 1.5}
+  m_Center: {x: 0, y: -0.12, z: -0.2}
 --- !u!114 &4255647244562740717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9848,6 +9848,7 @@ MonoBehaviour:
   model: {fileID: 6319493994053547149}
   explosionPrefab: {fileID: 1774544745932185299, guid: 06f2fc7550543b74fa4a0f05609f5c43, type: 3}
   delayTime: 2
+  chaoticSteeringStrength: 90
 --- !u!54 &312512398798710288
 Rigidbody:
   m_ObjectHideFlags: 0

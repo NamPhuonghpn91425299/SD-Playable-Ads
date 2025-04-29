@@ -70,6 +70,7 @@ private void OnGUI()
 
     if (GUILayout.Button("Clear List"))
     {
+        
         prefabs.Clear();
     }
 

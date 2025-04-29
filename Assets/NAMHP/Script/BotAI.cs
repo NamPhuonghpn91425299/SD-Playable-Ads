@@ -17,7 +17,9 @@ public class BotAI : MonoBehaviour
     // Thêm thời gian cần duy trì trạng thái trước khi chuyển
     [SerializeField] private float seenTimer = 0f;
     [SerializeField] private float unseenTimer = 0f;
-    public float stateChangeDelay = 2f; // Ví dụ: 0.2 giây
+    public int stateChangeDelay; // Ví dụ: 0.2 giây
+    public int stateChangeDelayMax = 6; // Ví dụ: 0.2 giây
+    public int stateChangeDelayMin = 5; // Ví dụ: 0.2 giây
     public bool canSee;
     public bool isChangeState;
     private void Awake()
@@ -32,7 +34,7 @@ public class BotAI : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        stateChangeDelay = UnityEngine.Random.Range(stateChangeDelayMin, stateChangeDelayMax);
     }
 
     void Start()

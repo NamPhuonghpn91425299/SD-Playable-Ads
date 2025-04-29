@@ -18,7 +18,7 @@ public class HelicopterOrbit : MonoBehaviour
     [SerializeField, Tooltip("Transform của điểm làm tâm quỹ đạo.")]
     private Transform orbitCenter;
     [SerializeField, Tooltip("Tham chiếu đến HelicopterController để lấy chỉ số waypoint hiện tại.")]
-    private HelicopterController helicopterController; // Cần được gán từ Inspector hoặc lấy trong Awake/Start
+    private HelicopterMi28Controller helicopterController; // Cần được gán từ Inspector hoặc lấy trong Awake/Start
 
     [Header("Cài Đặt Debug")]
     [SerializeField, Tooltip("Số đoạn vẽ để tạo hình tròn debug.")]
@@ -53,7 +53,7 @@ public class HelicopterOrbit : MonoBehaviour
         // Lấy tham chiếu nếu chưa được gán từ Inspector (tùy chọn)
         if (helicopterController == null)
         {
-            helicopterController = GetComponent<HelicopterController>();
+            helicopterController = GetComponent<HelicopterMi28Controller>();
             if (helicopterController == null)
             {
                 Debug.LogError("HelicopterOrbit: Không tìm thấy HelicopterController!", this);

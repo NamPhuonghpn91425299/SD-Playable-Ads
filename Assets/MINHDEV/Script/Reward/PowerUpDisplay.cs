@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
 using static GameConstants;
-
+using static NUtiliti;
 public class PowerUpDisplay : MonoBehaviour
 {
     public RewardNetwork rewardNetwork;
     public RewardType rewardType;
     public ParticleSystem[] CollectedEffect;
     public Transform mytrans;
+    public Transform mainCam;
     public GameObject myBody;
     public RectTransform ContentObj;
     public CanvasGroup ContentCanvasGroup;
@@ -38,6 +39,7 @@ public class PowerUpDisplay : MonoBehaviour
 
     private void OnEnable()
     {
+        mainCam = Camera.main.transform;
         if (rewardNetwork != null)
         {
             rewardNetwork.OnRewardCollected += HandleRewardCollected;
@@ -125,5 +127,6 @@ public class PowerUpDisplay : MonoBehaviour
     {
         // Rotate mytrans around the Y-axis
         mytrans.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+        NUtiliti.AlignCamera(ContentObj.transform, mainCam);
     }
 }

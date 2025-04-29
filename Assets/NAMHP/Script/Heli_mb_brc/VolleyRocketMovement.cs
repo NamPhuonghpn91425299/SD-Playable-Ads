@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class VolleyRocketMovement : MonoBehaviour,IPoolObject
 {
@@ -98,69 +99,14 @@ public class VolleyRocketMovement : MonoBehaviour,IPoolObject
         currentTargetTransform = newTarget;
         // Lưu ý: finalDestination (điểm lệch) không thay đổi để giữ quỹ đạo phân tán
     }
-
-
-    // void Update()
-    // {
-    //     // THÊM KIỂM TRA NÀY: Nếu đang nổ hoặc không active, không làm gì cả
-    //     if (isExploding || !gameObject.activeSelf) return;
-    //
-    //     float moveDistance = speed * Time.deltaTime;
-    //
-    //     if (isFlyingStraight)
-    //     {
-    //         // Bay thẳng theo hướng ban đầu
-    //         transform.Translate(Vector3.forward * moveDistance, Space.Self);
-    //         distanceTraveled += moveDistance;
-    //
-    //         if (distanceTraveled >= initialStraightDist)
-    //         {
-    //             isFlyingStraight = false;
-    //             // Có thể bật chế độ homing/steering tại đây nếu cần
-    //             Debug.Log("Rocket finished straight phase, starting homing/steering.", this);
-    //         }
-    //     }
-    //     else // Đã hết giai đoạn bay thẳng
-    //     {
-    //         // Hướng về điểm đến cuối cùng (finalDestination)
-    //         Vector3 directionToDestination;
-    //         if(currentTargetTransform != null) {
-    //             // Tùy chọn: Cập nhật finalDestination dựa trên vị trí mới của target + offset ban đầu
-    //             // Vector3 offset = finalDestination - targetPositionAtLaunch; // Cần lưu targetPositionAtLaunch trong Setup()
-    //             // finalDestination = currentTargetTransform.position + offset;
-    //             // Hoặc đơn giản là hướng về điểm đã tính ban đầu:
-    //             directionToDestination = (finalDestination - transform.position).normalized;
-    //         } else {
-    //             // Nếu mục tiêu biến mất, bay thẳng tiếp hoặc bay đến điểm cuối cùng đã biết
-    //             directionToDestination = (finalDestination - transform.position).normalized;
-    //             if (directionToDestination == Vector3.zero) directionToDestination = transform.forward; // Tránh lỗi chia cho 0
-    //         }
-    //
-    //
-    //         // Xoay về hướng đích
-    //         if (directionToDestination != Vector3.zero)
-    //         {
-    //             Quaternion targetRotation = Quaternion.LookRotation(directionToDestination);
-    //             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-    //         }
-    //
-    //         // Di chuyển về phía trước
-    //         transform.Translate(Vector3.forward * moveDistance, Space.Self);
-    //
-    //         // Kiểm tra nếu đã đến rất gần đích (để tránh bay vòng vòng)
-    //         if (Vector3.Distance(transform.position, finalDestination) < 1.0f)
-    //         {
-    //             Debug.Log("Rocket reached final destination.", this);
-    //             Explode();
-    //         }
-    //     }
-    // }
+    
     void Update()
     {
         if (isExploding || !gameObject.activeSelf) return;
 
         if (isFlyingStraight && rocketType == RocketType.Missile)
-            HandleStraightFlight();
+            //HandleStraightFlight();
+            HandleChaoticStraightFlight();
         else
             HandleHomingFlight();
     }
@@ -174,10 +120,33 @@ public class VolleyRocketMovement : MonoBehaviour,IPoolObject
         if (distanceTraveled >= initialStraightDist)
         {
             isFlyingStraight = false;
-            //Debug.Log("Rocket finished straight phase, starting homing/steering.", this);
+            Debug.Log("Rocket finished straight phase, starting homing/steering.", this);
         }
     }
+    [Header("Chaotic Flight Phase (Missile Only)")]
+    [Tooltip("How strongly the missile steers randomly during the initial phase. Degrees per second.")]
+    [SerializeField] private float chaoticSteeringStrength = 90f; // Điều chỉnh giá trị này
+    private void HandleChaoticStraightFlight()
+    {
+        float moveDistance = speed * Time.deltaTime;
 
+        // 1. Thêm một chút xoay ngẫu nhiên (chủ yếu là pitch và yaw)
+        float randomPitch = Random.Range(-1f, 1f) * chaoticSteeringStrength * Time.deltaTime;
+        float randomYaw = Random.Range(-1f, 1f) * chaoticSteeringStrength * Time.deltaTime;
+        // Áp dụng xoay ngẫu nhiên vào hướng hiện tại
+        transform.Rotate(randomPitch, randomYaw, 0, Space.Self);
+
+        // 2. Di chuyển về phía trước theo hướng MỚI sau khi đã xoay
+        transform.Translate(Vector3.forward * moveDistance, Space.Self);
+        distanceTraveled += moveDistance;
+
+        // 3. Kiểm tra nếu đã hoàn thành giai đoạn bay hỗn loạn
+        if (distanceTraveled >= initialStraightDist)
+        {
+            isFlyingStraight = false;
+            //Debug.Log("Rocket finished chaotic phase, starting homing.", this);
+        }
+    }
     private void HandleHomingFlight()
     {
         float moveDistance = speed * Time.deltaTime;
@@ -192,7 +161,7 @@ public class VolleyRocketMovement : MonoBehaviour,IPoolObject
 
         // Di chuyển về phía trước
         transform.Translate(Vector3.forward * moveDistance, Space.Self);
-
+        //Debug.Log($"Rocket moving towards {finalDestination}", this);
         // Kiểm tra gần đích
         if (Vector3.Distance(transform.position, finalDestination) < 1.0f)
         {

@@ -774,7 +774,9 @@ MonoBehaviour:
     m_Bits: 512
   seenTimer: 0
   unseenTimer: 0
-  stateChangeDelay: 2
+  stateChangeDelay: 5
+  stateChangeDelayMax: 9
+  stateChangeDelayMin: 5
   canSee: 0
   isChangeState: 0
 --- !u!114 &2642083505412977831
@@ -844,8 +846,8 @@ MonoBehaviour:
   currentWaypointIndex: 0
   rotationSpeed: 3
   idleTime: 2
-  idleTimeMax: 5
-  idleTimeMin: 3
+  idleTimeMax: 3.5
+  idleTimeMin: 2
 --- !u!114 &32542953299715153
 MonoBehaviour:
   m_ObjectHideFlags: 0

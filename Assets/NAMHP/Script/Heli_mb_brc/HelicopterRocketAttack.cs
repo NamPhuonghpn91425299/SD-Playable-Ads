@@ -193,7 +193,7 @@ public class HelicopterRocketAttack : MonoBehaviour
             // Chờ trước khi bắn quả tiếp theo trong loạt
             yield return new WaitForSeconds(timeBetweenRocketsInVolley);
         }
-        Debug.Log("Volley finished.", this);
+        //Debug.Log("Volley finished.", this);
     }
 
     void SpawnRocket(Transform launchPoint, Vector3 calculatedTargetPos)

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static GameConstants;
+using static HelperCoroutine;
 
 public class GamePlayManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class GamePlayManager : MonoBehaviour
     public static GamePlayManager Instance;
     public int Turn;
     public bool IsShowLunaEndGame;
-
+    public float timeDelayEndGame = 1f;
     private void Awake()
     {
         Instance = this;
@@ -167,7 +168,7 @@ public class GamePlayManager : MonoBehaviour
 
     private IEnumerator ClearPreviousBots()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return WaitSeconds(timeDelayEndGame);
         BotManager.Instance.ClearAllBots();
         RewardManager.Instance.ClearAllRewards();
     }

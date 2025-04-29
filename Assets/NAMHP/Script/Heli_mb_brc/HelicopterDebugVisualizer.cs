@@ -11,7 +11,7 @@ using UnityEditor;
 public class HelicopterDebugVisualizer : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private HelicopterController helicopterController;
+    [SerializeField] private HelicopterMi28Controller helicopterController;
 
     [Header("Visualization Settings")]
     [SerializeField] private bool showDebugInfo = true;
@@ -46,7 +46,7 @@ public class HelicopterDebugVisualizer : MonoBehaviour
     private void Start()
     {
         if (helicopterController == null)
-            helicopterController = GetComponent<HelicopterController>();
+            helicopterController = GetComponent<HelicopterMi28Controller>();
 
         if (helicopterController == null)
         {
