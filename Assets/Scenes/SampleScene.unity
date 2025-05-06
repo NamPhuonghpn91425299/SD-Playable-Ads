@@ -1313,127 +1313,6 @@ Transform:
   m_Father: {fileID: 904750836}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &108998801
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3332662139298215692, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: waypoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3332662139298215692, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: waypoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 4817950049459133133}
-    - target: {fileID: 3332662139298215692, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: waypoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 7328226807057578095}
-    - target: {fileID: 3332662139298215692, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: waypoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 545730201}
-    - target: {fileID: 3332662139298215692, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: waypoints.Array.data[3]
-      value: 
-      objectReference: {fileID: 1586849979}
-    - target: {fileID: 3690468727155319026, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3690468727155319026, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3690468727155319026, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3690468727155319026, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 41.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 3690468727155319026, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.92387956
-      objectReference: {fileID: 0}
-    - target: {fileID: 3690468727155319026, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3690468727155319026, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.38268343
-      objectReference: {fileID: 0}
-    - target: {fileID: 3690468727155319026, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3690468727155319026, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3690468727155319026, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 3690468727155319026, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3744427554960106007, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: waypoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3744427554960106007, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: waypoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 4817950049459133133}
-    - target: {fileID: 3744427554960106007, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: waypoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 7328226807057578095}
-    - target: {fileID: 3744427554960106007, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: waypoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 545730201}
-    - target: {fileID: 3744427554960106007, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: waypoints.Array.data[3]
-      value: 
-      objectReference: {fileID: 1586849979}
-    - target: {fileID: 6055851573168727300, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: _path.AttackWayPoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6055851573168727300, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: _path.AttackWayPoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 4817950049459133133}
-    - target: {fileID: 6055851573168727300, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: _path.AttackWayPoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 7328226807057578095}
-    - target: {fileID: 6055851573168727300, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: _path.AttackWayPoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 545730201}
-    - target: {fileID: 6055851573168727300, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: _path.AttackWayPoints.Array.data[3]
-      value: 
-      objectReference: {fileID: 1586849979}
-    - target: {fileID: 8078445943536076932, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: m_Name
-      value: Heli_24hind_mi28
-      objectReference: {fileID: 0}
-    - target: {fileID: 8078445943536076932, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9dc0c29058fc1b84cb6689dae9d65bee, type: 3}
 --- !u!1 &115348457
 GameObject:
   m_ObjectHideFlags: 0
@@ -7264,7 +7143,7 @@ MonoBehaviour:
   RoundTxtShadow: {fileID: 376732521}
   hudCanvasGroup: {fileID: 1396463069}
   timeToEndGameTxt: {fileID: 1121261697}
-  timeEndConfig: 40
+  timeEndConfig: 30
   _timeEnd: 5
   _timeDelayShowHUD: 3
   isLoseGame: 0
@@ -41049,7 +40928,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.8683962, b: 0.47358483, a: 1}
+  m_Color: {r: 1, g: 0.98456997, b: 0.79811317, a: 1}
   m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30

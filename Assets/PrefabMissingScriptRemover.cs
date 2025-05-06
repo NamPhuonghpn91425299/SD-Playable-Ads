@@ -45,6 +45,11 @@ private void OnGUI()
     GUILayout.EndScrollView();
 
     HandleDragAndDrop();
+    // Lưu lại màu mặc định
+    Color defaultColor = GUI.backgroundColor;
+
+    // Đặt màu mới cho button (ví dụ: đỏ)
+    GUI.backgroundColor = Color.red;
 
     if (GUILayout.Button("Scan and Remove Missing Scripts"))
     {
@@ -56,7 +61,8 @@ private void OnGUI()
             }
         }
     }
-
+    GUI.backgroundColor = defaultColor; // Khôi phục màu mặc định
+    GUI.backgroundColor = Color.yellow;
     if (GUILayout.Button("Disable Colliders in Prefabs"))
     {
         foreach (var prefab in prefabs)
@@ -67,7 +73,7 @@ private void OnGUI()
             }
         }
     }
-
+    GUI.backgroundColor = defaultColor;
     if (GUILayout.Button("Clear List"))
     {
         
