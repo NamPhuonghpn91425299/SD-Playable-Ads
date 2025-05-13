@@ -165,6 +165,7 @@ public class HelicopterMi28Controller : MonoBehaviour,IPoolObject
         deadStep[0].SetActive(true); // Kích hoạt cánh quạt quay lúc chết
         deadStep[1].SetActive(false); // Tạm thời ẩn xác máy bay tĩnh
         BotDeath.Instance.GetBotDeath();
+        EventManager.Invoke(EventName.OnStaticBotDead, true);
         Explode();
         // Chuyển sang chế độ rơi bằng vật lý
         if (rb != null)

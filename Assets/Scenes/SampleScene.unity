@@ -10353,6 +10353,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2055356476}
     m_Modifications:
+    - target: {fileID: 1763394741, guid: 38dc878820136304f8c08e6340f6e568, type: 3}
+      propertyPath: isPlay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 474603243964037921, guid: 38dc878820136304f8c08e6340f6e568, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 0
@@ -14329,6 +14333,14 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8365498007969983244, guid: 26478542b9989fa42864a52ec2327872, type: 3}
+      propertyPath: explosionForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365498007969983244, guid: 26478542b9989fa42864a52ec2327872, type: 3}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 1441469699}
+    - target: {fileID: 8365498007969983244, guid: 26478542b9989fa42864a52ec2327872, type: 3}
       propertyPath: explosionRadius
       value: 10
       objectReference: {fileID: 0}
@@ -14362,6 +14374,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26478542b9989fa42864a52ec2327872, type: 3}
+--- !u!1 &1441469699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4802735333217141384, guid: 26478542b9989fa42864a52ec2327872, type: 3}
+  m_PrefabInstance: {fileID: 1441469698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1448839708
 GameObject:
   m_ObjectHideFlags: 0
@@ -33281,7 +33298,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2415038107305117648}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0f78a83bd5ab5bc428f05cf9ff25389c, type: 3}

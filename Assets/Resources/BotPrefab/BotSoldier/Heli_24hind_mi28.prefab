@@ -91648,7 +91648,7 @@ MonoBehaviour:
   rotorAcceleration: 300
   minLiftSpeed: 1000
   maxHeight: 25
-  liftSpeed: 8
+  liftSpeed: 15
   liftSpeed1: 1
   forwardSpeed: 20
   takeoffPitchAngle: -15
@@ -91729,12 +91729,12 @@ MonoBehaviour:
   - {fileID: 5426462115491093959}
   - {fileID: 4610960090097991329}
   rightLauncher: {fileID: 8093173041409188075}
-  rocketsPerVolley: 6
-  timeBetweenRocketsInVolley: 0.2
+  rocketsPerVolley: 4
+  timeBetweenRocketsInVolley: 0.4
   timeBetweenVolleys: 6
   initialStraightDistance: 20
   trajectorySpreadRadius: 35
-  rocketSpeed: 15
+  rocketSpeed: 16
   rocketRotationSpeed: 180
   autoExplodeTime: 6
   explosionRadius: 5
