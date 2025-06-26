@@ -37,7 +37,6 @@ public class HelicopterMi28Controller : MonoBehaviour,IPoolObject
     [Header("Movement Settings")]
     [SerializeField] public float maxHeight = 25f;            // Độ cao bay tối đa
     [SerializeField] private float liftSpeed = 6f;           // Tốc độ nâng/hạ
-    [SerializeField] private float liftSpeed1 = 1f;           // Tốc độ nâng/hạ
     [SerializeField] private float forwardSpeed = 10f;       // Tốc độ bay tới
     [SerializeField] private float takeoffPitchAngle = -15f; // Góc ngẩng đầu khi cất cánh
     [SerializeField] private float forwardPitchAngle = 10f;  // Góc chúc đầu khi bay tới
@@ -47,6 +46,14 @@ public class HelicopterMi28Controller : MonoBehaviour,IPoolObject
     [SerializeField] private float idleDuration = 1f;        // Thời gian chờ tối thiểu ở trạng thái Idle
     [SerializeField] private float delayAttack = 2f;        // Thời gian chờ tối thiểu ở trạng thái Idle
 
+    public float targetFlySpeed = 20f;       // Tốc độ bay mong muốn khi đạt đến (thay cho forwardSpeed)
+    public float acceleration = 15f;         // Gia tốc (đơn vị/giây^2)
+    public float deceleration = 5f;         // Giảm tốc (đơn vị/giây^2)
+    public float slowingDistance = 10f;     // Khoảng cách bắt đầu giảm tốc khi đến gần waypoint CUỐI CÙNG
+    public float stopThreshold = 0.1f;      // Ngưỡng tốc độ coi như đã dừng
+
+    private float currentSpeed = 0f;        // Tốc độ hiện tại của trực thăng
+    private float targetSpeed = 0f;     // Tốc độ mục tiêu mà trực thăng đang hướng tới
     // --- Cài đặt Cất cánh & Độ cao ---
     [Header("TakeOff & Altitude Settings")]
     [SerializeField] private float takeoffTransitionHeight = 15f; // Độ cao chuyển từ TakeOff sang ReachingAltitude
@@ -353,14 +360,39 @@ public class HelicopterMi28Controller : MonoBehaviour,IPoolObject
     {
         if (waypoints == null || waypoints.Count == 0)
         {
-             Debug.LogWarning("Không có waypoints được gán!");
-             currentState = HelicopterState.Hovering; // Chuyển sang Hover nếu không có waypoint
-             return;
+            Debug.LogWarning("Không có waypoints được gán!");
+            // Khi không có waypoint, mục tiêu là dừng lại
+            if (currentSpeed > stopThreshold)
+            {
+                currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, deceleration * Time.deltaTime);
+            }
+            else
+            {
+                currentSpeed = 0f;
+                if (currentState != HelicopterState.Hovering)
+                    currentState = HelicopterState.Hovering;
+            }
+            // Di chuyển với tốc độ giảm dần (nếu có) và cố gắng giữ cân bằng
+            ApplyMovementAndNeutralTilt();
+            return;
         }
-        // Nếu đã đến tất cả waypoints thì chuyển sang trạng thái Hovering
+
+        // Nếu đã đến tất cả waypoints thì giảm tốc và chuyển sang trạng thái Hovering
         if (currentWaypointIndex >= waypoints.Count)
         {
-            currentState = HelicopterState.Hovering;
+            // Mục tiêu là dừng lại
+            if (currentSpeed > stopThreshold)
+            {
+                currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, deceleration * Time.deltaTime);
+            }
+            else
+            {
+                currentSpeed = 0f;
+                if (currentState != HelicopterState.Hovering)
+                    currentState = HelicopterState.Hovering;
+            }
+            // Di chuyển với tốc độ giảm dần (nếu có) và cố gắng giữ cân bằng
+            ApplyMovementAndNeutralTilt();
             return;
         }
 
@@ -373,76 +405,110 @@ public class HelicopterMi28Controller : MonoBehaviour,IPoolObject
             return;
         }
 
-
         // --- Tính toán hướng ---
         Vector3 directionToWaypoint = currentWaypoint.position - transform.position;
-        Vector3 horizontalDirection = new Vector3(directionToWaypoint.x, 0, directionToWaypoint.z); // Hướng trên mặt phẳng ngang
+        float distanceToCurrentWaypoint = directionToWaypoint.magnitude;
+        Vector3 horizontalDirection = new Vector3(directionToWaypoint.x, 0, directionToWaypoint.z);
+
+        // --- TÍNH TOÁN TỐC ĐỘ MỤC TIÊU VÀ CẬP NHẬT TỐC ĐỘ HIỆN TẠI ---
+        float desiredSpeedThisFrame = targetFlySpeed;
+
+        // Nếu là waypoint cuối cùng VÀ đang đến gần nó, thì giảm tốc
+        bool isLastWaypoint = (currentWaypointIndex == waypoints.Count - 1);
+        if (isLastWaypoint && distanceToCurrentWaypoint < slowingDistance)
+        {
+            // Giảm tốc độ mục tiêu khi đến gần waypoint cuối
+            // Càng gần, tốc độ càng thấp, về 0 tại đích
+            desiredSpeedThisFrame = Mathf.Lerp(0f, targetFlySpeed, distanceToCurrentWaypoint / slowingDistance);
+            desiredSpeedThisFrame = Mathf.Max(0f, desiredSpeedThisFrame); // Đảm bảo không âm
+        }
+
+        // Tăng hoặc giảm tốc độ hiện tại để đạt desiredSpeedThisFrame
+        if (currentSpeed < desiredSpeedThisFrame)
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, desiredSpeedThisFrame, acceleration * Time.deltaTime);
+        }
+        else if (currentSpeed > desiredSpeedThisFrame)
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, desiredSpeedThisFrame, deceleration * Time.deltaTime);
+        }
+        currentSpeed = Mathf.Clamp(currentSpeed, 0, targetFlySpeed); // Đảm bảo tốc độ không vượt quá tốc độ bay mục tiêu
 
         // --- Xoay và Nghiêng ---
-        if (horizontalDirection != Vector3.zero && mainBody != null) // Thêm kiểm tra mainBody null
+        if (horizontalDirection != Vector3.zero && mainBody != null)
         {
-            horizontalDirection.Normalize(); // Chuẩn hóa vector hướng để LookRotation hoạt động đúng
+            horizontalDirection.Normalize();
+
+            Vector3 mainBodyEuler = mainBody.transform.localEulerAngles;
 
             // -- Pitch (Chúc/Ngẩng đầu - trục X của mainBody) --
-            Vector3 mainBodyEuler = mainBody.transform.localEulerAngles; // Sử dụng localEulerAngles để tránh lỗi gimbal lock và ảnh hưởng từ xoay của transform cha
-            mainBodyEuler.x = Mathf.LerpAngle(mainBodyEuler.x, forwardPitchAngle, turnSpeed * Time.deltaTime);
+            // (Giữ nguyên logic pitch cũ hoặc bạn có thể điều chỉnh dựa trên currentSpeed nếu muốn)
+            float pitchToApply = 0f;
+            if (currentSpeed > 0.1f) // Chỉ pitch khi có tốc độ
+            {
+                // Ví dụ: Pitch tỷ lệ với tốc độ hiện tại / tốc độ bay mục tiêu
+                pitchToApply = (currentSpeed / (targetFlySpeed + 0.001f)) * forwardPitchAngle;
+            }
+            mainBodyEuler.x = Mathf.LerpAngle(mainBodyEuler.x, pitchToApply, turnSpeed * Time.deltaTime);
 
             // -- Yaw (Xoay hướng - trục Y của transform chính) --
             Quaternion targetYawRotation = Quaternion.LookRotation(horizontalDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetYawRotation, turnSpeed * Time.deltaTime);
 
             // -- Bank (Nghiêng người - trục Z của mainBody) --
-            // Tính góc lệch giữa hướng hiện tại và hướng tới waypoint
             float angleDifference = Vector3.SignedAngle(transform.forward, horizontalDirection, Vector3.up);
-            // Tính góc nghiêng mục tiêu, giới hạn bởi maxBankAngle
-            float targetBankAngle = Mathf.Clamp(-angleDifference, -maxBankAngle, maxBankAngle);
-            // Lerp góc nghiêng hiện tại tới góc mục tiêu
+            float targetBankAngle = 0f;
+            if (currentSpeed > 0.1f) // Chỉ nghiêng khi có tốc độ và đang rẽ
+            {
+                targetBankAngle = Mathf.Clamp(-angleDifference, -maxBankAngle, maxBankAngle);
+            }
             mainBodyEuler.z = Mathf.LerpAngle(mainBodyEuler.z, targetBankAngle, turnSpeed * Time.deltaTime);
 
-            // Áp dụng góc pitch và bank cho mainBody
             mainBody.transform.localEulerAngles = mainBodyEuler;
         }
-        else if (horizontalDirection == Vector3.zero && mainBody != null) // Nếu đang ở ngay trên waypoint theo chiều ngang
-        {
-             // Dần đưa máy bay về trạng thái cân bằng (không nghiêng, không chúc/ngẩng)
-             Vector3 mainBodyEuler = mainBody.transform.localEulerAngles;
-             mainBodyEuler.x = Mathf.LerpAngle(mainBodyEuler.x, 0f, turnSpeed * Time.deltaTime);
-             mainBodyEuler.z = Mathf.LerpAngle(mainBodyEuler.z, 0f, turnSpeed * Time.deltaTime);
-             mainBody.transform.localEulerAngles = mainBodyEuler;
-        }
-
-
+        
         // --- Di chuyển tới ---
-        // Sử dụng transform.forward vì đã xoay theo hướng horizontalDirection
-        transform.Translate(transform.forward * forwardSpeed * Time.deltaTime, Space.World); // Di chuyển trong World space theo hướng forward của nó
+        // Sử dụng currentSpeed đã được tính toán
+        transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
 
         // --- Điều chỉnh Độ cao (trục Y) ---
+        // (Giữ nguyên logic điều chỉnh độ cao)
         float desiredAltitude = currentWaypoint.position.y;
         float currentAltitude = transform.position.y;
         float altitudeDifference = desiredAltitude - currentAltitude;
 
-        // Tính tốc độ điều chỉnh độ cao (nhanh hơn khi lệch nhiều, chậm hơn khi gần tới)
-        float altitudeAdjustmentSpeedFactor = Mathf.Clamp01(Mathf.Abs(altitudeDifference) / (verticalThreshold + 0.1f)); // Tránh chia cho 0
-        float currentLiftSpeed = Mathf.Lerp(liftSpeed * 0.1f, liftSpeed, altitudeAdjustmentSpeedFactor); // Tốc độ thay đổi từ 10% đến 100%
-
-        // Lượng thay đổi độ cao trong frame này, giới hạn bởi tốc độ
+        float altitudeAdjustmentSpeedFactor = Mathf.Clamp01(Mathf.Abs(altitudeDifference) / (verticalThreshold + 0.1f));
+        float currentLiftSpeed = Mathf.Lerp(liftSpeed * 0.1f, liftSpeed, altitudeAdjustmentSpeedFactor);
         float altitudeAdjustment = Mathf.Clamp(altitudeDifference, -currentLiftSpeed * Time.deltaTime, currentLiftSpeed * Time.deltaTime);
-        transform.Translate(Vector3.up * altitudeAdjustment, Space.World); // Di chuyển lên/xuống trong World space
+        transform.Translate(Vector3.up * altitudeAdjustment, Space.World);
 
         // --- Kiểm tra Đã tới Waypoint chưa ---
-        // Khoảng cách trên mặt phẳng XZ
+        // (Giữ nguyên logic kiểm tra)
         float horizontalDistance = Vector2.Distance(
             new Vector2(transform.position.x, transform.position.z),
             new Vector2(currentWaypoint.position.x, currentWaypoint.position.z)
         );
-        // Khoảng cách theo trục Y
         float verticalDistance = Mathf.Abs(currentAltitude - desiredAltitude);
 
-        // Nếu đủ gần cả về ngang và dọc
         if (horizontalDistance < horizontalThreshold && verticalDistance < verticalThreshold)
         {
-            currentWaypointIndex++; // Chuyển sang waypoint tiếp theo
+            currentWaypointIndex++;
+            // Nếu là waypoint cuối và đã đến, logic giảm tốc ở đầu hàm hoặc phần tính desiredSpeedThisFrame
+            // sẽ đảm bảo nó dừng lại.
         }
+    }
+
+    // Hàm tiện ích mới để áp dụng di chuyển (khi dừng) và đưa về cân bằng
+    private void ApplyMovementAndNeutralTilt()
+    {
+        if (mainBody != null)
+        {
+            Vector3 mainBodyEuler = mainBody.transform.localEulerAngles;
+            mainBodyEuler.z = Mathf.LerpAngle(mainBodyEuler.z, 0f, turnSpeed * Time.deltaTime); // Đưa bank về 0
+            mainBody.transform.localEulerAngles = mainBodyEuler;
+        }
+        // Vẫn di chuyển một chút nếu currentSpeed chưa về 0 hẳn
+        transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
     }
 
     private void Hover()

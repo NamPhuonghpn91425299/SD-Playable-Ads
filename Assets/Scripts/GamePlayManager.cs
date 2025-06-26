@@ -10,6 +10,7 @@ public class GamePlayManager : MonoBehaviour
     [SerializeField] public ConfigGame configBotInGame;
     [SerializeField] public GameResultData gameResultData;
     [SerializeField] public List<Spawn> spawns;
+    [SerializeField] private PlayMode playMode;
     public static GamePlayManager Instance;
     public int Turn;
     public bool IsShowLunaEndGame;
@@ -178,4 +179,11 @@ public class GamePlayManager : MonoBehaviour
         Debug.LogError("Luna Clicked");
         Luna.Unity.Playable.InstallFullGame();
     }
+}
+
+public enum PlayMode
+{
+    Normal,
+    BaseRaidS,
+    
 }

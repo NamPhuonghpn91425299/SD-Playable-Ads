@@ -91649,15 +91649,19 @@ MonoBehaviour:
   minLiftSpeed: 1000
   maxHeight: 25
   liftSpeed: 15
-  liftSpeed1: 1
   forwardSpeed: 20
   takeoffPitchAngle: -15
   forwardPitchAngle: 10
   turnSpeed: 1
-  horizontalThreshold: 8
-  verticalThreshold: 4
+  horizontalThreshold: 12
+  verticalThreshold: 6
   idleDuration: 1
   delayAttack: 2
+  targetFlySpeed: 22
+  acceleration: 15
+  deceleration: 5
+  slowingDistance: 20
+  stopThreshold: 0.1
   takeoffTransitionHeight: 18
   takeoffTiltThreshold: 24
   maxBankAngle: 20
@@ -91698,7 +91702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radiusChangeSpeed: 2
   turnSpeed: 2
-  rollAngle: 0
+  rollAngle: 12
   transitionTime: 3
   player: {fileID: 0}
   orbitCenter: {fileID: 0}

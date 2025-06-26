@@ -12848,6 +12848,10 @@ PrefabInstance:
       propertyPath: concreteLayerMask.m_Bits
       value: 2056
       objectReference: {fileID: 0}
+    - target: {fileID: 1495867497737747658, guid: f91f5ee8fe75afb4ab6f5b33e25f472b, type: 3}
+      propertyPath: aimAssistRaycastLayers.m_Bits
+      value: 4051
+      objectReference: {fileID: 0}
     - target: {fileID: 1739398182915377823, guid: f91f5ee8fe75afb4ab6f5b33e25f472b, type: 3}
       propertyPath: m_RootOrder
       value: 2
