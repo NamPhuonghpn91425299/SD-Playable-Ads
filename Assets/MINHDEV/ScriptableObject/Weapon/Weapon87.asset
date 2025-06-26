@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33aab59dc73a414f8d0d27757a522f7, type: 3}
   m_Name: Weapon87
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 50
   FireRate: 0.1
   audioClip: {fileID: 8300000, guid: 669afacf3194dcf428f278ceab30c874, type: 3}
   AudioStartBarrel: {fileID: 8300000, guid: 06e4ee0bf6c5209438079f6ba4846d4c, type: 3}
@@ -25,7 +25,6 @@ MonoBehaviour:
   reloadTime: 2
   infiniteBullet: 1
   Fire: {fileID: 7400000, guid: f89a686ab08244b4bb0273a8f057daea, type: 2}
-  FireR: {fileID: 7400000, guid: f89a686ab08244b4bb0273a8f057daea, type: 2}
   Idle: {fileID: 7400000, guid: 16523c1504f87144683cdf5d3afb4cd3, type: 2}
   _reloadAnimIn: {fileID: 7400000, guid: bf99f030a5b913e46adc000e63bccc35, type: 2}
   _reloadAnimOn: {fileID: 7400000, guid: 1187e7a3ff82ce349b0b6bd1bb0ccad0, type: 2}

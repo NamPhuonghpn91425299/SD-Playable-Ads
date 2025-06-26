@@ -21,4 +21,8 @@ public class LocalPlayer : MonoBehaviour
     {
         return _localPlayer;
     }
+    public Transform GetTransformExplosion()
+    {
+        return _posExplosion;
+    }
 }

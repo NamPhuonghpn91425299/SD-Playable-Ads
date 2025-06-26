@@ -25,8 +25,7 @@ public class BotPlayItaMoveState : BaseState<PlayItaState>
         if (humanMoveBase.isHaveParent)
         {
             moveIndex = moveIndexList[0]; // tức là chỉ điểm đến cuối 
-        }
-        else
+        }else
         {
             moveIndex = moveIndexList[1]; // chạy tiếp tới điểm 
         }

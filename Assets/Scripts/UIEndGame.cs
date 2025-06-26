@@ -10,10 +10,10 @@ public class UIEndGame : MonoBehaviour
     public GameObject EndGameWon;
     public GameObject EndGameLose;
     public CanvasGroup EndGameCanvasGroup;
-    //public UIAnimSimulator uIAnimSimulator;
+    public UIAnimSimulator uIAnimSimulator;
     public bool IsShowEndGame;
     public bool IsCheckEndGame;
-
+    
     private void Awake()
     {
         Instance = this;

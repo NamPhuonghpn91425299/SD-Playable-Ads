@@ -1,202 +1,198 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class physicexplo : MonoBehaviour
 {
-    [Header("Phạm Vi Vụ nổ")] public float radius = 25f;
+    [Header("Phạm Vi Vụ nổ")] 
+    public float radius = 25f;
 
     [Header("Sức Mạnh vụ nổ (Càng to bay càng xa)")]
     public float power = 500.0F;
 
-    [Header("Trọng lực (Càng lớn vật rơi càng nhanh)")] [Range(-50f, 10f)]
+    [Header("Trọng lực (Càng lớn vật rơi càng nhanh)")]
+    [Range(-50f,-5f)]
     public float gravityforce = -20;
 
     [Header("Thời gian tối đa sử dụng vật lý")]
     public float physicTime = 6;
 
-    [Header("Tắt Obj khi hết thời gian hiệu lực")]
-    public bool disableObjAffterStopPhysic = false;
-
-    [Header("Bot là máy bay")] 
+    [Tooltip("Tắt Obj khi hết thời gian hiệu lực"), SerializeField]
+    public bool disableObjAffterStopPhysic =true;
     public bool isAirplane = false;
-    
-    [Tooltip("Will the break parts detect collision if it's a airplane")]
-    public bool isCollisionsDetecting = true;
-    
+    public bool isDisableCollider = false;
+    [Tooltip("Thời gian tắt Box khi là máy bay")]
     public float timedisableBoxesAirplane = 0.2f;
-
-    [Header("Tâm của vụ nổ")] public Transform centerOfExplosion;
-
+    public bool isCheckCollision = true;
+    public Transform centerOfExplosion;
     public BoxCollider[] key;
     public Rigidbody[] physic;
 
+    public UnityEvent StartEvent;
+    public UnityEvent DisableEvent;
     [HideInInspector] public Transform[] physicstrans;
-    public Vector3[] previousLocation;
-    [HideInInspector] public Quaternion[] previousRotation;
+    [HideInInspector] public Vector3[] previousLocation ;
+    [HideInInspector] public Quaternion[] previousRotation ;
+    [HideInInspector] public Transform parentTrans;
+    protected float time;
+    protected Transform myTrans;
+    protected Action ExplosiveAction;
 
-    protected float _time;
-    protected Transform _myTrans;
-    protected int countFrame;
-    protected float _startPosY;
-    protected int _typeBot;
+    private void Awake()
+    {
+        parentTrans = transform.parent;
+        myTrans = transform;
+
+    }
+    
 
     protected virtual void OnEnable()
     {
-        _myTrans = transform;
-        _time = 0;
-        countFrame = 0;
-        if (AllTypeBot.CarsAndTanksType.Contains(_typeBot))
-        {
-            if (_startPosY > 12)
-            {
-                isAirplane = true;
-            }
-            else
-                isAirplane = false;
-        }
-        StartBreak();
+        ActivePhysicExplosion();
     }
 
-    public void Setting(float posY, int TypeBot)
+    protected virtual void ActivePhysicExplosion()
     {
-        _startPosY = posY;
-        _typeBot = TypeBot;
-    }
+        ResetPosition();
 
-    public virtual void StartBreak()
-    {
-        if (centerOfExplosion == null)
+        time = 0;
+
+        if (isAirplane)
         {
-            var gameObject = new GameObject(name = "CenterOfExplosion");
-            gameObject.transform.SetParent(_myTrans);
-            gameObject.transform.position = _myTrans.position;
+            transform.parent = null;
         }
-
-        for (var i = 0; i < physic.Length; i++)
+        if (centerOfExplosion==null)
+        {
+            GameObject gameObject = new GameObject(name = "CenterOfExplosion");
+            gameObject.transform.SetParent(myTrans);
+            gameObject.transform.position = myTrans.position;
+        }
+        for (int i = 0; i < physic.Length; i++)
         {
             if (key[i])
             {
                 key[i].gameObject.SetActive(true);
                 key[i].enabled = true;
             }
-
             if (physic[i])
             {
-                physic[i].velocity = Vector3.zero;
-                physic[i].angularVelocity = Vector3.zero;
-                physic[i].detectCollisions = true;
                 physic[i].isKinematic = false;
+                physic[i].detectCollisions = isCheckCollision;
                 physic[i].useGravity = true;
             }
         }
 
-        foreach (var rb in physic)
+        foreach (Rigidbody rb in physic)
         {
             if (rb != null)
                 rb.AddExplosionForce(power, centerOfExplosion.position, radius);
         }
 
-        if (isAirplane && !isCollisionsDetecting) Invoke(nameof(DisableBoxes), timedisableBoxesAirplane);
+        if (isAirplane)
+        {
+            Invoke(nameof(DisableBoxes), timedisableBoxesAirplane);
+        }
+        StartEvent?.Invoke();
+        ExplosiveAction += Explosive;
     }
 
-    protected virtual void DisableBoxes()
+    protected void DisableBoxes()
     {
         for (int i = 0; i < key.Length; i++)
         {
-            if (key[i]) key[i].enabled = false;
-            if (physic[i])
+            if(key[i])  key[i].enabled = false;
+            if (physic[i]) 
             {
                 physic[i].detectCollisions = false;
-                //physic[i].isKinematic = true;
-            }
+            } 
         }
     }
 
-    // Update is called once per frame
     protected virtual void FixedUpdate()
     {
-        UpdateExplosion();
+        ExplosiveAction?.Invoke();
     }
 
-    protected virtual void UpdateExplosion()
+    protected void Explosive()
     {
-        _time += Time.fixedDeltaTime;
-        if (_time >= physicTime)
+        time += Time.fixedDeltaTime;
+        if (time >= physicTime)
         {
-            _time = -10000;
+            time = -10000;
 
-            for (var i = 0; i < physic.Length; i++)
+            for (int i = 0; i < physic.Length; i++)
             {
-                try
+                if (key[i] == null || physic[i] == null)
                 {
-                    if (disableObjAffterStopPhysic)
-                    {
-                        key[i].gameObject.SetActive(false);
-                    }
-
-                    physic[i].detectCollisions = false;
-                    physic[i].isKinematic = true;
-                    key[i].enabled = false;
+                    continue;
                 }
-                catch (Exception e)
+                if (disableObjAffterStopPhysic)
                 {
-#if UNITY_EDITOR
-                    Debug.LogError($"{transform.root.name} : Key hoặc physic của index {i} null rùi");
-#endif
+                    physic[i].gameObject.SetActive(false);
                 }
+                physic[i].useGravity = false;
+                physic[i].detectCollisions = false;
+                physic[i].Sleep();
+                key[i].enabled = false;
             }
+
+            if (isAirplane)
+            {
+                transform.parent = parentTrans;
+                transform.localPosition = Vector3.zero;
+                transform.localRotation = Quaternion.identity;
+            }
+            ExplosiveAction -= Explosive;
         }
         else
         {
-            if (_time > 0.1f)
+            if (time > 0.1f)
             {
-                for (var i = 0; i < physic.Length; i++)
+                for (int i = 0; i < physic.Length; i++)
                 {
-                    try
+                    if (key[i] == null || physic[i] == null)
+                        continue;
+                    
+                    if (physic[i].IsSleeping())
+                        continue;
+
+                    if (isAirplane || isDisableCollider)
                     {
-                        if (!isAirplane)
-                        {
-                            var inversePos = (_myTrans.InverseTransformPoint(physic[i].transform.position));
-
-                            if (inversePos.y > 0 && !physic[i].IsSleeping())
-                            {
-                                physic[i].AddForce(new Vector3(0, gravityforce, 0) * physic[i].mass);
-                            }
-
-                            else if (physic[i].angularVelocity.sqrMagnitude < 0.025 && inversePos.y < 0.5f ||
-                                     inversePos.y < -0.15f)
-                            {
-                                physic[i].Sleep();
-                            }
-                        }
-                        else
+                        physic[i].AddForce(new Vector3(0, gravityforce, 0) * physic[i].mass);
+                    }
+                    else
+                    {
+                        var yOffset = physic[i].transform.position.y - myTrans.position.y;
+                        if (yOffset > 0)
                         {
                             physic[i].AddForce(new Vector3(0, gravityforce, 0) * physic[i].mass);
                         }
+
+
+                        if (physic[i].angularVelocity.sqrMagnitude < 0.025f && yOffset < 0.5f || yOffset < -0.15f || physic[i].angularVelocity.sqrMagnitude < 0.005f)
+                        {
+                            physic[i].velocity = Vector3.zero;
+                            physic[i].Sleep();
+                        }
                     }
-                    catch (Exception e)
-                    {
-#if UNITY_EDITOR
-                        Debug.LogWarning($"{transform.root.name} : Key hoặc physic của index {i} null rùi");
-#endif
-                    }
+                    
                 }
             }
         }
     }
 
-    protected virtual void OnDisable()
+    private void OnDisable()
     {
-        ResetAllPartToBase();
+        ResetPosition();
+        ResetPhysic();
         CancelInvoke();
+        DisableEvent?.Invoke();
+        ExplosiveAction = null;
     }
 
-    protected virtual void ResetAllPartToBase()
+    public virtual void ResetPosition()
     {
-        for (var i = 0; i < physicstrans.Length; i++)
+        for (int i = 0; i < physicstrans.Length; i++)
         {
             if (physicstrans[i])
             {
@@ -206,20 +202,33 @@ public class physicexplo : MonoBehaviour
         }
     }
 
-    public void SetPower(float p)
+    public void ResetPhysic()
     {
-        power = p;
+        for (int i = 0; i < physic.Length; i++)
+        {
+            if (physic[i])
+            {
+                physic[i].Sleep();
+            }
+        }
     }
-}
-public static class AllTypeBot
-{
-    public static int[] CarsAndTanksType = new int[] { 11, 4, 18, 23, 34, 39, 41, 42, 35, 50, 5, 45, 46 };
-    public static int[] TanksType = new int[] { 5, 45, 46 };
-    public static int[] CarsType = new int[] { 11, 4, 18, 23, 34, 39, 41, 42, 35, 50 };
-    public static int[] Soldiers = new int[] { 0, 3, 10, 24, 25, 26, 27, 28, 30, 47 };
-    public static int[] Airplanes = new int[] { 15, 16, 21, 29, 37, 170, 43, 14 };
-    public static int[] HeliSupportT = new int[] { 20, 22, 15, 29, 37, 9, 21, 29, 8, 35 };
-    public static int[] HeliSupportVehicleT = new int[] { 4, 5, 11, 18, 23, 34, 38, 39, 41, 42, 45 };
-    public static int[] HeliSupportFlyT = new int[] { 14, 15, 29, 37, 43 };
-    public static int[] BoatType = new int[] { 8, 32, 33 };
+
+    public virtual void SaveRandomValue()
+    {
+    }
+
+    public virtual void LoadRandomValue()
+    {
+    }
+
+#if UNITY_EDIOR
+    private void OnDrawGizmos()
+    {
+        if(centerOfExplosion != null)
+        {
+            Gizmos.DrawWireSphere(centerOfExplosion.position, radius);
+        }
+    }
+#endif
+
 }

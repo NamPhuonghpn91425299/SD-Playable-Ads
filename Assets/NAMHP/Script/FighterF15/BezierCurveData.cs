@@ -59,7 +59,7 @@ public class BezierCurveData
 
         for (int i = 1; i <= debugSegmentsPerCurve; i++)
         {
-            float t = i / (float)debugSegmentsPerCurve;
+            float t = Mathf.Max((float)i / debugSegmentsPerCurve, Mathf.Epsilon);
             Vector3 currentPoint = CalculateBezierPoint(t, p0, p1, p2, p3);
             length += Vector3.Distance(previousPoint, currentPoint);
             previousPoint = currentPoint;
@@ -71,6 +71,7 @@ public class BezierCurveData
     // Lấy vị trí trên đường cong dựa vào khoảng cách đã di chuyển
     public Vector3  GetPositionAlongCurve(float distance)
     {
+        distance = Mathf.Clamp(distance, 0, TotalLength);
         float remainingDistance = distance;
         int curveIndex = 0;
 

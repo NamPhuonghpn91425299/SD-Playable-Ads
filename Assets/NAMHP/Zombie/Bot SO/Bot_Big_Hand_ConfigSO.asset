@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90feb38dc69fbf459ba5b1300feb5af, type: 3}
+  m_Name: Bot_Big_Hand_ConfigSO
+  m_EditorClassIdentifier: 
+  id: 111
+  BotName: BotBigHand
+  health: 800
+  HealthThreshold: 0
+  WeaknessHealth: 0
+  isCanImmortal: 0
+  attackDuration: 2
+  damage: 25
+  fireRate: 2
+  timeAttack: 3
+  timeReload: 3
+  botType: 8
+  Model: {fileID: 7228813149426650989, guid: 9364a087b5603284bb125cbaac576ac2, type: 3}
+  moveSpeed: 2
+  rocketSpeed: 0
+  targetRotation: 0
+  turretRotation: 0
+  wheelSpeed: 0
+  damageScales:
+  - DamageType: 0
+    ScaleValue: 1
+  - DamageType: 1
+    ScaleValue: 1.5
+  carryAttributes: []

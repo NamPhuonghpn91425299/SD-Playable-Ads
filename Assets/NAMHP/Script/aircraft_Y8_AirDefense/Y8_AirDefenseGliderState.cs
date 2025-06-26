@@ -8,7 +8,7 @@ public class Y8_AirDefenseGliderState : BaseState<Y8_AirDefense>
     [SerializeField] private BotNetwork botNetwork;
     [SerializeField] protected WayPoint wayPoint;
     [SerializeField] F15TrackingMovement f15TrackingMovement;
-    [SerializeField] private AircraftMovementSettings _settings;
+    public AircraftMovementSettings _settings;
     private QuadraticBezierPath path;
     private float distanceTraveled = 0f;
     private bool isMoving = true;

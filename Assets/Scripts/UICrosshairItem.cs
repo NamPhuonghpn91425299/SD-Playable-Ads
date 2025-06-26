@@ -89,7 +89,14 @@ public class UICrosshairItem : MonoBehaviour
             img.color = CrosshairColor[0];
         }
     }
-
+    public void ResetCorosshair()
+    {
+        CrosshairRectObj.localRotation = Quaternion.Euler(0, 0, 0);
+        foreach (var img in CrosshairImg)
+        {
+            img.color = CrosshairColor[0];
+        }
+    }
     public void Expand_Crosshair(float valueChange)
     {
         if (CrosshairRectTransform.sizeDelta.x >= _distanceMax) return;

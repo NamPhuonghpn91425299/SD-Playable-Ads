@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class FanDetector : MonoBehaviour
 {
-    [SerializeField] private int hpFan = 150;
+    [SerializeField] private WeaknessHealthBar healthBar;
+    [SerializeField] private int hpFan;
+    [SerializeField] private BotNetwork _bot;
     [SerializeField] private GameObject model_fan;
     [SerializeField] private GameObject exlosion;
     [SerializeField] private GameObject fan_detector;
@@ -14,6 +16,16 @@ public class FanDetector : MonoBehaviour
     public bool IsDead => hpFan <= 0;
     public int RemainHealth => hpFan;
 
+    private void Start()
+    {
+        hpFan = (int)_bot.BotConfigSO.WeaknessHealth;
+    }
+    public void Initialize(float maxHealth)
+    {
+        hpFan = (int)maxHealth;
+        onDead = false;
+        healthBar.Initialize(maxHealth);
+    }
     public void Init(int health)
     {
         hpFan = health;
@@ -25,6 +37,7 @@ public class FanDetector : MonoBehaviour
     {
         if (onDead) return false;
         hpFan = Mathf.Max(0,hpFan - damage);
+        healthBar.UpdateHealth(hpFan);
         if (hpFan <= 0)
         {
             onDead = true;

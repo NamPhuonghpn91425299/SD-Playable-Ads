@@ -14,8 +14,7 @@ public enum DamageType
 {
     Normal,
     Weekness,
-    ExplosionDamage
-    
+    Gas,
 }
 public struct DamageInfo
 {

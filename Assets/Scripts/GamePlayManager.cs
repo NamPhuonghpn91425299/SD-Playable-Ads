@@ -13,6 +13,8 @@ public class GamePlayManager : MonoBehaviour
     public int Turn;
     public bool IsShowLunaEndGame;
 
+    public bool CanPlayEffectGiatDien;
+    
     private void Awake()
     {
         Instance = this;
@@ -42,7 +44,7 @@ public class GamePlayManager : MonoBehaviour
             StartCoroutine(TurnDelay());
         }
     }
-
+    
     private void OnEnable()
     {
         EventManager.AddListener<bool>(EventName.OnShowLunaEndGame, OnShowLunaEndGame);
@@ -157,7 +159,7 @@ public class GamePlayManager : MonoBehaviour
 
             }
             //Debug.Log($"Total bots on Turn {Turn}: {botCount}");
-            return botCount;
+            return botCount + BotManager.Instance._botNetworkAddBangTay.Count;
         }
         else
         {
@@ -167,7 +169,7 @@ public class GamePlayManager : MonoBehaviour
 
     private IEnumerator ClearPreviousBots()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
         BotManager.Instance.ClearAllBots();
         RewardManager.Instance.ClearAllRewards();
     }

@@ -11,24 +11,38 @@ public class PlayerHP : MonoBehaviour
     [SerializeField] private Text HPTxt;
     [SerializeField] private float HPMax;
     [SerializeField] private float HPPoint;
-
+    [SerializeField] private int _thresholdTakeDame = 5;
+    private int _takeDameCounter = 0;
     private Queue<float> damageQueue = new Queue<float>();  // Hàng đợi lưu trữ sát thương
     private bool isProcessingDamage = false;
+    private bool _isRocketDame;
+    [SerializeField] private bool isImmortal;
 
     private void OnEnable()
     {
+        isImmortal = false; 
         HPPoint = HPMax;
-        //HPTxt.text = HPMax.ToString();
+        HPTxt.text = HPMax.ToString();
         EventManager.AddListener<float>(EventName.OnTakeDamagePlayer, OnTakeDamagePlayer);
+        EventManager.AddListener<bool>(EventName.OnPlayerTakeDameRocket, OnTakeDameRocket);
     }
 
     private void OnDisable()
     {
         EventManager.RemoveListener<float>(EventName.OnTakeDamagePlayer, OnTakeDamagePlayer);
+        EventManager.RemoveListener<bool>(EventName.OnPlayerTakeDameRocket, OnTakeDameRocket);
     }
 
+    public void SetImmortal(bool isImmortal)
+    {
+        // Store the immortal state
+        this.isImmortal = isImmortal;
+        
+        // if (isImmortal) return; // Skip damage calculation if immortal
+    }
     private void OnTakeDamagePlayer(float Damage)
     {
+        if (isImmortal) return; // Skip damage calculation if immortal
         // Đưa lượng sát thương vào hàng đợi để xử lý
         damageQueue.Enqueue(Damage);
 
@@ -37,8 +51,21 @@ public class PlayerHP : MonoBehaviour
         {
             StartCoroutine(ProcessDamageQueue());
         }
+        if(_isRocketDame)
+        {
+            _takeDameCounter++;
+            if (_takeDameCounter >= _thresholdTakeDame)
+            {
+                _takeDameCounter = 0;
+                EventManager.Invoke(EventName.OnCameraShake, true);
+            }
+            _isRocketDame = false;
+        }
     }
-
+    private void OnTakeDameRocket(bool isRocket)
+    {
+        _isRocketDame = isRocket;
+    }
     private IEnumerator ProcessDamageQueue()
     {
         isProcessingDamage = true;
@@ -55,7 +82,7 @@ public class PlayerHP : MonoBehaviour
             EventManager.Invoke(EventName.OnPlayerDead, HPPoint <= 0);
             
             // Cập nhật giao diện
-            //HPTxt.text = HPPoint.ToString();
+            HPTxt.text = HPPoint.ToString();
             HPimage.fillAmount = HPPoint / HPMax;
             HPimage.color = HPState.Evaluate(HPimage.fillAmount);
             // Tạo một khoảng nghỉ nhỏ để tránh trừ sát thương quá nhanh, điều này có thể điều chỉnh tùy ý

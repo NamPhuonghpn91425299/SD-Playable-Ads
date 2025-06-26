@@ -110,16 +110,20 @@ public enum EventName
     OnClearReward,
     OnUpgradeFireRate,
     OnChangeFireRate,
-    OnChangeMachineGun,
+    OnChangeWeapon,
     OnTakeDamagePlayer,
     OnReloading,
     OnPlayerDead,
     OnTimeOut,
     OnTakeDameWeakPoint,
-    OnStaticBotDead,
-    OnChangeWeapon,
     OnGameWon,
     OnGameLost,
-
     // Thêm các sự kiện khác ở đây
+    OnSwithToggleRocket,
+    UpdateRocketForwardCount,
+    UpdateRocketFollowCount,
+    OnCameraFollowRocket,
+    OnCameraShake,
+    OnPlayerTakeDameRocket,
+    OnRotated
 }

@@ -23,6 +23,8 @@ public class BotAirDead : MonoBehaviour,IPoolObject
 
     [Header("Effects")]
     [SerializeField] private GameObject explosionEffect;
+    [SerializeField] private GameObject Step2;
+    [SerializeField] private GameObject _model;
 
     // Private variables
     private float fallSpeed;
@@ -36,11 +38,13 @@ public class BotAirDead : MonoBehaviour,IPoolObject
     private Vector3 initialPosition;
     private Vector3 fallDirection;
     private Transform cachedTransform;
+    private bool isDead;
 
     public GameObject Prefab { get; set; }
 
     void Awake()
     {
+        isDead = false;
         cachedTransform = transform;
         RandomizeFallingParameters();
     }
@@ -88,11 +92,16 @@ public class BotAirDead : MonoBehaviour,IPoolObject
     }
     void Update()
     {
-        AirFailling();
         // Kiểm tra va chạm mặt đất
-        if (IsGroundReached() || elapsedTime >= fallDuration)
+        if (IsGroundReached() || elapsedTime >= fallDuration && !isDead)
         {
-            Explode();
+            _model.SetActive(false);
+           StartCoroutine(Explode());
+           isDead = true;
+        }
+        else if (!isDead)
+        {
+            AirFailling();
         }
     }
 
@@ -127,13 +136,20 @@ public class BotAirDead : MonoBehaviour,IPoolObject
         );
     }
 
-    void Explode()
+    public void SpawnExplode()
+    {
+        StartCoroutine(Explode());
+    }
+    private IEnumerator  Explode()
     {
         if (explosionEffect != null)
         {
             var exploision = ObjectPool.Instance.PopFromPool(explosionEffect,instantiateIfNone:true);
             exploision.transform.SetPositionAndRotation(transform.position,Quaternion.identity);
         }
+
+        Step2.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
         ObjectPool.Instance.PushToPool(this, gameObject);
     }
 

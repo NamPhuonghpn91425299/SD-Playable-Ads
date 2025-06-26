@@ -73,7 +73,7 @@ public class F15TrackingMovement : MonoBehaviour
     private void LockAtTagert()
     {
         // Hướng về người chơi mượt mà
-        Vector3 directionToPlayer = playerTransform.position - transform.position;
+        Vector3 directionToPlayer = transform.forward; //playerTransform.position - transform.position;
         //Vector3 directionToPlayer = transform.forward;
         directionToPlayer.Normalize();
         var up = Vector3.Cross(directionToPlayer, playerTransform.right);

@@ -18,11 +18,14 @@ public class BulletTrail : MonoBehaviour, IPoolObject
     protected Transform _transform;
     protected bool _alignWithPlayerView;
 
+    public Vector3 posE;
+
     public GameObject Prefab { get; set; }
 
     private void Awake()
     {
         _transform = transform;
+        posE = transform.forward * 1;
     }
 
     public void Init()
@@ -35,7 +38,18 @@ public class BulletTrail : MonoBehaviour, IPoolObject
         _trail.localScale = _trailStartScale;
         Speed = 300;
     }
-
+    public void InitType2(Vector3 direction, Vector3 posE)
+    {
+        this.posE = posE;
+        _lifeTimer = 0;
+        if (_trail) _trail.localScale = _trailStartScale;
+        gameObject.SetActive(true);
+        _direction = direction;
+        _transform.rotation = Quaternion.LookRotation(_direction);
+        _maxDistance = Speed * LifeTime;
+        _traveledDistance = 0;
+        Update();
+    }
     public void Init(Vector3 direction)
     {
         _lifeTimer = 0;
@@ -51,6 +65,9 @@ public class BulletTrail : MonoBehaviour, IPoolObject
     // Update is called once per frame
     protected void Update()
     {
+        if(transform.position.z > posE.z)
+            Despawn();
+        
         if (_traveledDistance >= _maxDistance || _lifeTimer > LifeTime)
         {
             ObjectPool.Instance.PushToPool(this, gameObject);
@@ -65,5 +82,10 @@ public class BulletTrail : MonoBehaviour, IPoolObject
                 _trail.localScale = Vector3.Lerp(_trailStartScale, _trailMaxScale,
                     _traveledDistance / _trailLengthAtMaxScale);
         }
+    }
+    
+    public void Despawn()
+    {
+        ObjectPool.Instance.PushToPool(this, gameObject);
     }
 }

@@ -20,10 +20,11 @@ public class PlayerView : MonoBehaviour
     [SerializeField] private Vector2 screenPosValue; // Thay đổi từ float thành Vector2
     [SerializeField] private Transform CameraTrans; // Thêm biến Transform cho Camera
     [SerializeField] private float CrossHairPos; // Thêm biến Transform cho Camera
+    [SerializeField] private bool IsLimitRotate = true; // Biến để kiểm tra có giới hạn phạm vi di chuyển hay không
+
     private Quaternion originalCameraRotation;
     private Vector3 vectorCam;
     private Vector2 _previousRotate;
-    private bool isInstallFullGame = false;
 
     private void Awake()
     {
@@ -51,7 +52,6 @@ public class PlayerView : MonoBehaviour
         }
     }
 
-
     private void OnCheckCamShake(Vector3 vector3)
     {
         vectorCam = vector3;
@@ -61,13 +61,13 @@ public class PlayerView : MonoBehaviour
     {
         EventManager.AddListener<Vector3>(EventName.OnCheckShakeCam, OnCheckCamShake);
 
-        EventManager.AddListener<bool>(EventName.OnChangeMachineGun, OnChangeMachineGun);
+        EventManager.AddListener<bool>(EventName.OnChangeWeapon, OnChangeMachineGun);
     }
 
     private void OnDisable()
     {
         EventManager.RemoveListener<Vector3>(EventName.OnCheckShakeCam, OnCheckCamShake);
-        EventManager.RemoveListener<bool>(EventName.OnChangeMachineGun, OnChangeMachineGun);
+        EventManager.RemoveListener<bool>(EventName.OnChangeWeapon, OnChangeMachineGun);
     }
 
     public void Update()
@@ -84,37 +84,35 @@ public class PlayerView : MonoBehaviour
             var rotate = input * (_sensitivity * Time.timeScale);
             var slerpParam = _slerpFactor * Time.deltaTime;
             totalRotate += rotate;
-            totalRotate.x = Mathf.Clamp(totalRotate.x, _viewHorizontalThreshold.x, _viewHorizontalThreshold.y);
-            totalRotate.y = Mathf.Clamp(totalRotate.y, _viewVerticalThreshold.x, _viewVerticalThreshold.y);
-            // if (UIManager.Instance.isCanTouch && !isInstallFullGame)
-            // {
-            //     Luna.Unity.Playable.InstallFullGame();
-            //     isInstallFullGame = true;
-            // }
+
+            if (IsLimitRotate)
+            {
+                totalRotate.x = Mathf.Clamp(totalRotate.x, _viewHorizontalThreshold.x, _viewHorizontalThreshold.y);
+                totalRotate.y = Mathf.Clamp(totalRotate.y, _viewVerticalThreshold.x, _viewVerticalThreshold.y);
+            }
+
             if (!UIManager.Instance.isCanTouch)
             {
                 if (WeaponView && WeaponTrans != null)
                 {
-                    // Giới hạn phạm vi di chuyển của súng
-                    totalRotate.x = Mathf.Clamp(totalRotate.x, -_weaponMovementLimit.x, _weaponMovementLimit.x);
-                    totalRotate.y = Mathf.Clamp(totalRotate.y, -_weaponMovementLimit.y, _weaponMovementLimit.y);
+                    if (IsLimitRotate)
+                    {
+                        totalRotate.x = Mathf.Clamp(totalRotate.x, -_weaponMovementLimit.x, _weaponMovementLimit.x);
+                        totalRotate.y = Mathf.Clamp(totalRotate.y, -_weaponMovementLimit.y, _weaponMovementLimit.y);
+                    }
 
-                    // Xoay WeaponTrans theo di chuyển của chuột
                     WeaponTrans.localRotation = Quaternion.Slerp(WeaponTrans.localRotation,
                         Quaternion.Euler(-totalRotate.y, totalRotate.x, 0), slerpParam);
                 }
                 else
                 {
-                    // Xoay _mainRoot và _head
                     _mainRoot.localRotation = Quaternion.Slerp(_mainRoot.localRotation,
                         Quaternion.Euler(0, totalRotate.x, 0), slerpParam);
                     _head.localRotation = Quaternion.Slerp(_head.localRotation,
                         Quaternion.Euler(-totalRotate.y, 0, 0), slerpParam);
                 }
             }
-           
 
-            // Cập nhật vị trí của CrossHair đồng bộ với tốc độ xoay của súng
             UpdateCrossHair(totalRotate, slerpParam);
 
             _totalRotate = totalRotate;
@@ -132,32 +130,29 @@ public class PlayerView : MonoBehaviour
         {
             WeaponTrans = ListWeaponTrans[0];
         }
-            
-    }    
+    }
 
     private void UpdateCrossHair(Vector2 totalRotate, float slerpParam)
     {
         if (CrossHair != null && CameraTrans != null && WeaponView)
         {
-            // Tính toán vị trí mới của CrossHair dựa trên góc quay của súng
             Vector2 screenPos = new Vector2(
                 totalRotate.x / _viewHorizontalThreshold.y,
                 totalRotate.y / _viewVerticalThreshold.y
             );
 
-            // Chia screenPosValue theo từng trục
             Vector2 adjustedScreenPos = new Vector2(
                 screenPos.x * screenPosValue.x,
                 screenPos.y * screenPosValue.y
             );
 
-            // Giới hạn phạm vi di chuyển của CrossHair
-            adjustedScreenPos.x = Mathf.Clamp(adjustedScreenPos.x, -_crossHairMovementLimit.x, _crossHairMovementLimit.x);
-            adjustedScreenPos.y = Mathf.Clamp(adjustedScreenPos.y, -_crossHairMovementLimit.y, _crossHairMovementLimit.y);
+            if (IsLimitRotate)
+            {
+                adjustedScreenPos.x = Mathf.Clamp(adjustedScreenPos.x, -_crossHairMovementLimit.x, _crossHairMovementLimit.x);
+                adjustedScreenPos.y = Mathf.Clamp(adjustedScreenPos.y, -_crossHairMovementLimit.y, _crossHairMovementLimit.y);
+            }
 
-            // Điều chỉnh theo góc nghiêng của Camera
             Vector3 cameraRotation = originalCameraRotation.eulerAngles;
-            //Vector3 cameraRotation = vectorCam;
             float cameraTiltX = Mathf.Sin(cameraRotation.x * Mathf.Deg2Rad);
             float cameraTiltY = Mathf.Sin(cameraRotation.y * Mathf.Deg2Rad);
 

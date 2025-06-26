@@ -14,8 +14,9 @@ public class FighterDeadState : BaseState<FighterState>
         BotDeath.Instance.GetBotDeath();
         botNetwork.Path.IsUse = false;
         movement.enabled = false;
-        botAirDead.OnBotDead();
-        step1.SetActive(true);
+        //botAirDead.OnBotDead();
+        botAirDead.SpawnExplode();
+        step1.SetActive(false);
     }
     public override void UpdateState()
     {

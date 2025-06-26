@@ -2504,13 +2504,13 @@ namespace Verpha.HierarchyDesigner
                 }
             }
         }
-
         private static void Activate_AllHalos(bool isActive)
         {
             IEnumerable<GameObject> allGameObjects = GetAllGameObjectsInActiveScene();
             foreach (GameObject gameObject in allGameObjects)
             {
-                Behaviour halo = (Behaviour)gameObject.GetComponent("Halo");
+                Component halo = gameObject.GetComponent("Halo");
+        
                 if (halo != null)
                 {
                     SetActiveState(gameObject, isActive);
@@ -2675,7 +2675,7 @@ namespace Verpha.HierarchyDesigner
         {
             CountGameObjects("Halos", gameObject =>
             {
-                Behaviour halo = (Behaviour)gameObject.GetComponent("Halo");
+                Component halo = gameObject.GetComponent("Halo");
                 return halo != null;
             });
         }
@@ -2875,7 +2875,7 @@ namespace Verpha.HierarchyDesigner
             IEnumerable<GameObject> allGameObjects = GetAllGameObjectsInActiveScene();
             foreach (GameObject gameObject in allGameObjects)
             {
-                Behaviour halo = (Behaviour)gameObject.GetComponent("Halo");
+                Component halo = gameObject.GetComponent("Halo");
                 if (halo != null)
                 {
                     LockGameObject(gameObject, isLocked);
@@ -3055,7 +3055,7 @@ namespace Verpha.HierarchyDesigner
         {
             SelectGameObjects("Halos", gameObject =>
             {
-                Behaviour halo = (Behaviour)gameObject.GetComponent("Halo");
+                Component halo = gameObject.GetComponent("Halo");
                 return halo != null;
             });
         }

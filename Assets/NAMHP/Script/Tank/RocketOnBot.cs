@@ -15,7 +15,7 @@ public class RocketOnBot : MonoBehaviour, IPoolObject
     [SerializeField] private Vector3 explosionPosition ;
     //private Vector3 vectorCam;
     public GameObject Prefab { get ; set ; }
-
+    public float Damage => damage;
     public void Init()
     {
 
@@ -48,6 +48,7 @@ public class RocketOnBot : MonoBehaviour, IPoolObject
         float sqrDistance = (transform.position - explosionPosition).sqrMagnitude;
         if (sqrDistance < 1f) // (0.1 * 0.1)
         {
+            EventManager.Invoke(EventName.OnPlayerTakeDameRocket, true);
             EventManager.Invoke(EventName.OnTakeDamagePlayer, damage);
             var spawnExplosion = GetExplosion(LocalPlayer.Instance._posExplosion.position, target.rotation);
             gameObject.SetActive(false);

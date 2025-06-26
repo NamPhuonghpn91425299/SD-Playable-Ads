@@ -10,12 +10,20 @@ public static class GameConstants
         None,
         Infantry,
         Parachutist,
-        ParachutistStatic,
         AirForce,
         AirForceDetector,
         FighterF15,
         Mech_Robot,
-        Tank
+        Tank,
+        zombieNorsuit,
+        zombieNornurse,
+        zombieNornursemix,
+        zombieNorwormanmix,
+        zombieNorwormanmixClim,
+        BossChainsaw,
+        zombieNorCrawl,
+        BossOgre,
+        
     }
 
     public enum RewardType
@@ -24,7 +32,8 @@ public static class GameConstants
         RapidFire,
         ChangeMachineGun,
         ChangeRocket,
-        
+
+
     }
 
 }

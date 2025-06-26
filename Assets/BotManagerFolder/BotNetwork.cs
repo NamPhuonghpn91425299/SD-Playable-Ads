@@ -7,8 +7,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class BotNetwork : MonoBehaviour, ITakeDamage
+public class BotNetwork : MonoBehaviour,ITakeDamage
 {
+    [SerializeField] private bool isBoss;
     [SerializeField] BotConfigSO botConfigSO;
     [SerializeField] Image healthBarUI;
     [SerializeField] Transform healthBarTransform;
@@ -16,68 +17,138 @@ public class BotNetwork : MonoBehaviour, ITakeDamage
     [SerializeField] WayPoint _path;
     [SerializeField] private int _currentHealth;
     [SerializeField] private bool isImmortal;
+    public bool BatTu;
     [SerializeField] private bool isDead;
-    [SerializeField] private Transform _posTakeDame;
+    
+    [Header("Change Anim")]
+    [SerializeField] private string currentAnimName;
+
+    [SerializeField] private Animator anim;
+    
     public BotConfigSO BotConfigSO => botConfigSO;
     public bool IsDead => isDead;
     public int currentHealth => _currentHealth;
     public bool IsImmortal => isImmortal;
     public Action<int> OnTakeDamage { get; set; }
-    public Action<int> OnLastTakeDamage { get; set; }
-    public static Action<int> OnReceiverDamage { get; set; }
-    public Action<string, int> OnWeaknessTakeDamage { get; set; }
+    
+    public Action<int> OnTakeDamagePlayer { get; set; }
+    public Action<string,int> OnWeaknessTakeDamage { get; set; }
+
     public Action<float> OnHealthChanged { get; set; }
     public Action OnBotDead { get; set; }
     public Action<BotNetwork> OnBotNetWorkDead { get; set; }
     public WayPoint Path => _path;
-    public List<Transform> FireAssistCheckPos => _fireAssistCheckPos;
+    public List<Transform> FireAssistCheckPos=> _fireAssistCheckPos;
 
     private Coroutine hideHealthBarCoroutine; // Tham chiếu tới Coroutine
     public Transform mainCameraTranform;
-    public Transform PosTakeDame => _posTakeDame;
+
+    public ParticleSystem vfxGiatDien;
+    
+    [Header("Add Explosion death")]
+    [SerializeField] botZomNorsuit botZomNorsuit;
+
+    public Vector3 posExplosion;
+
+    public bool DeadExplosion;
+    
+    [Header("Giật điện lan rộng")]
+    [SerializeField] private float _radius = 1f;
+    [SerializeField] private Transform posCenter;
+    [SerializeField] LayerMask _layerMaskBot;
+    [SerializeField] GameObject _lightingSettings;
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        if (posCenter != null)
+            Gizmos.DrawWireSphere(posCenter.position, _radius);
+    }
+
+    public void GetBotBiGiatDienTheo(int _dame)
+    {
+        Collider[] cols = Physics.OverlapSphere(posCenter.position, _radius, _layerMaskBot);
+        List<Transform> lstRoot = new List<Transform> ();
+        foreach (Collider col in cols)
+        {
+            if (!lstRoot.Contains(col.gameObject.transform.root))
+            {
+                lstRoot.Add(col.gameObject.transform.root);
+            }
+        }
+        foreach(var elem in lstRoot)
+        {
+            var takeDamageController = elem.gameObject.GetComponentInParent<BotNetwork>();
+            var damageType = elem.CompareTag("WeakPoint") ? DamageType.Weekness : DamageType.Normal;
+
+            if(takeDamageController != null)
+            {
+                if (Random.Range(0, 50) % 2 == 0)
+                {
+                    LightningBeamEffect lightingEff = ObjectPool.Instance.PopFromPool(_lightingSettings, instantiateIfNone: true).GetComponent<LightningBeamEffect>();
+                    lightingEff.Init(posCenter.position, takeDamageController.posCenter.position);
+                }
+                var damageInfo = new DamageInfo()
+                {
+                    damageType = damageType,
+                    damage = _dame,
+                    name = elem.gameObject.name,
+                };
+                
+                takeDamageController.TakeDamageDienGiat(damageInfo);
+            }
+        }
+    }
+    
     private void Awake()
     {
         if (mainCameraTranform == null)
         {
             mainCameraTranform = Camera.main.transform;
         }
-
-        _currentHealth = botConfigSO.health;
-
-        if (healthBarTransform != null)
-        {
-            healthBarTransform.gameObject.SetActive(false);
-        }
-        //healthBar.enabled = false; // Ẩn thanh máu khi khởi tạo
-        isImmortal = false;
+        OnBotDead+= Die;
 
     }
 
     private void OnEnable()
     {
-        OnBotDead += Die;
-    }
-    private void OnDisable()
-    {
-        OnBotDead -= Die;
-    }
-    public void Reset()
-    {
-        isDead = false;
         _currentHealth = botConfigSO.health;
-        isImmortal = false;
         if (healthBarTransform != null)
         {
-            healthBarTransform.gameObject.SetActive(false);
-        }
+             healthBarTransform.gameObject.SetActive(false); 
+        }    
+        //healthBar.enabled = false; // Ẩn thanh máu khi khởi tạo
+        isImmortal = false;
+        isDead = false;
+        DeadExplosion = false;
+        
     }
 
     public void TakeDamage(DamageInfo damageInfo)
-    {
-        if (isDead) return;
-
+    {   
+        if(isDead) return;
+        if(BatTu) return;
+        
+        if (damageInfo.damageType == DamageType.Gas && !isBoss)
+        {
+            DeadExplosion = true;
+        }
+        
+        if (GamePlayManager.Instance.CanPlayEffectGiatDien && damageInfo.damageType != DamageType.Gas)
+        {
+            if (vfxGiatDien != null && posCenter != null)
+            {
+            	vfxGiatDien.Play();
+                GetBotBiGiatDienTheo((int)((float)damageInfo.damage*(70f/100f)));
+             	
+			}
+        }
+        
+        OnTakeDamagePlayer?.Invoke(damageInfo.damage);
+        
         CacularHealth(damageInfo);
-        if (healthBarTransform != null)
+        
+        if(healthBarTransform != null && damageInfo.damageType != DamageType.Gas||healthBarTransform != null && isBoss && damageInfo.damageType == DamageType.Gas)
         {
             healthBarTransform.gameObject.SetActive(true);
             // Nếu đã có một Coroutine đang chờ ẩn thanh máu, hủy nó và tạo lại
@@ -90,12 +161,44 @@ public class BotNetwork : MonoBehaviour, ITakeDamage
             hideHealthBarCoroutine = StartCoroutine(HideHealthBarAfterDelay());
         }
     }
+    
+    public void TakeDamageDienGiat(DamageInfo damageInfo)
+    {   
+        if(isDead) return;
+        if(BatTu) return;
+        
+        if (damageInfo.damageType == DamageType.Gas && !isBoss)
+        {
+            DeadExplosion = true;
+        }
+        
+        if(GamePlayManager.Instance.CanPlayEffectGiatDien && damageInfo.damageType != DamageType.Gas)
+            vfxGiatDien.Play();
+        
+        OnTakeDamagePlayer?.Invoke(damageInfo.damage);
+        
+        CacularHealth(damageInfo);
+        
+        if(healthBarTransform != null)
+        {
+            healthBarTransform.gameObject.SetActive(true);
+            // Nếu đã có một Coroutine đang chờ ẩn thanh máu, hủy nó và tạo lại
+            if (hideHealthBarCoroutine != null)
+            {
+                StopCoroutine(hideHealthBarCoroutine);
+            }
+
+            // Bắt đầu Coroutine để ẩn thanh máu sau 1 giây nếu không nhận thêm sát thương
+            hideHealthBarCoroutine = StartCoroutine(HideHealthBarAfterDelay());
+        }
+    }
+    
     private void CheckImmortalStatus()
     {
         if (_currentHealth <= botConfigSO.health * (botConfigSO.HealthThreshold / 100f))
         {
             isImmortal = true;
-
+            
         }
         else
         {
@@ -106,9 +209,9 @@ public class BotNetwork : MonoBehaviour, ITakeDamage
     public void CacularHealth(DamageInfo damageInfo)
     {
         int damage = damageInfo.damage;
+        var damageScale = botConfigSO.GetDamageScale(damageInfo.damageType);
         if (isImmortal)
         {
-            var damageScale = botConfigSO.GetDamageScale(damageInfo.damageType);
 
             if (damageScale > 0)
             {
@@ -119,29 +222,28 @@ public class BotNetwork : MonoBehaviour, ITakeDamage
 
 
         }
+        
         if (isImmortal && botConfigSO.isCanImmortal) return;
-        _currentHealth -= damage;
-        if (damageInfo.damageType == DamageType.Weekness)
+        if(damageInfo.damageType == DamageType.Weekness)
         {
-            OnWeaknessTakeDamage?.Invoke(damageInfo.name, damageInfo.damage);
+            float reducedDamage = damageInfo.damage * damageScale;
+            damage = Mathf.CeilToInt(reducedDamage); // Làm tròn lên 
+            OnWeaknessTakeDamage?.Invoke(damageInfo.name, damage);
+            //Debug.Log($"Bot {gameObject.name} bị yếu điểm: {damageInfo.name} - HP Bot Giảm: {damage} - HP Hiện Tại: {_currentHealth} {damageInfo.damage}");
         }
-
-        OnReceiverDamage?.Invoke(damage);
-        OnLastTakeDamage?.Invoke(damage);
-        //Debug.Log(gameObject.name + " -" + damage.ToString() +" -" + damageInfo.damageType);
+        _currentHealth -= damage;
+        //Debug.Log(gameObject.name + " -" + damage.ToString());
         SetHealthBar(_currentHealth);
+        
 
         CheckImmortalStatus(); // Kiểm tra điều kiện bất tử
-        if (_currentHealth <= 0)
+        if (_currentHealth <= 0 && !DeadExplosion)
         {
-            
             isDead = true;
             OnBotDead.Invoke();
         }
         //StartCoroutine(HideHealthBarAfterDelay());
     }
-    
-    
     public void Die()
     {
         isDead = true;
@@ -164,8 +266,8 @@ public class BotNetwork : MonoBehaviour, ITakeDamage
         {
             healthBarUI.fillAmount = healthBarValue;
 
-        }
-
+        }    
+        
     }
 
     private IEnumerator HideHealthBarAfterDelay()
@@ -188,6 +290,22 @@ public class BotNetwork : MonoBehaviour, ITakeDamage
     private void Update()
     {
         NUtiliti.AlignCamera(healthBarTransform, mainCameraTranform);
+    }
+
+    public void ChangeAnim(string _name)
+    {
+        if (anim == null)
+        {
+            Debug.LogError("Null anim");
+            return;
+        }
+        
+        if (currentAnimName != _name)
+        {
+            anim.ResetTrigger(_name);
+            currentAnimName = _name;
+            anim.SetTrigger(currentAnimName);
+        }
     }
 }
 

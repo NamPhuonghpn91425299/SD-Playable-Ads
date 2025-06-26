@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using static FighterStateMachine;
 using Color = UnityEngine.Color;
@@ -25,12 +23,11 @@ public class FighterIdleState : BaseState<FighterState>
     private int currentWaypointIndex ;
     [SerializeField]
     private int targetWaypointIndex ;
-    private Transform player;
+    private Transform rotaBody;
     private bool movingForward = true;
     public override void EnterState()
     {
         wayPoint = botNetwork.Path;
-        player = LocalPlayer.Instance.GetTranformPlayer();
         f15TrackingMovement.enabled = false;
         SelectNextWaypoint();
     }

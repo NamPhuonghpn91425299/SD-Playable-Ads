@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static GameConstants;
@@ -13,31 +14,23 @@ public class PathManager : MonoBehaviour
         Instance = this;
     }
 
-    // public WayPoint GetWayPoint(BotType botType)
-    // {
-    //     var wayPointList = Listwaypoint.Find(list => list.botType == botType);
-    //     if (wayPointList != null)
-    //     {
-    //         var paths = wayPointList._wayPointlist;
-    //         var availablePaths = paths.FindAll(x => x.IsUse == false);
-    //         if (availablePaths.Count == 0)
-    //             throw new Exception("No available paths for bot type: " + botType);
-    //
-    //         int randomIndex = UnityEngine.Random.Range(0, availablePaths.Count);
-    //         availablePaths[randomIndex].IsUse = true;
-    //         return availablePaths[randomIndex];
-    //     }
-    //     throw new Exception("No paths found for bot type: " + botType);
-    // }
     public WayPoint GetWayPoint(BotType botType)
     {
         var wayPointList = Listwaypoint.Find(list => list.botType == botType);
+        //var wayPointList;
+
         if (wayPointList != null)
         {
             var paths = wayPointList._wayPointlist;
-        
-            // Ưu tiên waypoint chưa được sử dụng
             var availablePaths = paths.FindAll(x => !x.IsUse);
+            // if (availablePaths.Count == 0)
+            // {
+            //     BotManager.Instance.TotalBotOnMap -= 1;
+            //     GamePlayManager.Instance.gameResultData.BotKillCount += 1;
+            //     throw new Exception("No available paths for bot type: " + botType);
+            // }
+            
+            // Ưu tiên waypoint chưa được sử dụng
             if (availablePaths.Count > 0)
             {
                 int randomIndex = UnityEngine.Random.Range(0, availablePaths.Count);
@@ -50,8 +43,13 @@ public class PathManager : MonoBehaviour
             int sharedIndex = UnityEngine.Random.Range(0, paths.Count);
             return paths[sharedIndex]; // Không đổi trạng thái IsUse để tránh khóa cứng waypoint
         }
-    
         throw new Exception("No paths found for bot type: " + botType);
+    }
+
+    private IEnumerator IEDelay(List<WayPoint> availablePaths, int randomIndex)
+    {
+        yield return new WaitForSeconds(1f);
+        availablePaths[randomIndex].IsUse = false;
     }
 
     public void ResetPath()

@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
-using UnityEngine.Pool;
 
 public class BotManager : MonoBehaviour
 {
@@ -11,6 +10,10 @@ public class BotManager : MonoBehaviour
     [FormerlySerializedAs("totalBotConfig")][SerializeField] private int totalBotOnMap;
     [FormerlySerializedAs("totalBotConfig")][SerializeField] private int totalBotOnTurn;
 
+    public List<BotNetwork> _botNetworkAddBangTay = new List<BotNetwork>();
+    public List<botZomNorsuit> _botzomNorAddBangTay = new List<botZomNorsuit>();
+    public bool AllZBEatAttack = false;
+    
     public int TotalBotOnMap
     {
         get { return totalBotOnMap; }
@@ -29,16 +32,16 @@ public class BotManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        foreach (BotNetwork VARIABLE in _botNetworkAddBangTay)
+        {
+            VARIABLE.OnBotDead += OnBotDead;
+            _botNetworks.Add(VARIABLE);
+        }
     }
 
-    public void SpawnBot(GameObject botPrefab, Vector3 spawnPosition, WayPoint path)
+    public void SpawnBot(BotNetwork botPrefab, Vector3 spawnPosition, WayPoint path)
     {
-        //BotNetwork newBot = Instantiate(botPrefab, spawnPosition, Quaternion.identity);
-
-        GameObject newBot1 = ObjectPool.Instance.PopFromPool(botPrefab, instantiateIfNone: true);
-        newBot1.transform.SetPositionAndRotation(spawnPosition, Quaternion.identity);
-        var newBot = newBot1.GetComponent<BotNetwork>();
-        newBot.Reset();
+        BotNetwork newBot = Instantiate(botPrefab, spawnPosition, Quaternion.identity);
         newBot.SetPath(path);
         newBot.OnBotDead += OnBotDead;
         newBot.transform.localRotation = Quaternion.Euler(0, 180, 0);
@@ -53,7 +56,9 @@ public class BotManager : MonoBehaviour
 
     private void OnBotDead()
     {
+        print("chet bot");
         totalBotOnMap--;
+        AchievementEvaluator.instance.OnBotKilled(1f, isSubBoss: false);
     }
 
     // Thêm hàm này để xóa tất cả các bot khi lượt kết thúc
@@ -61,7 +66,7 @@ public class BotManager : MonoBehaviour
     {
         foreach (var bot in _botNetworks)
         {
-            Destroy(bot.gameObject);
+            Destroy(bot.gameObject,2f);
         }
         _botNetworks.Clear();
     }

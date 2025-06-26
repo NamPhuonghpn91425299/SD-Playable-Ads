@@ -222,7 +222,7 @@ TextureImporter:
       213: 2718044205949249345
     second: UI_BattleAtlas1_Portrait_73
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -239,11 +239,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -282,6 +283,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -294,6 +296,7 @@ TextureImporter:
     crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -306,6 +309,7 @@ TextureImporter:
     crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -318,6 +322,7 @@ TextureImporter:
     crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 1
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -330,6 +335,7 @@ TextureImporter:
     crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -342,6 +348,7 @@ TextureImporter:
     crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -354,6 +361,7 @@ TextureImporter:
     crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -366,6 +374,7 @@ TextureImporter:
     crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -375,9 +384,9 @@ TextureImporter:
       name: UI_BattleAtlas1_Portrait_0
       rect:
         serializedVersion: 2
-        x: 562
+        x: 643
         y: 938
-        width: 462
+        width: 381
         height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -396,9 +405,9 @@ TextureImporter:
       name: UI_BattleAtlas1_Portrait_1
       rect:
         serializedVersion: 2
-        x: 670
+        x: 687
         y: 850
-        width: 354
+        width: 337
         height: 88
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -417,10 +426,10 @@ TextureImporter:
       name: UI_BattleAtlas1_Portrait_2
       rect:
         serializedVersion: 2
-        x: 775
-        y: 721
-        width: 120
-        height: 120
+        x: 777
+        y: 729
+        width: 116
+        height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -438,10 +447,10 @@ TextureImporter:
       name: UI_BattleAtlas1_Portrait_3
       rect:
         serializedVersion: 2
-        x: 897
-        y: 725
-        width: 120
-        height: 120
+        x: 912
+        y: 733
+        width: 89
+        height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -549,7 +558,7 @@ TextureImporter:
         height: 397
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 47, z: 0, w: 51}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -585,18 +594,18 @@ TextureImporter:
       name: UI_BattleAtlas1_Portrait_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 128
+        x: 1
+        y: 925
+        width: 500
+        height: 99
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 90, y: 39, z: 84, w: 23}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa3530514b6e7fe449df09421aa344ad
+      spriteID: 93015db8b01375a4f8b0e9852fdf9fba
       internalID: -1624183501460830966
       vertices: []
       indices: 
@@ -606,18 +615,18 @@ TextureImporter:
       name: UI_BattleAtlas1_Portrait_6
       rect:
         serializedVersion: 2
-        x: 133
+        x: 975
         y: 0
-        width: 129
-        height: 128
+        width: 49
+        height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b741ac0bb9ac3ac42bf20cb8a2528389
+      spriteID: 2fbacbcba6243214194576d899f27e58
       internalID: 8751836364183028917
       vertices: []
       indices: 
@@ -708,9 +717,8 @@ TextureImporter:
       UI_BattleAtlas1_Portrait_73: 2718044205949249345
       UI_BattleAtlas1_Portrait_8: -5018543863309020801
       UI_BattleAtlas1_Portrait_9: 7226784370560269125
-  spritePackingTag: 
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -23,5 +23,4 @@ public class GameResultData : ScriptableObject
     [Tooltip("Đếm số lần BotKill")]
     public int BotKillCount;
     public bool IsCountBotKill;
-    public int requiredBotKill;
 }

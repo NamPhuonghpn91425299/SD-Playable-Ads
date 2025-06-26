@@ -1,0 +1,254 @@
+fileFormatVersion: 2
+guid: b8248b838a3c38d4188b8aa7de605bbd
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UI_BattleAtlas1_Portrait_33
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 399
+        width: 220
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3acfbfd49297c6748a8be4d53501a650
+      internalID: 1806669045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      UI_BattleAtlas1_Portrait_0: -2129058261
+      UI_BattleAtlas1_Portrait_1: 1215740623
+      UI_BattleAtlas1_Portrait_10: 836961642
+      UI_BattleAtlas1_Portrait_11: 1563362151
+      UI_BattleAtlas1_Portrait_12: 1272082987
+      UI_BattleAtlas1_Portrait_13: -2141294123
+      UI_BattleAtlas1_Portrait_14: -640581828
+      UI_BattleAtlas1_Portrait_15: 1088492976
+      UI_BattleAtlas1_Portrait_16: 1276483188
+      UI_BattleAtlas1_Portrait_17: -1227068120
+      UI_BattleAtlas1_Portrait_18: -1479386940
+      UI_BattleAtlas1_Portrait_19: -443298041
+      UI_BattleAtlas1_Portrait_2: 875254515
+      UI_BattleAtlas1_Portrait_20: -1294903699
+      UI_BattleAtlas1_Portrait_21: 1844956033
+      UI_BattleAtlas1_Portrait_22: 473804949
+      UI_BattleAtlas1_Portrait_23: -769853252
+      UI_BattleAtlas1_Portrait_24: -195320419
+      UI_BattleAtlas1_Portrait_25: -1237227163
+      UI_BattleAtlas1_Portrait_26: -1078153789
+      UI_BattleAtlas1_Portrait_27: -1322394454
+      UI_BattleAtlas1_Portrait_28: -1942046667
+      UI_BattleAtlas1_Portrait_29: 1890001824
+      UI_BattleAtlas1_Portrait_3: -993465346
+      UI_BattleAtlas1_Portrait_30: 42842414
+      UI_BattleAtlas1_Portrait_31: 351626510
+      UI_BattleAtlas1_Portrait_32: -207352065
+      UI_BattleAtlas1_Portrait_33: 1806669045
+      UI_BattleAtlas1_Portrait_34: 1715966863
+      UI_BattleAtlas1_Portrait_35: 845399701
+      UI_BattleAtlas1_Portrait_36: 83497092
+      UI_BattleAtlas1_Portrait_37: 527207390
+      UI_BattleAtlas1_Portrait_38: -473371269
+      UI_BattleAtlas1_Portrait_39: -27618746
+      UI_BattleAtlas1_Portrait_4: -284907973
+      UI_BattleAtlas1_Portrait_40: 973059722
+      UI_BattleAtlas1_Portrait_41: -2145619161
+      UI_BattleAtlas1_Portrait_42: 259229405
+      UI_BattleAtlas1_Portrait_43: -1756205696
+      UI_BattleAtlas1_Portrait_44: 583032049
+      UI_BattleAtlas1_Portrait_45: 309262132
+      UI_BattleAtlas1_Portrait_46: 959874910
+      UI_BattleAtlas1_Portrait_47: 1579110447
+      UI_BattleAtlas1_Portrait_48: -395990048
+      UI_BattleAtlas1_Portrait_49: -1195978068
+      UI_BattleAtlas1_Portrait_5: -1368589025
+      UI_BattleAtlas1_Portrait_50: 1797544867
+      UI_BattleAtlas1_Portrait_51: 457948904
+      UI_BattleAtlas1_Portrait_52: 1321906741
+      UI_BattleAtlas1_Portrait_53: -54989229
+      UI_BattleAtlas1_Portrait_54: -661505365
+      UI_BattleAtlas1_Portrait_55: 634006293
+      UI_BattleAtlas1_Portrait_56: -1661001296
+      UI_BattleAtlas1_Portrait_57: 2102345809
+      UI_BattleAtlas1_Portrait_58: 529152704
+      UI_BattleAtlas1_Portrait_59: 1917256916
+      UI_BattleAtlas1_Portrait_6: -1538392986
+      UI_BattleAtlas1_Portrait_60: -1537046655
+      UI_BattleAtlas1_Portrait_61: -472191783
+      UI_BattleAtlas1_Portrait_62: -1123787961
+      UI_BattleAtlas1_Portrait_63: 1280373019
+      UI_BattleAtlas1_Portrait_64: 1649737968
+      UI_BattleAtlas1_Portrait_65: -1701996468
+      UI_BattleAtlas1_Portrait_66: -150667212
+      UI_BattleAtlas1_Portrait_67: -214911970
+      UI_BattleAtlas1_Portrait_68: 1179902755
+      UI_BattleAtlas1_Portrait_69: 1212016092
+      UI_BattleAtlas1_Portrait_7: -1971381815
+      UI_BattleAtlas1_Portrait_70: -582119583
+      UI_BattleAtlas1_Portrait_71: -116526922
+      UI_BattleAtlas1_Portrait_72: -1513720631
+      UI_BattleAtlas1_Portrait_73: -649924208
+      UI_BattleAtlas1_Portrait_74: -467540862
+      UI_BattleAtlas1_Portrait_75: -1117463289
+      UI_BattleAtlas1_Portrait_76: 401463838
+      UI_BattleAtlas1_Portrait_77: -1683425945
+      UI_BattleAtlas1_Portrait_78: -2009413212
+      UI_BattleAtlas1_Portrait_79: -414002600
+      UI_BattleAtlas1_Portrait_8: 418438363
+      UI_BattleAtlas1_Portrait_9: 19292781
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

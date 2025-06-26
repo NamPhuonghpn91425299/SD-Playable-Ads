@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static BotPlayItaStateMachine;
 
-public class BotPlayItaDeadState : BaseState<PlayItaState>, IPoolObject
+public class BotPlayItaDeadState : BaseState<PlayItaState>
 {
     [SerializeField] protected BotNetwork botNetwork;
     [SerializeField] protected Animator ator;
@@ -11,22 +11,15 @@ public class BotPlayItaDeadState : BaseState<PlayItaState>, IPoolObject
     [SerializeField] protected GameObject muzzle;
     public bool IsUserIconDeadOnBot;
     public Vector3 BotDeadPos;
-    [SerializeField] bool iscanMove = false;
-    [SerializeField] private float deathSoundChance = 0.5f;
-
     public override void EnterState()
     {
-
         muzzle.SetActive(false);
         BotDeadPos = this.transform.position;
-        //BotDeathHandler.Instance.OnBotDeath(BotDeadPos);
+        BotDeathHandler.Instance.OnBotDeath(BotDeadPos);
         int indexSound = Random.Range(0, listSounDead.Length);
         AudioClip clipPlay = listSounDead[indexSound];
         //_source.clip = clipPlay;
-        if (Random.value <= deathSoundChance) // Random.value trả về số từ 0 -> 1
-        {
-            _source.PlayOneShot(clipPlay);
-        }
+        _source.PlayOneShot(clipPlay);
         botNetwork.Path.IsUse = false;
         BotDeath.Instance.GetBotDeath();
         ator.SetBool("isDead", true);
@@ -44,9 +37,7 @@ public class BotPlayItaDeadState : BaseState<PlayItaState>, IPoolObject
     IEnumerator HideBotOnDie()
     {
         yield return new WaitForSeconds(2f);
-        //iscanMove = true;
-        ObjectPool.Instance.PushToPool(this, gameObject);
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
 
     }
 
@@ -56,33 +47,12 @@ public class BotPlayItaDeadState : BaseState<PlayItaState>, IPoolObject
     }
     public override void ExitState()
     {
-        ResetBot();
-        iscanMove = false;
         _source.Stop();
-        // _source.clip = null; // Reset clip về null để đảm bảo không tái sử dụng
+       // _source.clip = null; // Reset clip về null để đảm bảo không tái sử dụng
     }
     public override PlayItaState GetNextState()
     {
-        {
-            return StateKey;
-        }
-    }
+        return StateKey;
 
-    public GameObject Prefab { get; set; }
-    public void Init()
-    {
-
-    }
-
-    public void OnPushToPool()
-    {
-        // Reset bot state when pushed to pool
-        ResetBot();
-    }
-    void ResetBot()
-    {
-        // Reset bot state when disabled
-        BotPlayItaStateMachine stateMachine = GetComponent<BotPlayItaStateMachine>();
-        stateMachine.ResetBotState();
     }
 }

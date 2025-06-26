@@ -543,10 +543,10 @@ TextureImporter:
       name: Deco_tutorial_17
       rect:
         serializedVersion: 2
-        x: 516
-        y: 576
-        width: 148
-        height: 148
+        x: 545
+        y: 896
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -590,7 +590,7 @@ TextureImporter:
         width: 130
         height: 130
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -12,7 +12,6 @@ public class GameResultManager : MonoBehaviour
     {
         EventManager.AddListener<int>(EventName.OnCheckTurnPlay, OnCheckShowEndCard);
         EventManager.AddListener<int>(EventName.OnCountBotLanding, OnCheckBotLanding);
-        EventManager.AddListener<int>(EventName.OnBotKillCount, OnCheckBotKill);
         //EventManager.AddListener<float>(EventName.OnHealthPlayer, OnCheckHP);
     }
 
@@ -22,19 +21,16 @@ public class GameResultManager : MonoBehaviour
         OnResetValue();
         EventManager.RemoveListener<int>(EventName.OnCheckTurnPlay, OnCheckShowEndCard);
         EventManager.RemoveListener<int>(EventName.OnCountBotLanding, OnCheckBotLanding);
-        EventManager.RemoveListener<int>(EventName.OnBotKillCount, OnCheckBotKill);
         //EventManager.RemoveListener<float>(EventName.OnHealthPlayer, OnCheckHP);
     }
-
-
 
     private void OnShowEndCard()
     {
         _isShowCard = true;
-        EventManager.Invoke(EventName.OnShowLunaEndGame, _isShowCard);
-        UIManager.Instance.EndGame();
+         EventManager.Invoke(EventName.OnShowLunaEndGame, _isShowCard);
+         UIManager.Instance.EndGame();
 
-    }
+    }    
     // private void OnCheckHP(float arg0)
     // {
     //     if (arg0 <= 0)
@@ -47,18 +43,12 @@ public class GameResultManager : MonoBehaviour
     {
         if (TurnToShowEndCard == gameResultData.TurnEnd && !_isShowCard && gameResultData.IsCountTurn && BotManager.Instance.TotalBotOnTurn == gameResultData.BotKillCount)
         {
-            EventManager.Invoke(EventName.OnGameWon, _isShowCard);
+            EventManager.Invoke(EventName.OnGameWon, true);
+            Debug.Log("Show End Card" + TurnToShowEndCard + " " + gameResultData.TurnEnd + " " + _isShowCard);
             OnShowEndCard();
         }
     }
-    private void OnCheckBotKill(int botKillCount)
-    {
-        if (!_isShowCard && botKillCount >= gameResultData.requiredBotKill && !UIManager.Instance.isLoseGame)
-        {
-            EventManager.Invoke(EventName.OnGameWon, _isShowCard);
-            OnShowEndCard();
-        }
-    }
+
     private void OnCheckBotLanding(int BotCount)
     {
         gameResultData.BotLandingCount = BotCount;

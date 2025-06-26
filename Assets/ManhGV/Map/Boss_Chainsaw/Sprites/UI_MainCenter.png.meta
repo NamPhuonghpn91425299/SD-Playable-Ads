@@ -1,0 +1,5838 @@
+fileFormatVersion: 2
+guid: b7f9e24de7036b041bfe24dd0e80a1a5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Spin_Boder
+  - first:
+      213: 21300002
+    second: Spin_MachineSpin
+  - first:
+      213: 21300004
+    second: Button_Watch
+  - first:
+      213: 21300006
+    second: Button_Sprin
+  - first:
+      213: 21300008
+    second: Item_Cherry
+  - first:
+      213: 21300010
+    second: Item_Lemon
+  - first:
+      213: 21300012
+    second: Item_Orange
+  - first:
+      213: 21300014
+    second: Item_Apple
+  - first:
+      213: 21300016
+    second: Item_Melon
+  - first:
+      213: 21300018
+    second: Item_Coin
+  - first:
+      213: 21300020
+    second: Item_Bell
+  - first:
+      213: 21300022
+    second: Item_Seven
+  - first:
+      213: 21300024
+    second: Item_BAR
+  - first:
+      213: 21300026
+    second: Spin_Colume
+  - first:
+      213: 21300028
+    second: Bg_Elip
+  - first:
+      213: 21300030
+    second: Spin_Cycle
+  - first:
+      213: 21300032
+    second: Effect_Glow2
+  - first:
+      213: 21300034
+    second: Spin_Insert
+  - first:
+      213: 21300036
+    second: Spin_JackportInfo
+  - first:
+      213: 21300038
+    second: Effect_Light1
+  - first:
+      213: 21300040
+    second: Sprin_Border
+  - first:
+      213: 21300042
+    second: Sprin_attlat_2
+  - first:
+      213: 9003571081809106758
+    second: Boder_Reward
+  - first:
+      213: -7078069743797344015
+    second: Effect_Glow1
+  - first:
+      213: 9077758021231569953
+    second: Bg_BestDeal
+  - first:
+      213: 5635751209017564695
+    second: Button_Yellow
+  - first:
+      213: -4585209663707731037
+    second: Bg_Bonus
+  - first:
+      213: 8344334158279927286
+    second: Item_Noads
+  - first:
+      213: 1546058972133958244
+    second: Bg_+bonus
+  - first:
+      213: -1268386175565946891
+    second: Icon_Daily
+  - first:
+      213: 5811650872412272171
+    second: Icon_Main
+  - first:
+      213: 8662917844175192964
+    second: Bg_Gradient_2
+  - first:
+      213: -5757102607967534554
+    second: Icon_Rotate
+  - first:
+      213: 3800222271187139625
+    second: Icon_Mail
+  - first:
+      213: -3063776887834474091
+    second: Icon_Reward
+  - first:
+      213: 4054434642321582207
+    second: Icon_Purchase
+  - first:
+      213: -5837101913672145921
+    second: Boder_Mail
+  - first:
+      213: -6038906586821602154
+    second: Icon_World
+  - first:
+      213: 1675187060288663220
+    second: Icon_Country
+  - first:
+      213: 8604683631193678532
+    second: Icon_Friend
+  - first:
+      213: 6028421341823720297
+    second: Icon_+
+  - first:
+      213: 804627969047582017
+    second: ammo_box
+  - first:
+      213: -3686013669481140096
+    second: Icon_Setting
+  - first:
+      213: 3285848078107884089
+    second: Icon_Leaderboard
+  - first:
+      213: -1270030534174522223
+    second: Icon_Bag1
+  - first:
+      213: -3058093337094985743
+    second: Icon_Controler
+  - first:
+      213: -4685753458657140411
+    second: Icon_Sound
+  - first:
+      213: 3855801909706726802
+    second: Icon_Sever
+  - first:
+      213: -4775000311678959203
+    second: Icon_Graphic
+  - first:
+      213: -2667749714478416764
+    second: Icon_Language
+  - first:
+      213: 5091776921416443042
+    second: Icon_Info
+  - first:
+      213: -3770926976122023496
+    second: Button_Back
+  - first:
+      213: -6126596265496039992
+    second: Icon_Enegy
+  - first:
+      213: -6065857548954374029
+    second: Icon_Leader
+  - first:
+      213: 2532964494520596610
+    second: Button_Tick
+  - first:
+      213: 3448364913780435757
+    second: Icon_Watch_1
+  - first:
+      213: -1085341715749303771
+    second: Icon_Bosster
+  - first:
+      213: -7150648646288233081
+    second: Button_Blue
+  - first:
+      213: 3180693555943524037
+    second: Icon_CheckTick
+  - first:
+      213: 149024322325851880
+    second: Icon_GameCenter
+  - first:
+      213: -2014761663542508807
+    second: Icon_GGservice
+  - first:
+      213: -4538964325858732154
+    second: Icon_Facebook
+  - first:
+      213: 4573580761891296902
+    second: Icon_PVP
+  - first:
+      213: -907225002784400363
+    second: UIMainCenter_Icon_WachtVideo
+  - first:
+      213: 8011040909028234576
+    second: Icon_Light
+  - first:
+      213: -7213451804830732110
+    second: Icon_Volume
+  - first:
+      213: -1671819668899422492
+    second: Icon_Cash
+  - first:
+      213: 1482492603820896899
+    second: Sprin_attlat_6
+  - first:
+      213: -612654592353057226
+    second: Icon_Gold
+  - first:
+      213: 6504412301670717068
+    second: Boder_Regtange_1px
+  - first:
+      213: -666310046156120275
+    second: Boder_Regtange_2px
+  - first:
+      213: 4420044509575845899
+    second: Boder_CrossAngle_Bg
+  - first:
+      213: -3418512026262561814
+    second: Boder_CrossAngle_Line
+  - first:
+      213: 4983315215661600476
+    second: Bg_X
+  - first:
+      213: -2914616310420435095
+    second: Bg_GoldOffer
+  - first:
+      213: 4510491285500177058
+    second: UIMainCenter_Light_Arsenal
+  - first:
+      213: 6497783104620420303
+    second: Bg_Sale
+  - first:
+      213: 3785156075646783023
+    second: Other_Selectedsever
+  - first:
+      213: 6812088808074127901
+    second: Item_Jackpot
+  - first:
+      213: -5452599340058085046
+    second: Icon_Bell_2
+  - first:
+      213: 2128426972228000816
+    second: Icon_Messenger
+  - first:
+      213: -3936027078833339505
+    second: Bg_Triangle
+  - first:
+      213: 178680663174782045
+    second: Icon_X
+  - first:
+      213: 7189117463495938615
+    second: Icon_Arrow2
+  - first:
+      213: 7547899443903957423
+    second: Boder_Rounded1_Bg
+  - first:
+      213: -8296888245250978166
+    second: Icon_Notification
+  - first:
+      213: -1221159777377784890
+    second: Button_EditName
+  - first:
+      213: -8713526087636184641
+    second: Button_Gray
+  - first:
+      213: -496556393516695051
+    second: Button_Gold
+  - first:
+      213: 7725887802828171134
+    second: Button_Cash
+  - first:
+      213: 4515496655600367861
+    second: Icon_Ticket
+  - first:
+      213: 6830516598057862194
+    second: Effect_Triangle
+  - first:
+      213: 2350083833591371530
+    second: Item_Sale
+  - first:
+      213: -6745514592547046477
+    second: Khungchonmap
+  - first:
+      213: 6213740761900984088
+    second: Button_Money
+  - first:
+      213: 4840051366810070179
+    second: Bg_Cycle1
+  - first:
+      213: 4510427160110986038
+    second: Ctrl_Couch
+  - first:
+      213: 6460667118886190041
+    second: Suppoter3
+  - first:
+      213: 3617790802934929693
+    second: Icon_Scope
+  - first:
+      213: -9095736834610348722
+    second: Icon_Silencer
+  - first:
+      213: -571259585694911787
+    second: Icon_GunSemi
+  - first:
+      213: -6004622528384697506
+    second: Icon_Piercing
+  - first:
+      213: -393055218591222516
+    second: Bg_Gradient_1
+  - first:
+      213: 6643758572659411139
+    second: Ctrl_Cross
+  - first:
+      213: 2671447605117562700
+    second: Bg_ZoomBg
+  - first:
+      213: 3230188447150495330
+    second: Button_ZoomDrag
+  - first:
+      213: 335966523518343369
+    second: Boder_Rounded2_Bg
+  - first:
+      213: 8547133501624996701
+    second: Boder_Rounded2_Line
+  - first:
+      213: -1904767093917109839
+    second: IconCall
+  - first:
+      213: -6864194380865706841
+    second: Ctrl_JoyStick
+  - first:
+      213: -438611471512349211
+    second: Ctrl_Shot
+  - first:
+      213: -576826231819824167
+    second: Ctrl_FirstAidKit
+  - first:
+      213: 3193152888600650706
+    second: WeaponCellBackGround
+  - first:
+      213: -5281876672526730869
+    second: Icon_Watch_clock
+  - first:
+      213: 5155187736893959494
+    second: Icon_Node
+  - first:
+      213: 352868952580554102
+    second: Icon_Locked1
+  - first:
+      213: -6648390142109292179
+    second: Icon_Magazine
+  - first:
+      213: 7833421445183898854
+    second: Icon_BodyGun
+  - first:
+      213: -6272715980133477968
+    second: Icon_Grip
+  - first:
+      213: -5983739953166486563
+    second: Icon_Bodygun
+  - first:
+      213: 4799412856715589631
+    second: Icon_Bullet
+  - first:
+      213: -1398609328892142313
+    second: Icon_GunSinger
+  - first:
+      213: -3902470354093696836
+    second: Icon_Locked2
+  - first:
+      213: 211672583162696479
+    second: 9
+  - first:
+      213: -3305587711699426822
+    second: 8
+  - first:
+      213: 2092091895123839296
+    second: 7
+  - first:
+      213: 7833421445183898854
+    second: 6
+  - first:
+      213: 435785765223809362
+    second: 5
+  - first:
+      213: 578066179416975781
+    second: 6
+  - first:
+      213: -7367925878036937208
+    second: 3
+  - first:
+      213: -4239524559097794216
+    second: 2
+  - first:
+      213: 2672814751320816945
+    second: 1
+  - first:
+      213: -7806735967070303585
+    second: icon_ads
+  - first:
+      213: 6820380878589579731
+    second: icon_ads
+  - first:
+      213: 6820380878589579731
+    second: icon_magazine
+  - first:
+      213: 578066179416975781
+    second: Icon_Gre_BlastNowNormal
+  - first:
+      213: -2046047753514161374
+    second: 4
+  - first:
+      213: -8593816914239415715
+    second: Icon_Full
+  - first:
+      213: 8600109123629366790
+    second: Bg_BoderRating
+  - first:
+      213: 8019712781579926960
+    second: Icon_BulletIn
+  - first:
+      213: -7105810143701947730
+    second: Icon_BulletOut
+  - first:
+      213: -3212289724108483841
+    second: Icon_PointSub
+  - first:
+      213: -7597265196569395556
+    second: Bg_ProgessYellow
+  - first:
+      213: -547767429315457367
+    second: Button_UnEquip
+  - first:
+      213: -3591954106023918743
+    second: UIMainCenter_Button_Equip
+  - first:
+      213: 833344939118950293
+    second: Boder_Rounded1_Line
+  - first:
+      213: -7555532627003877084
+    second: Bg_Loading_Long
+  - first:
+      213: 6638615632100784656
+    second: Bg_LoadingUP_Long
+  - first:
+      213: -7278985479046869952
+    second: BG_Loading_Small
+  - first:
+      213: -405438590422954085
+    second: Icon_Ammor
+  - first:
+      213: -3615440761188536659
+    second: Icon_Helmet
+  - first:
+      213: 5298914715760028287
+    second: Icon_ArmorAttack
+  - first:
+      213: -303734309812106231
+    second: Icon_Piecing
+  - first:
+      213: 3909510325802658995
+    second: Item_Gold
+  - first:
+      213: 260131532223688242
+    second: Icon_Arrow1
+  - first:
+      213: 8211064711260109494
+    second: Effect_Glow3
+  - first:
+      213: -5832797027801065665
+    second: Boder_Check
+  - first:
+      213: -6360263093477535856
+    second: Boder_CycleProgressBG
+  - first:
+      213: -446042986701481163
+    second: Boder_CycleProgressLine
+  - first:
+      213: 472494864159101827
+    second: Icon_random
+  - first:
+      213: -2001229529402928966
+    second: Button_fireRocket
+  - first:
+      213: 8047602302063301646
+    second: Button_Adsbg
+  - first:
+      213: -7756541593548154290
+    second: armySupport
+  - first:
+      213: -6014364949008907455
+    second: helicopterSupport
+  - first:
+      213: -2217026643318753656
+    second: napalmStrikeSupport
+  - first:
+      213: 6169957847104942609
+    second: arrmorpiecing
+  - first:
+      213: -8189456543641480384
+    second: Star
+  - first:
+      213: -2701536825796369601
+    second: Star_Yellow
+  - first:
+      213: 1021972922410352262
+    second: hexagone full
+  - first:
+      213: -3973720232644424
+    second: tickv2
+  - first:
+      213: -2643110517368617460
+    second: '!'
+  - first:
+      213: -2821518680290296709
+    second: Fire_Lower
+  - first:
+      213: 6025999671182953905
+    second: Fire_Upper
+  - first:
+      213: 1263023995233429396
+    second: x
+  - first:
+      213: 140560188327442253
+    second: circle
+  - first:
+      213: 5272048259912173534
+    second: UI_MainCenter_11
+  - first:
+      213: -3693500285074329135
+    second: calendar_icon
+  - first:
+      213: -7961282509167782770
+    second: UI_rank1
+  - first:
+      213: -30775271329328940
+    second: UI_Rank2
+  - first:
+      213: 189916762738737251
+    second: UI_Rank3
+  - first:
+      213: 5159123628746469349
+    second: Circle_normal_WM
+  - first:
+      213: -5529010835338480194
+    second: Icon_Sale
+  - first:
+      213: 6208154810386528861
+    second: line
+  - first:
+      213: 2176886347180381915
+    second: Lock
+  - first:
+      213: 1134321700657777079
+    second: Icon_Vien
+  - first:
+      213: 8543949246803047244
+    second: Icon_YeuCau
+  - first:
+      213: -4062237988662510202
+    second: enegy
+  - first:
+      213: -769326076451396173
+    second: bg_boder1
+  - first:
+      213: -3350030347101456778
+    second: bg_white
+  - first:
+      213: 3332239770634213181
+    second: blood_boster
+  - first:
+      213: 5855145454962271342
+    second: Rocket_Follow_Button
+  - first:
+      213: 1454024361986123126
+    second: Rocket_Unfollow_Button
+  - first:
+      213: 4721992876371043630
+    second: Button_Switch
+  - first:
+      213: -8837493935708520059
+    second: BossSpecial_WM
+  - first:
+      213: 5975950177817250758
+    second: WM_Backgroup_Circle
+  - first:
+      213: -3455442703379882196
+    second: UI_MainCenter_31
+  - first:
+      213: -6875254492120094762
+    second: UI_MainCenter_32
+  - first:
+      213: -1046299520743156981
+    second: UI_MainCenter_33
+  - first:
+      213: 8085531334669986577
+    second: RankWM
+  - first:
+      213: 8293438633695499942
+    second: UI_MainCenter_35
+  - first:
+      213: 6994826472893685299
+    second: Chest
+  - first:
+      213: 3420969118010009944
+    second: UI_MainCenter_bullet_WM
+  - first:
+      213: -6365504903701691406
+    second: UI_MainCenter_waitingfriendConfirm
+  - first:
+      213: -133107324940298695
+    second: Skull
+  - first:
+      213: 7653470752316231908
+    second: circle_ rank_boss_WM
+  - first:
+      213: 5652282682832691481
+    second: UI_MainCenter_ruongicon
+  - first:
+      213: 8666160586297302088
+    second: SubRank_Boss_WM
+  - first:
+      213: 9182260963339653279
+    second: icon_zoom
+  - first:
+      213: 5734224362547019488
+    second: UI_MainCenter_money_icon
+  - first:
+      213: 7357812945726294336
+    second: UI_MainCenter_GoldAD
+  - first:
+      213: 8700952837643988200
+    second: UI_MainCenter_Gray
+  - first:
+      213: 4315565570792555294
+    second: UI_MainCenter_GoldQuest
+  - first:
+      213: -91640973874566762
+    second: UI_MainCenter_borderQuest
+  - first:
+      213: -1652587388278287769
+    second: UI_MainCenter_BorderQuesst2
+  - first:
+      213: 1903636286953064784
+    second: UI_MainCenter_GlowMainMenu
+  - first:
+      213: -1471604789584191060
+    second: UI_MainCenter_MainQuest
+  - first:
+      213: -8431203801747822230
+    second: EffectWM
+  - first:
+      213: 3338225428174933091
+    second: Circle_Arrow_Normal_WM
+  - first:
+      213: 8623349061825723958
+    second: WM_Circle_rank_boss2
+  - first:
+      213: 1209435126047157229
+    second: UI_MainCenter_btnListButton
+  - first:
+      213: 3610646567395528631
+    second: UI_MainCenter_BGlistbutton
+  - first:
+      213: -2535705522513793997
+    second: UI_MainCenter_ruonopen
+  - first:
+      213: 9103612785338492281
+    second: circle_map
+  - first:
+      213: -4021058247113153083
+    second: UI_MainCenter_BoderMap
+  - first:
+      213: 2646163912142760734
+    second: UI_MainCenter_TopBar1
+  - first:
+      213: 3382860596272859711
+    second: UI_MainCenter_TopBar2
+  - first:
+      213: 1134994925535522301
+    second: UI_MainCenter_bodermap2
+  - first:
+      213: 3270447434934791909
+    second: UI_MainCenter_nointernet_icon
+  - first:
+      213: 8758133160178471193
+    second: UI_MainCenter_BlueNew
+  - first:
+      213: -7807288947373988359
+    second: UI_MainCenter_BlueNA
+  - first:
+      213: -5064052237248398959
+    second: UI_MainCenter_NewBack
+  - first:
+      213: -5524302031957523581
+    second: UI_MainCenter_grayBtn
+  - first:
+      213: -8001720209639124100
+    second: UI_MainCenter_bodercurve
+  - first:
+      213: 4094517230038135015
+    second: UI_MainCenter_greenBtn
+  - first:
+      213: 4096463951369416424
+    second: UI_MainCenter_bar
+  - first:
+      213: -3984453991260376655
+    second: UI_MainCenter_bar2
+  - first:
+      213: -823558641200902541
+    second: UI_MainCenter_Gift
+  - first:
+      213: 7948927292580574061
+    second: UI_MainCenter_WhiteBtn
+  - first:
+      213: 116029350897765811
+    second: UI_MainCenter_Namestate
+  - first:
+      213: 4082135736512956428
+    second: UI_MainCenter_MedalDrop
+  - first:
+      213: 5420103644129711219
+    second: UI_MainCenter_Light2
+  - first:
+      213: 4899416080172381766
+    second: reset_icon
+  - first:
+      213: 2628133218759312814
+    second: Star_Gray
+  - first:
+      213: -1185009417541225432
+    second: UI_Rank1
+  - first:
+      213: 6450128084835112790
+    second: UI_Rank
+  - first:
+      213: -6349311836336742074
+    second: arsenallevel5
+  - first:
+      213: 5402384028968505799
+    second: arsenalLv1
+  - first:
+      213: -6079998474085470672
+    second: UI_MainCenter_84
+  - first:
+      213: -2993030397156613082
+    second: UI_MainCenter_85
+  - first:
+      213: 8491788330290715204
+    second: UI_MainCenter_86
+  - first:
+      213: -8234443609579939862
+    second: UI_MainCenter_87
+  - first:
+      213: 5945331887427598477
+    second: UI_MainCenter_88
+  - first:
+      213: -9033027763592231254
+    second: UI_MainCenter_89
+  - first:
+      213: -1869264810685065231
+    second: UI_MainCenter_90
+  - first:
+      213: 8281819703255461898
+    second: UI_MainCenter_ChatIcon
+  - first:
+      213: 7414140156381984126
+    second: ui_remove
+  - first:
+      213: 1919394331298188776
+    second: UI_MainCenter_93
+  - first:
+      213: 3747219669661478476
+    second: UI_MainCenter_94
+  - first:
+      213: -2543930663457283653
+    second: UI_MainCenter_95
+  - first:
+      213: -8101759366634212541
+    second: SpecialEffectBullet
+  - first:
+      213: 523506551855297638
+    second: UI_MainCenter_ViewFreeGold
+  - first:
+      213: -429738698656168358
+    second: UI_MainCenter_99
+  - first:
+      213: -7369207277420851093
+    second: UI_MainCenter_100
+  - first:
+      213: -5042671472178846905
+    second: UI_MainCenter_101
+  - first:
+      213: 8925458356196993569
+    second: Flare_Upgrade
+  - first:
+      213: -7958462645667407898
+    second: watchadsfill
+  - first:
+      213: -3331732079570504023
+    second: lightEffect
+  - first:
+      213: -1430617286861842232
+    second: UI_MainCenter_rocketFL
+  - first:
+      213: -4717125524433285345
+    second: UI_MainCenter_rocketFL2
+  - first:
+      213: 7011502995111743328
+    second: UI_MainCenter_rocketfl3
+  - first:
+      213: -4807381233027550492
+    second: UI_MainCenter_SearchFriend
+  - first:
+      213: 8557393376283617565
+    second: UI_MainCenter_addFriend
+  - first:
+      213: 9214302099201674911
+    second: UI_MainCenter_deletefriend
+  - first:
+      213: 4434970700527978660
+    second: UI_MainCenter_111
+  - first:
+      213: -7958872928047528751
+    second: UI_MainCenter_electrobullet
+  - first:
+      213: -1484394293572367123
+    second: UI_MainCenter_FireBullet
+  - first:
+      213: 8488738106543205167
+    second: UI_MainCenter_Xuyengiap
+  - first:
+      213: 8627636536621706539
+    second: UI_MainCenter_thunderTime
+  - first:
+      213: -4248931818018235170
+    second: UI_MainCenter_whiteboder
+  - first:
+      213: -5651442989917196374
+    second: UI_MainCenter_Flare
+  - first:
+      213: -4142290695493116758
+    second: UI_MainCenter_star
+  - first:
+      213: -7501398950689040742
+    second: UI_MainCenter_blackStar
+  - first:
+      213: -2748274756490062670
+    second: UI_MainCenter_Light
+  - first:
+      213: 6465619661707208087
+    second: UI_MainCenter_offline_mode
+  - first:
+      213: 5307394256475887952
+    second: UI_MainCenter_secondaries_weapon
+  - first:
+      213: -7019836856643755603
+    second: UI_MainCenter_primaries_weapon
+  - first:
+      213: 8438765484103414153
+    second: UI_MainCenter_turret
+  - first:
+      213: 2330523353999725654
+    second: UI_MainCenter_vip_weapon
+  - first:
+      213: -8132959934626037948
+    second: UI_MainCenter_yellow_star
+  - first:
+      213: 6915528507461348453
+    second: UI_MainCenter_green_star
+  - first:
+      213: 6540282586723609271
+    second: UI_MainCenter_white_star
+  - first:
+      213: 8797193837942369921
+    second: UI_MainCenter_equipped
+  - first:
+      213: 7359788599698648608
+    second: icon_quantityHeli
+  - first:
+      213: 5325797557804747198
+    second: icon_amount
+  - first:
+      213: 5642741374398845000
+    second: icon_explosion
+  - first:
+      213: -59679757697106543
+    second: icon_quantity
+  - first:
+      213: 7353582740034348937
+    second: UI_MainCenter_recoil
+  - first:
+      213: -6899342195829701809
+    second: icon_magazin
+  - first:
+      213: 150038134492867522
+    second: icon_damage1
+  - first:
+      213: 3167435339926154348
+    second: icon_fireRate
+  - first:
+      213: 5225349427401010338
+    second: icon_reload
+  - first:
+      213: -3789942129824884090
+    second: icon_suppessor
+  - first:
+      213: -7148708993724350421
+    second: UI_MainCenter_magazines
+  - first:
+      213: 7779776858419192789
+    second: UI_MainCenter_accessory
+  - first:
+      213: -47114126210989541
+    second: UI_MainCenter_viewfinder
+  - first:
+      213: 3201378515678880473
+    second: UI_MainCenter_vip_accessor
+  - first:
+      213: -4304930302063213415
+    second: UI_MainCenter_make_color
+  - first:
+      213: -4116507854093065512
+    second: UI_MainCenter_upgrade_icon
+  - first:
+      213: 1454657928734209063
+    second: UI_MainCenter_luck
+  - first:
+      213: -6123656849089005350
+    second: ArsenalSupporterIconTab
+  - first:
+      213: -6972143639358473673
+    second: ArsenalAccessoryIconTab
+  - first:
+      213: -6980190527891573212
+    second: ArsenalRightPanelBG
+  - first:
+      213: 2106969945405103835
+    second: ArsenalRightBG
+  - first:
+      213: 4728961369508070473
+    second: ArsenalNotify
+  - first:
+      213: -7110874555115672596
+    second: AccessoryBorderYellow
+  - first:
+      213: -2046000931193280333
+    second: AccessoryBorderGray
+  - first:
+      213: -933553882254388652
+    second: CombatPowerBG
+  - first:
+      213: 439934066743417816
+    second: CombatPowerIcon1
+  - first:
+      213: 5736702885042932346
+    second: CombatPowerIcon2
+  - first:
+      213: 7213943017064840637
+    second: ArsenalTabBg
+  - first:
+      213: -2963062393812770373
+    second: icon_magazineRank
+  - first:
+      213: -8725137412072193487
+    second: icon_armor
+  - first:
+      213: 7575697318267608468
+    second: icon_health
+  - first:
+      213: 4339578374258185965
+    second: icon_velocity1
+  - first:
+      213: -8285150300466642382
+    second: NotifyLeft
+  - first:
+      213: -2825092406168543383
+    second: icon_TicketArsenal
+  - first:
+      213: -770406587825896229
+    second: icon_scanningAgle
+  - first:
+      213: -344981799424524783
+    second: icon_common
+  - first:
+      213: -3205983978318892904
+    second: icon_rare
+  - first:
+      213: -3861766293405352605
+    second: icon_epic
+  - first:
+      213: 7364467907805803713
+    second: icon_legendary
+  - first:
+      213: 480932078542256558
+    second: accessoryUpgrade_Border_1
+  - first:
+      213: -1869612902054914294
+    second: accessoryUpgrade_Border_2
+  - first:
+      213: 3458126555462831846
+    second: accessoryUpgrade_Border_3
+  - first:
+      213: -3194547268263695587
+    second: Slide_AccessoryUpgrade1
+  - first:
+      213: -2749747694423496894
+    second: Slide_AccessoryUpgrade1
+  - first:
+      213: -2073181146941863524
+    second: Slide_Upgrade_3
+  - first:
+      213: 3584185595609718694
+    second: icon_healthRegen
+  - first:
+      213: -8349777663025108450
+    second: icon_cooldow
+  - first:
+      213: -2333651966098117593
+    second: quantity_infantry
+  - first:
+      213: -6596810497139221753
+    second: accessoryEqupedBg
+  - first:
+      213: -7676878480845267164
+    second: slide_upgrade1
+  - first:
+      213: -403375947177378446
+    second: slide_upgrade2
+  - first:
+      213: -8140582266928256890
+    second: slide_upgrade3
+  - first:
+      213: -1780177351067290763
+    second: UI_MainCenter_Topbar
+  - first:
+      213: -2547737392296014739
+    second: UI_MainCenter_level
+  - first:
+      213: 1806400336077154493
+    second: UI_MainCenter_cash
+  - first:
+      213: -9093594412464011418
+    second: UI_MainCenter_Gold
+  - first:
+      213: -8678510226720712694
+    second: UI_MainCenter_vip
+  - first:
+      213: -5609648707232639169
+    second: UI_MainCenter_Chest
+  - first:
+      213: -4411536041114676658
+    second: UI_MainCenter_Bestdeal
+  - first:
+      213: -2082842948843341601
+    second: UI_MainCenter_nexttime
+  - first:
+      213: 2415286437035310088
+    second: UI_MainCenter_Cashbtn
+  - first:
+      213: 4237618598871144221
+    second: selectedupgrade
+  - first:
+      213: 71264669756312861
+    second: boderAccessory
+  - first:
+      213: 5550721046698611231
+    second: selectedAccessory
+  - first:
+      213: -2096450746721078684
+    second: UI_MainCenter_194
+  - first:
+      213: -4239440395060235106
+    second: scrollBg
+  - first:
+      213: 855641266395987937
+    second: equipedBg
+  - first:
+      213: -8443221963929447448
+    second: emptyAccessory
+  - first:
+      213: -6974570649896609611
+    second: UI_MainCenter_ChatFriend
+  - first:
+      213: -218522702506157847
+    second: CombatPowerIcon3
+  - first:
+      213: 2866164076391462920
+    second: icon_pierce
+  - first:
+      213: 5054290809473545204
+    second: icon_accuracy
+  - first:
+      213: -5869426196335857144
+    second: icon_magazineCampaignRank
+  - first:
+      213: 8372671465717662217
+    second: upgradeButtonNew
+  - first:
+      213: -6184841553190091161
+    second: SellButtonNew
+  - first:
+      213: -7393036613327852250
+    second: UI_MainCenter_downloadmap
+  - first:
+      213: -7153089051567381950
+    second: UI_MainCenter_206
+  - first:
+      213: -15592805614073026
+    second: Button_StartUnlock
+  - first:
+      213: -1729469026102807307
+    second: Button_OpenNow
+  - first:
+      213: 9155849461693690540
+    second: Button_Lock
+  - first:
+      213: -9205231377372783516
+    second: Icon_Clock
+  - first:
+      213: 1723936220350832223
+    second: UI_backGoundChest1
+  - first:
+      213: -5694391116103959880
+    second: UI_MainCenter_212
+  - first:
+      213: 2860226850727526792
+    second: UI_MainCenter_213
+  - first:
+      213: 6286673678167553252
+    second: UI_MainCenter_214
+  - first:
+      213: -7203100135769667913
+    second: UI_MainCenter_215
+  - first:
+      213: 7976043015010614880
+    second: UI_MainCenter_216
+  - first:
+      213: -3113764851689974367
+    second: UI_backGroundChest2
+  - first:
+      213: 4517465046458005008
+    second: UI_backGroundChest3
+  - first:
+      213: -571639030053084060
+    second: Button_Taptoopen
+  - first:
+      213: -4917666764002242718
+    second: Icon_Time_Running
+  - first:
+      213: -2695278886683889826
+    second: Button_Locked
+  - first:
+      213: -7624916074438692615
+    second: Icon_Ranking
+  - first:
+      213: 8088804350279415270
+    second: Icon_Notification_2
+  - first:
+      213: -5430270798341652999
+    second: Icon_Notification_3
+  - first:
+      213: -7771120769779789548
+    second: Notification_GlowBorder
+  - first:
+      213: 7922361706799690066
+    second: Icon_Compare
+  - first:
+      213: -5027846308716949488
+    second: Icon_Equal
+  - first:
+      213: -739587401482356207
+    second: SpecialAtribute_Head
+  - first:
+      213: 2410415253393810183
+    second: SpecialAttribute_Tail
+  - first:
+      213: -8286557438661625413
+    second: SpecialAttribute_Connect
+  - first:
+      213: 4867008165593222147
+    second: AccessoryAtribute_Boder
+  - first:
+      213: -4440407999666910202
+    second: Icon_Enough_Power
+  - first:
+      213: -5910565079944065903
+    second: UI_MainCenter_white2
+  - first:
+      213: -111743994248013845
+    second: UI_MainCenter_UpgradeButton_Gray
+  - first:
+      213: 4394894085548616327
+    second: UI_MainCenter_boderChestdetail
+  - first:
+      213: 1442413048722019692
+    second: UI_MainCenter_BGChestdetail
+  - first:
+      213: -9186325446028216990
+    second: UI_MainCenter_boder12
+  - first:
+      213: -7009505432729126931
+    second: UI_MainCenter_ngang1
+  - first:
+      213: -268709384680368551
+    second: Boder_CrossAngle_Bg3
+  - first:
+      213: 7996299738290336600
+    second: UI_MainCenter_Specialpack
+  - first:
+      213: -9117846142828770754
+    second: Item_Sale2
+  - first:
+      213: -4749745151969721245
+    second: UI_MainCenter_ButtonGray
+  - first:
+      213: 5538468684585205406
+    second: UI_MainCenter_Button_Orange
+  - first:
+      213: -8762253359472337896
+    second: UI_MainCenter_Grayborder
+  - first:
+      213: 4216964672380050776
+    second: icon_option_accessoriy_1
+  - first:
+      213: 7821559963304378744
+    second: icon_option_accessoriy_2
+  - first:
+      213: -7018001181118565815
+    second: icon_option_accessoriy_3
+  - first:
+      213: 1314057793294224227
+    second: UI_MainCenter_Button_Download
+  - first:
+      213: -9168908326251490240
+    second: UI_MainCenter_Recommend
+  - first:
+      213: 5401597074546967799
+    second: UI_MainCenter_Arsenal
+  - first:
+      213: -7970899325668981068
+    second: Border2
+  - first:
+      213: -8102219813042636068
+    second: Border3
+  - first:
+      213: 9043766642847483396
+    second: AdsButtonNew_right
+  - first:
+      213: -2110526113342654180
+    second: AccessoryCellBackGround
+  - first:
+      213: 6160932748064221380
+    second: AdsButtonNew_left
+  - first:
+      213: 2765728466879042104
+    second: Icon_PlayVideo
+  - first:
+      213: 5976335017310794988
+    second: Icon_Star_Upgrade
+  - first:
+      213: -5196394593975403346
+    second: Bg_Recommend
+  - first:
+      213: -6231572794802639608
+    second: Bg_Bonus2
+  - first:
+      213: -5931558607775765329
+    second: MainCenter_Icon_StarterPack
+  - first:
+      213: -726812204901716800
+    second: Bg_WorldMap_Info_Pointer
+  - first:
+      213: 529016492418196608
+    second: Bg_WorldMap_Info
+  - first:
+      213: -8515650199189893686
+    second: Recommend_Glowborder
+  - first:
+      213: 7845338893275953898
+    second: Icon_Star
+  - first:
+      213: 4950167621072747874
+    second: Button_Cash_Gray
+  - first:
+      213: 4127916139182756228
+    second: White_Bar
+  - first:
+      213: -4544467009536339790
+    second: UI_MainCenter_chest
+  - first:
+      213: 7619521798158459405
+    second: UI_MainCenter_boder1
+  - first:
+      213: -8790224974442164598
+    second: UI_MainCenter_boder2
+  - first:
+      213: -6549449031206982357
+    second: Boder_CrossAngle_Bg2
+  - first:
+      213: 441996508171325706
+    second: Button_WatchAds
+  - first:
+      213: -8362971565666108695
+    second: Button_WatchAds_Gray
+  - first:
+      213: 4040350994669642352
+    second: UI_MainCenter_FillAmout
+  - first:
+      213: -8446860274174717825
+    second: UI_MainCenter_Maps
+  - first:
+      213: 4616014174594691318
+    second: UI_MainCenter_Pause
+  - first:
+      213: 1611131195338015443
+    second: UI_MainCenter_Queue
+  - first:
+      213: 2896223648237575912
+    second: UI_MainCenter_Play
+  - first:
+      213: 5403771522781989249
+    second: UI_MainCenter_Download
+  - first:
+      213: 2949360763732771606
+    second: UI_MainCenter_Other
+  - first:
+      213: 1845930220073440449
+    second: UI_MainCenter_equippedGrey
+  - first:
+      213: -4624606201126818585
+    second: UI_MainCenter_Long_ProgessYellow
+  - first:
+      213: -5786614619595135371
+    second: UI_MainCenter_bottomwhite
+  - first:
+      213: 8501175174667726039
+    second: UI_MainCenter_CountryRank
+  - first:
+      213: 1438538808385980119
+    second: UI_MainCenter_WorldRank
+  - first:
+      213: 3258399463650915660
+    second: UI_MainCenter_RankBg
+  - first:
+      213: -612066641626069456
+    second: UI_MainCenter_RewardRemain
+  - first:
+      213: 2805932041632167856
+    second: UI_MainCenter_UI_MainCenter_PowerInfoPanel
+  - first:
+      213: 7793926660932241828
+    second: UI_MainCenter_shadow_boder
+  - first:
+      213: -301408194289209532
+    second: UI_MainCenter_NotifiAccessory
+  - first:
+      213: -9055629669597142961
+    second: UI_MainCenter_NotifiAccessory2
+  - first:
+      213: 7565492325506078591
+    second: UI_MainCenter_ChestBtn
+  - first:
+      213: 8914956534449924882
+    second: UI_MainCenter_notifyleft
+  - first:
+      213: 8106556427073214383
+    second: UI_MainCenter_ToolTip_Tail
+  - first:
+      213: -5426409961558219498
+    second: UI_MainCenter_ToolTip_Head
+  - first:
+      213: 1338862646915274636
+    second: UI_MainCenter_ToolTip_Line
+  - first:
+      213: 7952008149262676790
+    second: UI_MainCenter_296
+  - first:
+      213: -2562560381423690636
+    second: UI_MainCenter_297
+  - first:
+      213: -276680247231479716
+    second: Button_GoToShop
+  - first:
+      213: 7441285996692499458
+    second: UI_MainCenter_299
+  - first:
+      213: 417085131015529608
+    second: UI_MainCenter_300
+  - first:
+      213: 7008273156303209801
+    second: UI_MainCenter_301
+  - first:
+      213: -8157302934382558382
+    second: UI_MainCenter_302
+  - first:
+      213: 7547582435262863425
+    second: UI_MainCenter_303
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 30
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 100
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: 65
+    textureCompression: 3
+    compressionQuality: 30
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: 65
+    textureCompression: 2
+    compressionQuality: 28
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 1
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 3
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Effect_Glow2
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 383
+        width: 87
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boder_Reward
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 22
+        height: 404
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 7, z: 10, w: 8}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6471639223c13fc70800000000000000
+      internalID: 9003571081809106758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Glow1
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 9
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f8e489b115a5cd90800000000000000
+      internalID: -7078069743797344015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bg_BestDeal
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 0
+        width: 106
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12ce57403dcaafd70800000000000000
+      internalID: 9077758021231569953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Yellow
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 112
+        width: 370
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 307, y: 24, z: 54, w: 23}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71e58f77dd5363e40800000000000000
+      internalID: 5635751209017564695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bg_Bonus
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ab2306ba101e50c0800000000000000
+      internalID: -4585209663707731037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Item_Noads
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 0
+        width: 255
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f5ee6fe4b70dc370800000000000000
+      internalID: 8344334158279927286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bg_+bonus
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 40
+        width: 329
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 37, y: 43, z: 50, w: 37}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 462a9db9174b47510800000000000000
+      internalID: 1546058972133958244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Daily
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1952
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ff10675e79c56ee0800000000000000
+      internalID: -1268386175565946891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Main
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 1952
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b26f8b05da127a050800000000000000
+      internalID: 5811650872412272171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bg_Gradient_2
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 599
+        width: 84
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 483847491edd83870800000000000000
+      internalID: 8662917844175192964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Rotate
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 491
+        width: 67
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 622ce943ea9aa10b0800000000000000
+      internalID: -5757102607967534554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_World
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 1952
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6945bbc647e713ca0800000000000000
+      internalID: -6038906586821602154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Country
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 1952
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4be26dc71c57f3710800000000000000
+      internalID: 1675187060288663220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Friend
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 1952
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c2eae94c2af96770800000000000000
+      internalID: 8604683631193678532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_+
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 93
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96b59cb354149a350800000000000000
+      internalID: 6028421341823720297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Controler
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 1952
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f7e678ff487f85d0800000000000000
+      internalID: -3058093337094985743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Back
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 0
+        width: 117
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b11f4af4e9faabc0800000000000000
+      internalID: -3770926976122023496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Enegy
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 0
+        width: 210
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cdafd81825f9faa0800000000000000
+      internalID: -6126596265496039992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Tick
+      rect:
+        serializedVersion: 2
+        x: 1710
+        y: 1952
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 288b39c99c5e62320800000000000000
+      internalID: 2532964494520596610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Watch_1
+      rect:
+        serializedVersion: 2
+        x: 1805
+        y: 1952
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2badcd6e9d0bdf20800000000000000
+      internalID: 3448364913780435757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Blue
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 704
+        width: 370
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78dac5421fac3cc90800000000000000
+      internalID: -7150648646288233081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_CheckTick
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 408
+        width: 67
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c64365efe7142c20800000000000000
+      internalID: 3180693555943524037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Facebook
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1825
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 687150d7efb5201c0800000000000000
+      internalID: -4538964325858732154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIMainCenter_Icon_WachtVideo
+      rect:
+        serializedVersion: 2
+        x: 1795
+        y: 302
+        width: 253
+        height: 261
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51cdea9aaa3e863f0800000000000000
+      internalID: -907225002784400363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Light
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 491
+        width: 67
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05510cf234fec2f60800000000000000
+      internalID: 8011040909028234576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Cash
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 214
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ee1dba6ed08cc8e0800000000000000
+      internalID: -1671819668899422492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Gold
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 214
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 636c8cce4e96f77f0800000000000000
+      internalID: -612654592353057226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boder_Regtange_1px
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 99
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 3, y: 3, z: 3, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8693c9c680544a50800000000000000
+      internalID: 6504412301670717068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boder_Regtange_2px
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 88
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2f17941b8ac0c6f0800000000000000
+      internalID: -666310046156120275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boder_CrossAngle_Bg
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 408
+        width: 66
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 59, y: 0, z: 3, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b081fa42017275d30800000000000000
+      internalID: 4420044509575845899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIMainCenter_Light_Arsenal
+      rect:
+        serializedVersion: 2
+        x: 1492
+        y: 733
+        width: 48
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aaabb23deb789e30800000000000000
+      internalID: 4510491285500177058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bg_Sale
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 217
+        width: 24
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 15, y: 0, z: 7, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcc5f629e43cc2a50800000000000000
+      internalID: 6497783104620420303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Bell_2
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 702
+        width: 63
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a49fe411ac97454b0800000000000000
+      internalID: -5452599340058085046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_X
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 278
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5c93c0dd1dca7200800000000000000
+      internalID: 178680663174782045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boder_Rounded1_Bg
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 279
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 12, y: 12, z: 12, w: 12}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa98342cd868fb860800000000000000
+      internalID: 7547899443903957423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Notification
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 730
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8e83b889188bdc80800000000000000
+      internalID: -8296888245250978166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Gray
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 908
+        width: 369
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb198558036531780800000000000000
+      internalID: -8713526087636184641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Gold
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 827
+        width: 75
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 65, y: 0, z: 9, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f10d794790eb19f0800000000000000
+      internalID: -496556393516695051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Cash
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 765
+        width: 75
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 63, y: 0, z: 9, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e77a81ee50ed73b60800000000000000
+      internalID: 7725887802828171134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Item_Sale
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 1010
+        width: 75
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a071a9d9bcc2d9020800000000000000
+      internalID: 2350083833591371530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Money
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 888
+        width: 75
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 66, y: 9, z: 7, w: 7}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81729771d44ab3650800000000000000
+      internalID: 6213740761900984088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bg_Cycle1
+      rect:
+        serializedVersion: 2
+        x: 1313
+        y: 393
+        width: 173
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3acab5d03115b2340800000000000000
+      internalID: 4840051366810070179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bg_Gradient_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 484
+        width: 252
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 1, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c05b1c67c569b8af0800000000000000
+      internalID: -393055218591222516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boder_Rounded2_Bg
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 7, z: 7, w: 7}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c8dbbae5c799a400800000000000000
+      internalID: 335966523518343369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boder_Rounded2_Line
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 7, z: 7, w: 7}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d53d23492a48d9670800000000000000
+      internalID: 8547133501624996701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WeaponCellBackGround
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1244
+        width: 248
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d3ed8652ab505c20800000000000000
+      internalID: 3193152888600650706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Watch_clock
+      rect:
+        serializedVersion: 2
+        x: 1727
+        y: 506
+        width: 66
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b893f92a62103b6b0800000000000000
+      internalID: -5281876672526730869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Node
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 121
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64da300fee7ea8740800000000000000
+      internalID: 5155187736893959494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Locked1
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 324
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67df3da5174a5e400800000000000000
+      internalID: 352868952580554102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Full
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 1857
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5a140a6c01acb880800000000000000
+      internalID: -8593816914239415715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_PointSub
+      rect:
+        serializedVersion: 2
+        x: 1283
+        y: 174
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff250eee387ab63d0800000000000000
+      internalID: -3212289724108483841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_UnEquip
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 260
+        width: 16
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 0, z: 7, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ae8f1cdc60f568f0800000000000000
+      internalID: -547767429315457367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIMainCenter_Button_Equip
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 491
+        width: 20
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 0, z: 8, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96340f485c0d62ec0800000000000000
+      internalID: -3591954106023918743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boder_Rounded1_Line
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 279
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 12, y: 12, z: 12, w: 12}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 597fd8f8ec2a09b00800000000000000
+      internalID: 833344939118950293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bg_LoadingUP_Long
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 1724
+        width: 856
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01af8b79eb9112c50800000000000000
+      internalID: 6638615632100784656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_Loading_Small
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 1748
+        width: 128
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04c4f24c549dbfa90800000000000000
+      internalID: -7278985479046869952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Item_Gold
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 1825
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bc60378dee514630800000000000000
+      internalID: 3909510325802658995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boder_Check
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 89
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 3, z: 3, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3796f6b10ebd0fa0800000000000000
+      internalID: -5832797027801065665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boder_CycleProgressBG
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1097
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09f8e332a6ecbb7a0800000000000000
+      internalID: -6360263093477535856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boder_CycleProgressLine
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1218
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53b9a1f44465fc9f0800000000000000
+      internalID: -446042986701481163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Star
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 1218
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04350c4c9a4395e80800000000000000
+      internalID: -8189456543641480384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Star_Yellow
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 1097
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3365cef196328ad0800000000000000
+      internalID: -2701536825796369601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hexagone full
+      rect:
+        serializedVersion: 2
+        x: 1997
+        y: 1920
+        width: 49
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68e365255f6ce2e00800000000000000
+      internalID: 1021972922410352262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tickv2
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 1648
+        width: 77
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b0b8192ce1e1fff0800000000000000
+      internalID: -3973720232644424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!'
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 1863
+        width: 21
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c06052efcf8c15bd0800000000000000
+      internalID: -2643110517368617460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_11
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 1745
+        width: 68
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 58, y: 0, z: 4, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed708cab5f31a2940800000000000000
+      internalID: 5272048259912173534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lock
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 1645
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd69510699ad53e10800000000000000
+      internalID: 2176886347180381915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Vien
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1662
+        width: 36
+        height: 36
+      alignment: 9
+      pivot: {x: 1.0028788, y: 0.002597385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b949bca39bedbf00800000000000000
+      internalID: 1134321700657777079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_YeuCau
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 1618
+        width: 65
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4379aa7294329670800000000000000
+      internalID: 8543949246803047244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Circle_normal_WM
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 1427
+        width: 110
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 11, y: 11, z: 11, w: 11}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5efe1cb2b93e89740800000000000000
+      internalID: 5159123628746469349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: line
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 1731
+        width: 40
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5ab8b768ebc72650800000000000000
+      internalID: 6208154810386528861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enegy
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 1731
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68d7cac621800a7c0800000000000000
+      internalID: -4062237988662510202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_boder1
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 1781
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b56ba0720ec255f0800000000000000
+      internalID: -769326076451396173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_white
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 1783
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6763d36062d4281d0800000000000000
+      internalID: -3350030347101456778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest
+      rect:
+        serializedVersion: 2
+        x: 1433
+        y: 1654
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33e935eed9d921160800000000000000
+      internalID: 6994826472893685299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_bullet_WM
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 1479
+        width: 91
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 859619aa949b97f20800000000000000
+      internalID: 3420969118010009944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skull
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 1488
+        width: 48
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9365eebd79b172ef0800000000000000
+      internalID: -133107324940298695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: circle_ rank_boss_WM
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 1543
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e096a27917963a60800000000000000
+      internalID: 7653470752316231908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_GoldAD
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 1240
+        width: 220
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 12, y: 12, z: 13, w: 12}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04949c904e33c1660800000000000000
+      internalID: 7357812945726294336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_Gray
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 1309
+        width: 217
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ec6237918effb870800000000000000
+      internalID: 8700952837643988200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_GoldQuest
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 1366
+        width: 219
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e130ff39508f3eb30800000000000000
+      internalID: 4315565570792555294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_ruongicon
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1553
+        width: 56
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 911a5582721f07e40800000000000000
+      internalID: 5652282682832691481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWM
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 1277
+        width: 222
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a69e5ef00d85efa80800000000000000
+      internalID: -8431203801747822230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WM_Circle_rank_boss2
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 1422
+        width: 108
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63ef154884a4ca770800000000000000
+      internalID: 8623349061825723958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_ruonopen
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 1553
+        width: 52
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33ca193134d5fccd0800000000000000
+      internalID: -2535705522513793997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_BoderMap
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 1560
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 9, y: 10, z: 9, w: 9}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c56aa724d45238c0800000000000000
+      internalID: -4021058247113153083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_TopBar1
+      rect:
+        serializedVersion: 2
+        x: 1478
+        y: 1512
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 0, z: 7, w: 7}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1b2ab0ee0019b420800000000000000
+      internalID: 2646163912142760734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_TopBar2
+      rect:
+        serializedVersion: 2
+        x: 1422
+        y: 1512
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 0, z: 7, w: 7}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3a82850ac552fe20800000000000000
+      internalID: 3382860596272859711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_nointernet_icon
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 1145
+        width: 79
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ee20ef4d96f26d20800000000000000
+      internalID: 3270447434934791909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_bodercurve
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 245
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 5, z: 5, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7355604ddd24f090800000000000000
+      internalID: -8001720209639124100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_WhiteBtn
+      rect:
+        serializedVersion: 2
+        x: 1528
+        y: 1511
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 7, z: 6, w: 7}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d633ca3e143405e60800000000000000
+      internalID: 7948927292580574061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_Namestate
+      rect:
+        serializedVersion: 2
+        x: 1528
+        y: 1530
+        width: 43
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 0, z: 6, w: 7}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bdc7c374183c9100800000000000000
+      internalID: 116029350897765811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Rank1
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 1544
+        width: 71
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 4, z: 5, w: 6}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82476f396300e8fe0800000000000000
+      internalID: -1185009417541225432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arsenallevel5
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 1112
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64127f26686b2e7a0800000000000000
+      internalID: -6349311836336742074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_remove
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 1356
+        width: 98
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 15, y: 12, z: 15, w: 10}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e757b10c03154e660800000000000000
+      internalID: 7414140156381984126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_94
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 1726
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 7, z: 6, w: 6}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4e67899f6cc00430800000000000000
+      internalID: 3747219669661478476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_98
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 2
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08c4c56e4c409d1e0800000000000000
+      internalID: -2172700101504643968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_101
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1446
+        width: 78
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 743a8c56305d40ab0800000000000000
+      internalID: -5042671472178846905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flare_Upgrade
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 1094
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 10, z: 10, w: 10}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12ae9aaf5199ddb70800000000000000
+      internalID: 8925458356196993569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: watchadsfill
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 1115
+        width: 134
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e757c6b36cdd8190800000000000000
+      internalID: -7958462645667407898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lightEffect
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 1286
+        width: 19
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a63d6e635f43c1d0800000000000000
+      internalID: -3331732079570504023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_111
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 562
+        width: 78
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 15, y: 16, z: 14, w: 17}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a84c3aca5e2c8d30800000000000000
+      internalID: 4434970700527978660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_thunderTime
+      rect:
+        serializedVersion: 2
+        x: 1892
+        y: 560
+        width: 71
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2da48808b58bb770800000000000000
+      internalID: 8627636536621706539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_whiteboder
+      rect:
+        serializedVersion: 2
+        x: 1493
+        y: 749
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 3, z: 2, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edc1b28f503c805c0800000000000000
+      internalID: -4248931818018235170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_yellow_star
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 887
+        width: 40
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44f712c970ce12f80800000000000000
+      internalID: -8132959934626037948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_green_star
+      rect:
+        serializedVersion: 2
+        x: 1313
+        y: 843
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56c22599984e8ff50800000000000000
+      internalID: 6915528507461348453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_white_star
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 803
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ba65585c50c3ca50800000000000000
+      internalID: 6540282586723609271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_equipped
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 713
+        width: 41
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18e6fc2af29e51a70800000000000000
+      internalID: 8797193837942369921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_quantityHeli
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 513
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02ee103dcb8332660800000000000000
+      internalID: 7359788599698648608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_amount
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 513
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb9489a59a809e940800000000000000
+      internalID: 5325797557804747198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_explosion
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 561
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 840517c226b0f4e40800000000000000
+      internalID: 5642741374398845000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_quantity
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 513
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19dbe2a9399fb2ff0800000000000000
+      internalID: -59679757697106543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_recoil
+      rect:
+        serializedVersion: 2
+        x: 1393
+        y: 782
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 987e0368a8c2d0660800000000000000
+      internalID: 7353582740034348937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_magazin
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 561
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4305b1c3dc9040a0800000000000000
+      internalID: -6899342195829701809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_damage1
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 561
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cba53d63ea051200800000000000000
+      internalID: 150038134492867522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_fireRate
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 561
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6c215de8adf4fb20800000000000000
+      internalID: 3167435339926154348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_reload
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 561
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ac278f7e9b248840800000000000000
+      internalID: 5225349427401010338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_upgrade_icon
+      rect:
+        serializedVersion: 2
+        x: 1761
+        y: 715
+        width: 36
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d26da9bae93fd6c0800000000000000
+      internalID: -4116507854093065512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_luck
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 561
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72478e7ddabff2410800000000000000
+      internalID: 1454657928734209063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArsenalRightPanelBG
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1134
+        width: 101
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 26, y: 23, z: 33, w: 19}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 426f97092b1612f90800000000000000
+      internalID: -6980190527891573212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArsenalRightBG
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 1241
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 8, z: 10, w: 7}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bde9b4c80067d3d10800000000000000
+      internalID: 2106969945405103835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArsenalNotify
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1208
+        width: 55
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 39, y: 7, z: 7, w: 17}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 944c21a7f45a0a140800000000000000
+      internalID: 4728961369508070473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AccessoryBorderYellow
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1461
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 9, y: 8, z: 7, w: 8}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceb67f36449115d90800000000000000
+      internalID: -7110874555115672596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CombatPowerBG
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 1297
+        width: 35
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 3, z: 4, w: 7}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4525a85b0b95b03f0800000000000000
+      internalID: -933553882254388652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CombatPowerIcon1
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 1152
+        width: 64
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8db95dce3b5fa1600800000000000000
+      internalID: 439934066743417816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CombatPowerIcon2
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 1152
+        width: 64
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7a41fc21ecdc9f40800000000000000
+      internalID: 5736702885042932346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArsenalTabBg
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1461
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 4, z: 6, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbd3f02f3f21d1460800000000000000
+      internalID: 7213943017064840637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_armor
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 513
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13247f060c51ae680800000000000000
+      internalID: -8725137412072193487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_health
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 513
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49d583db298422960800000000000000
+      internalID: 7575697318267608468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_velocity1
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 561
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de650a01a87493c30800000000000000
+      internalID: 4339578374258185965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NotifyLeft
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1208
+        width: 55
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 8, z: 40, w: 17}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23207f5c2bb350d80800000000000000
+      internalID: -8285150300466642382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_scanningAgle
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 561
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd444084a47fe45f0800000000000000
+      internalID: -770406587825896229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_common
+      rect:
+        serializedVersion: 2
+        x: 1524
+        y: 257
+        width: 85
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11e735791e0663bf0800000000000000
+      internalID: -344981799424524783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_rare
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 292
+        width: 52
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89075b8ce8e0283d0800000000000000
+      internalID: -3205983978318892904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_epic
+      rect:
+        serializedVersion: 2
+        x: 1613
+        y: 257
+        width: 52
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36d3ff34400486ac0800000000000000
+      internalID: -3861766293405352605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_legendary
+      rect:
+        serializedVersion: 2
+        x: 1484
+        y: 292
+        width: 101
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c477842b88d33660800000000000000
+      internalID: 7364467907805803713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: accessoryEqupedBg
+      rect:
+        serializedVersion: 2
+        x: 1240
+        y: 766
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 11, y: 14, z: 12, w: 13}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70bd273edcb6374a0800000000000000
+      internalID: -6596810497139221753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_Topbar
+      rect:
+        serializedVersion: 2
+        x: 1240
+        y: 816
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 0, z: 10, w: 10}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5733078812a8b47e0800000000000000
+      internalID: -1780177351067290763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_level
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 811
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 13, y: 13, z: 12, w: 13}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6c4737175e94acd0800000000000000
+      internalID: -2547737392296014739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_Chest
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 811
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 13, y: 13, z: 12, w: 13}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f375ba2d8368622b0800000000000000
+      internalID: -5609648707232639169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_nexttime
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 754
+        width: 49
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 15, y: 16, z: 16, w: 15}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd8f3479f514813e0800000000000000
+      internalID: -2082842948843341601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boderAccessory
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 381
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 5, z: 5, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1d4cdde6de2df000800000000000000
+      internalID: 71264669756312861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: selectedAccessory
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 377
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 12, y: 13, z: 12, w: 12}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1251cb026f180d40800000000000000
+      internalID: 5550721046698611231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: equipedBg
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 306
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 26, y: 27, z: 26, w: 28}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1efb2bac239dfdb00800000000000000
+      internalID: 855641266395987937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CombatPowerIcon3
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 719
+        width: 64
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e813c582c6a7fcf0800000000000000
+      internalID: -218522702506157847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_pierce
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 561
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8087c49ba09a6c720800000000000000
+      internalID: 2866164076391462920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_accuracy
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 561
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f3313266b2742640800000000000000
+      internalID: 5054290809473545204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_magazineCampaignRank
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 561
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8027704d8fb9b8ea0800000000000000
+      internalID: -5869426196335857144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: upgradeButtonNew
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 409
+        width: 75
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 62, y: 0, z: 6, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90286277654b13470800000000000000
+      internalID: 8372671465717662217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Clock
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 472
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46c5a6c65d2704080800000000000000
+      internalID: -9205231377372783516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Notification_3
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 891
+        width: 67
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fd3baeca7dc3a4b0800000000000000
+      internalID: -5430270798341652999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Compare
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 2
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 251f3f37ff1e1fd60800000000000000
+      internalID: 7922361706799690066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_Equal
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 2
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 010daafbb60893ab0800000000000000
+      internalID: -5027846308716949488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpecialAtribute_Head
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 1219
+        width: 34
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 4, z: 0, w: 11}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11a3a464d257cb5f0800000000000000
+      internalID: -739587401482356207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpecialAttribute_Tail
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1208
+        width: 55
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 17, y: 6, z: 17, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 703a8bbe6e3837120800000000000000
+      internalID: 2410415253393810183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpecialAttribute_Connect
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 1223
+        width: 12
+        height: 1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb9f3b1e9eb300d80800000000000000
+      internalID: -8286557438661625413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AccessoryCellBackGround
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 543
+        width: 84
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1976059ea7e5b2e0800000000000000
+      internalID: -2110526113342654180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bg_Bonus2
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 192
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80decc53f810589a0800000000000000
+      internalID: -6231572794802639608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainCenter_Icon_StarterPack
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1080
+        width: 51
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 15, y: 14, z: 14, w: 15}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fac6d1b7fdedeada0800000000000000
+      internalID: -5931558607775765329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_boder1
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 515
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 11, y: 11, z: 10, w: 10}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d02a49994bafdb960800000000000000
+      internalID: 7619521798158459405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_boder2
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 860
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 11, y: 11, z: 10, w: 10}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8e8b9655f8d20680800000000000000
+      internalID: -8790224974442164598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_WatchAds
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 890
+        width: 75
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 64, y: 0, z: 8, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a01d38d7b79422600800000000000000
+      internalID: 441996508171325706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_FillAmout
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 218
+        width: 146
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 5, z: 8, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0722e2da2d5321830800000000000000
+      internalID: 4040350994669642352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_boderChestdetail
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 1514
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 6, z: 5, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78a279ab2eccdfc30800000000000000
+      internalID: 4394894085548616327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_BGChestdetail
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1514
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 6, z: 5, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c65d67c860b740410800000000000000
+      internalID: 1442413048722019692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_Specialpack
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 903
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 16, y: 15, z: 16, w: 17}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 853385aee3098fe60800000000000000
+      internalID: 7996299738290336600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Item_Sale2
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 985
+        width: 75
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3a8604dd37e67180800000000000000
+      internalID: -9117846142828770754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_ButtonGray
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 376
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 5, z: 5, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 364063313f3851eb0800000000000000
+      internalID: -4749745151969721245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_Button_Orange
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 376
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 5, z: 5, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9e7350bce79cdc40800000000000000
+      internalID: 5538468684585205406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_equippedGrey
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 713
+        width: 41
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c4d2a741cf0e9910800000000000000
+      internalID: 1845930220073440449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_Long_ProgessYellow
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 1765
+        width: 858
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ec64cb892912dfb0800000000000000
+      internalID: -4624606201126818585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_bottomwhite
+      rect:
+        serializedVersion: 2
+        x: 1528
+        y: 1511
+        width: 43
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 0, z: 6, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57623fa89a0d1bfa0800000000000000
+      internalID: -5786614619595135371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_RewardRemain
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 252
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 036030fd1a08187f0800000000000000
+      internalID: -612066641626069456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_UI_MainCenter_PowerInfoPanel
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 644
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 8, z: 7, w: 8}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b73f5d435ca0f620800000000000000
+      internalID: 2805932041632167856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_shadow_boder
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 758
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 30, y: 30, z: 30, w: 31}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a9005e0107992c60800000000000000
+      internalID: 7793926660932241828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_NotifiAccessory
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 859
+        width: 24
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 14, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44feffe18de21dbf0800000000000000
+      internalID: -301408194289209532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_ChestBtn
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 765
+        width: 75
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 64, y: 0, z: 8, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f77dbb4bf270ef860800000000000000
+      internalID: 7565492325506078591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_ToolTip_Tail
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 859
+        width: 14
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa7db5bbe16408070800000000000000
+      internalID: 8106556427073214383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_ToolTip_Head
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 875
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6156eabe3e481b4b0800000000000000
+      internalID: -5426409961558219498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainCenter_ToolTip_Line
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 895
+        width: 1
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c879c68db78949210800000000000000
+      internalID: 1338862646915274636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: e6ee019c12d96b743b92434dc067d2f0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      '!': -2643110517368617460
+      2: -4239524559097794216
+      3: -7367925878036937208
+      4: -2046047753514161374
+      5: 435785765223809362
+      6: 7833421445183898854
+      7: 2092091895123839296
+      8: -3305587711699426822
+      9: 211672583162696479
+      AccessoryAtribute_Boder: 4867008165593222147
+      AccessoryBorderGray: -2046000931193280333
+      AccessoryBorderYellow: -7110874555115672596
+      AccessoryCellBackGround: -2110526113342654180
+      AdsButtonNew_left: 6160932748064221380
+      AdsButtonNew_right: 9043766642847483396
+      ArsenalAccessoryIconTab: -6972143639358473673
+      ArsenalNotify: 4728961369508070473
+      ArsenalRightBG: 2106969945405103835
+      ArsenalRightPanelBG: -6980190527891573212
+      ArsenalSupporterIconTab: -6123656849089005350
+      ArsenalTabBg: 7213943017064840637
+      BG_Loading_Small: -7278985479046869952
+      Bg_+bonus: 1546058972133958244
+      Bg_BestDeal: 9077758021231569953
+      Bg_BoderRating: 8600109123629366790
+      Bg_Bonus: -4585209663707731037
+      Bg_Bonus2: -6231572794802639608
+      Bg_Cycle1: 4840051366810070179
+      Bg_Elip: 21300028
+      Bg_GoldOffer: -2914616310420435095
+      Bg_Gradient_1: -393055218591222516
+      Bg_Gradient_2: 8662917844175192964
+      Bg_LoadingUP_Long: 6638615632100784656
+      Bg_Loading_Long: -7555532627003877084
+      Bg_ProgessYellow: -7597265196569395556
+      Bg_Recommend: -5196394593975403346
+      Bg_Sale: 6497783104620420303
+      Bg_Triangle: -3936027078833339505
+      Bg_WorldMap_Info: 529016492418196608
+      Bg_WorldMap_Info_Pointer: -726812204901716800
+      Bg_X: 4983315215661600476
+      Bg_ZoomBg: 2671447605117562700
+      Boder_Check: -5832797027801065665
+      Boder_CrossAngle_Bg: 4420044509575845899
+      Boder_CrossAngle_Bg2: -6549449031206982357
+      Boder_CrossAngle_Bg3: -268709384680368551
+      Boder_CrossAngle_Line: -3418512026262561814
+      Boder_CycleProgressBG: -6360263093477535856
+      Boder_CycleProgressLine: -446042986701481163
+      Boder_Mail: -5837101913672145921
+      Boder_Regtange_1px: 6504412301670717068
+      Boder_Regtange_2px: -666310046156120275
+      Boder_Reward: 9003571081809106758
+      Boder_Rounded1_Bg: 7547899443903957423
+      Boder_Rounded1_Line: 833344939118950293
+      Boder_Rounded2_Bg: 335966523518343369
+      Boder_Rounded2_Line: 8547133501624996701
+      Border2: -7970899325668981068
+      Border3: -8102219813042636068
+      BossSpecial_WM: -8837493935708520059
+      Button_Adsbg: 8047602302063301646
+      Button_Back: -3770926976122023496
+      Button_Blue: -7150648646288233081
+      Button_Cash: 7725887802828171134
+      Button_Cash_Gray: 4950167621072747874
+      Button_EditName: -1221159777377784890
+      Button_GoToShop: -276680247231479716
+      Button_Gold: -496556393516695051
+      Button_Gray: -8713526087636184641
+      Button_Lock: 9155849461693690540
+      Button_Locked: -2695278886683889826
+      Button_Money: 6213740761900984088
+      Button_OpenNow: -1729469026102807307
+      Button_StartUnlock: -15592805614073026
+      Button_Switch: 4721992876371043630
+      Button_Taptoopen: -571639030053084060
+      Button_Tick: 2532964494520596610
+      Button_UnEquip: -547767429315457367
+      Button_Watch: 21300004
+      Button_WatchAds: 441996508171325706
+      Button_WatchAds_Gray: -8362971565666108695
+      Button_Yellow: 5635751209017564695
+      Button_ZoomDrag: 3230188447150495330
+      Button_fireRocket: -2001229529402928966
+      Chest: 6994826472893685299
+      Circle_Arrow_Normal_WM: 3338225428174933091
+      Circle_normal_WM: 5159123628746469349
+      CombatPowerBG: -933553882254388652
+      CombatPowerIcon1: 439934066743417816
+      CombatPowerIcon2: 5736702885042932346
+      CombatPowerIcon3: -218522702506157847
+      Ctrl_Couch: 4510427160110986038
+      Ctrl_Cross: 6643758572659411139
+      Ctrl_FirstAidKit: -576826231819824167
+      Ctrl_JoyStick: -6864194380865706841
+      Ctrl_Shot: -438611471512349211
+      EffectWM: -8431203801747822230
+      Effect_Glow1: -7078069743797344015
+      Effect_Glow2: 21300032
+      Effect_Glow3: 8211064711260109494
+      Effect_Light1: 21300038
+      Effect_Triangle: 6830516598057862194
+      Fire_Lower: -2821518680290296709
+      Fire_Upper: 6025999671182953905
+      Flare_Upgrade: 8925458356196993569
+      Icon_+: 6028421341823720297
+      Icon_Ammor: -405438590422954085
+      Icon_ArmorAttack: 5298914715760028287
+      Icon_Arrow1: 260131532223688242
+      Icon_Arrow2: 7189117463495938615
+      Icon_Bag1: -1270030534174522223
+      Icon_Bell_2: -5452599340058085046
+      Icon_Bodygun: -5983739953166486563
+      Icon_Bosster: -1085341715749303771
+      Icon_Bullet: 4799412856715589631
+      Icon_BulletIn: 8019712781579926960
+      Icon_BulletOut: -7105810143701947730
+      Icon_Cash: -1671819668899422492
+      Icon_CheckTick: 3180693555943524037
+      Icon_Clock: -9205231377372783516
+      Icon_Compare: 7922361706799690066
+      Icon_Controler: -3058093337094985743
+      Icon_Country: 1675187060288663220
+      Icon_Daily: -1268386175565946891
+      Icon_Enegy: -6126596265496039992
+      Icon_Enough_Power: -4440407999666910202
+      Icon_Equal: -5027846308716949488
+      Icon_Facebook: -4538964325858732154
+      Icon_Friend: 8604683631193678532
+      Icon_Full: -8593816914239415715
+      Icon_GGservice: -2014761663542508807
+      Icon_GameCenter: 149024322325851880
+      Icon_Gold: -612654592353057226
+      Icon_Graphic: -4775000311678959203
+      Icon_Gre_BlastNowNormal: 578066179416975781
+      Icon_Grip: -6272715980133477968
+      Icon_GunSemi: -571259585694911787
+      Icon_GunSinger: -1398609328892142313
+      Icon_Helmet: -3615440761188536659
+      Icon_Info: 5091776921416443042
+      Icon_Keyboard: 2672814751320816945
+      Icon_Language: -2667749714478416764
+      Icon_Leader: -6065857548954374029
+      Icon_Leaderboard: 3285848078107884089
+      Icon_Light: 8011040909028234576
+      Icon_Locked1: 352868952580554102
+      Icon_Magazine: -6648390142109292179
+      Icon_Mail: 3800222271187139625
+      Icon_Main: 5811650872412272171
+      Icon_Messenger: 2128426972228000816
+      Icon_Muzzle: 3671264165175588067
+      Icon_Node: 5155187736893959494
+      Icon_Notification: -8296888245250978166
+      Icon_Notification_2: 8088804350279415270
+      Icon_Notification_3: -5430270798341652999
+      Icon_PVP: 4573580761891296902
+      Icon_Piecing: -303734309812106231
+      Icon_Piercing: -6004622528384697506
+      Icon_PlayVideo: 2765728466879042104
+      Icon_PointSub: -3212289724108483841
+      Icon_Purchase: 4054434642321582207
+      Icon_Ranking: -7624916074438692615
+      Icon_Reward: -3063776887834474091
+      Icon_Rotate: -5757102607967534554
+      Icon_Sale: -5529010835338480194
+      Icon_Scope: 3617790802934929693
+      Icon_Setting: -3686013669481140096
+      Icon_Sever: 3855801909706726802
+      Icon_Silencer: -9095736834610348722
+      Icon_Sound: -4685753458657140411
+      Icon_Star: 7845338893275953898
+      Icon_Star_Upgrade: 5976335017310794988
+      Icon_Ticket: 4515496655600367861
+      Icon_Time_Running: -4917666764002242718
+      Icon_Vien: 1134321700657777079
+      Icon_Volume: -7213451804830732110
+      Icon_Watch_1: 3448364913780435757
+      Icon_Watch_clock: -5281876672526730869
+      Icon_World: -6038906586821602154
+      Icon_X: 178680663174782045
+      Icon_YeuCau: 8543949246803047244
+      Icon_random: 472494864159101827
+      Item_Apple: 21300014
+      Item_Gold: 3909510325802658995
+      Item_Jackpot: 6812088808074127901
+      Item_Lemon: 21300010
+      Item_Noads: 8344334158279927286
+      Item_Sale: 2350083833591371530
+      Item_Sale2: -9117846142828770754
+      Khungchonmap: -6745514592547046477
+      Lock: 2176886347180381915
+      MainCenter_Icon_StarterPack: -5931558607775765329
+      Notification_GlowBorder: -7771120769779789548
+      NotifyLeft: -8285150300466642382
+      Other_Selectedsever: 3785156075646783023
+      RankWM: 8085531334669986577
+      Recommend_Glowborder: -8515650199189893686
+      Rocket_Follow_Button: 5855145454962271342
+      Rocket_Unfollow_Button: 1454024361986123126
+      SellButtonNew: -6184841553190091161
+      Skull: -133107324940298695
+      Slide_AccessoryUpgrade1: -3194547268263695587
+      Slide_AccessoryUpgrade2: -1135315600014047888
+      Slide_Upgrade_3: -2073181146941863524
+      SpecialAtribute_Head: -739587401482356207
+      SpecialAttribute_Connect: -8286557438661625413
+      SpecialAttribute_Tail: 2410415253393810183
+      SpecialEffectBullet: -8101759366634212541
+      Spin_Insert: 21300034
+      Sprin_Border: 21300040
+      Star: -8189456543641480384
+      Star_Gray: 2628133218759312814
+      Star_Yellow: -2701536825796369601
+      SubRank_Boss_WM: 8666160586297302088
+      UIMainCenter_Button_Equip: -3591954106023918743
+      UIMainCenter_Icon_WachtVideo: -907225002784400363
+      UIMainCenter_Light_Arsenal: 4510491285500177058
+      UI_MainCenter_0: -1059122294
+      UI_MainCenter_1: -1543660769
+      UI_MainCenter_10: -758928398
+      UI_MainCenter_100: -7369207277420851093
+      UI_MainCenter_101: -5042671472178846905
+      UI_MainCenter_11: 5272048259912173534
+      UI_MainCenter_111: 4434970700527978660
+      UI_MainCenter_12: 1987355994
+      UI_MainCenter_194: -2096450746721078684
+      UI_MainCenter_2: -1796985031
+      UI_MainCenter_206: -7153089051567381950
+      UI_MainCenter_212: -5694391116103959880
+      UI_MainCenter_213: 2860226850727526792
+      UI_MainCenter_214: 6286673678167553252
+      UI_MainCenter_215: -7203100135769667913
+      UI_MainCenter_216: 7976043015010614880
+      UI_MainCenter_296: 7952008149262676790
+      UI_MainCenter_297: -2562560381423690636
+      UI_MainCenter_299: 7441285996692499458
+      UI_MainCenter_3: -950048114
+      UI_MainCenter_300: 417085131015529608
+      UI_MainCenter_301: 7008273156303209801
+      UI_MainCenter_302: -8157302934382558382
+      UI_MainCenter_303: 7547582435262863425
+      UI_MainCenter_31: -3455442703379882196
+      UI_MainCenter_32: -6875254492120094762
+      UI_MainCenter_33: -1046299520743156981
+      UI_MainCenter_35: 8293438633695499942
+      UI_MainCenter_4: -889697067
+      UI_MainCenter_5: 1343727343
+      UI_MainCenter_6: 1953028950
+      UI_MainCenter_7: 699126500
+      UI_MainCenter_8: -1204234463
+      UI_MainCenter_84: -6079998474085470672
+      UI_MainCenter_85: -2993030397156613082
+      UI_MainCenter_86: 8491788330290715204
+      UI_MainCenter_87: -8234443609579939862
+      UI_MainCenter_88: 5945331887427598477
+      UI_MainCenter_89: -9033027763592231254
+      UI_MainCenter_9: 792636419
+      UI_MainCenter_90: -1869264810685065231
+      UI_MainCenter_93: 1919394331298188776
+      UI_MainCenter_94: 3747219669661478476
+      UI_MainCenter_95: -2543930663457283653
+      UI_MainCenter_98: -2172700101504643968
+      UI_MainCenter_99: -429738698656168358
+      UI_MainCenter_Arsenal: 5401597074546967799
+      UI_MainCenter_BGChestdetail: 1442413048722019692
+      UI_MainCenter_BGlistbutton: 3610646567395528631
+      UI_MainCenter_Bestdeal: -4411536041114676658
+      UI_MainCenter_BlueNA: -7807288947373988359
+      UI_MainCenter_BlueNew: 8758133160178471193
+      UI_MainCenter_BoderMap: -4021058247113153083
+      UI_MainCenter_BorderQuesst2: -1652587388278287769
+      UI_MainCenter_ButtonGray: -4749745151969721245
+      UI_MainCenter_Button_Download: 1314057793294224227
+      UI_MainCenter_Button_Orange: 5538468684585205406
+      UI_MainCenter_Cashbtn: 2415286437035310088
+      UI_MainCenter_ChatFriend: -6974570649896609611
+      UI_MainCenter_ChatIcon: 8281819703255461898
+      UI_MainCenter_Chest: -5609648707232639169
+      UI_MainCenter_ChestBtn: 7565492325506078591
+      UI_MainCenter_CountryRank: 8501175174667726039
+      UI_MainCenter_Download: 5403771522781989249
+      UI_MainCenter_FillAmout: 4040350994669642352
+      UI_MainCenter_FireBullet: -1484394293572367123
+      UI_MainCenter_Flare: -5651442989917196374
+      UI_MainCenter_Gift: -823558641200902541
+      UI_MainCenter_GlowMainMenu: 1903636286953064784
+      UI_MainCenter_Gold: -9093594412464011418
+      UI_MainCenter_GoldAD: 7357812945726294336
+      UI_MainCenter_GoldQuest: 4315565570792555294
+      UI_MainCenter_Gray: 8700952837643988200
+      UI_MainCenter_Grayborder: -8762253359472337896
+      UI_MainCenter_Light: -2748274756490062670
+      UI_MainCenter_Light2: 5420103644129711219
+      UI_MainCenter_Long_ProgessYellow: -4624606201126818585
+      UI_MainCenter_MainQuest: -1471604789584191060
+      UI_MainCenter_Maps: -8446860274174717825
+      UI_MainCenter_MedalDrop: 4082135736512956428
+      UI_MainCenter_Namestate: 116029350897765811
+      UI_MainCenter_NewBack: -5064052237248398959
+      UI_MainCenter_NotifiAccessory: -301408194289209532
+      UI_MainCenter_NotifiAccessory2: -9055629669597142961
+      UI_MainCenter_Other: 2949360763732771606
+      UI_MainCenter_Pause: 4616014174594691318
+      UI_MainCenter_Play: 2896223648237575912
+      UI_MainCenter_Queue: 1611131195338015443
+      UI_MainCenter_RankBg: 3258399463650915660
+      UI_MainCenter_Recommend: -9168908326251490240
+      UI_MainCenter_RewardRemain: -612066641626069456
+      UI_MainCenter_SearchFriend: -4807381233027550492
+      UI_MainCenter_Specialpack: 7996299738290336600
+      UI_MainCenter_ToolTip_Head: -5426409961558219498
+      UI_MainCenter_ToolTip_Line: 1338862646915274636
+      UI_MainCenter_ToolTip_Tail: 8106556427073214383
+      UI_MainCenter_TopBar1: 2646163912142760734
+      UI_MainCenter_TopBar2: 3382860596272859711
+      UI_MainCenter_Topbar: -1780177351067290763
+      UI_MainCenter_UI_MainCenter_PowerInfoPanel: 2805932041632167856
+      UI_MainCenter_UpgradeButton_Gray: -111743994248013845
+      UI_MainCenter_ViewFreeGold: 523506551855297638
+      UI_MainCenter_WhiteBtn: 7948927292580574061
+      UI_MainCenter_WorldRank: 1438538808385980119
+      UI_MainCenter_Xuyengiap: 8488738106543205167
+      UI_MainCenter_accessory: 7779776858419192789
+      UI_MainCenter_addFriend: 8557393376283617565
+      UI_MainCenter_bar: 4096463951369416424
+      UI_MainCenter_bar2: -3984453991260376655
+      UI_MainCenter_blackStar: -7501398950689040742
+      UI_MainCenter_boder1: 7619521798158459405
+      UI_MainCenter_boder12: -9186325446028216990
+      UI_MainCenter_boder2: -8790224974442164598
+      UI_MainCenter_boderChestdetail: 4394894085548616327
+      UI_MainCenter_bodercurve: -8001720209639124100
+      UI_MainCenter_bodermap2: 1134994925535522301
+      UI_MainCenter_borderQuest: -91640973874566762
+      UI_MainCenter_bottomwhite: -5786614619595135371
+      UI_MainCenter_btnListButton: 1209435126047157229
+      UI_MainCenter_bullet_WM: 3420969118010009944
+      UI_MainCenter_cash: 1806400336077154493
+      UI_MainCenter_chest: -4544467009536339790
+      UI_MainCenter_deletefriend: 9214302099201674911
+      UI_MainCenter_downloadmap: -7393036613327852250
+      UI_MainCenter_electrobullet: -7958872928047528751
+      UI_MainCenter_equipped: 8797193837942369921
+      UI_MainCenter_equippedGrey: 1845930220073440449
+      UI_MainCenter_grayBtn: -5524302031957523581
+      UI_MainCenter_greenBtn: 4094517230038135015
+      UI_MainCenter_green_star: 6915528507461348453
+      UI_MainCenter_level: -2547737392296014739
+      UI_MainCenter_luck: 1454657928734209063
+      UI_MainCenter_magazines: -7148708993724350421
+      UI_MainCenter_make_color: -4304930302063213415
+      UI_MainCenter_money_icon: 5734224362547019488
+      UI_MainCenter_nexttime: -2082842948843341601
+      UI_MainCenter_ngang1: -7009505432729126931
+      UI_MainCenter_nointernet_icon: 3270447434934791909
+      UI_MainCenter_notifyleft: 8914956534449924882
+      UI_MainCenter_offline_mode: 6465619661707208087
+      UI_MainCenter_primaries_weapon: -7019836856643755603
+      UI_MainCenter_recoil: 7353582740034348937
+      UI_MainCenter_rocketFL: -1430617286861842232
+      UI_MainCenter_rocketFL2: -4717125524433285345
+      UI_MainCenter_rocketfl3: 7011502995111743328
+      UI_MainCenter_ruongicon: 5652282682832691481
+      UI_MainCenter_ruonopen: -2535705522513793997
+      UI_MainCenter_secondaries_weapon: 5307394256475887952
+      UI_MainCenter_shadow_boder: 7793926660932241828
+      UI_MainCenter_star: -4142290695493116758
+      UI_MainCenter_thunderTime: 8627636536621706539
+      UI_MainCenter_turret: 8438765484103414153
+      UI_MainCenter_upgrade_icon: -4116507854093065512
+      UI_MainCenter_viewfinder: -47114126210989541
+      UI_MainCenter_vip: -8678510226720712694
+      UI_MainCenter_vip_accessor: 3201378515678880473
+      UI_MainCenter_vip_weapon: 2330523353999725654
+      UI_MainCenter_waitingfriendConfirm: -6365504903701691406
+      UI_MainCenter_white2: -5910565079944065903
+      UI_MainCenter_white_star: 6540282586723609271
+      UI_MainCenter_whiteboder: -4248931818018235170
+      UI_MainCenter_yellow_star: -8132959934626037948
+      UI_Rank: 6450128084835112790
+      UI_Rank1: -1185009417541225432
+      UI_Rank2: -30775271329328940
+      UI_Rank3: 189916762738737251
+      UI_backGoundChest1: 1723936220350832223
+      UI_backGroundChest2: -3113764851689974367
+      UI_backGroundChest3: 4517465046458005008
+      UI_rank1: -7961282509167782770
+      WM_Backgroup_Circle: 5975950177817250758
+      WM_Circle_rank_boss2: 8623349061825723958
+      WeaponCellBackGround: 3193152888600650706
+      White_Bar: 4127916139182756228
+      accessoryEqupedBg: -6596810497139221753
+      accessoryUpgrade_Border_1: 480932078542256558
+      accessoryUpgrade_Border_2: -1869612902054914294
+      accessoryUpgrade_Border_3: 3458126555462831846
+      ammo_box: 804627969047582017
+      armySupport: -7756541593548154290
+      arrmorpiecing: 6169957847104942609
+      arsenalLv1: 5402384028968505799
+      arsenallevel3: 7325452416368616338
+      arsenallevel5: -6349311836336742074
+      bg_boder1: -769326076451396173
+      bg_white: -3350030347101456778
+      blood_boster: 3332239770634213181
+      boderAccessory: 71264669756312861
+      calendar_icon: -3693500285074329135
+      circle: 140560188327442253
+      circle_ rank_boss_WM: 7653470752316231908
+      circle_map: 9103612785338492281
+      emptyAccessory: -8443221963929447448
+      enegy: -4062237988662510202
+      equipedBg: 855641266395987937
+      helicopterSupport: -6014364949008907455
+      hexagone full: 1021972922410352262
+      icon_TicketArsenal: -2825092406168543383
+      icon_accuracy: 5054290809473545204
+      icon_ads: -7806735967070303585
+      icon_amount: 5325797557804747198
+      icon_armor: -8725137412072193487
+      icon_common: -344981799424524783
+      icon_cooldow: -8349777663025108450
+      icon_damage1: 150038134492867522
+      icon_epic: -3861766293405352605
+      icon_explosion: 5642741374398845000
+      icon_fireRate: 3167435339926154348
+      icon_health: 7575697318267608468
+      icon_healthRegen: 3584185595609718694
+      icon_legendary: 7364467907805803713
+      icon_magazin: -6899342195829701809
+      icon_magazine: 6820380878589579731
+      icon_magazineCampaignRank: -5869426196335857144
+      icon_magazineRank: -2963062393812770373
+      icon_option_accessoriy_1: 4216964672380050776
+      icon_option_accessoriy_2: 7821559963304378744
+      icon_option_accessoriy_3: -7018001181118565815
+      icon_pierce: 2866164076391462920
+      icon_quantity: -59679757697106543
+      icon_quantityHeli: 7359788599698648608
+      icon_rare: -3205983978318892904
+      icon_reload: 5225349427401010338
+      icon_scanningAgle: -770406587825896229
+      icon_suppessor: -3789942129824884090
+      icon_velocity1: 4339578374258185965
+      icon_zoom: 9182260963339653279
+      lightEffect: -3331732079570504023
+      line: 6208154810386528861
+      napalmStrikeSupport: -2217026643318753656
+      quantity_infantry: -2333651966098117593
+      reset_icon: 4899416080172381766
+      scrollBg: -4239440395060235106
+      selectedAccessory: 5550721046698611231
+      selectedupgrade: 4237618598871144221
+      slide_upgrade1: -7676878480845267164
+      slide_upgrade2: -403375947177378446
+      slide_upgrade3: -8140582266928256890
+      tickv2: -3973720232644424
+      ui_remove: 7414140156381984126
+      upgradeButtonNew: 8372671465717662217
+      watchadsfill: -7958462645667407898
+      x: 1263023995233429396
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

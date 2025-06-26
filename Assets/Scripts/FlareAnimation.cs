@@ -11,7 +11,7 @@ public class FlareAnimation : MonoBehaviour
     {
         if (this.enabled)
         {
-            flare.Rotate(0f, 0f, rotationSpeed * Time.unscaledDeltaTime);
+            flare.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
         }
     }
 }

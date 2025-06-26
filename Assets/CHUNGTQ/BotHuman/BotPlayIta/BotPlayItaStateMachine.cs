@@ -1,4 +1,3 @@
-﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,7 +33,7 @@ public class BotPlayItaStateMachine : MonoBehaviour
         _botPlayItaDeadState = GetComponent<BotPlayItaDeadState>();
         _botPlayItaDeadState.Initialize(PlayItaState.Dead);
 
-        StateController.Add(PlayItaState.Move, _botPlayItaMoveState);
+        StateController.Add(PlayItaState.Move,_botPlayItaMoveState);
         StateController.Add(PlayItaState.Attack, _botPlayItaAttackState);
         StateController.Add(PlayItaState.Dead, _botPlayItaDeadState);
 
@@ -42,14 +41,8 @@ public class BotPlayItaStateMachine : MonoBehaviour
 
     void OnEnable()
     {
-        ResetBotState();
-    }
-
-    public void ResetBotState()
-    {
-        _isTransition = false;  // Đảm bảo không bị kẹt ở trạng thái chuyển đổi
-        _currentState = StateController[PlayItaState.Move]; // Đặt lại trạng thái về Move
-        _currentState.EnterState(); // Kích hoạt lại trạng thái Move
+        _currentState = StateController[PlayItaState.Move];
+        _currentState.EnterState();
     }
     void Update()
     {
@@ -71,6 +64,5 @@ public class BotPlayItaStateMachine : MonoBehaviour
         _currentState.EnterState();
         _isTransition = false;
     }
-
 
 }

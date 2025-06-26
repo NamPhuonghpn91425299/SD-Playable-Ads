@@ -16,8 +16,7 @@ MonoBehaviour:
   TurnCount: 0
   IsCountTurn: 1
   BotLandingCount: 0
-  BotLandingCountConfig: 10
+  BotLandingCountConfig: 0
   IsCountLandingBot: 0
   BotKillCount: 0
   IsCountBotKill: 1
-  requiredBotKill: 130

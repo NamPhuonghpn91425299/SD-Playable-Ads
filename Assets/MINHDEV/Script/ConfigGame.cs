@@ -20,7 +20,7 @@ public class BotConfig
 {
     [Header("Thông tin Bot")]
     [Tooltip("Kéo Prefab của Bot vào đây")]
-    public GameObject botPrefab;
+    public BotNetwork botPrefab;
 
     [Tooltip("Chọn loại Bot")]
     public BotType botType;

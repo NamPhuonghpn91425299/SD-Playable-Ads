@@ -15,6 +15,12 @@ public class WeaponEvent : MonoBehaviour
     public float PosWeaponChangeEnd;
     public float transitionTime = 1f;
 
+    public Vector3[] RocketFollow;
+    public Vector3[] RocketUnFollow;
+    public float DurationTimeHide;
+    public float DurationTimeShow;
+    public float DurationPos;
+
     private void Awake()
     {
         Instance = this;
@@ -26,19 +32,20 @@ public class WeaponEvent : MonoBehaviour
         {
             DefaultFireRate[i] = weaponInfo[i].FireRate;
         }
-
     }
 
     private void OnEnable()
     {
         EventManager.AddListener<float>(EventName.OnUpgradeFireRate, OnUpgradeFireRate);
-        EventManager.AddListener<bool>(EventName.OnChangeMachineGun, OnChangeMachineGun);
+        EventManager.AddListener<bool>(EventName.OnChangeWeapon, OnChangeMachineGun);
+        EventManager.AddListener<bool>(EventName.OnSwithToggleRocket, OnSwichRocket);
     }
 
     private void OnDisable()
     {
         EventManager.RemoveListener<float>(EventName.OnUpgradeFireRate, OnUpgradeFireRate);
-        EventManager.RemoveListener<bool>(EventName.OnChangeMachineGun, OnChangeMachineGun);
+        EventManager.RemoveListener<bool>(EventName.OnChangeWeapon, OnChangeMachineGun);
+        EventManager.RemoveListener<bool>(EventName.OnSwithToggleRocket, OnSwichRocket);
         for (int i = 0; i < weaponInfo.Length; i++)
         {
             weaponInfo[i].FireRate = DefaultFireRate[i];
@@ -59,7 +66,19 @@ public class WeaponEvent : MonoBehaviour
         }
 
     }
-
+    private void OnSwichRocket(bool IsSwichRocket)
+    {
+        if (IsSwichRocket)
+        {
+            RocketController.Instance = WeaponChange.GetComponent<RocketController>();
+        }
+        else
+        {
+            RocketController.Instance = WeaponDefault.GetComponent<RocketController>();
+        }
+        StartCoroutine(OnChangeRocket(IsSwichRocket));
+        RocketController.Instance.isFollowRocket = IsSwichRocket;
+    }
     public void OnUpgradeFireRate(float Value)
     {
         for (int i = 0; i < weaponInfo.Length; i++)
@@ -88,7 +107,6 @@ public class WeaponEvent : MonoBehaviour
 
         // Ẩn WeaponDefault
         WeaponDefault.gameObject.SetActive(false);
-
         // Hiển thị WeaponChange
         WeaponChange.gameObject.SetActive(true);
         if (IsChangeBullet)
@@ -107,6 +125,38 @@ public class WeaponEvent : MonoBehaviour
             yield return null;
         }
         WeaponChange.localPosition = endPosition2;
-
     }
+
+    private IEnumerator OnChangeRocket(bool IsFollowRocket)
+    {
+        Transform activeWeapon = IsFollowRocket ? WeaponDefault : WeaponChange;
+        Transform inactiveWeapon = IsFollowRocket ? WeaponChange : WeaponDefault;
+        Vector3[] activePath = IsFollowRocket ? RocketUnFollow : RocketFollow;
+        Vector3[] inactivePath = IsFollowRocket ? RocketFollow : RocketUnFollow;
+
+        // Di chuyển vũ khí đang hoạt động từ vị trí 1 đến vị trí 2
+        yield return MoveWeapon(activeWeapon, activePath[1], activePath[2], DurationTimeHide);
+        activeWeapon.gameObject.SetActive(false);
+
+        // Hiển thị vũ khí không hoạt động và di chuyển từ vị trí 2 đến vị trí 0
+        inactiveWeapon.gameObject.SetActive(true);
+        yield return MoveWeapon(inactiveWeapon, inactivePath[2], inactivePath[0], DurationTimeShow);
+
+        // Di chuyển nhanh về vị trí 1
+        yield return MoveWeapon(inactiveWeapon, inactivePath[0], inactivePath[1], DurationPos);
+    }
+
+    private IEnumerator MoveWeapon(Transform weapon, Vector3 start, Vector3 end, float duration)
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            weapon.localPosition = Vector3.Lerp(start, end, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        weapon.localPosition = end;
+    }
+
+
 }

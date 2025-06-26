@@ -17,7 +17,6 @@ public class WeaponInfo : ScriptableObject
     public float reloadTime = 2f; // Thời gian nạp đạn
     public bool infiniteBullet = false; // Chế độ đạn vô hạn
     public AnimationClip Fire;
-    public AnimationClip FireR;
     public AnimationClip Idle;
     public AnimationClip _reloadAnimIn;
     public AnimationClip _reloadAnimOn;

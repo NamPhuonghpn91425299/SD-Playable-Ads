@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private LayerMask botLayerMask;
     [SerializeField] private LayerMask botTankLayerMask;
     [SerializeField] private LayerMask rewardLayerMask;
+    [SerializeField] private LayerMask gasLayerMask;
+    [SerializeField] private LayerMask concreteLayer;
     [SerializeField] private Transform _muzzleTrans;
     [SerializeField] private Transform _muzzleTrans2;
     [SerializeField] public Transform[] Gunbarrel; // Nòng súng xoay (dùng cho súng 6 nòng)
@@ -21,17 +24,17 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private GameObject _bullet;
     [SerializeField] private ParticleSystem[] _fireEffect;
     [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioSource _audioSourceHit;
     [SerializeField] private float volume;
     [SerializeField] private GameObject _effect;
-    //[SerializeField] private bool _isShowCard;
+    [SerializeField] private bool _isShowCard;
     [SerializeField] private bool shootBasedOnGunDirection = false; // Chế độ bắn: true = bắn theo hướng súng, false = bắn theo hướng camera
     [SerializeField] private bool isDoubleMuzzle = false;
-    [SerializeField] private bool IsBBQGun;
     [SerializeField] private Transform shakeCam; // Biến để tham chiếu đến MainCamera
     [SerializeField] private float shakeCamMin;
     [SerializeField] private float shakeCamMax;
     [SerializeField] private bool IsShowLunaEndGame;
-    private bool isLeftMuzzleNext = true;
+
     private Transform _cameraTransform;
     private Camera _camera;
     private float _timeSinceLastShoot = 0f; // Thời gian từ lần bắn cuối cùng
@@ -43,6 +46,11 @@ public class WeaponController : MonoBehaviour
     private bool canShoot = false; // Trạng thái có thể bắn
     private bool isBarrelSpinning = false; // Trạng thái nòng súng đang quay
     private Coroutine shootingCoroutine;
+    
+    [Header("DrawGizmod")]
+    [SerializeField] Transform posMuzzle;
+
+    [SerializeField] private float distance;
 
     private void Awake()
     {
@@ -53,7 +61,7 @@ public class WeaponController : MonoBehaviour
         _cameraTransform = _camera.transform;
         _currentBulletCount = weaponInfo.bulletCount; // Khởi tạo số lượng đạn
         //Debug.Log("Initial bullet count: " + _currentBulletCount);
-        //EventManager.Invoke(EventName.UpdateBulletCount, _currentBulletCount); // Gửi thông báo về số lượng đạn ban đầu
+        EventManager.Invoke(EventName.UpdateBulletCount, _currentBulletCount); // Gửi thông báo về số lượng đạn ban đầu
         AssignAnimationClips();
     }
 
@@ -81,17 +89,16 @@ public class WeaponController : MonoBehaviour
 
     private void Update()
     {
-
-        HandleGatlingGunRotation();
-        if (!UIManager.Instance.isCanTouch)
-        {
-            OnShooting();
-        }
-        if (UIManager.Instance.isCanTouch)
-        {
-            isShooting = false;
-            StopGunEffect();
-        }
+            HandleGatlingGunRotation();
+            if (!UIEndGame.Instance.IsShowEndGame)
+            {
+               OnShooting();
+            }
+            if (UIEndGame.Instance.IsShowEndGame )
+            {
+                isShooting = false;
+                StopGunEffect();
+            }
 
 
 
@@ -109,7 +116,6 @@ public class WeaponController : MonoBehaviour
         if (_animation != null && weaponInfo != null)
         {
             _animation.AddClip(weaponInfo.Fire, "Fire");
-            _animation.AddClip(weaponInfo.FireR, "FireR");
             _animation.AddClip(weaponInfo.Idle, "Idle");
             _animation.AddClip(weaponInfo._reloadAnimIn, "ReloadIn");
             _animation.AddClip(weaponInfo._reloadAnimOn, "ReloadOn");
@@ -137,6 +143,7 @@ public class WeaponController : MonoBehaviour
                 if (!isBarrelSpinning && !EventSystem.current.IsPointerOverGameObject())
                 {
                     _audioSource.clip = weaponInfo.AudioStartBarrel;
+
                     _audioSource.Play();
                     isBarrelSpinning = true;
                 }
@@ -189,6 +196,7 @@ public class WeaponController : MonoBehaviour
     {
         StartCoroutine(Reload());
         StopGunEffect();
+        UICrosshairItem.Instance.ResetCorosshair();
     }
     public int GetCurrentAmmo()
     {
@@ -237,12 +245,33 @@ public class WeaponController : MonoBehaviour
             // Debug.Log(newRotationZ);
             // Debug.Log(currentRotationSpeed);
             var newRotation = Quaternion.Euler(currentRotation.x, currentRotation.y, newRotationZ);
-
-
+              
+            
             barrel.localRotation = newRotation;
         }
     }
+    
+    [SerializeField] LayerMask boxLayer;
+    public Vector3 GizmodTuVe()
+    {
+        Ray ray = new Ray(posMuzzle.position, posMuzzle.forward);
+        RaycastHit hit;
 
+        Debug.DrawLine(ray.origin, ray.origin + ray.direction * distance, Color.red);
+
+        // Bắn raycast
+        if (Physics.Raycast(ray, out hit, distance, boxLayer))
+        {
+            // Debug.Log("Va chạm tại vị trí: " + hit.point);
+            // Debug.Log("Khoảng cách đến box: " + hit.distance);
+
+            Debug.DrawLine(hit.point, hit.point + Vector3.up * 0.1f, Color.green);
+            return hit.point;
+        }
+
+        return Vector3.one;
+    }
+    
     private void Shoot()
     {
         if (this == null || _cameraTransform == null) return;
@@ -264,45 +293,29 @@ public class WeaponController : MonoBehaviour
             }
         }
 
+//        print(_cameraTransform.forward + "Forward: " + forward);
+        
         forward += new Vector3(
             Random.Range(-weaponInfo.recoilAmount, weaponInfo.recoilAmount),
             Random.Range(-weaponInfo.recoilAmount, weaponInfo.recoilAmount),
             Random.Range(-weaponInfo.recoilAmount, weaponInfo.recoilAmount)
         );
 
-        if (IsBBQGun)
-        {
-            if (isLeftMuzzleNext)
-            {
-                FireFromMuzzle(_muzzleTrans, forward);
-                _animation.Play("Fire");
-                //Debug.Log("Fire from left muzzle");
-            }
-            else
-            {
-                _animation.Play("FireR");
-                FireFromMuzzle(_muzzleTrans2, forward);
-                //Debug.Log("Fire from right muzzle");
-            }
-            isLeftMuzzleNext = !isLeftMuzzleNext;
-        }
-        else
-        {
-            // Bắn từ nòng đầu tiên
-            FireFromMuzzle(_muzzleTrans, forward);
+        // Bắn từ nòng đầu tiên
+        FireFromMuzzle(_muzzleTrans, forward);
 
-            // Nếu isDoubleMuzzle là true, bắn thêm từ nòng thứ hai
-            if (isDoubleMuzzle)
-            {
-                FireFromMuzzle(_muzzleTrans2, forward);
-            }
-            _animation.Play("Fire");
+        // Nếu isDoubleMuzzle là true, bắn thêm từ nòng thứ hai
+        if (isDoubleMuzzle)
+        {
+            FireFromMuzzle(_muzzleTrans2, forward);
         }
+
+        _animation.Play("Fire");
         _animation["Fire"].speed = 2.0f;
         _audioSource.clip = weaponInfo.audioClip;
         _audioSource.volume = volume;
         _audioSource.Play();
-        
+
         UICrosshairItem.Instance.Expand_Crosshair(15);
 
         PlayGunEffect();
@@ -310,8 +323,9 @@ public class WeaponController : MonoBehaviour
 
     private bool IsInBotLayer(GameObject obj)
     {
-        return ((1 << obj.layer) & botLayerMask) != 0;
+        return ((1 << obj.layer) & (botLayerMask| LayerConstants.WeakPointMask)) != 0;
     }
+    
     public static class LayerConstants
     {
         public static readonly int WeakPointLayer = 10; // Giả sử layer 10 là WeakPoint
@@ -320,59 +334,60 @@ public class WeaponController : MonoBehaviour
 
     private bool IsInBotTankLayer(GameObject obj)
     {
-        return ((1 << obj.layer) & (botTankLayerMask | LayerConstants.WeakPointMask)) != 0;
+        return ((1 << obj.layer) & (botTankLayerMask ) )!= 0;
     }
 
     private bool IsInRewardLayer(GameObject obj)
     {
         return ((1 << obj.layer) & rewardLayerMask) != 0;
     }
+    
+    private bool IsInGasLayer(GameObject obj)
+    {
+        return ((1 << obj.layer) & gasLayerMask ) != 0;
+    }
+    private bool IsInConcreteLayer(GameObject obj)
+    {
+        return ((1 << obj.layer) & concreteLayer) != 0;
+    }
     private void FireFromMuzzle(Transform muzzle, Vector3 forward)
     {
         var shotRotation = Quaternion.Euler(Random.insideUnitCircle * weaponInfo.inaccuracy) * forward;
-        var ray = new Ray(muzzle.position, shotRotation);
+        var ray = new Ray(_cameraTransform.position, shotRotation);
 
         _bullet.SetActive(true);
 
         var bullet = ObjectPool.Instance.PopFromPool(_bullet, instantiateIfNone: true);
         bullet.transform.SetPositionAndRotation(muzzle.position, muzzle.rotation);
-        bullet.GetComponent<BulletTrail>().Init(ray.direction);
-
-        bool CheckRayCast = Physics.Raycast(ray, out var hit, Mathf.Infinity, botLayerMask | rewardLayerMask | botTankLayerMask | LayerConstants.WeakPointMask);
+        Vector3 posGizmod = GizmodTuVe();
+        BulletTrail bulletTrail = bullet.GetComponent<BulletTrail>();
+        bulletTrail.InitType2((posGizmod - muzzle.position).normalized,posGizmod);
+        
+        bool CheckRayCast = Physics.Raycast(ray, out var hit,
+            Mathf.Infinity, botLayerMask|gasLayerMask| rewardLayerMask| botTankLayerMask | LayerConstants.WeakPointMask | concreteLayer);
         if (CheckRayCast)
         {
             //var damageType = hit.collider.CompareTag("WeakPoint")? DamageType.Weekness:DamageType.Normal;
-            var damageType = hit.collider.gameObject.layer == LayerConstants.WeakPointLayer
-                ? DamageType.Weekness
+            var damageType = hit.collider.gameObject.layer == LayerConstants.WeakPointLayer 
+                ? DamageType.Weekness 
                 : DamageType.Normal;
             //Debug.Log($"Raycast hit object: {hit.collider.gameObject.name}, Layer: {hit.collider.gameObject.layer}");
 
-            var damageInfo = new DamageInfo()
+            var damageInfo = new DamageInfo() 
             {
                 damageType = damageType,
                 damage = weaponInfo.damage,
                 name = hit.collider.name,
             };
-            if (IsInBotLayer(hit.collider.gameObject) || hit.collider.gameObject.layer == LayerConstants.WeakPointLayer)
+            
+            if (IsInBotLayer(hit.collider.gameObject))
             {
-                var takeDamageControllers = hit.transform.GetComponentsInParent<ITakeDamage>().ToList();
-                takeDamageControllers.AddRange(hit.transform.GetComponentsInChildren<ITakeDamage>());
-
-                if (takeDamageControllers.Count > 0)
+                var takeDamageController = hit.transform.gameObject.GetComponent<ITakeDamage>();
+                if (takeDamageController == null)
                 {
-                    foreach (var takeDamage in takeDamageControllers)
-                    {
-                        takeDamage.TakeDamage(damageInfo);
-                        //Debug.Log($"🔥 Gây damage cho: {damageInfo.name} - {damageInfo.damage}",gameObject);
-                    }
+                    takeDamageController = hit.transform.root.gameObject.GetComponent<ITakeDamage>();
                 }
-
-                //var takeDamageController = hit.transform.gameObject.GetComponent<ITakeDamage>();
-                // if (takeDamageController == null)
-                // {
-                //     takeDamageController = hit.transform.root.gameObject.GetComponent<ITakeDamage>();
-                // }
-                // if (takeDamageController != null) takeDamageController.TakeDamage(damageInfo);
+                if (takeDamageController != null) takeDamageController.TakeDamage(damageInfo);
                 _effect = bulletAndEffect.EffectBullet[0];
                 //Debug.Log(damageType.ToString() + " " + weaponInfo.damage + " " + hit.collider.name);
             }
@@ -386,25 +401,35 @@ public class WeaponController : MonoBehaviour
                 if (rewardController != null) rewardController.TakeCollect(weaponInfo.damage);
                 PlayRandomAttackSound();
                 _effect = bulletAndEffect.EffectBullet[1];
-            }
-            else if (IsInBotTankLayer(hit.collider.gameObject))
+            } 
+            else if(IsInBotTankLayer(hit.collider.gameObject))
             {
-                var takeDamageControllers = hit.transform.GetComponentsInParent<ITakeDamage>().ToList();
-                takeDamageControllers.AddRange(hit.transform.GetComponentsInChildren<ITakeDamage>());
-
-                if (takeDamageControllers.Count > 0)
-                {
-                    foreach (var takeDamage in takeDamageControllers)
-                    {
-                        takeDamage.TakeDamage(damageInfo);
-                        //Debug.Log($"🔥 Gây damage cho1: {damageInfo.name} - {damageInfo.damage}",gameObject);
-                    }
-                }
-                //Debug.Log(damageType.ToString() + " " + weaponInfo.damage);
-                PlayRandomAttackSound();
+                 var takeDamageController1 = hit.transform.gameObject.GetComponent<ITakeDamage>();
+                 if (takeDamageController1 == null)
+                 {
+                     takeDamageController1 = hit.transform.root.gameObject.GetComponent<ITakeDamage>();
+                 }
+                 if (takeDamageController1 != null) takeDamageController1.TakeDamage(damageInfo);
+                 //Debug.Log(damageType.ToString() + " " + weaponInfo.damage + " " + hit.collider.name);
+                 PlayRandomAttackSound();
                 _effect = bulletAndEffect.EffectBullet[1];
             }
-
+            else if (IsInGasLayer(hit.collider.gameObject))
+            {
+                BinhGa binhGa = null;
+                binhGa = hit.transform.gameObject.GetComponent<BinhGa>();
+                if(binhGa !=null)
+                    binhGa.Explosion();
+                //PlayRandomAttackSound();
+                _effect = bulletAndEffect.EffectBullet[1];
+                // print("Ban vao Ga");
+            }
+            else if (IsInConcreteLayer(hit.collider.gameObject))
+            {
+                //Debug.Log("Ban vao Concrete");
+                //_audioSource.PlayOneShot(AudioManager.Instance.GetConcreteSound());
+                _effect = bulletAndEffect.EffectBullet[2];
+            }
             // Tạo hiệu ứng va chạm
             var effect = ObjectPool.Instance.PopFromPool(_effect, instantiateIfNone: true);
             effect.GetComponent<Effect>().Init(hit.point);
@@ -412,12 +437,13 @@ public class WeaponController : MonoBehaviour
         EventManager.Invoke(EventName.OnCheckBotTakeDamage, CheckRayCast);
     }
 
-
+    
     void PlayRandomAttackSound()
     {
         AudioClip clip = AudioManager.Instance.GetAudioAttackClip();
         if (clip != null)
         {
+            
             //_audioSource.clip = clip;
             _audioSource.PlayOneShot(clip);
         }
@@ -541,7 +567,7 @@ public class WeaponController : MonoBehaviour
     }
 
     // Thêm phương thức dừng âm thanh bắn
-
+  
     private void StopShootingSound()
     {
         if (_audioSource.isPlaying && _audioSource.clip == weaponInfo.audioClip)
@@ -584,24 +610,10 @@ public class WeaponController : MonoBehaviour
     {
         foreach (ParticleSystem fireEffect in _fireEffect)
         {
-            if (fireEffect != null && !fireEffect.isPlaying && !IsBBQGun)
+            if (fireEffect != null && !fireEffect.isPlaying)
             {
                 fireEffect.Play();
-            }
-
-            if (IsBBQGun)
-            {
-                if (isLeftMuzzleNext)
-                {
-                    _fireEffect[0].Play();
-                    //Debug.Log("left muzzle");
-                }
-                else
-                {
-                    _fireEffect[1].Play();
-                    //Debug.Log("right muzzle");
-                }
-            }
+            }    
         }
     }
 

@@ -61,6 +61,7 @@ public class Spawn : MonoBehaviour
         {
             WayPoint path = PathManager.Instance.GetWayPoint(botType);
             var spawnPosition = path.WayPoints[0].position;
+            
             BotManager.Instance.SpawnBot(config.botPrefab, spawnPosition, path);
             yield return new WaitForSeconds(config.botDelaySpawn);
         }

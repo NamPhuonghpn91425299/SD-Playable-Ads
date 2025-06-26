@@ -61,7 +61,6 @@ public class PowerUpDisplay : MonoBehaviour
 
     private IEnumerator ShowEffectCollected()
     {
-        CollectedEffect[2].Stop();
         CollectedEffect[0].Play();
         yield return new WaitForSeconds(0.2f);
         OnSetEventPerRewardType();
@@ -77,11 +76,15 @@ public class PowerUpDisplay : MonoBehaviour
         if (rewardType == RewardType.RapidFire)
         {
             EventManager.Invoke(EventName.OnUpgradeFireRate, rewardValue);
+            UIManager.Instance.PlayEffectRapidFire();
+            GamePlayManager.Instance.CanPlayEffectGiatDien = true;
         }
         if (rewardType == RewardType.ChangeMachineGun)
         {
-            EventManager.Invoke(EventName.OnChangeMachineGun, true);
+            EventManager.Invoke(EventName.OnChangeWeapon, true);
+            UIManager.Instance.PlayEffectChangeGun();
         }
+        
     }    
 
     private IEnumerator ShowFireRateContent()

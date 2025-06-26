@@ -118,13 +118,13 @@ Shader "Horus/BakeShadow"
                 float4 vPosWorld = mul(unity_ObjectToWorld, v.vertex);
                 o.pos = mul(UNITY_MATRIX_VP, float4(vPosWorld.x, vPosWorld.y + _ShadowHeight, vPosWorld.z, 1));
                 #else
-                        float objectOriginY = min(mul(unity_ObjectToWorld, float4(1.0, 1.0, 1.0, 1.0)).y, mul(unity_ObjectToWorld, float4(0.0, 0.0, 0.0, 1.0)).y) + _ShadowHeight;
+                        float objectOriginY = mul(unity_ObjectToWorld, float4(0.0,0.0,0.0,1.0) ).y+_ShadowHeight;
                         float4 vPosWorld = mul(unity_ObjectToWorld, v.vertex);
                         float opposite = vPosWorld.y - objectOriginY;
                         float cosTheta = -_LightDirection.y; 
                         float hypotenuse = opposite / cosTheta;
                         float3 vPos = vPosWorld.xyz + (_LightDirection * hypotenuse);
-                        o.pos = mul(UNITY_MATRIX_VP, float4(vPos.x, objectOriginY, vPos.z ,1));
+                        o.pos = mul(UNITY_MATRIX_VP, float4(vPos.x, objectOriginY+_ShadowHeight, vPos.z ,1));
                 #endif
 
 

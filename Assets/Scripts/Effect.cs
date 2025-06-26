@@ -35,6 +35,7 @@ public class Effect : MonoBehaviour, IPoolObject
     {
         transform.position=pos;
         Update();
+        //print("Efect");
     }
 
     public void OnPushToPool()

@@ -7,12 +7,13 @@ public class UIAnimSimulator : MonoBehaviour
 {
     public RectTransform TextRect;
     public CanvasGroup TextCanvas;
-    public float durationAppear = 2.0f; // Thời gian để chữ hiện rõ và to lên hoặc ngược lại
-    public float durationDisappear = 2.0f; // Thời gian để chữ hiện rõ và to lên hoặc ngược lại
+    public float durationAppear = 0.5f; // Thời gian để chữ hiện rõ và to lên hoặc ngược lại
+    public float durationDisappear = 0.5f; // Thời gian để chữ hiện rõ và to lên hoặc ngược lại
     public float existTime = 2.0f; // Thời gian để chữ hiện rõ và to lên hoặc ngược lại
-    public Vector3 DefaultScale; // Thời gian để chữ hiện rõ và to lên hoặc ngược lại
-    public Vector3 targetScale; // Kích thước tối đa của chữ
+    public Vector3 DefaultScale = new Vector3(0.9f, 0.9f, 0.9f); // Thời gian để chữ hiện rõ và to lên hoặc ngược lại
+    public Vector3 targetScale = new Vector3(1.1f, 1.1f, 1.1f); // Kích thước tối đa của chữ
     [FormerlySerializedAs("WeaponIcon")] public RectTransform[] _group;
+    public float moveSpeed = 1200f; // Tốc độ di chuyển có thể chỉnh
     public void StartAnimateTextAppear()
     {
         StartCoroutine(AnimateTextAppear());
@@ -55,7 +56,6 @@ public class UIAnimSimulator : MonoBehaviour
         TextRect.localScale = DefaultScale;
     }
 
-    public float moveSpeed = 200f; // Tốc độ di chuyển có thể chỉnh
     public void StartShowUIEndGame()
     {
         StartCoroutine(ShowUIEndGame(_group[1]));

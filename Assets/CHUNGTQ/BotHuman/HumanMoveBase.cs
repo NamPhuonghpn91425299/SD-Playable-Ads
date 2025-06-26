@@ -8,7 +8,7 @@ public class HumanMoveBase : MonoBehaviour
     public bool isHaveParent;
     public Transform myTrans;
     public bool isTakeDame;
-    public AudioSource _source;
+
  
     private void Awake()
     {
@@ -19,26 +19,12 @@ public class HumanMoveBase : MonoBehaviour
         CheckParent();
         botNet.OnTakeDamage += OnTakeDame;
         botNet.OnBotDead += OnBotDead;
-        
-    }
-    private void OnDisable()
-    {
-        
+
     }
 
-    private void OnShowLunaEndGame(bool endGame)
-    {
-        if (endGame)
-        {
-            //Debug.Log(endGame);
-            _source.Stop();
-            _source.enabled = false;
-        }
-    }
     protected void Update()
     {
         CheckParent();
-        OnShowLunaEndGame(UIEndGame.Instance.IsShowEndGame);
     }
 
     private void OnTakeDame(int dame)

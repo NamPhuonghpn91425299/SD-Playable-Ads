@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     public GameObject InGame;
+    public GameObject canvasRocket;
     public GameObject HUD;
     public GameObject playerHealth;
     public GameObject reloadButton;
@@ -22,7 +23,6 @@ public class UIManager : MonoBehaviour
     [FormerlySerializedAs("initBot")] public int TotalBotinConfig;
     public UIAnimSimulator uIAnimSimulator;
     public Image process;
-    public Image processTimer;
     public GameObject gameProcess;
     public Button tapToPlay;
     public Text bulletCountText; // Text UI để hiển thị số lượng đạn
@@ -31,43 +31,64 @@ public class UIManager : MonoBehaviour
     public CanvasGroup hudCanvasGroup;
     public Text timeToEndGameTxt;
     public float timeEndConfig = 30f;
-    private float totalTime;
-    public float _timeEnd;
     public Action<float> OnTimeout;
     private bool timeOut;
+    [Header("Component Hide On Attack")]
+    [SerializeField] private GameObject _rocketBtn;
+    [SerializeField] private GameObject _crossHair;
+    [SerializeField] private GameObject _healthBar;
+    [SerializeField] private GameObject _switchRocketBtn;
+    
+    [Header("Effect Add rapidFire")]
+    [SerializeField] GameObject _rapidFireEffect;
+    [SerializeField] GameObject _ChangeGunEffecct;
+
+    [Header("Check Portrait")] 
+    public GameObject btnRocket;
+    public RectTransform rectBtnRocket;
+    public RectTransform btnReplay;
+    public GameObject rocket;
+
+    public void PlayEffectChangeGun() => _ChangeGunEffecct.SetActive(true);
+    public void PlayEffectRapidFire() => _rapidFireEffect.SetActive(true);
     [SerializeField] private float _timeDelayShowHUD = 3f;
-    private float timer;
-    private bool _isRocketFollow = false;
-    private bool _isPlayerDead;
+    public float _timeEnd;
     public bool isLoseGame;
     public bool isWinGame;
     public bool isCanTouch;
     public bool isStopGame;
-
     private void Awake()
     {
+        if (Screen.width < Screen.height)
+        {
+            Debug.Log("Màn hình đang ở chế độ dọc (Portrait)");
+            rectBtnRocket.anchoredPosition = new Vector2(-160f, rectBtnRocket.anchoredPosition.y);
+            rocket.transform.localPosition = new Vector3(0.405000001f, 0.02f, 1.218f);
+            btnReplay.anchoredPosition = new Vector2(0f, 795f);
+        }
+        
         Instance = this;
         InGame.SetActive(true);
         gameProcess.SetActive(true);
         playerHealth.SetActive(true);
-        tapToPlay.gameObject.SetActive(true);
         if (reloadButton) reloadButton.SetActive(true);
         if (uIAnimSimulator) uIAnimSimulator.StartAnimateTextAppear();
 
     }
+
     private void Start()
     {
-        totalTime = timeEndConfig;
+        tapToPlay.gameObject.SetActive(true);
+        btnRocket.SetActive(false);
         Time.timeScale = 0f;
         tapToPlay.onClick.AddListener(OnButtonClick);
     }
     public void SetTimeToEndGame()
     {
-        if (timeToEndGameTxt != null && !UIEndGame.Instance.IsShowEndGame)
+        if (timeToEndGameTxt != null)
         {
             timeEndConfig = Mathf.Max(0, timeEndConfig - Time.deltaTime);
             timeToEndGameTxt.text = $"TIME TO DEFENSE: {timeEndConfig:F0}s";
-            processTimer.fillAmount = Mathf.Clamp01(timeEndConfig / totalTime);
             if (!timeOut && timeEndConfig <= 0)
             {
                 timeOut = true;
@@ -84,6 +105,7 @@ public class UIManager : MonoBehaviour
         EventManager.AddListener<bool>(EventName.OnShowLunaEndGame, OnShowLunaEndGame);
         EventManager.AddListener<bool>(EventName.OnPlayerDead, OnPlayerDead);
         EventManager.AddListener<float>(EventName.OnTimeOut, OnTimeOut);
+        EventManager.AddListener<bool>(EventName.OnCameraFollowRocket, OnCameraFollowRocket);
     }
 
 
@@ -94,16 +116,28 @@ public class UIManager : MonoBehaviour
         EventManager.RemoveListener<bool>(EventName.OnShowLunaEndGame, OnShowLunaEndGame);
         EventManager.RemoveListener<bool>(EventName.OnPlayerDead, OnPlayerDead);
         EventManager.RemoveListener<float>(EventName.OnTimeOut, OnTimeOut);
+        EventManager.RemoveListener<bool>(EventName.OnCameraFollowRocket, OnCameraFollowRocket);
         tapToPlay.onClick.RemoveAllListeners();
     }
 
     private void OnCheckTurnPlay(int Turn)
     {
+        if (Instance == null)
+        {
+            Debug.LogError("UIManager instance is null");
+            return;
+        }
+
+        if (UIEndGame.Instance == null)
+        {
+            Debug.LogError("UIEndGame instance is null");
+            return;
+        }
         if (!UIEndGame.Instance.IsShowEndGame)
         {
             int Round = Turn + 1;
-            if (RoundTxtShadow) RoundTxtShadow.text = "START!";// + Round;
-            RoundTxt.text = "START!";// + Round;
+            RoundTxt.text = "ROUND " + Round;
+            RoundTxtShadow.text = "ROUND " + Round;
             uIAnimSimulator.StartAnimateTextAppear();
             if (Round >= 2)
             {
@@ -127,6 +161,7 @@ public class UIManager : MonoBehaviour
     public void OnTapToPlay()
     {
         Time.timeScale = 1f;
+        btnRocket.SetActive(true);
         tapToPlay.gameObject.SetActive(false);
         StartCoroutine(FadeIn());
         OnPointerExit();
@@ -138,7 +173,7 @@ public class UIManager : MonoBehaviour
     IEnumerator ShowEndCard()
     {
 
-        yield return WaitSeconds(1);
+        yield return WaitSeconds(1f);
         Time.timeScale = 0;
         InGame.SetActive(false);
         gameProcess.SetActive(false);
@@ -158,23 +193,20 @@ public class UIManager : MonoBehaviour
     }
     private void OnPlayerDead(bool isPlayerDead)
     {
-        isPlayerDead = _isPlayerDead;
         if (isPlayerDead)
         {
+            isLoseGame = true;
             playerHealth.SetActive(false);
-            if (reloadButton) reloadButton.SetActive(false);
+            reloadButton.SetActive(false);
             StartCoroutine(PlayerDeadUI());
-            EventManager.Invoke(EventName.OnGameLost, _isPlayerDead);
+            EventManager.Invoke(EventName.OnGameLost, isPlayerDead);
             //this.RunOnSeconds(1f, () => hudCanvasGroup.alpha -= Time.deltaTime);
         }
 
     }
     public void EndGame()
     {
-        if (!isLoseGame)
-        {
-            StartCoroutine(DelayHideHUD());
-        }
+        StartCoroutine(DelayHideHUD());
     }
     private IEnumerator DelayHideHUD()
     {
@@ -185,17 +217,17 @@ public class UIManager : MonoBehaviour
         uIAnimSimulator.StartAnimateTextAppear();
         yield return WaitSeconds(_timeDelayShowHUD);
         HUD.SetActive(false);
+        canvasRocket.SetActive(false);
         uIAnimSimulator.StartAnimateTextAppear();
         yield return null;
         UIEndGame.Instance.ShowUIEndGame();
         uIAnimSimulator.ShowUIEndGameWin();
         isCanTouch = true;
+
     }
     private IEnumerator PlayerDeadUI()
     {
         isLoseGame = true;
-        //Debug.Log("isLoseGame");
-        EventManager.Invoke(EventName.OnGameLost, _isPlayerDead);
         UIEndGame.Instance.IsShowEndGame = true;
         yield return WaitSeconds(1f);
         if (RoundTxtShadow) RoundTxtShadow.text = "GAME OVER!";
@@ -203,6 +235,7 @@ public class UIManager : MonoBehaviour
         uIAnimSimulator.StartAnimateTextAppear();
         yield return WaitSeconds(_timeDelayShowHUD);
         HUD.SetActive(false);
+        canvasRocket.SetActive(false);
         uIAnimSimulator.StartAnimateTextAppear();
         yield return null;
         UIEndGame.Instance.ShowEndGameLose();
@@ -216,6 +249,7 @@ public class UIManager : MonoBehaviour
             StartCoroutine(PlayerDeadUI());
         }
     }
+
     private void StopGame()
     {
         if (isCanTouch && !isStopGame)
@@ -230,13 +264,10 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
-        SetTimeToEndGame();
+        //SetTimeToEndGame();
         StopGame();
-        //TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {TotalBotinConfig}";
-        TotalBotText.text = $"Enemy Remaining: {GameResultInstance.Instance.GetGameResultData().BotKillCount} / {GameResultInstance.Instance.GetGameResultData().requiredBotKill}";
-        //process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / TotalBotinConfig);
-        process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / GameResultInstance.Instance.GetGameResultData().requiredBotKill);
-
+        TotalBotText.text = $"{GameResultInstance.Instance.GetGameResultData().BotKillCount} / {TotalBotinConfig}";
+        process.fillAmount = ((float)(GameResultInstance.Instance.GetGameResultData().BotKillCount) / TotalBotinConfig);
     }
 
 
@@ -263,9 +294,12 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
     }
-
+    
+    private void OnCameraFollowRocket(bool isOn)
+    {
+        _rocketBtn.SetActive(!isOn);
+        _crossHair.SetActive(!isOn);
+        _healthBar.SetActive(!isOn);
+        _switchRocketBtn.SetActive(!isOn);
+    }
 }
-
-
-
-
