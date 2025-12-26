@@ -50,7 +50,7 @@ namespace Verpha.HierarchyDesigner
             public Color SeparatorDefaultTextColor = Color.white;
             public bool SeparatorDefaultIsGradientBackground = false;
             public Color SeparatorDefaultBackgroundColor = Color.gray;
-            public Gradient SeparatorDefaultBackgroundGradient = new Gradient();
+            public Gradient SeparatorDefaultBackgroundGradient = new();
             public int SeparatorDefaultFontSize = 12;
             public FontStyle SeparatorDefaultFontStyle = FontStyle.Normal;
             public TextAnchor SeparatorDefaultTextAnchor = TextAnchor.MiddleCenter;
@@ -66,7 +66,7 @@ namespace Verpha.HierarchyDesigner
             #endregion
         }
         public enum TreeBranchImageType { Default, Curved, Dotted, Segmented }
-        private static HierarchyDesigner_DesignSettings designSettings = new HierarchyDesigner_DesignSettings();
+        private static HierarchyDesigner_DesignSettings designSettings = new();
         private const string settingsFileName = "HierarchyDesigner_SavedData_DesignSettings.json";
         #endregion
 

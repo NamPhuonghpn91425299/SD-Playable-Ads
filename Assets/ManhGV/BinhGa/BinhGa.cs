@@ -77,7 +77,7 @@ public class BinhGa : MonoBehaviour
             {
                 var damageInfo = new DamageInfo()
                 {
-                    damageType = DamageType.Gas,
+                    damageType = DamageType.Explosion,
                     damage = _dame,
                     name = elem.gameObject.name,
                 };

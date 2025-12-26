@@ -2504,13 +2504,13 @@ namespace Verpha.HierarchyDesigner
                 }
             }
         }
+
         private static void Activate_AllHalos(bool isActive)
         {
             IEnumerable<GameObject> allGameObjects = GetAllGameObjectsInActiveScene();
             foreach (GameObject gameObject in allGameObjects)
             {
                 Component halo = gameObject.GetComponent("Halo");
-        
                 if (halo != null)
                 {
                     SetActiveState(gameObject, isActive);

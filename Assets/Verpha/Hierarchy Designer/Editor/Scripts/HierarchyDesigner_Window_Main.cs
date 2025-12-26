@@ -98,7 +98,7 @@ namespace Verpha.HierarchyDesigner
         private Color newSeparatorTextColor = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultTextColor;
         private bool newSeparatorIsGradient = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultIsGradientBackground;
         private Color newSeparatorBackgroundColor = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultBackgroundColor;
-        private Gradient newSeparatorBackgroundGradient = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultBackgroundGradient;
+        private Gradient newSeparatorBackgroundGradient = HierarchyDesigner_Shared_ColorUtility.CopyGradient(HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultBackgroundGradient);
         private int newSeparatorFontSize = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultFontSize;
         private FontStyle newSeparatorFontStyle = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultFontStyle;
         private TextAnchor newSeparatorTextAnchor = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultTextAnchor;
@@ -106,7 +106,7 @@ namespace Verpha.HierarchyDesigner
         private Color tempSeparatorGlobalTextColor = Color.white;
         private bool tempSeparatorGlobalIsGradient = false;
         private Color tempSeparatorGlobalBackgroundColor = Color.gray;
-        private Gradient tempSeparatorGlobalBackgroundGradient = new Gradient();
+        private Gradient tempSeparatorGlobalBackgroundGradient = new();
         private int tempSeparatorGlobalFontSize = 12;
         private FontStyle tempSeparatorGlobalFontStyle = FontStyle.Normal;
         private TextAnchor tempSeparatorGlobalTextAnchor = TextAnchor.MiddleCenter;
@@ -186,14 +186,11 @@ namespace Verpha.HierarchyDesigner
         private int tempTagLayerSpacing;
         private Color tempHierarchyLineColor;
         private int tempHierarchyLineThickness;
-        #region Folder
         private Color tempFolderDefaultTextColor;
         private int tempFolderDefaultFontSize;
         private FontStyle tempFolderDefaultFontStyle;
         private Color tempFolderDefaultImageColor;
         private HierarchyDesigner_Configurable_Folder.FolderImageType tempFolderDefaultImageType;
-        #endregion
-        #region Separator
         private Color tempSeparatorDefaultTextColor;
         private bool tempSeparatorDefaultIsGradientBackground;
         private Color tempSeparatorDefaultBackgroundColor;
@@ -204,13 +201,10 @@ namespace Verpha.HierarchyDesigner
         private HierarchyDesigner_Configurable_Separator.SeparatorImageType tempSeparatorDefaultImageType;
         private int tempSeparatorLeftSideTextAnchorOffset;
         private int tempSeparatorRightSideTextAnchorOffset;
-        #endregion
-        #region Lock Label
         private Color tempLockColor;
         private TextAnchor tempLockTextAnchor;
         private FontStyle tempLockFontStyle;
         private int tempLockFontSize;
-        #endregion
         private static bool designSettingsHasModifiedChanges = false;
         #endregion
         #region Shortcut Settings
@@ -287,7 +281,6 @@ namespace Verpha.HierarchyDesigner
         #region Initialization
         public static void Initialize()
         {
-            // Load the asset file
             isLeftPanelCollapsed = HierarchyDesigner_Manager_State.instance.isLeftPanelCollapsed;
             utilitiesFoldout = HierarchyDesigner_Manager_State.instance.utilitiesFoldout;
             configurationsFoldout = HierarchyDesigner_Manager_State.instance.configurationsFoldout;
@@ -306,8 +299,7 @@ namespace Verpha.HierarchyDesigner
             LoadDesignSettingsData();
             LoadShortcutSettingsData();
             LoadAdvancedSettingsData();
-            updateBoardContent = introMessage;
-            _ = FetchAndSetUpdateBoardContent();
+            LoadUpdateBoard();
         }
 
         private void InitializeFontSizeOptions()
@@ -859,7 +851,7 @@ namespace Verpha.HierarchyDesigner
         {
             EditorGUILayout.Space(lineDivisorSpace);
             Rect lastRect = GUILayoutUtility.GetLastRect();
-            Rect textureRect = new Rect(lastRect.x + 4, lastRect.y + (lineDivisorSpace / 2), lineDivisorWidth, lineDivisorHeight);
+            Rect textureRect = new(lastRect.x + 4, lastRect.y + (lineDivisorSpace / 2), lineDivisorWidth, lineDivisorHeight);
             GUI.color = HierarchyDesigner_Shared_ColorUtility.HexToColor("505050");
             GUI.DrawTexture(textureRect, HierarchyDesigner_Shared_Resources.DefaultTexture, ScaleMode.StretchToFill);
             GUI.color = Color.white;
@@ -867,7 +859,7 @@ namespace Verpha.HierarchyDesigner
 
         private void DrawVerticalLine(float height)
         {
-            Rect lineRect = new Rect(6, GUILayoutUtility.GetLastRect().y + 35, 1, height);
+            Rect lineRect = new(6, GUILayoutUtility.GetLastRect().y + 35, 1, height);
             GUI.color = HierarchyDesigner_Shared_ColorUtility.HexToColor("505050");
             GUI.DrawTexture(lineRect, HierarchyDesigner_Shared_Resources.DefaultTexture, ScaleMode.StretchToFill);
             GUI.color = Color.white;
@@ -877,7 +869,7 @@ namespace Verpha.HierarchyDesigner
         {
             EditorGUILayout.Space(lineDivisorSpace);
             Rect lastRect = GUILayoutUtility.GetLastRect();
-            Rect textureRect = new Rect(lastRect.x + 5, lastRect.y + (lineDivisorSpace / 2), miniLineDivisorWidth, lineDivisorHeight);
+            Rect textureRect = new(lastRect.x + 5, lastRect.y + (lineDivisorSpace / 2), miniLineDivisorWidth, lineDivisorHeight);
             GUI.color = HierarchyDesigner_Shared_ColorUtility.HexToColor("505050");
             GUI.DrawTexture(textureRect, HierarchyDesigner_Shared_Resources.DefaultTexture, ScaleMode.StretchToFill);
             GUI.color = Color.white;
@@ -936,7 +928,16 @@ namespace Verpha.HierarchyDesigner
 
         private void LoadPatchNotes()
         {
-            patchNotesContent = ReadPatchNotesFile(HierarchyDesigner_Manager_Data.GetPatchNotesFilePath());
+            if (!HierarchyDesigner_Manager_State.instance.hasInitializedPatchNotes)
+            {
+                patchNotesContent = ReadPatchNotesFile(HierarchyDesigner_Manager_Data.GetPatchNotesFilePath());
+                HierarchyDesigner_Manager_State.instance.sessionPatchNotesContent = patchNotesContent;
+                HierarchyDesigner_Manager_State.instance.hasInitializedPatchNotes = true;
+            }
+            else
+            {
+                patchNotesContent = HierarchyDesigner_Manager_State.instance.sessionPatchNotesContent;
+            }
         }
 
         private string ReadPatchNotesFile(string filePath)
@@ -976,9 +977,24 @@ namespace Verpha.HierarchyDesigner
             }
         }
 
+        private void LoadUpdateBoard()
+        {
+            if (!HierarchyDesigner_Manager_State.instance.hasInitializedUpdateBoard)
+            {
+                updateBoardContent = introMessage;
+                _ = FetchAndSetUpdateBoardContent();
+                HierarchyDesigner_Manager_State.instance.hasInitializedUpdateBoard = true;
+            }
+            else
+            {
+                updateBoardContent = HierarchyDesigner_Manager_State.instance.sessionUpdateBoardContent;
+            }
+        }
+
         private async Task FetchAndSetUpdateBoardContent()
         {
             updateBoardContent += await HierarchyDesigner_Manager_Data.FetchMessagesFromGist();
+            HierarchyDesigner_Manager_State.instance.sessionUpdateBoardContent = updateBoardContent;
         }
 
         private async void DownloadLatestUpdate()
@@ -1466,14 +1482,15 @@ namespace Verpha.HierarchyDesigner
 
         private void LoadSeparatorsCreationFields()
         {
+            newSeparatorName = "";
             newSeparatorTextColor = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultTextColor;
             newSeparatorIsGradient = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultIsGradientBackground;
             newSeparatorBackgroundColor = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultBackgroundColor;
-            newSeparatorBackgroundGradient = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultBackgroundGradient;
+            newSeparatorBackgroundGradient = HierarchyDesigner_Shared_ColorUtility.CopyGradient(HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultBackgroundGradient);
             newSeparatorFontSize = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultFontSize;
             newSeparatorFontStyle = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultFontStyle;
             newSeparatorTextAnchor = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultTextAnchor;
-            HierarchyDesigner_Configurable_Separator.SeparatorImageType newSeparatorImageType = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultImageType;
+            _ = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultImageType;
         }
 
         #region Separator Operations
@@ -1484,13 +1501,13 @@ namespace Verpha.HierarchyDesigner
 
         private void CreateSeparator(string separatorName, Color textColor, bool isGradient, Color backgroundColor, Gradient backgroundGradient, int fontSize, FontStyle fontStyle, TextAnchor textAnchor, HierarchyDesigner_Configurable_Separator.SeparatorImageType imageType)
         {
-            HierarchyDesigner_Configurable_Separator.HierarchyDesigner_SeparatorData newSeparatorData = new HierarchyDesigner_Configurable_Separator.HierarchyDesigner_SeparatorData
+            HierarchyDesigner_Configurable_Separator.HierarchyDesigner_SeparatorData newSeparatorData = new()
             {
                 Name = separatorName,
                 TextColor = textColor,
                 IsGradientBackground = isGradient,
                 BackgroundColor = backgroundColor,
-                BackgroundGradient = backgroundGradient,
+                BackgroundGradient = HierarchyDesigner_Shared_ColorUtility.CopyGradient(backgroundGradient),
                 FontSize = fontSize,
                 FontStyle = fontStyle,
                 TextAnchor = textAnchor,
@@ -1499,15 +1516,7 @@ namespace Verpha.HierarchyDesigner
             };
             tempSeparators[separatorName] = newSeparatorData;
             separatorsOrder.Add(separatorName);
-            newSeparatorName = "";
-            newSeparatorTextColor = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultTextColor;
-            newSeparatorIsGradient = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultIsGradientBackground;
-            newSeparatorBackgroundColor = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultBackgroundColor;
-            newSeparatorBackgroundGradient = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultBackgroundGradient;
-            newSeparatorFontSize = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultFontSize;
-            newSeparatorFontStyle = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultFontStyle;
-            newSeparatorTextAnchor = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultTextAnchor;
-            newSeparatorImageType = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultImageType;
+            LoadSeparatorsCreationFields();
             separatorHasModifiedChanges = true;
             GUI.FocusControl(null);
         }
@@ -1563,7 +1572,7 @@ namespace Verpha.HierarchyDesigner
 
         private void CreateSeparatorGameObject(HierarchyDesigner_Configurable_Separator.HierarchyDesigner_SeparatorData separatorData)
         {
-            GameObject separator = new GameObject($"//{separatorData.Name}");
+            GameObject separator = new($"//{separatorData.Name}");
             separator.tag = "EditorOnly";
             HierarchyDesigner_Utility_Separator.SetSeparatorState(separator, false);
             separator.SetActive(false);
@@ -1591,7 +1600,7 @@ namespace Verpha.HierarchyDesigner
         #region Separator Image Type
         private void ShowSeparatorImageTypePopup()
         {
-            GenericMenu menu = new GenericMenu();
+            GenericMenu menu = new();
             Dictionary<string, List<string>> groupedTypes = HierarchyDesigner_Configurable_Separator.GetSeparatorImageTypesGrouped();
             foreach (KeyValuePair<string, List<string>> group in groupedTypes)
             {
@@ -1605,7 +1614,7 @@ namespace Verpha.HierarchyDesigner
 
         private void ShowSeparatorImageTypePopupGlobal()
         {
-            GenericMenu menu = new GenericMenu();
+            GenericMenu menu = new();
             Dictionary<string, List<string>> groupedTypes = HierarchyDesigner_Configurable_Separator.GetSeparatorImageTypesGrouped();
             foreach (KeyValuePair<string, List<string>> group in groupedTypes)
             {
@@ -1619,7 +1628,7 @@ namespace Verpha.HierarchyDesigner
 
         private void ShowSeparatorImageTypePopupForSeparator(HierarchyDesigner_Configurable_Separator.HierarchyDesigner_SeparatorData separatorData)
         {
-            GenericMenu menu = new GenericMenu();
+            GenericMenu menu = new();
             Dictionary<string, List<string>> groupedTypes = HierarchyDesigner_Configurable_Separator.GetSeparatorImageTypesGrouped();
             foreach (KeyValuePair<string, List<string>> group in groupedTypes)
             {
@@ -1683,7 +1692,7 @@ namespace Verpha.HierarchyDesigner
         {
             foreach (HierarchyDesigner_Configurable_Separator.HierarchyDesigner_SeparatorData separator in tempSeparators.Values)
             {
-                separator.BackgroundGradient = gradientBackground;
+                separator.BackgroundGradient = HierarchyDesigner_Shared_ColorUtility.CopyGradient(gradientBackground);
             }
             separatorHasModifiedChanges = true;
         }

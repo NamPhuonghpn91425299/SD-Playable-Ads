@@ -160,6 +160,14 @@ namespace Verpha.HierarchyDesigner
 
             return gradient;
         }
+
+        public static Gradient CopyGradient(Gradient original)
+        {
+            if (original == null) { return new Gradient(); }
+            Gradient newGradient = new();
+            newGradient.SetKeys(original.colorKeys, original.alphaKeys);
+            return newGradient;
+        }
         #endregion
         #endregion
     }

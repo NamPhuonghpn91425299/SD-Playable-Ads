@@ -24,7 +24,7 @@ namespace Verpha.HierarchyDesigner
         private static readonly string githubUrl = "https://raw.githubusercontent.com/PedroVerpha/Hierarchy-Designer/main/Hierarchy%20Designer.unitypackage";
         private static readonly string unityPackageFileName = "Hierarchy Designer.unitypackage";
         private static readonly string versionUrl = "https://raw.githubusercontent.com/PedroVerpha/Hierarchy-Designer/main/Hierarchy%20Designer%20Current%20Version.txt";
-        private static readonly string currentHierarchyDesignerVersionInProject = "1.1.8";
+        private static readonly string currentHierarchyDesignerVersionInProject = "1.1.8.1";
         #endregion
 
         #region Accessors
@@ -85,7 +85,7 @@ namespace Verpha.HierarchyDesigner
                 return "Failed to load messages.";
             }
 
-            using (HttpClient client = new HttpClient())
+            using (HttpClient client = new())
             {
                 HttpResponseMessage response = await client.GetAsync(rawUrl);
 
@@ -96,7 +96,6 @@ namespace Verpha.HierarchyDesigner
                 }
                 else
                 {
-                    //Debug.LogError($"Failed to fetch messages from Gist raw URL: {response.ReasonPhrase}");
                     return "Failed to load messages.";
                 }
             }
@@ -123,13 +122,11 @@ namespace Verpha.HierarchyDesigner
                     }
                     else
                     {
-                        //Debug.LogError("Failed to parse raw URL from Gist HTML.");
                         return null;
                     }
                 }
                 else
                 {
-                    //Debug.LogError($"Failed to fetch Gist page: {response.ReasonPhrase}");
                     return null;
                 }
             }

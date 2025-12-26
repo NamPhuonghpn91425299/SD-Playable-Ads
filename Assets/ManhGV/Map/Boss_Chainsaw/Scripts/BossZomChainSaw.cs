@@ -147,7 +147,7 @@ public class BossZomChainSaw : MonoBehaviour
             {
                 var damageInfo = new DamageInfo()
                 {
-                    damageType = DamageType.Gas,
+                    damageType = DamageType.Explosion,
                     damage = 10000,
                     name = elem.gameObject.name,
                 };

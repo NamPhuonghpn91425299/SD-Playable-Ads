@@ -79,7 +79,7 @@ public class BotNetwork : MonoBehaviour,ITakeDamage
         foreach(var elem in lstRoot)
         {
             var takeDamageController = elem.gameObject.GetComponentInParent<BotNetwork>();
-            var damageType = elem.CompareTag("WeakPoint") ? DamageType.Weekness : DamageType.Normal;
+            var damageType = elem.CompareTag("WeakPoint") ? DamageType.Weakness : DamageType.Normal;
 
             if(takeDamageController != null)
             {
@@ -129,12 +129,12 @@ public class BotNetwork : MonoBehaviour,ITakeDamage
         if(isDead) return;
         if(BatTu) return;
         
-        if (damageInfo.damageType == DamageType.Gas && !isBoss)
+        if (damageInfo.damageType == DamageType.Explosion && !isBoss)
         {
             DeadExplosion = true;
         }
         
-        if (GamePlayManager.Instance.CanPlayEffectGiatDien && damageInfo.damageType != DamageType.Gas)
+        if (GamePlayManager.Instance.CanPlayEffectGiatDien && damageInfo.damageType != DamageType.Explosion)
         {
             if (vfxGiatDien != null && posCenter != null)
             {
@@ -148,7 +148,7 @@ public class BotNetwork : MonoBehaviour,ITakeDamage
         
         CacularHealth(damageInfo);
         
-        if(healthBarTransform != null && damageInfo.damageType != DamageType.Gas||healthBarTransform != null && isBoss && damageInfo.damageType == DamageType.Gas)
+        if(healthBarTransform != null && damageInfo.damageType != DamageType.Explosion||healthBarTransform != null && isBoss && damageInfo.damageType == DamageType.Explosion)
         {
             healthBarTransform.gameObject.SetActive(true);
             // Nếu đã có một Coroutine đang chờ ẩn thanh máu, hủy nó và tạo lại
@@ -167,12 +167,12 @@ public class BotNetwork : MonoBehaviour,ITakeDamage
         if(isDead) return;
         if(BatTu) return;
         
-        if (damageInfo.damageType == DamageType.Gas && !isBoss)
+        if (damageInfo.damageType == DamageType.Explosion && !isBoss)
         {
             DeadExplosion = true;
         }
         
-        if(GamePlayManager.Instance.CanPlayEffectGiatDien && damageInfo.damageType != DamageType.Gas)
+        if(GamePlayManager.Instance.CanPlayEffectGiatDien && damageInfo.damageType != DamageType.Explosion)
             vfxGiatDien.Play();
         
         OnTakeDamagePlayer?.Invoke(damageInfo.damage);
@@ -224,7 +224,7 @@ public class BotNetwork : MonoBehaviour,ITakeDamage
         }
         
         if (isImmortal && botConfigSO.isCanImmortal) return;
-        if(damageInfo.damageType == DamageType.Weekness)
+        if(damageInfo.damageType == DamageType.Weakness)
         {
             float reducedDamage = damageInfo.damage * damageScale;
             damage = Mathf.CeilToInt(reducedDamage); // Làm tròn lên 

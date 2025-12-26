@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MapSource/New Scene.unity
     guid: 16457d0c5ba5e4245836560fc5baf17b
+  - enabled: 1
+    path: Assets/Scenes/Map6_Zombie_Test.unity
+    guid: 8f4d081cc8c726540aa01641ddece802
   m_configObjects: {}

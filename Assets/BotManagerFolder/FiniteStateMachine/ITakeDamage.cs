@@ -13,8 +13,8 @@ public interface IReward
 public enum DamageType
 {
     Normal,
-    Weekness,
-    Gas,
+    Weakness,
+    Explosion
 }
 public struct DamageInfo
 {

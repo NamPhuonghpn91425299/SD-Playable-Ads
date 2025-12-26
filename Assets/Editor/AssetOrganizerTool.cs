@@ -189,6 +189,7 @@ public class AssetOrganizerTool : EditorWindow
     private void LoadDefaultRules()
     {
         rules.Clear();
+        rules.Add(new OrganizationRule("Scenes", ".unity", "Scenes"));
         rules.Add(new OrganizationRule("Prefabs", ".prefab", "Prefabs"));
         rules.Add(new OrganizationRule("Scripts", ".cs", "Scripts"));
         rules.Add(new OrganizationRule("Textures", ".png,.jpg,.jpeg,.tga,.tiff,.psd,.bmp", "Textures"));

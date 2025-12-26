@@ -10,20 +10,11 @@ namespace Verpha.HierarchyDesigner
         public bool utilitiesFoldout = false;
         public bool configurationsFoldout = false;
         public HierarchyDesigner_Window_Main.CurrentWindow currentWindow = HierarchyDesigner_Window_Main.CurrentWindow.Home;
+        public bool hasInitializedUpdateBoard = false;
+        public string sessionUpdateBoardContent = null;
+        public bool hasInitializedPatchNotes = false;
+        public string sessionPatchNotesContent = null;
         #endregion
-
-        /*
-        #region Methods
-       
-        public new void Save(bool persistBetweenSessions = false)
-        {
-            if (persistBetweenSessions)
-            {
-                base.Save(true);
-            }
-        }
-        #endregion
-        */
     }
 }
 #endif

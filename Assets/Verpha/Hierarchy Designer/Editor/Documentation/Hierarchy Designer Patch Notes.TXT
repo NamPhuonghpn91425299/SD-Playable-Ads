@@ -1,3 +1,8 @@
+| Version 1.1.9 (In Progress)
+[1.1.8.1]
+• (Improvement): The update board and patch notes will initialize once per session when you first open the Hierarchy Designer window, rather than reloading each time the window is opened.
+• (Bug Fixed): Fixed a bug where changing the background gradient in either the Separator Creation Field or the Default Background Gradient in the Design Settings would change the background gradient for all separators in the separators list.
+
 | Version 1.1.8
 • (New): The left panel of the Hierarchy Designer window now supports a collapsed mode.
 • (New): You can now edit the offset for the 'Separator Left-Right Text Anchor' in Design Settings.

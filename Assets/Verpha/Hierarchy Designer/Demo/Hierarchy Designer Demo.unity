@@ -692,7 +692,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.1
-  m_Text: 'Current Version: 1.1.8 | Developed with Unity 2022.3.43f1'
+  m_Text: 'Current Version: 1.1.8.1 | Developed with Unity 2022.3.46f1'
 --- !u!222 &605510317
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -10,6 +10,9 @@ TagManager:
   - Body
   - Bot
   - WeakPoint
+  - Enemy
+  - Follow
+  - Unfollow
   layers:
   - Default
   - TransparentFX
@@ -20,9 +23,9 @@ TagManager:
   - Bot
   - Vechile
   - Reward
-  - 
-  - 
-  - 
+  - Ground
+  - WeakPoint
+  - Gas
   - 
   - 
   - 

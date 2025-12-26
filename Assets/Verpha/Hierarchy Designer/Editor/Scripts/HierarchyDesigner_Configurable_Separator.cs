@@ -16,11 +16,16 @@ namespace Verpha.HierarchyDesigner
             public Color TextColor = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultTextColor;
             public bool IsGradientBackground = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultIsGradientBackground;
             public Color BackgroundColor = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultBackgroundColor;
-            public Gradient BackgroundGradient = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultBackgroundGradient;
+            public Gradient BackgroundGradient;
             public int FontSize = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultFontSize;
             public FontStyle FontStyle = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultFontStyle;
             public TextAnchor TextAnchor = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultTextAnchor;
             public SeparatorImageType ImageType = HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultImageType;
+
+            public HierarchyDesigner_SeparatorData()
+            {
+                BackgroundGradient = HierarchyDesigner_Shared_ColorUtility.CopyGradient(HierarchyDesigner_Configurable_DesignSettings.SeparatorDefaultBackgroundGradient);
+            }
         }
         public enum SeparatorImageType
         {
@@ -41,7 +46,7 @@ namespace Verpha.HierarchyDesigner
             NextGenII,
         }
         private const string settingsFileName = "HierarchyDesigner_SavedData_Separators.json";
-        private static Dictionary<string, HierarchyDesigner_SeparatorData> separators = new Dictionary<string, HierarchyDesigner_SeparatorData>();
+        private static Dictionary<string, HierarchyDesigner_SeparatorData> separators = new();
         #endregion
 
         #region Initialization
@@ -53,7 +58,7 @@ namespace Verpha.HierarchyDesigner
 
         private static void LoadHierarchyDesignerManagerGameObjectCaches()
         {
-            Dictionary<int, (Color textColor, bool isGradientBackground, Color backgroundColor, Gradient backgroundGradient, int fontSize, FontStyle fontStyle, TextAnchor textAnchor, SeparatorImageType separatorImageType)> separatorCache = new Dictionary<int, (Color textColor, bool isGradientBackground, Color backgroundColor, Gradient backgroundGradient, int fontSize, FontStyle fontStyle, TextAnchor textAnchor, SeparatorImageType separatorImageType)>();
+            Dictionary<int, (Color textColor, bool isGradientBackground, Color backgroundColor, Gradient backgroundGradient, int fontSize, FontStyle fontStyle, TextAnchor textAnchor, SeparatorImageType separatorImageType)> separatorCache = new();
             foreach (KeyValuePair<string, HierarchyDesigner_SeparatorData> separator in separators)
             {
                 int instanceID = separator.Key.GetHashCode();
@@ -72,7 +77,7 @@ namespace Verpha.HierarchyDesigner
                 separatorData.TextColor = textColor;
                 separatorData.IsGradientBackground = isGradientBackground;
                 separatorData.BackgroundColor = backgroundColor;
-                separatorData.BackgroundGradient = backgroundGradient;
+                separatorData.BackgroundGradient = HierarchyDesigner_Shared_ColorUtility.CopyGradient(backgroundGradient);
                 separatorData.FontSize = fontSize;
                 separatorData.FontStyle = fontStyle;
                 separatorData.TextAnchor = textAnchor;
@@ -86,7 +91,7 @@ namespace Verpha.HierarchyDesigner
                     TextColor = textColor,
                     IsGradientBackground = isGradientBackground,
                     BackgroundColor = backgroundColor,
-                    BackgroundGradient = backgroundGradient,
+                    BackgroundGradient = HierarchyDesigner_Shared_ColorUtility.CopyGradient(backgroundGradient),
                     FontSize = fontSize,
                     FontStyle = fontStyle,
                     TextAnchor = textAnchor,
@@ -99,7 +104,7 @@ namespace Verpha.HierarchyDesigner
 
         public static void ApplyChangesToSeparators(Dictionary<string, HierarchyDesigner_SeparatorData> tempSeparators, List<string> separatorsOrder)
         {
-            Dictionary<string, HierarchyDesigner_SeparatorData> orderedSeparators = new Dictionary<string, HierarchyDesigner_SeparatorData>();
+            Dictionary<string, HierarchyDesigner_SeparatorData> orderedSeparators = new();
             foreach (string key in separatorsOrder)
             {
                 if (tempSeparators.TryGetValue(key, out HierarchyDesigner_SeparatorData separatorData))
@@ -265,7 +270,7 @@ namespace Verpha.HierarchyDesigner
         public static void SaveSettings()
         {
             string dataFilePath = HierarchyDesigner_Manager_Data.GetDataFilePath(settingsFileName);
-            HierarchyDesigner_Shared_SerializableList<HierarchyDesigner_SeparatorData> serializableList = new HierarchyDesigner_Shared_SerializableList<HierarchyDesigner_SeparatorData>(new List<HierarchyDesigner_SeparatorData>(separators.Values));
+            HierarchyDesigner_Shared_SerializableList<HierarchyDesigner_SeparatorData> serializableList = new(new List<HierarchyDesigner_SeparatorData>(separators.Values));
             string json = JsonUtility.ToJson(serializableList, true);
             File.WriteAllText(dataFilePath, json);
             AssetDatabase.Refresh();
@@ -282,6 +287,7 @@ namespace Verpha.HierarchyDesigner
                 foreach (HierarchyDesigner_SeparatorData separator in loadedSeparators.items)
                 {
                     separator.ImageType = HierarchyDesigner_Shared_EnumFilter.ParseEnum(separator.ImageType.ToString(), SeparatorImageType.Default);
+                    separator.BackgroundGradient = HierarchyDesigner_Shared_ColorUtility.CopyGradient(separator.BackgroundGradient);
                     separators[separator.Name] = separator;
                 }
             }
@@ -302,7 +308,7 @@ namespace Verpha.HierarchyDesigner
         {
             if (name.StartsWith("//"))
             {
-                return name.Substring(2).Trim();
+                return name[2..].Trim();
             }
             return name.Trim();
         }

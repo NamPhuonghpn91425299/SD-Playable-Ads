@@ -369,7 +369,7 @@ public class WeaponController : MonoBehaviour
         {
             //var damageType = hit.collider.CompareTag("WeakPoint")? DamageType.Weekness:DamageType.Normal;
             var damageType = hit.collider.gameObject.layer == LayerConstants.WeakPointLayer 
-                ? DamageType.Weekness 
+                ? DamageType.Weakness 
                 : DamageType.Normal;
             //Debug.Log($"Raycast hit object: {hit.collider.gameObject.name}, Layer: {hit.collider.gameObject.layer}");
 
