@@ -1,0 +1,14 @@
+Màn chơi gồm:
+    - Thuyền chở xe tăng Wanze (bắn hạ khi chưa thả xe tăng lên bờ +1 kill, khi đã thả xe tăng lên bờ +0 kill)
+    - Thuyền chở xe tăng M1A2 (bắn hạ khi chưa thả xe tăng lên bờ +1 kill, khi đã thả xe tăng lên bờ +0 kill)
+    - Thuyền chở xe tăng T-90 (bắn hạ khi chưa thả xe tăng lên bờ +1 kill, khi đã thả xe tăng lên bờ +0 kill)
+    - Thuyền chở lính 6 lính trên thuyền (bắn hạ thuyền + kill = số lính trên thuyền, bắn hạ lính +1 kill)
+    - Máy bay chở 6 lính (bắn hạ máy bay + kill = số lính trên máy bay, bắn hạ lính + 1 kill)
+    - may bay thar 15 lính nhảy dù (bắn hạ máy bay + kill = số lính trên máy bay, bắn hạ lính nhảy dù +1 kill)
+    - boss Phản luecj j15 bắn hạ +1 kill
+    
+Yêu Cầu:
+    - Tạo kịch bản cho người chơi phải tấn công liên tục
+    - Tạo dựa vào số kill mới spawn tiếp để đảm bảo số lính không được quá 25 lính trên bản đồ, chết con này mí spawn con khác
+    - không quá 5 tank trên bản đồ
+    - tối đa 2 J15 trên màn này

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775d1dfe60f144b382d6f01021b45c75, type: 3}
+  m_Name: Round_SO_Map3
+  m_EditorClassIdentifier: 
+  RoundName: Round 1
+  DelayAfterComplete: 2
+  SpawnSteps:
+  - BotToSpawn: 1
+    Quantity: 12
+    DelayBetweenSpawns: 1.5
+    Conditions:
+    - Type: 0
+      WaitTime: 0
+      TargetKills: 0
+      TypeToCount: 1
+  - BotToSpawn: 10
+    Quantity: 3
+    DelayBetweenSpawns: 2
+    Conditions:
+    - Type: 0
+      WaitTime: 5
+      TargetKills: 0
+      TypeToCount: 1
+  - BotToSpawn: 8
+    Quantity: 3
+    DelayBetweenSpawns: 5
+    Conditions:
+    - Type: 0
+      WaitTime: 10
+      TargetKills: 0
+      TypeToCount: 1
+  - BotToSpawn: 11
+    Quantity: 1
+    DelayBetweenSpawns: 0
+    Conditions:
+    - Type: 0
+      WaitTime: 10
+      TargetKills: 0
+      TypeToCount: 1

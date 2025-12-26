@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Energy Shield
+  m_Shader: {fileID: 4800000, guid: fc77494810b11384cb19110631a2c8ba, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _ColorMask:
+        m_Texture: {fileID: 2800000, guid: 01925a157d905c04482bbf55d754f1b8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EffectNoise:
+        m_Texture: {fileID: 2800000, guid: beea0694d337e23449c7d21e4dfef1cb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EffectPattern:
+        m_Texture: {fileID: 2800000, guid: a6d2af381a076b24db0182b20b887209, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 01925a157d905c04482bbf55d754f1b8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _EffectFrequency: 5
+    - _EffectMask: 0.9
+    - _EffectSpeed: -2
+    - _EffectThreshold: 1
+    - _ExplosionPush: 1.5
+    - _ExplosionRange: 15
+    - _ExplosionThickness: 1.15
+    - _FresnelContrast: 2.47
+    - _FresnelPower: 3.02
+    - _ImpactPush: 0.02
+    - _ImpactRange: 1.5
+    - _IntersectionThickness: 1
+    - _NormalPush: 0
+    - _ShrinkPush: -0.5
+    m_Colors:
+    - _Color: {r: 0.36850303, g: 0.6852862, b: 0.8584906, a: 1}
+    - _EffectColor: {r: 0.2862745, g: 0.7239784, b: 0.7921569, a: 1}
+    - _EffectVelocity: {r: 0, g: -1.5, b: 0, a: 0}
+    - _ExplosionColor: {r: 1, g: 0.30238566, b: 0, a: 0.8666667}
+    - _ImpactColor: {r: 1, g: 0, b: 0.69146776, a: 1}
+    - _IntersectionCol: {r: 1, g: 1, b: 1, a: 1}
+    - _IntersectionColor: {r: 0.9294118, g: 0.9450981, b: 0.7411765, a: 1}
+  m_BuildTextureStacks: []

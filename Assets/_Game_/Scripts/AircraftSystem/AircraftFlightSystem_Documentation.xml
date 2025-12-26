@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AircraftFlightSystemDocumentation>
+    <MetaInfo>
+        <Title>Aircraft Flight System Documentation</Title>
+        <Version>1.0</Version>
+        <Author>AI Assistant</Author>
+        <Date>2025-09-11</Date>
+        <Description>Hệ thống điều khiển máy bay bay theo pattern phức tạp với attack loop</Description>
+    </MetaInfo>
+
+    <Overview>
+        <SystemDescription>
+            Hệ thống điều khiển máy bay bay theo pattern:
+            MainPath → Attack Loop (Attack → Left/Right Exit → Attack → ...)
+            
+            Máy bay sẽ bay qua các waypoints, sau đó vào vòng lặp tấn công vô tận
+            với việc rẽ trái/phải xen kẽ sau mỗi lần tấn công.
+        </SystemDescription>
+        
+        <KeyFeatures>
+            <Feature name="Complex Flight Pattern">Bay theo pattern phức tạp với nhiều phase</Feature>
+            <Feature name="Smart Rotation">Rotation mượt với look-ahead và banking</Feature>
+            <Feature name="Attack System">Tự động trigger tấn công khi gần attack points</Feature>
+            <Feature name="Loop System">Vòng lặp tấn công vô tận với exit paths</Feature>
+            <Feature name="Debug Visualization">System debug visualization cực chi tiết</Feature>
+            <Feature name="Configurable">Tất cả tham số có thể điều chỉnh qua Inspector</Feature>
+        </KeyFeatures>
+    </Overview>
+
+    <FlightPhases>
+        <Phase name="MainPath" description="Giai đoạn bay đường chính lần đầu">
+            <Behavior>
+                - Bay qua tất cả waypoints trong m_pointGroup.points
+                - Chỉ xảy ra 1 lần duy nhất khi spawn
+                - Sau khi hoàn thành sẽ chuyển sang Attack phase
+            </Behavior>
+            <Trigger>Tự động khi Start()</Trigger>
+            <NextPhase>Attack</NextPhase>
+        </Phase>
+
+        <Phase name="Attack" description="Giai đoạn tấn công - bay qua attack points">
+            <Behavior>
+                - Bay qua TẤT CẢ attack points (từ đầu tới cuối)
+                - Trigger attack khi gần attack points đầu tiên
+                - Reset attack triggers để có thể tấn công lại
+                - Sau khi bay xong tất cả attack points → chọn exit
+            </Behavior>
+            <Trigger>Sau MainPath hoặc khi quay lại từ Exit</Trigger>
+            <NextPhase>LeftExit hoặc RightExit</NextPhase>
+        </Phase>
+
+        <Phase name="LeftExit" description="Bay lượn trái thoát ra">
+            <Behavior>
+                - Bay qua tất cả points trong m_pointGroup.leftPoints
+                - Đây là đường lượn trái để thoát ra khỏi khu vực tấn công
+                - Sau khi hoàn thành sẽ quay lại Attack
+            </Behavior>
+            <Trigger>Được chọn từ Attack phase theo ExitChoice logic</Trigger>
+            <NextPhase>Looping (quay lại Attack)</NextPhase>
+        </Phase>
+
+        <Phase name="RightExit" description="Bay lượn phải thoát ra">
+            <Behavior>
+                - Bay qua tất cả points trong m_pointGroup.rightPoints
+                - Đây là đường lượn phải để thoát ra khỏi khu vực tấn công
+                - Sau khi hoàn thành sẽ quay lại Attack
+            </Behavior>
+            <Trigger>Được chọn từ Attack phase theo ExitChoice logic</Trigger>
+            <NextPhase>Looping (quay lại Attack)</NextPhase>
+        </Phase>
+
+        <Phase name="Looping" description="Vòng lặp tấn công vô tận">
+            <Behavior>
+                - Đây là phase đặc biệt cho vòng lặp
+                - Logic: Exit → Loop Attack → Exit khác → Loop Attack → ...
+                - Loop Attack: chỉ bay vào ĐIỂM CUỐI attack để rẽ ngay (không bay từ đầu)
+                - Không reset attack triggers trong loop
+            </Behavior>
+            <Trigger>Sau lần đầu tiên hoàn thành Exit phase</Trigger>
+            <NextPhase>Chính nó (vô tận)</NextPhase>
+        </Phase>
+
+        <Phase name="Completed" description="Hoàn thành bay">
+            <Behavior>
+                - Dừng hoạt động bay
+                - Chỉ xảy ra khi có lỗi (không có points, v.v.)
+            </Behavior>
+            <Trigger>Lỗi hệ thống</Trigger>
+            <NextPhase>Không có</NextPhase>
+        </Phase>
+    </FlightPhases>
+
+    <FlightLogic>
+        <MovementSystem>
+            <Description>
+                Máy bay hoạt động giống như máy bay thực tế:
+                1. Chỉ di chuyển theo hướng mũi (transform.forward)
+                2. Thay đổi hướng bằng rotation
+                3. Không thể bay lùi hoặc bay chéo
+            </Description>
+            <Code>
+                <![CDATA[
+                // 1. Xoay để hướng về target
+                HandleRotation(targetPos, distanceToTarget);
+                
+                // 2. Di chuyển theo hướng mũi
+                Vector3 flightDirection = transform.forward;
+                transform.position += flightDirection * m_flySpeed * Time.deltaTime;
+                
+                // 3. Kiểm tra đến điểm
+                if (Vector3.Distance(transform.position, targetPos) <= m_arrivalDistance)
+                    m_currentPointIndex++;
+                ]]>
+            </Code>
+        </MovementSystem>
+
+        <RotationSystem>
+            <Description>
+                System rotation thông minh với look-ahead và banking:
+                - Look-ahead: Xoay sớm trước khi đến điểm
+                - Banking: Nghiêng máy bay khi rẽ (realistic)
+                - Smoothing: Rotation mượt mà không giật cục
+                - Emergency mode: Có thể tắt tất cả advanced features
+            </Description>
+            <Parameters>
+                <Parameter name="m_rotationSpeed">Tốc độ xoay tối đa (độ/giây)</Parameter>
+                <Parameter name="m_rotationSmoothness">Độ mượt rotation (0-1)</Parameter>
+                <Parameter name="m_lookAheadDistance">Khoảng cách bắt đầu xoay về điểm tiếp theo</Parameter>
+                <Parameter name="m_useBanking">Có dùng banking không</Parameter>
+                <Parameter name="m_maxBankAngle">Góc banking tối đa</Parameter>
+                <Parameter name="m_emergencySimpleMode">Chế độ emergency đơn giản</Parameter>
+            </Parameters>
+        </RotationSystem>
+
+        <AttackSystem>
+            <Description>
+                Tự động trigger attack khi máy bay gần attack points:
+                - Chỉ trigger khi đang ở Attack phase hoặc Looping phase  
+                - Có cooldown giữa các lần attack
+                - Cache attack points đã trigger để tránh spam
+                - Reset cache khi vào Attack phase mới
+            </Description>
+            <Parameters>
+                <Parameter name="m_attackRange">Khoảng cách kích hoạt attack</Parameter>
+                <Parameter name="m_attackCooldown">Thời gian chờ giữa các lần attack</Parameter>
+            </Parameters>
+            <Events>
+                <Event name="OnAttackTriggered">Được gọi khi trigger attack thành công</Event>
+            </Events>
+        </AttackSystem>
+
+        <ExitChoiceSystem>
+            <Description>
+                Logic chọn hướng exit sau attack:
+                - Left: Luôn chọn trái
+                - Right: Luôn chọn phải  
+                - Alternate: Xen kẽ trái-phải
+                - Random: Ngẫu nhiên
+            </Description>
+            <ExitChoiceOptions>
+                <Option name="Left">Luôn chọn đường thoát trái</Option>
+                <Option name="Right">Luôn chọn đường thoát phải</Option>
+                <Option name="Alternate">Xen kẽ trái-phải theo thứ tự</Option>
+                <Option name="Random">Chọn ngẫu nhiên trái hoặc phải</Option>
+            </ExitChoiceOptions>
+        </ExitChoiceSystem>
+    </FlightLogic>
+
+    <Setup>
+        <Requirements>
+            <Requirement>Unity 2020.3 trở lên</Requirement>
+            <Requirement>PointGroup component được setup đúng</Requirement>
+            <Requirement>Waypoints, Attack points, Left/Right exit points</Requirement>
+        </Requirements>
+
+        <StepByStep>
+            <Step number="1">
+                <Title>Tạo PointGroup</Title>
+                <Description>
+                    Tạo một GameObject với PointGroup component.
+                    PointGroup sẽ tự động phân loại points dựa trên tên:
+                    - points: waypoints chính (MainPath)
+                    - attackPoints: có chứa "attack" trong tên
+                    - leftPoints: có chứa "left" trong tên  
+                    - rightPoints: có chứa "right" trong tên
+                </Description>
+            </Step>
+
+            <Step number="2">
+                <Title>Tạo Waypoints</Title>
+                <Description>
+                    Tạo các Empty GameObjects làm waypoints:
+                    - MainPath: Waypoint_01, Waypoint_02, ...
+                    - Attack: AttackPoint_01, AttackPoint_02, ...
+                    - Left Exit: LeftExit_01, LeftExit_02, ...
+                    - Right Exit: RightExit_01, RightExit_02, ...
+                </Description>
+            </Step>
+
+            <Step number="3">
+                <Title>Setup AircraftFlightController</Title>
+                <Description>
+                    Gắn AircraftFlightController component vào máy bay GameObject.
+                    Assign PointGroup vào m_pointGroup field.
+                    Điều chỉnh các tham số flight settings theo ý muốn.
+                </Description>
+            </Step>
+
+            <Step number="4">
+                <Title>Configure Parameters</Title>
+                <Description>
+                    Điều chỉnh các tham số trong Inspector:
+                    - Flight Settings: Speed, rotation, distances
+                    - Advanced Rotation: Look-ahead, banking, smoothness
+                    - Attack Settings: Range, cooldown
+                    - Exit Choice: Cách chọn left/right
+                    - Debug: Bật/tắt visualization
+                </Description>
+            </Step>
+
+            <Step number="5">
+                <Title>Test và Debug</Title>
+                <Description>
+                    Bật debug gizmos để thấy visualization.
+                    Play scene và quan sát máy bay bay.
+                    Điều chỉnh parameters cho phù hợp.
+                </Description>
+            </Step>
+        </StepByStep>
+    </Setup>
+
+    <Parameters>
+        <Category name="Flight Settings">
+            <Parameter name="m_flySpeed" type="float" default="20f">
+                <Description>Tốc độ bay của máy bay (units/giây)</Description>
+                <Range>1.0f - 100.0f</Range>
+                <Usage>Tốc độ càng cao, máy bay bay càng nhanh</Usage>
+            </Parameter>
+
+            <Parameter name="m_rotationSpeed" type="float" default="90f">
+                <Description>Tốc độ xoay tối đa của máy bay (độ/giây)</Description>
+                <Range>10.0f - 360.0f</Range>
+                <Usage>Tốc độ xoay càng cao, máy bay rẽ càng nhanh</Usage>
+            </Parameter>
+
+            <Parameter name="m_arrivalDistance" type="float" default="2f">
+                <Description>Khoảng cách đến điểm để coi như đã đến</Description>
+                <Range>0.5f - 10.0f</Range>
+                <Usage>Distance càng nhỏ, máy bay bay càng chính xác</Usage>
+            </Parameter>
+
+            <Parameter name="m_lookAheadDistance" type="float" default="15f">
+                <Description>Khoảng cách bắt đầu xoay về điểm tiếp theo</Description>
+                <Range>5.0f - 50.0f</Range>
+                <Usage>Distance càng lớn, máy bay xoay càng sớm</Usage>
+            </Parameter>
+        </Category>
+
+        <Category name="Advanced Rotation">
+            <Parameter name="m_rotationSmoothness" type="float" default="0.8f">
+                <Description>Độ mượt của rotation (0-1)</Description>
+                <Range>0.0f - 1.0f</Range>
+                <Usage>0 = responsive nhất, 1 = mượt nhất</Usage>
+            </Parameter>
+
+            <Parameter name="m_maxLookAheadPoints" type="int" default="3">
+                <Description>Số điểm look-ahead tối đa</Description>
+                <Range>1 - 10</Range>
+                <Usage>Nhiều điểm = rotation thông minh hơn</Usage>
+            </Parameter>
+
+            <Parameter name="m_useBanking" type="bool" default="true">
+                <Description>Có dùng banking (nghiêng máy bay khi rẽ)</Description>
+                <Usage>true = realistic hơn, false = đơn giản hơn</Usage>
+            </Parameter>
+
+            <Parameter name="m_maxBankAngle" type="float" default="30f">
+                <Description>Góc banking tối đa (độ)</Description>
+                <Range>0.0f - 90.0f</Range>
+                <Usage>Góc càng lớn, máy bay nghiêng càng nhiều khi rẽ</Usage>
+            </Parameter>
+        </Category>
+
+        <Category name="Attack Settings">
+            <Parameter name="m_attackRange" type="float" default="3f">
+                <Description>Khoảng cách kích hoạt tấn công</Description>
+                <Range>1.0f - 20.0f</Range>
+                <Usage>Range càng lớn, trigger attack từ xa</Usage>
+            </Parameter>
+
+            <Parameter name="m_attackCooldown" type="float" default="1f">
+                <Description>Thời gian chờ giữa các lần tấn công</Description>
+                <Range>0.1f - 10.0f</Range>
+                <Usage>Cooldown càng nhỏ, attack càng thường xuyên</Usage>
+            </Parameter>
+        </Category>
+
+        <Category name="Debug">
+            <Parameter name="m_showDebugGizmos" type="bool" default="true">
+                <Description>Hiển thị debug gizmos trong Scene view</Description>
+                <Usage>Bật để thấy toàn bộ visualization</Usage>
+            </Parameter>
+
+            <Parameter name="m_showDebugLabels" type="bool" default="true">
+                <Description>Hiển thị text thông tin trên các điểm</Description>
+                <Usage>Bật để thấy labels và info text</Usage>
+            </Parameter>
+
+            <Parameter name="m_showFlightTrajectory" type="bool" default="true">
+                <Description>Hiển thị trajectory đường bay</Description>
+                <Usage>Bật để thấy lịch sử đường bay màu cam</Usage>
+            </Parameter>
+
+            <Parameter name="m_showAllFlightPaths" type="bool" default="true">
+                <Description>Hiển thị toàn bộ flight path patterns</Description>
+                <Usage>Bật để thấy tất cả đường bay có thể</Usage>
+            </Parameter>
+        </Category>
+    </Parameters>
+
+    <DebugVisualization>
+        <FlightTrajectory>
+            <Description>Lịch sử đường bay thực tế máy bay đã đi qua</Description>
+            <Visual>
+                <Color>Orange với alpha fade</Color>
+                <Effect>Điểm mới sáng, điểm cũ mờ dần</Effect>
+                <Limit>500 điểm tối đa, tự động xóa điểm cũ</Limit>
+            </Visual>
+        </FlightTrajectory>
+
+        <FlightPaths>
+            <MainPath>
+                <Color>Cyan</Color>
+                <Description>Đường bay chính lần đầu</Description>
+                <LineWidth>Normal</LineWidth>
+            </MainPath>
+
+            <AttackPath>
+                <Color>Red</Color>
+                <Description>Đường tấn công</Description>
+                <LineWidth>Thick (nổi bật)</LineWidth>
+            </AttackPath>
+
+            <LeftExitPath>
+                <Color>Blue</Color>
+                <Description>Đường lượn trái</Description>
+                <LineWidth>Normal</LineWidth>
+            </LeftExitPath>
+
+            <RightExitPath>
+                <Color>Magenta</Color>
+                <Description>Đường lượn phải</Description>
+                <LineWidth>Normal</LineWidth>
+            </RightExitPath>
+        </FlightPaths>
+
+        <Connections>
+            <PhaseTransitions>
+                <Color>Yellow với alpha mờ</Color>
+                <Style>Dashed lines</Style>
+                <Description>Các đường nối giữa phases</Description>
+            </PhaseTransitions>
+
+            <LoopArrows>
+                <Color>Yellow</Color>
+                <Style>Arrows</Style>
+                <Description>Mũi tên chỉ vòng lặp</Description>
+            </LoopArrows>
+        </Connections>
+
+        <AircraftInfo>
+            <CurrentDirection>
+                <Color>Yellow</Color>
+                <Description>Hướng đang bay hiện tại (transform.forward)</Description>
+            </CurrentDirection>
+
+            <TargetDirection>
+                <Color>Cyan</Color>
+                <Description>Hướng mục tiêu (optimal look direction)</Description>
+            </TargetDirection>
+
+            <AttackRange>
+                <Color>Red semi-transparent</Color>
+                <Description>Vòng tròn attack range</Description>
+            </AttackRange>
+
+            <ArrivalDistance>
+                <Color>Green semi-transparent</Color>
+                <Description>Vòng tròn arrival distance</Description>
+            </ArrivalDistance>
+
+            <LookAheadDistance>
+                <Color>Blue semi-transparent</Color>
+                <Description>Vòng tròn look ahead distance</Description>
+            </LookAheadDistance>
+        </AircraftInfo>
+    </DebugVisualization>
+
+    <Events>
+        <Event name="OnAttackTriggered">
+            <Type>System.Action&lt;Transform&gt;</Type>
+            <Description>Được gọi khi máy bay trigger tấn công tại một attack point</Description>
+            <Parameter name="attackPoint" type="Transform">Attack point được kích hoạt</Parameter>
+            <Usage>
+                <![CDATA[
+                aircraftController.OnAttackTriggered += (attackPoint) => {
+                    Debug.Log($"Attack triggered at {attackPoint.name}");
+                    // Spawn explosion, play sound, etc.
+                };
+                ]]>
+            </Usage>
+        </Event>
+
+        <Event name="OnPhaseChanged">
+            <Type>System.Action&lt;FlightPhase&gt;</Type>
+            <Description>Được gọi khi máy bay chuyển đổi giai đoạn bay</Description>
+            <Parameter name="newPhase" type="FlightPhase">Giai đoạn bay mới</Parameter>
+            <Usage>
+                <![CDATA[
+                aircraftController.OnPhaseChanged += (newPhase) => {
+                    Debug.Log($"Phase changed to {newPhase}");
+                    // Update UI, play transition effects, etc.
+                };
+                ]]>
+            </Usage>
+        </Event>
+    </Events>
+
+    <CommonIssues>
+        <Issue name="Máy bay bay vòng vòng">
+            <Cause>Rotation settings quá mạnh hoặc look-ahead distance quá lớn</Cause>
+            <Solution>
+                1. Bật Emergency Simple Mode để test
+                2. Giảm m_rotationSmoothness
+                3. Giảm m_lookAheadDistance
+                4. Tắt banking tạm thời
+            </Solution>
+        </Issue>
+
+        <Issue name="Máy bay không tấn công">
+            <Cause>Attack range quá nhỏ hoặc attack points sai tên</Cause>
+            <Solution>
+                1. Tăng m_attackRange
+                2. Kiểm tra tên attack points có chứa "attack"
+                3. Kiểm tra OnAttackTriggered event có được gọi
+            </Solution>
+        </Issue>
+
+        <Issue name="Máy bay không rẽ exit">
+            <Cause>Không có left/right points hoặc sai tên</Cause>
+            <Solution>
+                1. Kiểm tra tên left points có chứa "left"
+                2. Kiểm tra tên right points có chứa "right"
+                3. Kiểm tra ExitChoice setting
+            </Solution>
+        </Issue>
+
+        <Issue name="Performance thấp">
+            <Cause>Quá nhiều debug visualization</Cause>
+            <Solution>
+                1. Tắt debug gizmos không cần thiết
+                2. Giảm trajectory limit xuống
+                3. Tắt look-ahead visualization
+            </Solution>
+        </Issue>
+    </CommonIssues>
+
+    <AdvancedUsage>
+        <CustomAttackLogic>
+            <Description>Tùy chỉnh logic tấn công</Description>
+            <Example>
+                <![CDATA[
+                // Subscribe to attack event
+                aircraftController.OnAttackTriggered += OnCustomAttack;
+                
+                private void OnCustomAttack(Transform attackPoint) {
+                    // Custom attack logic here
+                    SpawnMissiles(attackPoint.position);
+                    PlayAttackSound();
+                    ShowExplosionEffect(attackPoint.position);
+                }
+                ]]>
+            </Example>
+        </CustomAttackLogic>
+
+        <MultipleAircraft>
+            <Description>Quản lý nhiều máy bay cùng lúc</Description>
+            <Example>
+                <![CDATA[
+                // Create aircraft squadron
+                List<AircraftFlightController> squadron = new List<AircraftFlightController>();
+                
+                foreach (var aircraft in squadron) {
+                    aircraft.OnAttackTriggered += OnSquadronAttack;
+                    aircraft.OnPhaseChanged += OnSquadronPhaseChange;
+                }
+                ]]>
+            </Example>
+        </MultipleAircraft>
+
+        <DynamicWaypoints>
+            <Description>Thay đổi waypoints trong runtime</Description>
+            <Example>
+                <![CDATA[
+                // Update waypoints dynamically
+                var newWaypoint = CreateWaypoint(newPosition);
+                pointGroup.points.Add(newWaypoint);
+                pointGroup.UpdatePoints();
+                ]]>
+            </Example>
+        </DynamicWaypoints>
+    </AdvancedUsage>
+
+    <BestPractices>
+        <Practice name="Waypoint Spacing">
+            <Description>Đặt waypoints cách nhau đều, không quá xa cũng không quá gần</Description>
+            <Recommendation>Khoảng cách tối ưu: 10-30 units</Recommendation>
+        </Practice>
+
+        <Practice name="Attack Point Positioning">
+            <Description>Đặt attack points ở vị trí strategically important</Description>
+            <Recommendation>Đầu attack path để tấn công sớm, cuối attack path để rẽ</Recommendation>
+        </Practice>
+
+        <Practice name="Exit Path Design">
+            <Description>Thiết kế exit paths tạo vòng lặp tự nhiên</Description>
+            <Recommendation>Left/right paths nên dẫn về gần attack points để loop mượt</Recommendation>
+        </Practice>
+
+        <Practice name="Performance Optimization">
+            <Description>Optimize performance cho production</Description>
+            <Recommendation>
+                - Tắt debug visualization không cần thiết
+                - Giảm trajectory limit
+                - Sử dụng object pooling cho nhiều aircraft
+            </Recommendation>
+        </Practice>
+
+        <Practice name="Testing">
+            <Description>Test thoroughly với nhiều scenarios</Description>
+            <Recommendation>
+                - Test với waypoints ít và nhiều
+                - Test với góc cua hẹp và rộng  
+                - Test với tốc độ chậm và nhanh
+                - Test emergency mode
+            </Recommendation>
+        </Practice>
+    </BestPractices>
+
+    <VersionHistory>
+        <Version number="1.0">
+            <Date>2025-09-11</Date>
+            <Changes>
+                - Initial release
+                - Basic flight pattern system
+                - Attack and exit loop logic
+                - Advanced rotation with banking
+                - Comprehensive debug visualization
+                - Emergency simple mode
+                - Full documentation
+            </Changes>
+        </Version>
+    </VersionHistory>
+</AircraftFlightSystemDocumentation>

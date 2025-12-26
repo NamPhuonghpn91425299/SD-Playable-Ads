@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de81161c90e475fb8ccd124170dcbfb, type: 3}
+  m_Name: Tank_PZV
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1824273531091049556, guid: 885ac82a8a28d234fa73a855bb379ef8, type: 3}
+  botType: 14
+  botMoveType: 1
+  spawnableType: 1
+  isGroupPrefab: 0

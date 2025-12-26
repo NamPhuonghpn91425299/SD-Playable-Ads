@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ShooterTPP_OverrideBot_D5_M113
+  m_Controller: {fileID: 9100000, guid: b1c18cdd5baebea4b9d4880cf2b88cc5, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 69f1a772cc1e0f840982da5d69d464ea, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 023e678f7319a0e4e9efa8c5ad65f64d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 04b445e8bf94b16408e9760a092e6d64, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 023e678f7319a0e4e9efa8c5ad65f64d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2d5a84bd5a998d2458cc7b187d0d63e8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 018516a11916d934ca34a63e2a2b3622, type: 2}

@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5278127794149880145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5097822892190473342}
+  - component: {fileID: 882700662077190844}
+  m_Layer: 0
+  m_Name: --- Audio Controller ---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5097822892190473342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278127794149880145}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &882700662077190844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278127794149880145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea9d6439f044274697cdf33549b22bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _backgroundMusicClips:
+    isCanHearByDistance: 0
+    audioSource: {fileID: 0}
+    volume: 1
+    soundClips:
+    - {fileID: 8300000, guid: 3c559223331f2b048b0411a5de8699a6, type: 3}
+    - {fileID: 8300000, guid: 848f834240d104c42bbdb490b5dc8281, type: 3}
+    - {fileID: 8300000, guid: 952d1c9b991c21d47b2f3662702688dc, type: 3}
+    - {fileID: 8300000, guid: c60c912d8f10faa4aba10df8b15f50e0, type: 3}
+    - {fileID: 8300000, guid: 60874569ad8c50941a9cdc70a568e364, type: 3}
+    - {fileID: 8300000, guid: 9a6838bb2ef693d43a6a7c1b7a4c3e90, type: 3}
+  _enemyCallTeamMoveSoundClips:
+    isCanHearByDistance: 0
+    audioSource: {fileID: 0}
+    volume: 0.7
+    soundClips:
+    - {fileID: 8300000, guid: beced9d1dc6958647b6e95b12d1c541c, type: 3}
+    - {fileID: 8300000, guid: 029331daf16a30b49a28ebb77cfb4db5, type: 3}
+    - {fileID: 8300000, guid: d4145b9ebe56ec34a8e1ed745cc0bf1e, type: 3}
+  _enemyCallTeamAttackSoundClips:
+    isCanHearByDistance: 0
+    audioSource: {fileID: 0}
+    volume: 0.7
+    soundClips:
+    - {fileID: 8300000, guid: 9ab5f1ed2da115d4f9ea3fac31c0db9f, type: 3}
+    - {fileID: 8300000, guid: abd60c00f7e3d4f45894c81168a4f14d, type: 3}
+  _audioConfig_EnemyCallTeamMoveSoundClips:
+    _timerToActiveCallTeamSound: 10
+    loopCount: 3
+    _timeBetweenCallTeamSound: 10
+  _audioConfig_EnemyCallTeamAttackSoundClips:
+    _timerToActiveCallTeamSound: 10
+    loopCount: 3
+    _timeBetweenCallTeamSound: 7
+  _audioConfig_EnemySuicideSoundClips:
+    _timerToActiveCallTeamSound: 0
+    loopCount: 0
+    _timeBetweenCallTeamSound: 0

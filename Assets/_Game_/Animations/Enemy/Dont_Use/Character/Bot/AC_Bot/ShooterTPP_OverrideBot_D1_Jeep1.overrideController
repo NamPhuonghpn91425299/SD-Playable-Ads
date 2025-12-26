@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ShooterTPP_OverrideBot_D1_Jeep1
+  m_Controller: {fileID: 9100000, guid: b1c18cdd5baebea4b9d4880cf2b88cc5, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 2fde35c92285a9f4d8807f89b7229409, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 01c73833a3078f748846b9e30347d80a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ee00d9d80b61c4c4694a0cabc57b150e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6121e06e3ce27a14db55c5ca32298932, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 04b445e8bf94b16408e9760a092e6d64, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1ed1b3d9336519242875f29a2cd44e91, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2d5a84bd5a998d2458cc7b187d0d63e8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ea9364fbea53298439bf0c2d05445080, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 756e290d2f83ce443ae8e10b151e93c0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 54bf02d56d0964f4c9c8109a300f0c6f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 613c508dc98b4624fbfc21f593a7f5f1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5b54130c6fe22d249aad7a4a8248ee21, type: 2}

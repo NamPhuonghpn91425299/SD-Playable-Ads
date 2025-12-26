@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de81161c90e475fb8ccd124170dcbfb, type: 3}
+  m_Name: heli_24hind_mi28_tutorial
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3408595034241431538, guid: c0b90c4dd27eeec4fa45ad4c06c7b46d, type: 3}
+  botType: 32
+  botMoveType: 18
+  spawnableType: 1
+  isGroupPrefab: 0

@@ -4,24 +4,23 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - PlayerPosition
-  - Wood
   - Body
-  - Bot
   - WeakPoint
+  - PlayerPosition
+  - Enemy
+  - Effects
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
+  - WeakPoint
   - Bot
-  - Vechile
+  - Vehicle
   - Reward
-  - 
-  - 
+  - Weapon
   - 
   - 
   - 

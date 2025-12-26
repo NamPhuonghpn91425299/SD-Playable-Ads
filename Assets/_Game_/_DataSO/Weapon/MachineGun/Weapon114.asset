@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a50e8508286dd48a36e7480b90614b, type: 3}
+  m_Name: Weapon114
+  m_EditorClassIdentifier: 
+  damage: 100
+  FireRate: 0.09
+  isCritEnabled: 1
+  critMultiplier: 1.5
+  _weakPointLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  audioClip: {fileID: 8300000, guid: a959ae053f244a847a79b96b956fab86, type: 3}
+  AudioStartBarrel: {fileID: 8300000, guid: 2c639646fc010e447aab582f6eb2a97f, type: 3}
+  AudioEndBarrel: {fileID: 0}
+  AudioReloadIn: {fileID: 0}
+  AudioReloadOut: {fileID: 0}
+  inaccuracy: 0
+  recoilAmount: 0
+  bulletCount: 0
+  reloadTime: 2
+  infiniteBullet: 1
+  Fire: {fileID: 0}
+  Fire_Right: {fileID: 0}
+  Idle: {fileID: 0}
+  _reloadAnimIn: {fileID: 0}
+  _reloadAnimOn: {fileID: 0}
+  _reloadAnimOut: {fileID: 0}
+  WaitToShoot: 1
+  MaxSpeedRotaBarrel: 0
+  TimeMinSpeed: 0

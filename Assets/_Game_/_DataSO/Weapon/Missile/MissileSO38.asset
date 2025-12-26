@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337a4f4233b272a4488c372d4a9a1a0d, type: 3}
+  m_Name: MissileSO38
+  m_EditorClassIdentifier: 
+  missileType: 0
+  audioFire: {fileID: 8300000, guid: 6099cb0bd8d994d4b83b821f125cdec0, type: 3}
+  Idle: {fileID: 7400000, guid: ace3ef6efe0571c4c90986d9dbd4865c, type: 2}
+  Fire: {fileID: 7400000, guid: ac2452277377a9a419abae052a71a0d3, type: 2}
+  Reload: {fileID: 7400000, guid: 4e87fd12b16790f48a26ffda9b79c690, type: 2}
+  timeReload: 0.6
+  AmountRocket: 10
+  isFollow: 1

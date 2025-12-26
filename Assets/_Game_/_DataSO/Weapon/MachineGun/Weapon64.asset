@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a50e8508286dd48a36e7480b90614b, type: 3}
+  m_Name: Weapon64
+  m_EditorClassIdentifier: 
+  damage: 60
+  FireRate: 0.01
+  isCritEnabled: 1
+  critMultiplier: 1.5
+  _weakPointLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  audioClip: {fileID: 8300000, guid: b2cf29f91e4700240892787807a9f98f, type: 3}
+  AudioStartBarrel: {fileID: 0}
+  AudioEndBarrel: {fileID: 0}
+  AudioReloadIn: {fileID: 8300000, guid: 0983aca236075a844a68a585102344bd, type: 3}
+  AudioReloadOut: {fileID: 8300000, guid: 425519adf21446049879bd028e70b47e, type: 3}
+  inaccuracy: 0
+  recoilAmount: 0
+  bulletCount: 100
+  reloadTime: 2
+  infiniteBullet: 0
+  Fire: {fileID: 7400000, guid: 356e20a213fd24a4191f6ec69d8763ff, type: 2}
+  Fire_Right: {fileID: 0}
+  Idle: {fileID: 7400000, guid: ea2905afd52ad254dabc4193bb7b84b0, type: 2}
+  _reloadAnimIn: {fileID: 7400000, guid: 2e73efddcec84a04f8bbf6357d926aef, type: 2}
+  _reloadAnimOn: {fileID: 7400000, guid: 0d8338ba9bde59048b8c8b5e816016d2, type: 2}
+  _reloadAnimOut: {fileID: 7400000, guid: 1c5deaff13c7359418884159d49eba1c, type: 2}
+  WaitToShoot: 0.5
+  MaxSpeedRotaBarrel: 2000
+  TimeMinSpeed: 0.5

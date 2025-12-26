@@ -1,0 +1,169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d296c525cd02c3e4fb2bf125546fa399, type: 3}
+  m_Name: PoolData
+  m_EditorClassIdentifier: 
+  enumPools:
+  - typePool: Character
+    folderPath: Assets/_Game_/Prefabs/Enemy/Character
+    botDefinitionPath: Assets/_Game_/_DataSO/BotDefinition
+    enumName: 0
+    prefabUnits:
+    - {fileID: 8122700730388336497, guid: f18523b34f61e954484be9c47a4307a7, type: 3}
+    - {fileID: 5005625849206460392, guid: c0cdb395c8e4cc04e8179adb635c8ad2, type: 3}
+    - {fileID: 9076088849865340556, guid: 58d3f448314493147ad6c1e38680f321, type: 3}
+    - {fileID: 195800777247316741, guid: 9ece8244e60a033408a2112f3be78454, type: 3}
+    - {fileID: 1732268970624039699, guid: 68611f37b57f4804f99d39457b17a368, type: 3}
+    - {fileID: 924536028281167316, guid: c45f830870b276748be2cadc1126887d, type: 3}
+    - {fileID: 685044323173799485, guid: cbac918c43cadfc4caee64a4e80ca73a, type: 3}
+    - {fileID: 6561933709188588467, guid: a372c6c35b0ca5a4f9137f35a445941e, type: 3}
+    - {fileID: 6960501980939201553, guid: 9a61cde1cfaaae14ca5c4e1f98b082d7, type: 3}
+    matchedBotDefs:
+    - {fileID: 11400000, guid: 57284db5881cd0b489f7894013c6dd67, type: 2}
+    - {fileID: 11400000, guid: e65f88b808d65cb45abf6df5bfa85b83, type: 2}
+    - {fileID: 11400000, guid: 5e127ad146b749144afecd0772011155, type: 2}
+    - {fileID: 11400000, guid: 85f48ff051c084d46be956bfe6f6b809, type: 2}
+    - {fileID: 11400000, guid: 4a01717cb3c955b46b2500115cab0f40, type: 2}
+    - {fileID: 11400000, guid: e9daceecf53802048b8755af03db5579, type: 2}
+    - {fileID: 11400000, guid: 991b5846bca5bfb43a3f91fce023b9ba, type: 2}
+    - {fileID: 11400000, guid: 6fa730a8c6be8014085e3349d41ccf84, type: 2}
+    - {fileID: 11400000, guid: d047ca4007aae1f4d9b70d9412706656, type: 2}
+    savedAmounts: 000000000000000000000000000000000000000000000000
+  - typePool: Vehicle
+    folderPath: Assets/_Game_/Prefabs/Enemy/Vehicle
+    botDefinitionPath: Assets/_Game_/_DataSO/BotDefinition
+    enumName: 0
+    prefabUnits:
+    - {fileID: 6305782088902375495, guid: 3c68f80b9c7e4b94d89eaf5930ab5237, type: 3}
+    - {fileID: 1832367148460437085, guid: d24b0eb9e8d37c44d8d250f64ead3882, type: 3}
+    - {fileID: 2985672296426749709, guid: 4f700305e4893ca49acff161e28c2693, type: 3}
+    - {fileID: 4573871564592798604, guid: 5083e973dabd9114ab7e91ee6fbcdb8a, type: 3}
+    - {fileID: 4957048134468431399, guid: 4fe5f77016137d648990b3f9eded3009, type: 3}
+    - {fileID: 6028291719401727877, guid: bafc6aa6899efe5428a30ab879947a37, type: 3}
+    - {fileID: 2028199425521159077, guid: a933ec46404661d4ea30c1a006cc080d, type: 3}
+    - {fileID: 7186663967066348678, guid: 885ac82a8a28d234fa73a855bb379ef8, type: 3}
+    - {fileID: 4303674552237441156, guid: ce186685c32574c4bbbf6f09528f4f24, type: 3}
+    - {fileID: 6243638010831446656, guid: 5d7562bca440c2a4a8eac00061ed4f7c, type: 3}
+    - {fileID: 2471833645020999980, guid: 33c072f1ba324d74cba4c0cd204d9fd5, type: 3}
+    - {fileID: 8424048635078596409, guid: 176d86eaba2804f45ab0554ea4591603, type: 3}
+    - {fileID: 8424048635078596409, guid: 75eaae82501370f4e83807e0df69e293, type: 3}
+    - {fileID: 8424048635078596409, guid: 2aa4b5a6774d3bd4a9834902bdf03f39, type: 3}
+    - {fileID: 8424048635078596409, guid: 13ab4f006290eb1459a57e2493240799, type: 3}
+    - {fileID: 8424048635078596409, guid: 912d5c37b388508438a3fee04852e5f5, type: 3}
+    - {fileID: 4610547513963448097, guid: 7ed56dbee1e321b4f933aef66cd610f2, type: 3}
+    - {fileID: 7165787887121803644, guid: 0f8f2e76e90fa0d48ac7464ea9fdbc9a, type: 3}
+    - {fileID: 4399620906501048846, guid: d72575d0c8e15cc43a15dcdd4480f4c6, type: 3}
+    - {fileID: 7813907413677157067, guid: 49488ee68fba3e3459c70f15b60eb19a, type: 3}
+    matchedBotDefs:
+    - {fileID: 11400000, guid: 28f8176097b567c4b94dc6ecc64c361a, type: 2}
+    - {fileID: 11400000, guid: ea63e413957392b458f7e991052f2529, type: 2}
+    - {fileID: 11400000, guid: 50764b1e17a68434f9a5bb2f449b7b7f, type: 2}
+    - {fileID: 11400000, guid: 564e43653b2393548b183d91340585c5, type: 2}
+    - {fileID: 11400000, guid: 45da126f88283074fa2cfb2bb7ae0c32, type: 2}
+    - {fileID: 11400000, guid: 0fb99ffe96dfe3a45bbde73aeea593fb, type: 2}
+    - {fileID: 11400000, guid: 8801f06f7b17875439493606ded6efcf, type: 2}
+    - {fileID: 11400000, guid: a2ef16a5d1668d14980419c5df3869bc, type: 2}
+    - {fileID: 11400000, guid: dcab238bc5253b6458265d80b421555a, type: 2}
+    - {fileID: 11400000, guid: f2a51792ab93c5a418057f87e975126c, type: 2}
+    - {fileID: 11400000, guid: efdc1e7586f7d6b4581a274e8f822d60, type: 2}
+    - {fileID: 11400000, guid: 056e679c5545fe544816667f82c1d712, type: 2}
+    - {fileID: 11400000, guid: 90d9485a78420f54e9033a2f60ea6adb, type: 2}
+    - {fileID: 11400000, guid: bef31d46b322525409a218dcf8211b74, type: 2}
+    - {fileID: 11400000, guid: 97491ebfbedf4d64daf84373a1fb8fec, type: 2}
+    - {fileID: 11400000, guid: fba60b1000fbcfa4890b050b51869198, type: 2}
+    - {fileID: 11400000, guid: 25c8da398c7f3e9428d71e8a44b23134, type: 2}
+    - {fileID: 11400000, guid: 4a72cfe05c7590a44a1632df5df96288, type: 2}
+    - {fileID: 11400000, guid: cd9b1cbf944873d4d859c6eb9fadf7a0, type: 2}
+    - {fileID: 11400000, guid: 5136bd68bf093e94796d37a9428deeb5, type: 2}
+    savedAmounts: 00000000000000000000000000000000000000000000000000000000
+  - typePool: Weapon Player
+    folderPath: Assets/_Game_/Prefabs/Weapon
+    botDefinitionPath: Null
+    enumName: 2
+    prefabUnits:
+    - {fileID: 7920140154880840661, guid: b4419a2fe4930dd4e955d62265c17bef, type: 3}
+    - {fileID: 130895243241288831, guid: c97b936e9b20b8c47b89b07d0fa9a9ac, type: 3}
+    - {fileID: 8588730135895685915, guid: 56c205207566360459df8c4b3b5ce487, type: 3}
+    - {fileID: 6487967849642235115, guid: 60f75b33960d7d64c8303fa7b5ff215a, type: 3}
+    - {fileID: 779721945961405961, guid: 8e9d3a5216abb5b46a4ab9d81bfcd323, type: 3}
+    matchedBotDefs:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    savedAmounts: 000000000000000000000000
+  - typePool: Projectile
+    folderPath: Assets/_Game_/Prefabs/Projectile
+    botDefinitionPath: Null
+    enumName: 4
+    prefabUnits:
+    - {fileID: 5365619477779672494, guid: 51a9a42387105c544b7c9ed1b80a8b14, type: 3}
+    - {fileID: -3474600931492518331, guid: 26e6f28a63b2f6c489d345cdc98281ec, type: 3}
+    - {fileID: 5590925987585152903, guid: afddee0838809614ca04504fa06c8ac8, type: 3}
+    - {fileID: 902355776616390598, guid: 64918e542d6b4d3428c15484fd675774, type: 3}
+    - {fileID: -4419331983942194261, guid: 142164e54f594e042a4917bf416da44c, type: 3}
+    - {fileID: 1316086891872738960, guid: 3560cbd286f2ff148b2caebda9c9c042, type: 3}
+    - {fileID: 3358972383592416975, guid: 33056a4f999ad7046b1ad6a3f538a86f, type: 3}
+    - {fileID: 603899974554357169, guid: bcf0258b66a8e05498ace10193710acc, type: 3}
+    - {fileID: 2162757240609915679, guid: a42685be5b7a9c145ba2e52cca8cae25, type: 3}
+    - {fileID: 8073256420589250591, guid: 5fe82a55bdd79934db5f783ccea25584, type: 3}
+    matchedBotDefs:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    savedAmounts: 000000000000000000000000000000000000000000000000
+  - typePool: Gift
+    folderPath: Assets/_Game_/Prefabs/Gift
+    botDefinitionPath: Null
+    enumName: 5
+    prefabUnits:
+    - {fileID: 4569751619084447543, guid: a25427df0b4b5db418e9420d8a4a2149, type: 3}
+    - {fileID: 5292352787682560694, guid: 0b2a30cb79d8b5444a9ead06a55a1fca, type: 3}
+    - {fileID: 8109260165030810699, guid: e14322774ab70a448a6a05520abc7dea, type: 3}
+    - {fileID: 338146179362796974, guid: 6d107d9841d59dc4ba4d2b592c5d1dac, type: 3}
+    - {fileID: 2144536180393593491, guid: 1e6d081139e87c14da4ccb999e9b876f, type: 3}
+    - {fileID: 2144536180393593491, guid: 779b62aa580736341ade62771d7ab5e0, type: 3}
+    matchedBotDefs:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    savedAmounts: 0000000000000000000000000000000000000000
+  - typePool: VFX
+    folderPath: Assets/_Game_/Prefabs/VFX
+    botDefinitionPath: Null
+    enumName: 1
+    prefabUnits:
+    - {fileID: -3927765278630190910, guid: 6cd5f26fa6ffe0144847cd647ae4ed9c, type: 3}
+    - {fileID: -4638475119668784553, guid: 65fe35e335eeec24aa54f38780acaae7, type: 3}
+    - {fileID: -7920615568591718319, guid: e4ed01af280d76248a9d0e72030c40c6, type: 3}
+    - {fileID: 8970742073840843599, guid: 1fad06db51ffb86458cb3de2b4fc05c2, type: 3}
+    - {fileID: 8970742073840843599, guid: cdf64d397e219a24f8e4b96f539e46f4, type: 3}
+    - {fileID: -5295808255879027446, guid: 909310cf14128624691209c91caa9424, type: 3}
+    matchedBotDefs:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    savedAmounts: 00000000000000000000000000000000

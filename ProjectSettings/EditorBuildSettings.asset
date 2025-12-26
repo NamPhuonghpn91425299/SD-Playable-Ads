@@ -6,6 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MapSource/New Scene.unity
-    guid: 16457d0c5ba5e4245836560fc5baf17b
+    path: Assets/Map/Map BeachHead1/Scenes/scene_BeachHead1_Remake.unity
+    guid: 216bf038272dfd247a0719f69a69314a
+  - enabled: 1
+    path: Assets/_Develop_/_ManhGV/Map01_S3/scene_BeachHead1_Remake_Build.unity
+    guid: b37b6c0b77551e140b8e4fe71c10eac4
+  - enabled: 1
+    path: Assets/Map/Map BeachHead4/Scenes/scene_BeachHead4.unity
+    guid: 103b60c191584b04ca3488f2fe1191ee
+  - enabled: 1
+    path: Assets/Map/Map BeachHead10/Scenes/scene_BeachHead10.unity
+    guid: 62b2a1c04d8d84d408752a9a600fbc11
+  - enabled: 1
+    path: Assets/_Develop_/_ThanhNT/Map/Map BeachHead13/Scenes/scene_BeachHead13.unity
+    guid: 3616db6545ccd334fb7c1631cdac2285
+  - enabled: 1
+    path: Assets/_Develop_/_ThanhNT/scene_BeachHead13 new.unity
+    guid: 06073beb6e3c07041a591efd176cfd6e
+  - enabled: 1
+    path: Assets/_Game_/Scenes/scene_BeachHead13_Base.unity
+    guid: 506212a4e0a7cff41af9ac3584164c69
+  - enabled: 1
+    path: Assets/Map/Map BeachHead7/Scene/scene_BeachHead_7_map_10.unity
+    guid: 25a6d522f403e9648b66ccfd3019408a
+  - enabled: 1
+    path: Assets/_Game_/Scenes/Test.unity
+    guid: a6f47b8f4ea046d4787c975abd731004
   m_configObjects: {}
